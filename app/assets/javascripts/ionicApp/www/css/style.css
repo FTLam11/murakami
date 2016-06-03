@@ -1,0 +1,37 @@
+/* Empty. Add your own CSS if you like */
+.profile-list-item {
+  width: 100%;
+  text-align: left;
+}
+
+.profile-picture{
+  width: 50%;
+  text-align: center;
+  border-radius: 50%;
+}
+
+.profile-pic-container {
+  text-align: center;
+  padding-top: 7%;
+}
+
+.book-image{
+  width: 100%;
+}
+
+.item {
+
+  float: left;
+  display: inline;
+}
+
+.book-cover{
+  width: 40%;
+  border-radius: 5%;
+  text-align: center;
+}
+
+.book-details{
+  float:right;
+
+}
