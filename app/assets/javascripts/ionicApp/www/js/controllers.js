@@ -35,4 +35,56 @@ angular.module('starter.controllers', [])
 
 .controller('BookDetailCtrl', function($scope, $stateParams ,Books){
   $scope.book = Books.get($stateParams.bookId);
-});
+})
+
+.controller('SearchCtrl', function($scope, Books){
+  $scope.books = Books.all();
+  $scope.remove = function(book) {
+    Books.remove(book);
+  };
+
+
+})
+
+.controller('LoginCtrl', function($scope, LoginService, $ionicPopup, $state) {
+    $scope.data = {};
+
+    $scope.login = function() {
+      var request = {
+        method: 'POST',
+        url: '#',
+        dataType: "json",
+        data: $scope.data
+      }
+
+      request.success(function(data) {
+
+            $state.go('tab.dash');
+        }).error(function(data) {
+            var alertPopup = $ionicPopup.alert({
+                title: 'Login failed!',
+                template: 'Please check your credentials!'
+            });
+        });
+    }
+
+    $scope.register = function() {
+      $location.path("#/register");
+    }
+})
+
+.controller('RegisterCtrl', function($scope, $location){
+  $scope.data = {};
+
+  $scope.register = function(){
+    console.log($scope.data)
+    $location.path('/tab/dash')
+  // var request = {
+  //   method: 'POST',
+  //   url: '#',
+  //   dataType: "json",
+  //   data: $scope.data
+  // }
+  }
+})
+
