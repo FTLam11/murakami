@@ -1,4 +1,4 @@
-class CreateGroup_Readings < ActiveRecord::Migration
+class CreateGroupReadings < ActiveRecord::Migration
   def change
     create_table :group_readings do |t|
       t.integer :group_id

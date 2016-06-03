@@ -1,6 +1,6 @@
-class CreateSolo_Readings < ActiveRecord::Migration
+class CreateSoloReadings < ActiveRecord::Migration
   def change
-    create_table :readings do |t|
+    create_table :solo_readings do |t|
       t.integer :user_id
       t.integer :book_id
       t.boolean :favorite?

@@ -21,8 +21,10 @@ ActiveRecord::Schema.define(version: 20160603192258) do
     t.string   "author"
     t.string   "genre"
     t.integer  "page_numbers"
-    t.datetime "created_at",   null: false
-    t.datetime "updated_at",   null: false
+    t.integer  "date_published"
+    t.string   "publisher"
+    t.datetime "created_at",     null: false
+    t.datetime "updated_at",     null: false
   end
 
   create_table "chapters", force: :cascade do |t|
@@ -75,23 +77,23 @@ ActiveRecord::Schema.define(version: 20160603192258) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "readings", force: :cascade do |t|
-    t.integer  "user_id"
-    t.integer  "book_id"
-    t.boolean  "favorite?"
-    t.boolean  "complete?"
-    t.boolean  "queue?"
-    t.boolean  "current?"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
   create_table "reviews", force: :cascade do |t|
     t.integer  "user_id"
     t.string   "book_id"
     t.string   "integer"
     t.string   "content"
     t.integer  "rating"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "solo_readings", force: :cascade do |t|
+    t.integer  "user_id"
+    t.integer  "book_id"
+    t.boolean  "favorite?"
+    t.boolean  "complete?"
+    t.boolean  "queue?"
+    t.boolean  "current?"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
