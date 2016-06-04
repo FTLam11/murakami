@@ -43,6 +43,14 @@ angular.module('starter.controllers', [])
     Books.remove(book);
   };
 
+  $scope.searchList = function($scope, $stateParams){
+    console.log($scope)
+
+    // var request = $.ajax({
+    //   url: 'https://www.googleapis.com/books/v1/volumes?q=' + query
+    // })
+  }
+
 
 })
 
@@ -79,12 +87,13 @@ angular.module('starter.controllers', [])
   $scope.register = function(){
     console.log($scope.data)
     $location.path('/tab/dash')
-  // var request = {
-  //   method: 'POST',
-  //   url: '#',
-  //   dataType: "json",
-  //   data: $scope.data
-  // }
+  var request = {
+    method: 'POST',
+    url: '#',
+    dataType: "json",
+    data: $scope.data
+  }
+
   }
 })
 
