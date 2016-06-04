@@ -5,9 +5,6 @@ class ReactionsController < ApplicationController
     #pass to the client for them to show
   end
 
-  def
-  end
-
   def show
     @reaction = Reaction.find(reaction_id)
     @comments = @reaction.comments

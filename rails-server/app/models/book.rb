@@ -7,29 +7,24 @@ class Book < ActiveRecord::Base
   has_many :groups, through: :group_readings
   has_many :readers, through: :solo_readings, foreign_key: :user_id
 
-  def recommendations(user_id)
-    rec_criteria = {author: [], genre: []}
-    user_books = User.find(user_id).books
+  def book_factory
 
-    user_books.each do |book|
-      rec_criteria[:author] << book.author
-      rec_criteria[:genre] << book.genre
+    book = Book.find_by(name: params[:title], author: params[:author])
+
+    if book == nil
+      new_book = current_user.books.create(params[book])
+      params[:chapter_count].times do |num|
+        new_book.chapters.create(number: num)
+      end
+      find_reading
+    else
+      unless find_reading
+        current_user.books << book
+      end
     end
-
-    return rec_criteria.each {|criterion,array| array.uniq!}
   end
 
-  def retrieve_rec_books(criteria)
-    rec_books = []
-    Book.all.each do |book|
-      criteria[:author].each do |author|
-        rec_books << book if book.author == author
-      end
-      criteria[:genre].each do |genre|
-        rec_books << book if book.genre == genre && !rec_books.include?(book)
-      end
-    end
-
-    return rec_books
+  def find_reading
+    @reading = SoloReading.find_by(user_id:current_user.id, book_id:book.id)
   end
 end

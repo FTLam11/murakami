@@ -27,6 +27,4 @@ class UsersController < ApplicationController
   #   params.require(:user).print(:username, :email, :password)
   # end
 
-
-
 end
