@@ -1,18 +1,16 @@
-<ion-view view-title="{{book.title}}">
+<ion-view view-title="{{title}}">
   <ion-content class="padding">
   <h2> {{book.title}} </h2>
-    <img ng-src="{{book.image}}" class="book-cover">
+    <img ng-src="{{image}}" class="book-cover">
     <div class="book-details">
       <br>
-      <p> {{book.author}} </p>
-      <p> 300 Pages </p>
-      <p> 44 Reads </p>
-      <p> 14 Favorites </p>
-      <p> Average Readtime: 3 days </p>
+      <p> {{author}} </p>
+      <p> {{pageCount}} Pages </p>
+      <p> Published on {{publishedDate}}<p>
 
     </div>
     <div class="book-description">
-      <p> {{book.description}} </p>
+      <p> {{description}} </p>
     </div>
 
     <button> Start </button>

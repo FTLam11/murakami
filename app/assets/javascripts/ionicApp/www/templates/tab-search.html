@@ -1,14 +1,18 @@
 <ion-view view-title="Search">
   <ion-content class="padding">
     <h2 style="text-align: center">Explore Books</h2>
-    <label class="item item-input">
-      <i class="icon ion-search placeholder-icon"></i>
-      <input name="q" type="search" placeholder="Search" ng-keyup="searchList($event)">
-    </label>
+    <form class="item item-input" ng-submit="find()">
+        <input type="text" placeholder="Search" ng-model="data.search">
+    </form>
     <ion-list>
-    <ion-item class="col-50" ng-repeat="book in books" href="#/tab/books/{{book.id}}">
-      <img src= "{{book.image}}" class="book-image">
-    </ion-item>
+      <ion-item class="col-50" ng-repeat="book in resultsArray" href="#/tab/books/{{book.id}}">
+        <img src= "{{book.volumeInfo.imageLinks.thumbnail}}" class="book-image">
+      </ion-item>
+    </ion-list>
+    <ion-list>
+      <ion-item class="col-50" ng-repeat="book in books" href="#/tab/books/{{book.id}}">
+        <img src= "{{book.image}}" class="book-image">
+      </ion-item>
     </ion-list>
   </ion-content>
 </ion-view>

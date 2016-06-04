@@ -33,23 +33,46 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('BookDetailCtrl', function($scope, $stateParams ,Books){
-  $scope.book = Books.get($stateParams.bookId);
+.controller('BookDetailCtrl', function($scope, $http, $stateParams, Books){
+  if ($stateParams.bookId < 100) {
+    var book = Books.get($stateParams.bookId);
+    $scope.author = book.author
+    $scope.title = book.title
+    $scope.image = book.image
+    $scope.description = book.description
+
+  }else{
+    $http.get('https://www.googleapis.com/books/v1/volumes?q=' + $stateParams.bookId)
+    .then(function(response){
+      console.log(response.data.items[0])
+      var book = response.data.items[0]
+      $scope.author = book.volumeInfo.authors[0]
+      $scope.title = book.volumeInfo.title
+      $scope.description = book.volumeInfo.description
+      $scope.image = book.volumeInfo.imageLinks.thumbnail
+      $scope.pageCount = book.volumeInfo.pageCount
+      $scope.publishedDate = book.volumeInfo.publishedDate
+    })
+  }
+
 })
 
-.controller('SearchCtrl', function($scope, Books){
+.controller('SearchCtrl', function($scope, $http,Books){
+  $scope.data = {};
+
   $scope.books = Books.all();
   $scope.remove = function(book) {
     Books.remove(book);
   };
 
-  $scope.searchList = function($scope, $stateParams){
-    console.log($scope)
-
-    // var request = $.ajax({
-    //   url: 'https://www.googleapis.com/books/v1/volumes?q=' + query
-    // })
+  $scope.find = function(){
+    var query = $scope.data.search
+    $http.get('https://www.googleapis.com/books/v1/volumes?q=' + query)
+    .then(function(response){
+      $scope.resultsArray = response.data.items
+    })
   }
+
 
 
 })
