@@ -1,17 +1,23 @@
 Rails.application.routes.draw do
-  resources :users do #index, new, edit, show
-    resources :books #new, edit, show?, update
+
+  resources :users, only: [:show] do
+    resources :books, only: [:create, :show]
   end
 
-  resources :books do
+  resources :books, only: [] do
     resources :chapters , only: [:create, :show]
+    resources :reviews , only: [:index, :create, :show]
   end
 
-  # books/:book_id/chapters/:chapter_id/
+  resources :chapters, only: [] do
+    resources :reactions , only: [:index, :create, :show]
+  end
 
-  # reactions/:reaction_id/comments/:comment_id
+  resources :reactions, only: [] do
+    resources :comments , only: [:create]
+  end
 
-  get '/books/search', to: 'books#search'
-
-  root to: "user#home"
+  get '/register', to: 'users#create'
+  get '/login', to: 'sessions#login'
+  get '/logout', to: 'sessions#logout'
 end
