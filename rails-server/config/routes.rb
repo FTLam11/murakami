@@ -4,6 +4,12 @@ Rails.application.routes.draw do
     resources :books, only: [:create, :show]
   end
 
+  get '/users/:id/recommended', to: 'soloreadings#recommended'
+  get '/users/:id/current', to: 'soloreadings#current'
+  get '/users/:id/favorite', to: 'soloreadings#favorite'
+  get '/users/:id/queue', to: 'soloreadings#queue'
+  get '/users/:id/history', to: 'soloreadings#history'
+
   resources :books, only: [] do
     resources :chapters , only: [:create, :show]
     resources :reviews , only: [:index, :create, :show]
