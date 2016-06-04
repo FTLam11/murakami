@@ -46,12 +46,12 @@ ActiveRecord::Schema.define(version: 20160603192258) do
   create_table "group_readings", force: :cascade do |t|
     t.integer  "group_id"
     t.integer  "book_id"
-    t.boolean  "favorite?"
-    t.boolean  "complete?"
-    t.boolean  "queue?"
-    t.boolean  "current?"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.boolean  "favorite",   default: false
+    t.boolean  "complete",   default: false
+    t.boolean  "queue",      default: false
+    t.boolean  "current",    default: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
   create_table "groups", force: :cascade do |t|
@@ -90,12 +90,12 @@ ActiveRecord::Schema.define(version: 20160603192258) do
   create_table "solo_readings", force: :cascade do |t|
     t.integer  "user_id"
     t.integer  "book_id"
-    t.boolean  "favorite?"
-    t.boolean  "complete?"
-    t.boolean  "queue?"
-    t.boolean  "current?"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.boolean  "favorite",   default: false
+    t.boolean  "complete",   default: false
+    t.boolean  "queue",      default: false
+    t.boolean  "current",    default: false
+    t.datetime "created_at",                 null: false
+    t.datetime "updated_at",                 null: false
   end
 
   create_table "users", force: :cascade do |t|
