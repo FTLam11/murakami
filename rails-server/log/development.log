@@ -1461,3 +1461,361 @@ ORDER BY c.conname
   [1m[35mSoloReading Load (2.9ms)[0m  SELECT "solo_readings".* FROM "solo_readings"
   [1m[36mSoloReading Load (2.7ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings"[0m
   [1m[35mSoloReading Load (0.4ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."complete" = $1  [["complete", "f"]]
+  [1m[36m (38.7ms)[0m  [1mCREATE TABLE "schema_migrations" ("version" character varying NOT NULL) [0m
+  [1m[35m (1.7ms)[0m  CREATE UNIQUE INDEX  "unique_schema_migrations" ON "schema_migrations"  ("version")
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Migrating to CreateBooks (20160603181140)
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (64.7ms)[0m  [1mCREATE TABLE "books" ("id" serial primary key, "name" character varying, "author" character varying, "genre" character varying, "page_numbers" integer, "date_published" integer, "publisher" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20160603181140"]]
+  [1m[36m (16.0ms)[0m  [1mCOMMIT[0m
+Migrating to CreateReviews (20160603181154)
+  [1m[35m (15.5ms)[0m  BEGIN
+  [1m[36m (19.6ms)[0m  [1mCREATE TABLE "reviews" ("id" serial primary key, "user_id" integer, "book_id" character varying, "integer" character varying, "content" character varying, "rating" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20160603181154"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+Migrating to CreateChapters (20160603181211)
+  [1m[35m (16.1ms)[0m  BEGIN
+  [1m[36m (18.9ms)[0m  [1mCREATE TABLE "chapters" ("id" serial primary key, "book_id" integer, "number" integer, "title" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20160603181211"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+Migrating to CreateSoloReadings (20160603181224)
+  [1m[35m (15.0ms)[0m  BEGIN
+  [1m[36m (2.3ms)[0m  [1mCREATE TABLE "solo_readings" ("id" serial primary key, "user_id" integer, "book_id" integer, "favorite" boolean DEFAULT 'f', "complete" boolean DEFAULT 'f', "queue" boolean DEFAULT 'f', "current" boolean DEFAULT 'f', "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35mSQL (0.1ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20160603181224"]]
+  [1m[36m (0.7ms)[0m  [1mCOMMIT[0m
+Migrating to CreateGroups (20160603181233)
+  [1m[35m (15.5ms)[0m  BEGIN
+  [1m[36m (5.1ms)[0m  [1mCREATE TABLE "groups" ("id" serial primary key, "name" character varying, "image_url" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20160603181233"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+Migrating to CreateUsers (20160603181247)
+  [1m[35m (15.6ms)[0m  BEGIN
+  [1m[36m (21.9ms)[0m  [1mCREATE TABLE "users" ("id" serial primary key, "user_name" character varying, "email" character varying, "hashword" character varying, "image_url" character varying, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20160603181247"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+Migrating to CreateReactions (20160603181255)
+  [1m[35m (15.3ms)[0m  BEGIN
+  [1m[36m (19.3ms)[0m  [1mCREATE TABLE "reactions" ("id" serial primary key, "chapter_id" integer, "content" character varying, "user_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20160603181255"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+Migrating to CreateComments (20160603181310)
+  [1m[35m (17.0ms)[0m  BEGIN
+  [1m[36m (68.0ms)[0m  [1mCREATE TABLE "comments" ("id" serial primary key, "reaction_id" integer, "content" character varying, "user_id" integer, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20160603181310"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+Migrating to CreateMemberships (20160603181323)
+  [1m[35m (15.6ms)[0m  BEGIN
+  [1m[36m (17.7ms)[0m  [1mCREATE TABLE "memberships" ("id" serial primary key, "user_id" integer, "group_id" integer, "admin?" boolean, "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20160603181323"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+Migrating to CreateGroupReadings (20160603192258)
+  [1m[35m (0.6ms)[0m  BEGIN
+  [1m[36m (4.6ms)[0m  [1mCREATE TABLE "group_readings" ("id" serial primary key, "group_id" integer, "book_id" integer, "favorite" boolean DEFAULT 'f', "complete" boolean DEFAULT 'f', "queue" boolean DEFAULT 'f', "current" boolean DEFAULT 'f', "created_at" timestamp NOT NULL, "updated_at" timestamp NOT NULL) [0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "schema_migrations" ("version") VALUES ($1)  [["version", "20160603192258"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35mActiveRecord::SchemaMigration Load (0.3ms)[0m  SELECT "schema_migrations".* FROM "schema_migrations"
+  [1m[36m (9.8ms)[0m  [1mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'books'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (1.9ms)[0m  SELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'chapters'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+
+  [1m[36m (1.8ms)[0m  [1mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'comments'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (1.8ms)[0m  SELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'group_readings'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+
+  [1m[36m (1.6ms)[0m  [1mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'groups'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (1.6ms)[0m  SELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'memberships'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+
+  [1m[36m (1.8ms)[0m  [1mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'reactions'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (1.8ms)[0m  SELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'reviews'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+
+  [1m[36m (1.7ms)[0m  [1mSELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'solo_readings'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+[0m
+  [1m[35m (1.7ms)[0m  SELECT t2.oid::regclass::text AS to_table, a1.attname AS column, a2.attname AS primary_key, c.conname AS name, c.confupdtype AS on_update, c.confdeltype AS on_delete
+FROM pg_constraint c
+JOIN pg_class t1 ON c.conrelid = t1.oid
+JOIN pg_class t2 ON c.confrelid = t2.oid
+JOIN pg_attribute a1 ON a1.attnum = c.conkey[1] AND a1.attrelid = t1.oid
+JOIN pg_attribute a2 ON a2.attnum = c.confkey[1] AND a2.attrelid = t2.oid
+JOIN pg_namespace t3 ON c.connamespace = t3.oid
+WHERE c.contype = 'f'
+  AND t1.relname = 'users'
+  AND t3.nspname = ANY (current_schemas(false))
+ORDER BY c.conname
+
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (16.7ms)[0m  [1mINSERT INTO "books" ("name", "author", "genre", "publisher", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "The Doors of Perception"], ["author", "Felipa Kreiger"], ["genre", "Comic/Graphic Novel"], ["publisher", "Holland Park Press"], ["created_at", "2016-06-04 22:29:32.642963"], ["updated_at", "2016-06-04 22:29:32.642963"]]
+  [1m[35m (15.9ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "books" ("name", "author", "genre", "publisher", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["name", "To Say Nothing of the Dog"], ["author", "Kenneth Hodkiewicz"], ["genre", "Narrative nonfiction"], ["publisher", "Emerald Group Publishing"], ["created_at", "2016-06-04 22:29:32.682209"], ["updated_at", "2016-06-04 22:29:32.682209"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "books" ("name", "author", "genre", "publisher", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "The Moving Toyshop"], ["author", "Lavern Dickinson"], ["genre", "Essay"], ["publisher", "Dedalus Books"], ["created_at", "2016-06-04 22:29:32.685320"], ["updated_at", "2016-06-04 22:29:32.685320"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "books" ("name", "author", "genre", "publisher", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["name", "In Dubious Battle"], ["author", "Maymie Ferry"], ["genre", "Suspense/Thriller"], ["publisher", "Unfinished Monument Press"], ["created_at", "2016-06-04 22:29:32.688298"], ["updated_at", "2016-06-04 22:29:32.688298"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "books" ("name", "author", "genre", "publisher", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "For a Breath I Tarry"], ["author", "Breanna Jacobi"], ["genre", "Narrative nonfiction"], ["publisher", "BBC Books"], ["created_at", "2016-06-04 22:29:32.691042"], ["updated_at", "2016-06-04 22:29:32.691042"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "books" ("name", "author", "genre", "publisher", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["name", "In a Dry Season"], ["author", "Hanna Batz"], ["genre", "Fantasy"], ["publisher", "Del Rey Books"], ["created_at", "2016-06-04 22:29:32.693353"], ["updated_at", "2016-06-04 22:29:32.693353"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "books" ("name", "author", "genre", "publisher", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "The Wealth of Nations"], ["author", "Fleta King"], ["genre", "Short story"], ["publisher", "DAW Books"], ["created_at", "2016-06-04 22:29:32.695580"], ["updated_at", "2016-06-04 22:29:32.695580"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "books" ("name", "author", "genre", "publisher", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["name", "The Heart Is Deceitful Above All Things"], ["author", "Darron Schamberger DDS"], ["genre", "Fiction in verse"], ["publisher", "New Holland Publishers"], ["created_at", "2016-06-04 22:29:32.697842"], ["updated_at", "2016-06-04 22:29:32.697842"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "books" ("name", "author", "genre", "publisher", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "The Waste Land"], ["author", "Laura Sanford"], ["genre", "Western"], ["publisher", "United States Government Publishing Office"], ["created_at", "2016-06-04 22:29:32.700050"], ["updated_at", "2016-06-04 22:29:32.700050"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "books" ("name", "author", "genre", "publisher", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["name", "Recalled to Life"], ["author", "Abraham Bergstrom"], ["genre", "Comic/Graphic Novel"], ["publisher", "Bellevue Literary Press"], ["created_at", "2016-06-04 22:29:32.702254"], ["updated_at", "2016-06-04 22:29:32.702254"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "books" ("name", "author", "genre", "publisher", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Endless Night"], ["author", "Westley Rosenbaum"], ["genre", "Realistic fiction"], ["publisher", "Verso Books"], ["created_at", "2016-06-04 22:29:32.704451"], ["updated_at", "2016-06-04 22:29:32.704451"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "books" ("name", "author", "genre", "publisher", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["name", "An Instant In The Wind"], ["author", "Ryleigh Lindgren"], ["genre", "Fairy tale"], ["publisher", "Virgin Publishing"], ["created_at", "2016-06-04 22:29:32.706686"], ["updated_at", "2016-06-04 22:29:32.706686"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "books" ("name", "author", "genre", "publisher", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Nine Coaches Waiting"], ["author", "Wilfrid Schmidt"], ["genre", "Western"], ["publisher", "Tate Publishing & Enterprises"], ["created_at", "2016-06-04 22:29:32.708861"], ["updated_at", "2016-06-04 22:29:32.708861"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "books" ("name", "author", "genre", "publisher", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["name", "A Farewell to Arms"], ["author", "Aletha Leannon"], ["genre", "Classic"], ["publisher", "Del Rey Books"], ["created_at", "2016-06-04 22:29:32.711028"], ["updated_at", "2016-06-04 22:29:32.711028"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "books" ("name", "author", "genre", "publisher", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "The Line of Beauty"], ["author", "Mr. Otis Grady"], ["genre", "Fable"], ["publisher", "Burns & Oates"], ["created_at", "2016-06-04 22:29:32.713300"], ["updated_at", "2016-06-04 22:29:32.713300"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "books" ("name", "author", "genre", "publisher", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["name", "Look to Windward"], ["author", "Gisselle Morissette"], ["genre", "Metafiction"], ["publisher", "Nauka"], ["created_at", "2016-06-04 22:29:32.715444"], ["updated_at", "2016-06-04 22:29:32.715444"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "books" ("name", "author", "genre", "publisher", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "No Longer at Ease"], ["author", "Percy Monahan"], ["genre", "Fable"], ["publisher", "Leafwood Publishers"], ["created_at", "2016-06-04 22:29:32.717640"], ["updated_at", "2016-06-04 22:29:32.717640"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "books" ("name", "author", "genre", "publisher", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["name", "Mother Night"], ["author", "Alene MacGyver"], ["genre", "Historical fiction"], ["publisher", "Open University Press"], ["created_at", "2016-06-04 22:29:32.719998"], ["updated_at", "2016-06-04 22:29:32.719998"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "books" ("name", "author", "genre", "publisher", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "The House of Mirth"], ["author", "Kelsie Paucek"], ["genre", "Mystery"], ["publisher", "Brill Publishers"], ["created_at", "2016-06-04 22:29:32.722848"], ["updated_at", "2016-06-04 22:29:32.722848"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "books" ("name", "author", "genre", "publisher", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["name", "The Soldier's Art"], ["author", "Sherwood Denesik Jr."], ["genre", "Biography/Autobiography"], ["publisher", "Heyday Books"], ["created_at", "2016-06-04 22:29:32.725460"], ["updated_at", "2016-06-04 22:29:32.725460"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "books" ("name", "author", "genre", "publisher", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Brandy of the Damned"], ["author", "Augustine Cronin"], ["genre", "Reference book"], ["publisher", "Harcourt Trade Publishers"], ["created_at", "2016-06-04 22:29:32.727894"], ["updated_at", "2016-06-04 22:29:32.727894"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "books" ("name", "author", "genre", "publisher", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["name", "Arms and the Man"], ["author", "Dr. Keyshawn Anderson"], ["genre", "Western"], ["publisher", "Happy House"], ["created_at", "2016-06-04 22:29:32.729964"], ["updated_at", "2016-06-04 22:29:32.729964"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "books" ("name", "author", "genre", "publisher", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Beyond the Mexique Bay"], ["author", "Jarrod Deckow"], ["genre", "Textbook"], ["publisher", "Holland Park Press"], ["created_at", "2016-06-04 22:29:32.732128"], ["updated_at", "2016-06-04 22:29:32.732128"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "books" ("name", "author", "genre", "publisher", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["name", "Noli Me Tangere"], ["author", "Porter Medhurst"], ["genre", "Biography/Autobiography"], ["publisher", "Lethe Press"], ["created_at", "2016-06-04 22:29:32.734543"], ["updated_at", "2016-06-04 22:29:32.734543"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "books" ("name", "author", "genre", "publisher", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "The Heart Is a Lonely Hunter"], ["author", "Maymie Roob Sr."], ["genre", "Folklore"], ["publisher", "Academic Press"], ["created_at", "2016-06-04 22:29:32.737173"], ["updated_at", "2016-06-04 22:29:32.737173"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "books" ("name", "author", "genre", "publisher", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["name", "Françoise Sagan"], ["author", "Dr. Else Beier"], ["genre", "Mythology"], ["publisher", "Candlewick Press"], ["created_at", "2016-06-04 22:29:32.739374"], ["updated_at", "2016-06-04 22:29:32.739374"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "books" ("name", "author", "genre", "publisher", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Beneath the Bleeding"], ["author", "Davonte O'Kon"], ["genre", "Narrative nonfiction"], ["publisher", "Lion Hudson"], ["created_at", "2016-06-04 22:29:32.741583"], ["updated_at", "2016-06-04 22:29:32.741583"]]
+  [1m[35m (0.9ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "books" ("name", "author", "genre", "publisher", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["name", "Moab Is My Washpot"], ["author", "Mabel Heller II"], ["genre", "Folklore"], ["publisher", "Kodansha"], ["created_at", "2016-06-04 22:29:32.744642"], ["updated_at", "2016-06-04 22:29:32.744642"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "books" ("name", "author", "genre", "publisher", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["name", "Dying of the Light"], ["author", "Julio Blanda"], ["genre", "Speech"], ["publisher", "Felony & Mayhem Press"], ["created_at", "2016-06-04 22:29:32.747103"], ["updated_at", "2016-06-04 22:29:32.747103"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "books" ("name", "author", "genre", "publisher", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["name", "Nectar in a Sieve"], ["author", "Anita Gottlieb"], ["genre", "Reference book"], ["publisher", "Black Library"], ["created_at", "2016-06-04 22:29:32.749274"], ["updated_at", "2016-06-04 22:29:32.749274"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mSQL (0.7ms)[0m  [1mINSERT INTO "users" ("user_name", "email", "hashword", "image_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["user_name", "dangelo"], ["email", "francis@dietrich.io"], ["hashword", "L4Cn9fOeR"], ["image_url", "http://mclaughlin.com/lonny.stroman"], ["created_at", "2016-06-04 22:29:32.787700"], ["updated_at", "2016-06-04 22:29:32.787700"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("user_name", "email", "hashword", "image_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["user_name", "sam"], ["email", "ivah@sanford.info"], ["hashword", "6gVkNtRkZ"], ["image_url", "http://buckridgezulauf.biz/meaghan"], ["created_at", "2016-06-04 22:29:32.791943"], ["updated_at", "2016-06-04 22:29:32.791943"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("user_name", "email", "hashword", "image_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["user_name", "lavon_hoeger"], ["email", "toby@batz.io"], ["hashword", "OdNm4j3y"], ["image_url", "http://hegmanndaugherty.com/mollie.king"], ["created_at", "2016-06-04 22:29:32.794765"], ["updated_at", "2016-06-04 22:29:32.794765"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("user_name", "email", "hashword", "image_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["user_name", "margret"], ["email", "earlene@abbottschaefer.net"], ["hashword", "Ms5577S19"], ["image_url", "http://bernhard.co/margaretta.zulauf"], ["created_at", "2016-06-04 22:29:32.797447"], ["updated_at", "2016-06-04 22:29:32.797447"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("user_name", "email", "hashword", "image_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["user_name", "devan"], ["email", "abby_mueller@moen.com"], ["hashword", "KlE6JxK6T"], ["image_url", "http://larson.org/conner_powlowski"], ["created_at", "2016-06-04 22:29:32.800192"], ["updated_at", "2016-06-04 22:29:32.800192"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("user_name", "email", "hashword", "image_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["user_name", "kayden"], ["email", "bud@heelheathcote.biz"], ["hashword", "1o2aNnX1Y"], ["image_url", "http://wiegand.info/keagan.smith"], ["created_at", "2016-06-04 22:29:32.802807"], ["updated_at", "2016-06-04 22:29:32.802807"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("user_name", "email", "hashword", "image_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["user_name", "keely.borer"], ["email", "florence_larkin@bauch.io"], ["hashword", "EfHo0jA8"], ["image_url", "http://okonpredovic.net/kianna.oconner"], ["created_at", "2016-06-04 22:29:32.805423"], ["updated_at", "2016-06-04 22:29:32.805423"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("user_name", "email", "hashword", "image_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["user_name", "will.ritchie"], ["email", "maddison.lubowitz@mayerthartmann.net"], ["hashword", "Sc5g2rTq1"], ["image_url", "http://rolfsonromaguera.io/gregg"], ["created_at", "2016-06-04 22:29:32.807951"], ["updated_at", "2016-06-04 22:29:32.807951"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("user_name", "email", "hashword", "image_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["user_name", "jenifer.goldner"], ["email", "jeff_dach@damore.org"], ["hashword", "0b5pNv3i"], ["image_url", "http://colereichert.com/erin"], ["created_at", "2016-06-04 22:29:32.810453"], ["updated_at", "2016-06-04 22:29:32.810453"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("user_name", "email", "hashword", "image_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["user_name", "antonio.dubuque"], ["email", "kraig@kutch.info"], ["hashword", "ApMiYdUo7"], ["image_url", "http://moendibbert.name/jefferey"], ["created_at", "2016-06-04 22:29:32.812912"], ["updated_at", "2016-06-04 22:29:32.812912"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("user_name", "email", "hashword", "image_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["user_name", "alexie_hammes"], ["email", "cora.king@stehr.com"], ["hashword", "Co5eWkZm"], ["image_url", "http://mckenzie.org/logan"], ["created_at", "2016-06-04 22:29:32.815503"], ["updated_at", "2016-06-04 22:29:32.815503"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("user_name", "email", "hashword", "image_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["user_name", "madisen"], ["email", "marguerite@mccluremcglynn.biz"], ["hashword", "8gIpJ4N20"], ["image_url", "http://champlin.org/gerardo"], ["created_at", "2016-06-04 22:29:32.818045"], ["updated_at", "2016-06-04 22:29:32.818045"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("user_name", "email", "hashword", "image_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["user_name", "cleta_hodkiewicz"], ["email", "cathrine.huels@okeefe.org"], ["hashword", "Io52TgD7V"], ["image_url", "http://conroylueilwitz.org/kathleen.shanahan"], ["created_at", "2016-06-04 22:29:32.820589"], ["updated_at", "2016-06-04 22:29:32.820589"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("user_name", "email", "hashword", "image_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["user_name", "odell.gulgowski"], ["email", "avis_lesch@cole.biz"], ["hashword", "T8EtR6Ji"], ["image_url", "http://dooleystoltenberg.org/adrienne"], ["created_at", "2016-06-04 22:29:32.823121"], ["updated_at", "2016-06-04 22:29:32.823121"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("user_name", "email", "hashword", "image_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["user_name", "giovanni_keler"], ["email", "ari@hodkiewicz.net"], ["hashword", "OvWsRp44B"], ["image_url", "http://stammhermann.name/cade_mcglynn"], ["created_at", "2016-06-04 22:29:32.825619"], ["updated_at", "2016-06-04 22:29:32.825619"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("user_name", "email", "hashword", "image_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["user_name", "joelle_muller"], ["email", "levi@bayer.name"], ["hashword", "WwSsZ0N7M"], ["image_url", "http://sauer.org/jeff"], ["created_at", "2016-06-04 22:29:32.828137"], ["updated_at", "2016-06-04 22:29:32.828137"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("user_name", "email", "hashword", "image_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["user_name", "modesto_kautzer"], ["email", "priscilla@herzog.info"], ["hashword", "CyCi5aPjS"], ["image_url", "http://nader.co/celia_dach"], ["created_at", "2016-06-04 22:29:32.830633"], ["updated_at", "2016-06-04 22:29:32.830633"]]
+  [1m[35m (0.9ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("user_name", "email", "hashword", "image_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["user_name", "moshe.hettinger"], ["email", "erwin@eichmann.biz"], ["hashword", "Yj6lN8IrG"], ["image_url", "http://swiftokuneva.net/trisha.kuvalis"], ["created_at", "2016-06-04 22:29:32.834040"], ["updated_at", "2016-06-04 22:29:32.834040"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("user_name", "email", "hashword", "image_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["user_name", "jerry"], ["email", "demetrius.deckow@lebsackmitchell.info"], ["hashword", "91Sp1r011"], ["image_url", "http://kaulke.info/libby.klein"], ["created_at", "2016-06-04 22:29:32.836816"], ["updated_at", "2016-06-04 22:29:32.836816"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("user_name", "email", "hashword", "image_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["user_name", "jacynthe"], ["email", "elyse.ziemann@mantefarrell.info"], ["hashword", "G22mC594W"], ["image_url", "http://jerde.name/rachel"], ["created_at", "2016-06-04 22:29:32.839418"], ["updated_at", "2016-06-04 22:29:32.839418"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("user_name", "email", "hashword", "image_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["user_name", "dereck.durgan"], ["email", "cielo@mclaughlin.org"], ["hashword", "2bSa8632I"], ["image_url", "http://baumbachschmitt.org/lauriane"], ["created_at", "2016-06-04 22:29:32.841935"], ["updated_at", "2016-06-04 22:29:32.841935"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("user_name", "email", "hashword", "image_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["user_name", "hilda_tromp"], ["email", "jazmyn.mills@leuschkemiller.name"], ["hashword", "Va1uLePgU"], ["image_url", "http://bashirian.info/simeon_bradtke"], ["created_at", "2016-06-04 22:29:32.844620"], ["updated_at", "2016-06-04 22:29:32.844620"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("user_name", "email", "hashword", "image_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["user_name", "rosario_wolf"], ["email", "brionna@baumbach.info"], ["hashword", "D84lR1O40"], ["image_url", "http://oberbrunner.name/yasmine.fay"], ["created_at", "2016-06-04 22:29:32.847309"], ["updated_at", "2016-06-04 22:29:32.847309"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("user_name", "email", "hashword", "image_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["user_name", "antonietta"], ["email", "josiah_von@kunde.co"], ["hashword", "Mw5gVj9q8"], ["image_url", "http://okuneva.org/marilie_walker"], ["created_at", "2016-06-04 22:29:32.850003"], ["updated_at", "2016-06-04 22:29:32.850003"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("user_name", "email", "hashword", "image_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["user_name", "serenity_morar"], ["email", "harmony_powlowski@weber.net"], ["hashword", "E1Wb7f3wO"], ["image_url", "http://satterfieldhane.co/kaela_bosco"], ["created_at", "2016-06-04 22:29:32.852661"], ["updated_at", "2016-06-04 22:29:32.852661"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("user_name", "email", "hashword", "image_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["user_name", "veronica_huel"], ["email", "mariela@rosenbaum.org"], ["hashword", "Da2g8a3yW"], ["image_url", "http://batz.org/adrien.lesch"], ["created_at", "2016-06-04 22:29:32.855543"], ["updated_at", "2016-06-04 22:29:32.855543"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("user_name", "email", "hashword", "image_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["user_name", "courtney.kerluke"], ["email", "ida.lowe@senger.org"], ["hashword", "E9RwFxCwF"], ["image_url", "http://weberrunte.co/camille_schultz"], ["created_at", "2016-06-04 22:29:32.858270"], ["updated_at", "2016-06-04 22:29:32.858270"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("user_name", "email", "hashword", "image_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["user_name", "ellie.bergstrom"], ["email", "garrison_swaniawski@waltertrantow.io"], ["hashword", "KdLyE7Qw3"], ["image_url", "http://raynorkub.co/chasity_effertz"], ["created_at", "2016-06-04 22:29:32.860878"], ["updated_at", "2016-06-04 22:29:32.860878"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "users" ("user_name", "email", "hashword", "image_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["user_name", "madison"], ["email", "frank@spencerwiza.net"], ["hashword", "0xEwMcP5T"], ["image_url", "http://stamm.org/dennis"], ["created_at", "2016-06-04 22:29:32.863572"], ["updated_at", "2016-06-04 22:29:32.863572"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "users" ("user_name", "email", "hashword", "image_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["user_name", "richie_lakin"], ["email", "annabel.balistreri@walter.biz"], ["hashword", "AkV3VnY5A"], ["image_url", "http://mcdermott.net/marianna.dare"], ["created_at", "2016-06-04 22:29:32.866196"], ["updated_at", "2016-06-04 22:29:32.866196"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (2.1ms)[0m  [1mINSERT INTO "solo_readings" ("user_id", "book_id", "favorite", "current", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["user_id", 1], ["book_id", 1], ["favorite", "t"], ["current", "t"], ["created_at", "2016-06-04 22:29:32.898535"], ["updated_at", "2016-06-04 22:29:32.898535"]]
+  [1m[35m (15.7ms)[0m  COMMIT
