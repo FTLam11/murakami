@@ -2,6 +2,8 @@ class SoloReading < ActiveRecord::Base
   belongs_to :reader, class_name: "User"
   belongs_to :book
 
+  validates :user_id, :book_id, :favorite, :complete, :queue, :current, presence: true
+
   def recommendations(user_id)
     rec_criteria = {author: [], genre: []}
     user_books = User.find(user_id).books

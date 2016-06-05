@@ -1,4 +1,5 @@
-class SoloReading < ApplicationController
+class SoloReadingsController < ApplicationController
+
   def recommended_books
       rec_criteria = recommendations(params[:user_id])
       rec_books = retrieve_rec_books(rec_criteria)
@@ -23,6 +24,5 @@ class SoloReading < ApplicationController
     current_books = book_lists(params[:user_id], "history")
     render json: {current_books: current_books}
   end
-
 
 end

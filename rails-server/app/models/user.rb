@@ -8,5 +8,7 @@ class User < ActiveRecord::Base
   has_many :memberships
   has_many :groups, through: :memberships
 
+  validates :user_name, :email, :hashword, :image_url, presence: true
+
 
 end
