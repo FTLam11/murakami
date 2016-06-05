@@ -30,7 +30,7 @@ Rails.application.routes.draw do
     resources :comments , only: [:create]
   end
 
-  get '/register', to: 'users#create'
+  post '/register', to: 'users#create'
   get '/login', to: 'sessions#login'
   get '/logout', to: 'sessions#logout'
 

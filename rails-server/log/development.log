@@ -4053,3 +4053,12 @@ ORDER BY c.conname
   [1m[35m (0.2ms)[0m  BEGIN
   [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
   [1m[36mUser Load (0.8ms)[0m  [1mSELECT  "users".* FROM "users"  ORDER BY "users"."id" DESC LIMIT 1[0m
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT  "users".* FROM "users"  ORDER BY "users"."id" DESC LIMIT 1[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mUser Exists (1.0ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'fronk@fronk' LIMIT 1[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "users" ("user_name", "email", "password_digest", "image_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["user_name", "Fronk"], ["email", "fronk@fronk"], ["password_digest", "$2a$10$qt4fQRXb/4XBu421zyn4je7XXkv6J4806vIscEKvBIrymTlXsrKUa"], ["image_url", "wow"], ["created_at", "2016-06-05 03:46:55.421755"], ["updated_at", "2016-06-05 03:46:55.421755"]]
+  [1m[36m (16.3ms)[0m  [1mCOMMIT[0m
+  [1m[35mUser Load (1.2ms)[0m  SELECT  "users".* FROM "users"  ORDER BY "users"."id" DESC LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (0.6ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'fronk@fronk' LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
