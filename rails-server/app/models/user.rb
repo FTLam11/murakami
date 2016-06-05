@@ -8,7 +8,8 @@ class User < ActiveRecord::Base
   has_many :memberships
   has_many :groups, through: :memberships
 
-  validates :user_name, :email, :hashword, :image_url, presence: true
+  has_secure_password
 
+  validates :user_name, :email, :password_digest, presence: true
 
 end
