@@ -9,9 +9,13 @@ class Book < ActiveRecord::Base
 
   validates :name, :author, :genre, :image_url, :page_numbers, :date_published, presence: true
 
-  def add_book
+  def self.add_book(params)
 
-    book = Book.find_by(name: params[:title], author: params[:author])
+
+    # @var = JSON.parse(params[:title])
+    # data_parsed = JSON.parse(information)
+
+    book = Book.find_by(params.require(:book).permit(:title, :author))
 
     if book == nil
       new_book = current_user.books.create(params[book])
@@ -29,4 +33,10 @@ class Book < ActiveRecord::Base
   def find_reading
     @reading = SoloReading.find_by(user_id:current_user.id, book_id:book.id)
   end
+
+  private
+
+
+
+
 end
