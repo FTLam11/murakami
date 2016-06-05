@@ -1,21 +1,10 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>FavoriteSong</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
+  <title>Murakami</title>
 </head>
 <body>
   <nav>
-    <%= link_to 'home', root_path %>
-      <% if logged_in? %>
-        <%= link_to current_user.username, user_path(current_user) %>
-        <%= link_to 'logout', logout_path, method: :delete %>
-      <% else %>
-        <%= link_to 'register', new_user_path %>
-        <%= link_to 'login', login_path %>
-      <% end %>
   </nav>
 <%= yield %>
 
