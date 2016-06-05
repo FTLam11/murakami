@@ -12,10 +12,21 @@ angular.module('starter.controllers', [])
 })
 
 
-.controller('AccountCtrl', function($scope) {
+.controller('AccountCtrl', function($scope, $http) {
   $scope.settings = {
     enableFriends: true
   };
+
+    var data =  window.localStorage['authToken']
+    console.log(data)
+    $http({
+      method: 'GET',
+      url: 'http://localhost:3000/users/' + data,
+    }).then(function(response){
+      $scope.user = response
+      console.log(response)
+    })
+
 })
 
 .controller('ChapterCtrl', function($scope, $http, $stateParams, Books) {

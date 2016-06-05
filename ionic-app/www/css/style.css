@@ -4,6 +4,10 @@
   text-align: left;
 }
 
+.profile-name {
+  text-align: center; 
+} 
+
 .profile-picture{
   width: 50%;
   text-align: center;
@@ -19,10 +23,18 @@
   width: 100%;
 }
 
-.item {
+.col{
+  background: gray;
+  border: think solid black;
+}
 
+.item {
   float: left;
   display: inline;
+}
+
+#human-details{
+  text-align: center; 
 }
 
 .book-cover{
@@ -84,6 +96,10 @@ margin: 0em 1em 1em 1em;
 
 .dash-view {
   text-align: center;
+}
+
+.user-item {
+  width:90%;
 }
 
 .search{
