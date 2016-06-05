@@ -2,6 +2,19 @@
   <ion-content class="padding">
   <h2> {{book.title}} </h2>
 
+  <ion-list>
+  <ion-item ng-repeat="response in responses">
+    {{response}}
+  </ion-item>
+  <ion-item>
+    <form class="response-input" ng-submit="submitResponse()">
+      <input type="text" name="responseContent">
+      <input type="Submit" value="Submit Response">
+    </form>
+  </ion-item>
+
+</ion-list>
+
 
 
 

@@ -37,9 +37,17 @@ angular.module('starter.controllers', [])
   $scope.book = Books.get($stateParams.bookId)
 })
 
-.controller('BookDetailCtrl', function($scope, $http, $stateParams, Books){
+.controller('BookDetailCtrl', function($scope, $http, $stateParams, Books, $location){
+
+  $scope.go = function ( path ){
+    $location.path( path );
+  }
+
+
   if ($stateParams.bookId < 100) {
     var book = Books.get($stateParams.bookId);
+    console.log(book)
+    $scope.book_id = book.id
     $scope.author = book.author
     $scope.title = book.title
     $scope.image = book.image
