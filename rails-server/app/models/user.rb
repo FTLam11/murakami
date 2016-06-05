@@ -10,5 +10,4 @@ class User < ActiveRecord::Base
 
   validates :user_name, :email, :hashword, :image_url, presence: true
 
-
 end
