@@ -102,6 +102,23 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
    }) 
 
 
+  .state('reader-queue', {
+    url : '/queue', 
+    templateUrl: 'templates/reader-queue.html',
+    controller: 'QueueCtrl'
+  })
+
+  .state('history', {
+    url: '/history', 
+    temlateUrl: 'templates/history.html',
+    controller: 'HistoryCtrl'
+  })
+
+  .state('favorites', {
+      url: '/favorites', 
+      templateUrl: 'templates/favorite.html', 
+      controller: 'FavoriteCtrl'
+  })
 
   .state('login', {
       url: '/login',
