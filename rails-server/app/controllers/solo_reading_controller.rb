@@ -1,8 +1,8 @@
 class SoloReadingsController < ApplicationController
 
   def recommended_books
-      rec_criteria = recommendations(params[:user_id])
-      rec_books = retrieve_rec_books(rec_criteria)
+    rec_criteria = recommendations(params[:user_id])
+    rec_books = retrieve_rec_books(rec_criteria)
   end
 
   def current_books

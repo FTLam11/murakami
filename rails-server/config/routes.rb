@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
 
   root "users#index"
-  get '/', to:"users#index"
 
   resources :users, only: [:show] do
     resources :books, only: [:create, :show]
@@ -23,7 +22,7 @@ Rails.application.routes.draw do
   end
 
   resources :chapters, only: [] do
-    resources :reactions , only: [:index, :create, :show]
+    resources :reactions , only: [:create, :show]
   end
 
   resources :reactions, only: [] do
