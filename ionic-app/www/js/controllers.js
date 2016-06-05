@@ -95,21 +95,23 @@ angular.module('starter.controllers', [])
 
 })
 
-.controller('LoginCtrl', function($scope, LoginService, $ionicPopup, $state, $http) {
+.controller('LoginCtrl', function($scope, $ionicPopup, $state, $http) {
     $scope.data = {};
 
     $scope.login = function() {
+
       var request = {
         method: 'GET',
         url: 'http://localhost:3000/login',
         dataType: "json",
         data: $scope.data
       }
+
       $http(request)
       .success(function(data) {
-
-            $state.go('tab.dash');
-        }).error(function(data) {
+        $state.go('tab.dash');
+        })
+      .error(function(data) {
             var alertPopup = $ionicPopup.alert({
                 title: 'Login failed!',
                 template: 'Please check your credentials!'
@@ -117,17 +119,17 @@ angular.module('starter.controllers', [])
         });
     }
 
-    $scope.register = function() {
-      $location.path("#/register");
-    }
+
 })
 
 .controller('RegisterCtrl', function($scope, $location, $http){
   $scope.data = {};
 
   $scope.register = function(){
+
     var userData = $scope.data
-    var jsonData = JSON.stringify(userData)
+        console.log(userData)
+        var jsonData = JSON.stringify(userData)
   $http({
     method: 'POST',
     url: 'http://localhost:3000/register',
@@ -135,8 +137,9 @@ angular.module('starter.controllers', [])
     data: jsonData
   }).then(function(response){
     window.localStorage['authToken'] = response.data.token
+    $location.path('#/login')
   })
-    $location.path('/tab/dash')
+
   }
   })
 
