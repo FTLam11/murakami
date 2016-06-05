@@ -10,6 +10,7 @@ class SoloReadingsController < ApplicationController
 
   def current_books
     current_books = SoloReading.book_lists(params[:user_id], "current")
+    p current_books
     render json: { current_books: current_books }
   end
 
