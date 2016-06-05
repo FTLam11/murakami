@@ -141,3 +141,12 @@ Completed 200 OK in 61ms (Views: 0.5ms | ActiveRecord: 14.0ms)
   [1m[35m (0.2ms)[0m  SELECT COUNT(2) FROM "solo_readings" WHERE "solo_readings"."current" = $1  [["current", "t"]]
   [1m[36mBook Load (0.3ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 2]]
   [1m[35mBook Load (0.2ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 3]]
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT  "users".* FROM "users"  ORDER BY "users"."id" DESC LIMIT 1[0m
+  [1m[35mBook Load (1.1ms)[0m  SELECT "books".* FROM "books" INNER JOIN "solo_readings" ON "books"."id" = "solo_readings"."book_id" WHERE "solo_readings"."user_id" = $1  [["user_id", 62]]
+  [1m[36m (1.0ms)[0m  [1mSELECT COUNT(*) FROM "solo_readings"[0m
+  [1m[35m (3.6ms)[0m  SELECT COUNT(*) FROM "solo_readings"
+  [1m[36mBook Load (0.6ms)[0m  [1mSELECT  "books".* FROM "books"  ORDER BY "books"."id" ASC LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "solo_readings" ("user_id", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 62], ["book_id", 1], ["created_at", "2016-06-05 22:10:53.921346"], ["updated_at", "2016-06-05 22:10:53.921346"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (2.8ms)[0m  [1mSELECT COUNT(*) FROM "solo_readings"[0m
