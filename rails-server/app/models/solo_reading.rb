@@ -1,8 +1,8 @@
 class SoloReading < ActiveRecord::Base
-  belongs_to :reader, class_name: "User"
+  belongs_to :reader, class_name: "User", foreign_key: :user_id
   belongs_to :book
 
-  validates :user_id, :book_id, :favorite, :complete, :queue, :current, presence: true
+  validates :user_id, :book_id, presence: true
 
   def recommendations(user_id)
     rec_criteria = {author: [], genre: []}
@@ -31,7 +31,17 @@ class SoloReading < ActiveRecord::Base
   end
 
   def trending_now
-    SoloReading.where()
+    current_books = SoloReading.where(current: true)
+
+  end
+
+  def select_popular_readings(readings_arr)
+    books = {}
+
+    readings_arr.select { |reading| readings_arr.count(reading.book_id) > 1 }
+  end
+
+  def
   end
 
   private
