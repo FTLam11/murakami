@@ -1,16 +1,16 @@
 <ion-view view-title="{{title}}">
   <ion-content class="padding">
-  <h2> {{book.title}} </h2>
+  <div class="book-detail-cover">
     <img ng-src="{{image}}" class="book-cover">
+    </div>
     <div class="book-details">
-      <br>
-      <p> {{author}} </p>
-      <p> {{pageCount}} Pages </p>
-      <p> Published on {{publishedDate}}<p>
-
+    <h2 class="questrial" style="margin-bottom: -15px"> {{title}} </h2>
+      <h4 class="questrial author"> by {{author}} // {{pageCount}} Pages </h4>
     </div>
     <div class="book-description">
       <p> {{description}} </p>
+    </div>
+    <div class="hide-overflow">
     </div>
 
     <a href = "#/tab/books/{{book.id}}/chapters/1"><button> Start </button></a>

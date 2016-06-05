@@ -1,15 +1,16 @@
-<ion-view view-title="Login" name="login-view">
-  <ion-content class="padding">
-      <div class="list list-inset">
-          <label class="item item-input">
-              <input type="text" placeholder="Username" ng-model="data.username">
+<ion-view view-title="Login" name="login-view" class="login-page" hide-nav-bar="true">
+  <ion-content class="login-padding">
+  <h2 class="header-text questrial">Murakami</h2>
+      <div class="list list-inset login-inset">
+          <label class="item item-input sign-in">
+              <input type="text" placeholder="username" ng-model="data.username">
           </label>
-          <label class="item item-input">
-              <input type="password" placeholder="Password" ng-model="data.password">
+          <label class="item item-input sign-in">
+              <input type="password" placeholder="password" ng-model="data.password">
           </label>
       </div>
       <button class="button button-block button-calm" ng-click="login()">Login</button>
-      <a href="#/register">Register</a>
+      <a class="register-link" href="#/register">New User? Register Here.</a>
 
   </ion-content>
 </ion-view>

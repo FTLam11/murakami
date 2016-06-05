@@ -27,11 +27,101 @@
 
 .book-cover{
   width: 40%;
-  border-radius: 5%;
   text-align: center;
+  box-shadow: 2px 2px 5px gray;
+  border-style: none;
 }
 
 .book-details{
-  float:right;
 
+}
+
+.item {
+margin: 0em 1em 1em 1em;
+}
+
+.header-text {
+  text-align: center;
+  font-size:4em;
+  color: white;
+  padding-bottom: 20px;
+}
+
+.questrial {
+  padding-top:10px;
+  font-family: 'Questrial', sans-serif;
+}
+
+
+.login-page{
+  background-color:slategray;
+}
+
+.login-padding {
+    padding: 100px 30px 30px 30px;
+
+}
+
+.login-inset {
+  margin: 0px;
+  background-color: slategray;
+  padding-bottom: 10px;
+}
+
+.register-link {
+  color: white;
+}
+
+.book-cover {
+  padding: 0px;
+  height: 210px;
+  overflow: hidden;
+}
+
+.item-content {
+  padding: 0px;
+}
+
+.dash-view {
+  text-align: center;
+}
+
+.search{
+  width: 90%;
+}
+
+.sign-in {
+  width: 100%;
+}
+
+.book-detail-cover {
+  text-align: center;
+  background-color: #E6E6E6;
+  padding: 2em 0em 2em 0em;
+  margin: -10px -10px 0px -10px;
+}
+
+.book-details {
+  background-color: rgb(255, 195, 195);
+  margin: 0px -10px 15px -10px;
+  padding-left: 10px;
+  padding-bottom: 5px;
+}
+
+.author {
+  color: #3E3E3E;
+}
+
+.book-description {
+  position: relative;
+  max-height: 250px;
+  overflow: hidden;
+}
+
+.hide-overflow {
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0), #FFFFFF);
+  width: 100%;
+  height: 50px;
+  position: relative;
+  margin-top: -50px;
 }
