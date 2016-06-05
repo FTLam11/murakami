@@ -1,13 +1,14 @@
 class CommentsController < ApplicationController
 
-  def index
-    @comments = Reaction.find_by(:params[reaction_id]).comments
-    #pass to the client for them to show
+  def create
+    comment = Comment.create(comment_params)
   end
 
-  # def show
-  #   @comment = Comment.find(reaction_id)
-  #   @comments = @Comment.comments
-  # end
+
+  private
+
+  def comment_params
+    params.require(:comment).print(:reaction_id,:user_id,:content)
+  end
 
 end
