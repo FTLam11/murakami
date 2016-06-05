@@ -122,10 +122,11 @@ angular.module('starter.controllers', [])
   $scope.register = function(){
     var userData = $scope.data
     var jsonData = JSON.stringify(userData)
+    console.log(jsonData)
     $location.path('/tab/dash')
   $http({
     method: 'POST',
-    url: 'http://localhost:3000/user',
+    url: 'http://tranquil-tundra-32569.herokuapp.com/register',
     dataType: "json",
     data: jsonData
   }).then(function(response){

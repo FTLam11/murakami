@@ -1,5 +1,8 @@
 Rails.application.routes.draw do
 
+  root "users#index"
+  get '/', to:"users#index"
+
   resources :users, only: [:show] do
     resources :books, only: [:create, :show]
   end
@@ -30,4 +33,6 @@ Rails.application.routes.draw do
   get '/register', to: 'users#create'
   get '/login', to: 'sessions#login'
   get '/logout', to: 'sessions#logout'
+
+
 end
