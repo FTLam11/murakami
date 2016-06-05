@@ -134,6 +134,17 @@ margin: 0em 1em 1em 1em;
   overflow: hidden;
 }
 
+.book-button {
+  padding: 10px 15px;
+    background-color: salmon;
+  border: 1px white;
+  margin: 0px 5px 20px 5px;
+}
+
+.book-buttons {
+  text-align: center;
+}
+
 .hide-overflow {
   background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0), #FFFFFF);
   width: 100%;

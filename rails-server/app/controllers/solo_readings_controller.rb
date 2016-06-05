@@ -1,4 +1,6 @@
 class SoloReadingsController < ApplicationController
+  include ApplicationHelper
+
 
   def recommended_books
     rec_criteria = recommendations(params[:user_id])
@@ -7,7 +9,7 @@ class SoloReadingsController < ApplicationController
   end
 
   def current_books
-    current_books = book_lists(params[:user_id], "current")
+    current_books = SoloReading.book_lists(params[:user_id], "current")
     render json: { current_books: current_books }
   end
 
@@ -27,7 +29,6 @@ class SoloReadingsController < ApplicationController
   end
 
   def trending_books
-    trending_books =
   end
 
 end

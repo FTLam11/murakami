@@ -1,4 +1,7 @@
 class SoloReading < ActiveRecord::Base
+  include ApplicationHelper
+
+
   belongs_to :reader, class_name: "User", foreign_key: :user_id
   belongs_to :book
 
@@ -44,13 +47,12 @@ class SoloReading < ActiveRecord::Base
   def
   end
 
-  private
-    def book_lists(user_id, type)
+    def self.book_lists(user_id, type)
 
       if type == "history"
         readings = SoloReading.where(user_id: current_user.id, current: false, queue: false)
       else
-        readings = SoloReading.where(user_id: current_user.id, "#{type}" => true)
+        readings = SoloReading.where(user_id: user_id, "#{type}" => true)
       end
 
       if readings.length > 0
