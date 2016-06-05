@@ -1,30 +1,23 @@
 class UsersController < ApplicationController
 
-  def index
-  end
-
-  def new
-    @user = User.new()
-  end
-
   def create
-    print params[:user]
-    @user = User.create(email: params[:user]["email"], user_name: params[:user]["username"], hashword: params[:user]["password"])
-    if @user.save
-      session[:user_id] = @user.id
+    user = User.new(params[:user])
+    if user.save
+      session[:user_id] = user.id
+    else
+      render json: { error_messages: user.errors.full_messages }
     end
-    render json: {msg: "hello world"}.to_json
-  end
-
-  def edit
   end
 
   def show
+    user = User.find(params[:user_id])
+    render json: {username: user.user_name, image: user.image_url}
   end
 
+  private
 
-  # def user_params
-  #   params.require(:user).print(:username, :email, :password)
-  # end
+  def user_params
+    params.require(:user).print(:username, :email, :password)
+  end
 
 end

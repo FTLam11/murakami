@@ -7,6 +7,8 @@ class Book < ActiveRecord::Base
   has_many :groups, through: :group_readings
   has_many :readers, through: :solo_readings, foreign_key: :user_id
 
+  validates :name, :author, :genre, :image_url, :page_numbers, :date_published, presence: true
+
   def book_factory
 
     book = Book.find_by(name: params[:title], author: params[:author])

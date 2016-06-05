@@ -33,6 +33,10 @@ angular.module('starter.controllers', [])
   };
 })
 
+.controller('BookDiscussCtrl', function($scope, $http, $stateParams, Books) {
+  $scope.book = Books.get($stateParams.bookId)
+})
+
 .controller('BookDetailCtrl', function($scope, $http, $stateParams, Books){
   if ($stateParams.bookId < 100) {
     var book = Books.get($stateParams.bookId);

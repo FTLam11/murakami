@@ -4,9 +4,10 @@ class CreateBooks < ActiveRecord::Migration
       t.string :name
       t.string :author
       t.string :genre
+      t.string :image_url
       t.integer :page_numbers
       t.integer :date_published
-      t.string :publisher
+
       t.timestamps(null:false)
     end
   end
