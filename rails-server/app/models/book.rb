@@ -9,7 +9,7 @@ class Book < ActiveRecord::Base
 
   validates :name, :author, :genre, :image_url, :page_numbers, :date_published, presence: true
 
-  def book_factory
+  def add_book
 
     book = Book.find_by(name: params[:title], author: params[:author])
 
@@ -20,7 +20,7 @@ class Book < ActiveRecord::Base
       end
       find_reading
     else
-      unless find_reading
+      if find_reading == nil
         current_user.books << book
       end
     end
