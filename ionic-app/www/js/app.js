@@ -60,6 +60,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     }
   })
 
+
   .state('tab.book-detail', {
     url: '/books/:bookId',
     views: {
@@ -90,11 +91,25 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     }
   })
 
+  .state('tab.reviews',{
+    url: '/reviews',
+    views: {
+      'tab-review': {
+        templateUrl: 'templates/tab-review.html', 
+        controller: 'ReviewCtrl'
+      }
+    }
+   }) 
+
+
+
   .state('login', {
       url: '/login',
       templateUrl: 'templates/login.html',
       controller: 'LoginCtrl'
   })
+
+  
 
   .state('register', {
       url: '/register',
