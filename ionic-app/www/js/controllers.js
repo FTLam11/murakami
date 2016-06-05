@@ -108,19 +108,21 @@ angular.module('starter.controllers', [])
     }
 })
 
-.controller('RegisterCtrl', function($scope, $location){
+.controller('RegisterCtrl', function($scope, $location, $http){
   $scope.data = {};
 
   $scope.register = function(){
-    console.log($scope.data)
+    var userData = $scope.data
+    var jsonData = JSON.stringify(userData)
     $location.path('/tab/dash')
-  var request = {
+  $http({
     method: 'POST',
-    url: '#',
+    url: 'http://localhost:3000/user',
     dataType: "json",
-    data: $scope.data
+    data: jsonData
+  }).then(function(response){
+  console.log("success")
+  })
   }
-
-  }
-})
+  })
 
