@@ -4,8 +4,14 @@ angular.module('starter.controllers', [])
   userId = window.localStorage['authToken']
   $http.get("http://localhost:3000/users/" + userId + "/current")
   .then(function(response){
+    var currentBooks = response.data.current_books;
+    $scope.books = currentBooks;
+    if (currentBooks.length === 0) {
+      $scope.message = "Go to search and add books."
+    } else {
+      $scope.message = ""
+    }
   })
-  $scope.books = Books.all();
   $scope.remove = function(book) {
     Books.remove(book);
   };
@@ -45,7 +51,7 @@ angular.module('starter.controllers', [])
 
   if (Books.get($stateParams.bookId) !=null) {
     var book = Books.get($stateParams.bookId);
-    $scope.book_id = book.id
+    $scope.id = book.id
     $scope.author = book.author
     $scope.title = book.title
     $scope.image = book.image
@@ -55,6 +61,8 @@ angular.module('starter.controllers', [])
     $http.get('https://www.googleapis.com/books/v1/volumes?q=' + $stateParams.bookId)
     .then(function(response){
       var book = response.data.items[0]
+      console.log(book)
+      $scope.id = book.id
       $scope.author = book.volumeInfo.authors[0]
       $scope.title = book.volumeInfo.title
       $scope.description = book.volumeInfo.description
@@ -100,8 +108,6 @@ angular.module('starter.controllers', [])
       $scope.resultsArray = response.data.items
     })
   }
-
-
 
 })
 
@@ -160,4 +166,23 @@ angular.module('starter.controllers', [])
 
   }
   })
+
+.controller('ReviewCtrl', function($scope, $http, $stateParams){
+  bookId = $stateParams.bookId
+  userId = window.localStorage['authToken']
+  $http.get("http://localhost:3000/books/" + bookId + "/reviews")
+  .then(function(response){
+
+    var reviews = response.data.reviews;
+    $scope.books = currentBooks;
+    if (reviews.length === 0) {
+      $scope.message = "No reviews so far. Add one!"
+    } else {
+      $scope.message = ""
+    }
+  })
+  // $scope.remove = function(book) {
+  //   Books.remove(book);
+  // };
+})
 

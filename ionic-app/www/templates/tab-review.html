@@ -1,1 +1,11 @@
-<h1> Hello! These are your amazing reviews. </h1> 
+<ion-view view-title="Reviews">
+  <ion-content class="padding">
+    </ion-content>
+    <ion-list>
+    <ion-item ng-repeat="review in reviews">
+      <p>
+      	{{review.content}} - {{review.author}}
+      </p>
+    </ion-item>
+		</ion-list>
+  </ion-view>
