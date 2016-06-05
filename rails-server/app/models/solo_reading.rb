@@ -30,6 +30,10 @@ class SoloReading < ActiveRecord::Base
     return rec_books
   end
 
+  def trending_now
+    SoloReading.where()
+  end
+
   private
     def book_lists(user_id, type)
 
@@ -42,7 +46,7 @@ class SoloReading < ActiveRecord::Base
       if readings.length > 0
         @books = readings.books
       else
-        @books = []
+        @books = { recommended: "Add books to your current reading list, queue, or favorites to receive recommendations!", current: "Books in progress appear here. Don't forget to share your reactions!", favorite: "What are your favorite books? Everyone wants to know!", queue: "Just heard about a great book? Add it here so you can read it later!", history: "Any books you finish automatically appear here. Better get to reading!"}
       end
     end
 end

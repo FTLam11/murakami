@@ -6903,6 +6903,11 @@ AbstractController::ActionNotFound (The action 'login' could not be found for Se
   [1m[35mUser Load (3.1ms)[0m  SELECT  "users".* FROM "users"  ORDER BY "users"."id" DESC LIMIT 1
 
 
+  [1m[36mSoloReading Load (0.8ms)[0m  [1mSELECT  "solo_readings".* FROM "solo_readings"  ORDER BY "solo_readings"."id" ASC LIMIT 1[0m
+  [1m[35mUser Load (0.8ms)[0m  SELECT "users".* FROM "users"
+  [1m[36mBook Load (48.7ms)[0m  [1mSELECT "books".* FROM "books"[0m
+
+
 
 Started POST "/register" for ::1 at 2016-06-05 10:22:45 -0500
   [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
@@ -7356,3 +7361,4 @@ NoMethodError (undefined method `downcase' for nil:NilClass):
   Rendered /Users/apprentice/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
   Rendered /Users/apprentice/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
   Rendered /Users/apprentice/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (124.1ms)
+
