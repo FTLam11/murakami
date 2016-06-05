@@ -1,0 +1,152 @@
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT "users".* FROM "users"[0m
+  [1m[35mUser Load (0.9ms)[0m  SELECT  "users".* FROM "users"  ORDER BY "users"."id" DESC LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (0.9ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'cool' LIMIT 1
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "users" ("user_name", "email", "password_digest", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_name", "lol"], ["email", "cool"], ["password_digest", "$2a$10$3fbdLllMT/eBpdXeN3QEwuM8eEzGrfI3DiiXvL5WV5xsE6gSRY52a"], ["created_at", "2016-06-05 19:30:24.637046"], ["updated_at", "2016-06-05 19:30:24.637046"]]
+  [1m[35m (16.2ms)[0m  COMMIT
+
+
+Started POST "/register" for ::1 at 2016-06-05 14:31:30 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by UsersController#create as HTML
+  Parameters: {"email"=>"bob@bob", "username"=>"bob", "password"=>"[FILTERED]", "user"=>{"email"=>"bob@bob"}}
+Can't verify CSRF token authenticity
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mUser Exists (0.8ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'bob@bob' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("email", "user_name", "password_digest", "image_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["email", "bob@bob"], ["user_name", "bob"], ["password_digest", "$2a$10$GWQ5TiBkCqVsTghgaQGNBOQzAWzZX/B/3jZR63iAWU03w.iXmSDly"], ["image_url", "image_url"], ["created_at", "2016-06-05 19:31:31.245874"], ["updated_at", "2016-06-05 19:31:31.245874"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+Completed 200 OK in 103ms (Views: 0.3ms | ActiveRecord: 4.9ms)
+
+
+Started POST "/login" for ::1 at 2016-06-05 14:31:39 -0500
+Processing by SessionsController#login as HTML
+  Parameters: {"username"=>"bob@bob", "password"=>"[FILTERED]", "session"=>{"username"=>"bob@bob", "password"=>"[FILTERED]"}}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."user_name" = $1 LIMIT 1  [["user_name", "bob@bob"]]
+Completed 200 OK in 23ms (Views: 0.4ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/login" for ::1 at 2016-06-05 14:31:47 -0500
+Processing by SessionsController#login as HTML
+  Parameters: {"username"=>"bob@bob", "password"=>"[FILTERED]", "session"=>{"username"=>"bob@bob", "password"=>"[FILTERED]"}}
+Can't verify CSRF token authenticity
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."user_name" = $1 LIMIT 1[0m  [["user_name", "bob@bob"]]
+Completed 200 OK in 1ms (Views: 0.1ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/login" for ::1 at 2016-06-05 14:31:57 -0500
+Processing by SessionsController#login as HTML
+  Parameters: {"username"=>"bob", "password"=>"[FILTERED]", "session"=>{"username"=>"bob", "password"=>"[FILTERED]"}}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."user_name" = $1 LIMIT 1  [["user_name", "bob"]]
+Completed 200 OK in 83ms (Views: 0.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/62/current" for ::1 at 2016-06-05 14:31:57 -0500
+Processing by SoloReadingsController#current_books as HTML
+  Parameters: {"user_id"=>"62"}
+  [1m[36mSoloReading Load (12.0ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2[0m  [["user_id", 62], ["current", "t"]]
+Completed 200 OK in 61ms (Views: 0.5ms | ActiveRecord: 14.0ms)
+  [1m[36mSoloReading Load (0.9ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings"[0m
+  [1m[35mSoloReading Load (0.3ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."current" = $1  [["current", "t"]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "solo_readings" WHERE "solo_readings"."current" = $1[0m  [["current", "t"]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(1) FROM "solo_readings" WHERE "solo_readings"."current" = $1  [["current", "t"]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(1) FROM "solo_readings" WHERE "solo_readings"."current" = $1[0m  [["current", "t"]]
+  [1m[35m (0.4ms)[0m  SELECT COUNT(1) FROM "solo_readings" WHERE "solo_readings"."current" = $1  [["current", "t"]]
+  [1m[36mSoloReading Load (0.6ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."current" = $1[0m  [["current", "t"]]
+  [1m[35m (0.5ms)[0m  SELECT COUNT(*) FROM "solo_readings" WHERE "solo_readings"."current" = $1  [["current", "t"]]
+  [1m[36mSoloReading Load (3.1ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."current" = $1[0m  [["current", "t"]]
+  [1m[35m (3.1ms)[0m  SELECT COUNT(1) FROM "solo_readings" WHERE "solo_readings"."current" = $1  [["current", "t"]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(1) FROM "solo_readings" WHERE "solo_readings"."current" = $1[0m  [["current", "t"]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(1) FROM "solo_readings" WHERE "solo_readings"."current" = $1  [["current", "t"]]
+  [1m[36mSoloReading Load (0.5ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."current" = $1[0m  [["current", "t"]]
+  [1m[35m (3.1ms)[0m  SELECT COUNT(1) FROM "solo_readings" WHERE "solo_readings"."current" = $1  [["current", "t"]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(1) FROM "solo_readings" WHERE "solo_readings"."current" = $1[0m  [["current", "t"]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(1) FROM "solo_readings" WHERE "solo_readings"."current" = $1  [["current", "t"]]
+  [1m[36mBook Load (0.6ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mSoloReading Load (0.7ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."current" = $1  [["current", "t"]]
+  [1m[36m (2.7ms)[0m  [1mSELECT COUNT(1) FROM "solo_readings" WHERE "solo_readings"."current" = $1[0m  [["current", "t"]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(1) FROM "solo_readings" WHERE "solo_readings"."current" = $1  [["current", "t"]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(1) FROM "solo_readings" WHERE "solo_readings"."current" = $1[0m  [["current", "t"]]
+  [1m[35mBook Load (0.4ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mSoloReading Load (1.0ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."current" = $1[0m  [["current", "t"]]
+  [1m[35mSoloReading Load (0.5ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."current" = $1  [["current", "t"]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(1) FROM "solo_readings" WHERE "solo_readings"."current" = $1[0m  [["current", "t"]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(1) FROM "solo_readings" WHERE "solo_readings"."current" = $1  [["current", "t"]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(1) FROM "solo_readings" WHERE "solo_readings"."current" = $1[0m  [["current", "t"]]
+  [1m[35mSoloReading Load (0.2ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."current" = $1  [["current", "t"]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(1) FROM "solo_readings" WHERE "solo_readings"."current" = $1[0m  [["current", "t"]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(1) FROM "solo_readings" WHERE "solo_readings"."current" = $1  [["current", "t"]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(1) FROM "solo_readings" WHERE "solo_readings"."current" = $1[0m  [["current", "t"]]
+  [1m[35mBook Load (0.3ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mSoloReading Load (1.0ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."current" = $1[0m  [["current", "t"]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(1) FROM "solo_readings" WHERE "solo_readings"."current" = $1  [["current", "t"]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(1) FROM "solo_readings" WHERE "solo_readings"."current" = $1[0m  [["current", "t"]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(1) FROM "solo_readings" WHERE "solo_readings"."current" = $1  [["current", "t"]]
+  [1m[36mSoloReading Load (0.2ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."current" = $1[0m  [["current", "t"]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(1) FROM "solo_readings" WHERE "solo_readings"."current" = $1  [["current", "t"]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(1) FROM "solo_readings" WHERE "solo_readings"."current" = $1[0m  [["current", "t"]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(1) FROM "solo_readings" WHERE "solo_readings"."current" = $1  [["current", "t"]]
+  [1m[36mBook Load (0.3ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mSoloReading Load (1.1ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."current" = $1  [["current", "t"]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(1) FROM "solo_readings" WHERE "solo_readings"."current" = $1[0m  [["current", "t"]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(1) FROM "solo_readings" WHERE "solo_readings"."current" = $1  [["current", "t"]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(1) FROM "solo_readings" WHERE "solo_readings"."current" = $1[0m  [["current", "t"]]
+  [1m[35mBook Load (0.3ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mSoloReading Load (0.4ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."current" = $1[0m  [["current", "t"]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(1) FROM "solo_readings" WHERE "solo_readings"."current" = $1  [["current", "t"]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(1) FROM "solo_readings" WHERE "solo_readings"."current" = $1[0m  [["current", "t"]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(1) FROM "solo_readings" WHERE "solo_readings"."current" = $1  [["current", "t"]]
+  [1m[36mBook Load (0.5ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mSoloReading Load (2.8ms)[0m  SELECT "solo_readings".* FROM "solo_readings"
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "solo_readings" ("user_id", "book_id", "current", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["user_id", 1], ["book_id", 2], ["current", "t"], ["created_at", "2016-06-05 20:59:17.154758"], ["updated_at", "2016-06-05 20:59:17.154758"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "solo_readings" ("user_id", "book_id", "current", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_id", 2], ["book_id", 2], ["current", "t"], ["created_at", "2016-06-05 20:59:21.190939"], ["updated_at", "2016-06-05 20:59:21.190939"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36mSoloReading Load (3.0ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."current" = $1[0m  [["current", "t"]]
+  [1m[35m (0.4ms)[0m  SELECT COUNT(1) FROM "solo_readings" WHERE "solo_readings"."current" = $1  [["current", "t"]]
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(1) FROM "solo_readings" WHERE "solo_readings"."current" = $1[0m  [["current", "t"]]
+  [1m[35m (0.4ms)[0m  SELECT COUNT(1) FROM "solo_readings" WHERE "solo_readings"."current" = $1  [["current", "t"]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(2) FROM "solo_readings" WHERE "solo_readings"."current" = $1[0m  [["current", "t"]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(2) FROM "solo_readings" WHERE "solo_readings"."current" = $1  [["current", "t"]]
+  [1m[36mBook Load (0.3ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 0]]
+  [1m[35mSoloReading Load (1.9ms)[0m  SELECT "solo_readings".* FROM "solo_readings"
+  [1m[36mSoloReading Load (1.8ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."current" = $1[0m  [["current", "t"]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(1) FROM "solo_readings" WHERE "solo_readings"."current" = $1  [["current", "t"]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(1) FROM "solo_readings" WHERE "solo_readings"."current" = $1[0m  [["current", "t"]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(1) FROM "solo_readings" WHERE "solo_readings"."current" = $1  [["current", "t"]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(2) FROM "solo_readings" WHERE "solo_readings"."current" = $1[0m  [["current", "t"]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(2) FROM "solo_readings" WHERE "solo_readings"."current" = $1  [["current", "t"]]
+  [1m[36mSoloReading Load (2.1ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."current" = $1[0m  [["current", "t"]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(1) FROM "solo_readings" WHERE "solo_readings"."current" = $1  [["current", "t"]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(1) FROM "solo_readings" WHERE "solo_readings"."current" = $1[0m  [["current", "t"]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(1) FROM "solo_readings" WHERE "solo_readings"."current" = $1  [["current", "t"]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(2) FROM "solo_readings" WHERE "solo_readings"."current" = $1[0m  [["current", "t"]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(2) FROM "solo_readings" WHERE "solo_readings"."current" = $1  [["current", "t"]]
+  [1m[36mBook Load (0.3ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 0]]
+  [1m[35mSoloReading Load (3.3ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."current" = $1  [["current", "t"]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(1) FROM "solo_readings" WHERE "solo_readings"."current" = $1[0m  [["current", "t"]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(1) FROM "solo_readings" WHERE "solo_readings"."current" = $1  [["current", "t"]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(1) FROM "solo_readings" WHERE "solo_readings"."current" = $1[0m  [["current", "t"]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(2) FROM "solo_readings" WHERE "solo_readings"."current" = $1  [["current", "t"]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(2) FROM "solo_readings" WHERE "solo_readings"."current" = $1[0m  [["current", "t"]]
+  [1m[35mBook Load (0.3ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 0]]
+  [1m[36mSoloReading Load (1.2ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."current" = $1[0m  [["current", "t"]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(1) FROM "solo_readings" WHERE "solo_readings"."current" = $1  [["current", "t"]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(1) FROM "solo_readings" WHERE "solo_readings"."current" = $1[0m  [["current", "t"]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(1) FROM "solo_readings" WHERE "solo_readings"."current" = $1  [["current", "t"]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(2) FROM "solo_readings" WHERE "solo_readings"."current" = $1[0m  [["current", "t"]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(2) FROM "solo_readings" WHERE "solo_readings"."current" = $1  [["current", "t"]]
+  [1m[36mBook Load (0.3ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mBook Load (0.2ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 3]]
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT  "users".* FROM "users"  ORDER BY "users"."id" DESC LIMIT 1[0m
+  [1m[35mBook Load (1.1ms)[0m  SELECT "books".* FROM "books" INNER JOIN "solo_readings" ON "books"."id" = "solo_readings"."book_id" WHERE "solo_readings"."user_id" = $1  [["user_id", 62]]
+  [1m[36m (1.0ms)[0m  [1mSELECT COUNT(*) FROM "solo_readings"[0m
+  [1m[35m (3.6ms)[0m  SELECT COUNT(*) FROM "solo_readings"
+  [1m[36mBook Load (0.6ms)[0m  [1mSELECT  "books".* FROM "books"  ORDER BY "books"."id" ASC LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "solo_readings" ("user_id", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 62], ["book_id", 1], ["created_at", "2016-06-05 22:10:53.921346"], ["updated_at", "2016-06-05 22:10:53.921346"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (2.8ms)[0m  [1mSELECT COUNT(*) FROM "solo_readings"[0m

@@ -7,7 +7,7 @@ class SoloReading < ActiveRecord::Base
 
   validates :user_id, :book_id, presence: true
 
-  def recommendations(user_id)
+  def self.recommendations(user_id)
     rec_criteria = {author: [], genre: []}
     user_books = User.find(user_id).books
 
@@ -19,7 +19,7 @@ class SoloReading < ActiveRecord::Base
     return rec_criteria.each {|criterion,array| array.uniq!}
   end
 
-  def retrieve_rec_books(criteria)
+  def self.retrieve_rec_books(criteria)
     rec_books = []
     Book.all.each do |book|
       criteria[:author].each do |author|
@@ -34,23 +34,42 @@ class SoloReading < ActiveRecord::Base
   end
 
   def trending_now
+    popular_books = []
+
+    tally(filter_readings).values.sort.each do |reading|
+      popular_books << Book.find(reading)
+    end
+
+    return popular_books
+  end
+
+  def filter_readings
     current_books = SoloReading.where(current: true)
+
+    current_books.select { |reading| current_books.count(reading.book_id) > 1 }
   end
 
-  def select_popular_readings(readings_arr)
-    books = {}
+  def tally(readings_arr)
+    reading_tally = {}
 
-    readings_arr.select { |reading| readings_arr.count(reading.book_id) > 1 }
-  end
-
-    def self.book_lists(user_id, type)
-
-      if type == "history"
-        readings = SoloReading.where(user_id: current_user.id, current: false, queue: false)
+    readings_arr.each do |reading|
+      if reading_tally[reading.book_id] == nil
+        reading_tally[reading.book_id] = 1
       else
-        readings = SoloReading.where(user_id: user_id, "#{type}" => true)
+        reading_tally[reading.book_id] += 1
       end
+    end
 
+    return reading_tally
+  end
+
+  def self.book_lists(user_id, type)
+
+    if type == "history"
+      readings = SoloReading.where(user_id: current_user.id, current: false, queue: false)
+    else
+      readings = SoloReading.where(user_id: user_id, "#{type}" => true)
+    end
       @books = []
 
       if readings.length > 0
