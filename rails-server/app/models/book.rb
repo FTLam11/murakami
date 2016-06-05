@@ -9,7 +9,9 @@ class Book < ActiveRecord::Base
 
   validates :name, :author, :genre, :image_url, :page_numbers, :date_published, presence: true
 
-  def add_book
+  def self.add_book
+
+
 
     book = Book.find_by(name: params[:title], author: params[:author])
 

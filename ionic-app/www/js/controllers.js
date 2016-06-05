@@ -27,30 +27,9 @@ angular.module('starter.controllers', [])
     $location.path( path );
   }
 
-  $scope.addQueue = function() {
-    var bookData = $stateParams.bookId
-    var jsonData = JSON.stringify(bookData)
-  $http({
-    method: 'POST',
-    url: 'http://localhost:3000/books',
-    dataType: "json",
-    data: jsonData
-  }).then(function(response){
-    window.localStorage['authToken'] = response.data.token
-  })
-    // $location.path('/tab/dash')
-  }
-
-  $scope.addFavorite = function() {
-
-  }
-
-  $scope.addReview = function() {
-
-  }
 
 
-  if ($stateParams.bookId < 100) {
+  if (Books.get($stateParams.bookId) !=null) {
     var book = Books.get($stateParams.bookId);
     console.log(book)
     $scope.book_id = book.id
@@ -71,6 +50,25 @@ angular.module('starter.controllers', [])
       $scope.pageCount = book.volumeInfo.pageCount
       $scope.publishedDate = book.volumeInfo.publishedDate
     })
+  }
+
+
+
+  $scope.addQueue = function() {
+    var bookData = $stateParams.bookId
+    var userId = window.localStorage['authToken']
+    var jsonData = JSON.stringify(bookData)
+    console.log(jsonData)
+
+  $http({
+    method: 'POST',
+    url: 'http://localhost:3000/users/'+userId+'/books',
+    dataType: "json",
+    data: jsonData
+  }).then(function(response){
+    window.localStorage['authToken'] = response.data.token
+  })
+    // $location.path('/tab/dash')
   }
 
 })

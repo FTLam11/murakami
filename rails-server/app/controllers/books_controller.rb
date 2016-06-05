@@ -1,7 +1,7 @@
 class BooksController < ApplicationController
 
   def create
-    add_book
+    Book.add_book
     @reading.queue = true
   end
 

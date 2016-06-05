@@ -6,7 +6,7 @@ class UsersController < ApplicationController
     user = User.new(email: params["email"], user_name: params["username"], password: params['password'], image_url: "image_url")
     if user.save
       session[:user_id] = user.id
-      render json: {token: user.password}, status: :ok
+      render json: {token: user.id}, status: :ok
     else
       render json: { error_messages: user.errors.full_messages }
     end
