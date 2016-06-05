@@ -114,6 +114,7 @@ angular.module('starter.controllers', [])
   $scope.register = function(){
     var userData = $scope.data
     var jsonData = JSON.stringify(userData)
+    console.log(jsonData)
     $location.path('/tab/dash')
   $http({
     method: 'POST',
