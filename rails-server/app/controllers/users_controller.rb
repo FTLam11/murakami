@@ -3,10 +3,10 @@ class UsersController < ApplicationController
   end
 
   def create
-    user = User.new(email: params["email"], user_name: params["username"], hashword: params['password'], image_url: "image_url")
+    user = User.new(user_params)
     if user.save
       session[:user_id] = user.id
-      render json: {token: user.hashword}, status: :ok
+      render json: {token: user.password}, status: :ok
     else
       render json: { error_messages: user.errors.full_messages }
     end
@@ -20,7 +20,7 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).print(:username, :email, :password)
+    params.require(:user).permit(:user_name, :email, :password_digest)
   end
 
 end

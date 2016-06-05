@@ -71,7 +71,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
   })
 
   .state('tab.chapter', {
-    url: '/chapters/:chapterId',
+    url: '/books/:bookId/chapters/:chapterId',
     views: {
       'tab-dash': {
         templateUrl: 'templates/tab-chapter.html',

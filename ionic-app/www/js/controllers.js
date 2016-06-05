@@ -17,12 +17,36 @@ angular.module('starter.controllers', [])
 
 .controller('ChapterCtrl', function($scope, $http, $stateParams, Books) {
   $scope.book = Books.get($stateParams.bookId)
+  // $scope.chapter = Chapters.where(book_id: $stateParams.bookId, id: $stateParams.bookId)
+  // $scope.reactions = chapter.reactions
 })
 
 .controller('BookDetailCtrl', function($scope, $http, $stateParams, Books, $location){
 
   $scope.go = function ( path ){
     $location.path( path );
+  }
+
+  $scope.addQueue = function() {
+    var bookData = $stateParams.bookId
+    var jsonData = JSON.stringify(bookData)
+  $http({
+    method: 'POST',
+    url: 'http://localhost:3000/books',
+    dataType: "json",
+    data: jsonData
+  }).then(function(response){
+    window.localStorage['authToken'] = response.data.token
+  })
+    // $location.path('/tab/dash')
+  }
+
+  $scope.addFavorite = function() {
+
+  }
+
+  $scope.addReview = function() {
+
   }
 
 
@@ -71,18 +95,18 @@ angular.module('starter.controllers', [])
 
 })
 
-.controller('LoginCtrl', function($scope, LoginService, $ionicPopup, $state) {
+.controller('LoginCtrl', function($scope, LoginService, $ionicPopup, $state, $http) {
     $scope.data = {};
 
     $scope.login = function() {
       var request = {
-        method: 'POST',
-        url: '#',
+        method: 'GET',
+        url: 'http://localhost:3000/login',
         dataType: "json",
         data: $scope.data
       }
-
-      request.success(function(data) {
+      $http(request)
+      .success(function(data) {
 
             $state.go('tab.dash');
         }).error(function(data) {
