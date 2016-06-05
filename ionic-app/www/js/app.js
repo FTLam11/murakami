@@ -89,12 +89,12 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     }
   })
 
-  .state('tab.book-discuss', {
-    url: '/books/:bookId/chapters/:chapterId',
+  .state('tab.chapter', {
+    url: '/chapters/:chapterId',
     views: {
       'tab-dash': {
-        templateUrl: 'templates/book-discuss.html',
-        controller: 'BookDetailCtrl'
+        templateUrl: 'templates/tab-chapter.html',
+        controller: 'ChapterCtrl'
       }
     }
   })

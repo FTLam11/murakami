@@ -6,7 +6,7 @@ class SessionsController < ApplicationController
       session[:user_id] = user.id
       #What does the rails controller do?
     else
-      render json: { errors: user.errors.full_messages}
+      render json: { errors: user.errors.full_messages }
     end
   end
 
