@@ -1,7 +1,8 @@
 class SessionsController < ApplicationController
 
   def login
-    user = User.find_by(username: params[:username].downcase)
+    print params[:username]
+    user = User.find_by(user_name: params[:username].downcase)
     if user && user.authenticate(params[:password])
       session[:user_id] = user.id
       render json: { session: session }
