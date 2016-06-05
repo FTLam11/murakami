@@ -35,16 +35,12 @@ class SoloReading < ActiveRecord::Base
 
   def trending_now
     current_books = SoloReading.where(current: true)
-
   end
 
   def select_popular_readings(readings_arr)
     books = {}
 
     readings_arr.select { |reading| readings_arr.count(reading.book_id) > 1 }
-  end
-
-  def
   end
 
     def self.book_lists(user_id, type)
@@ -56,9 +52,13 @@ class SoloReading < ActiveRecord::Base
       end
 
       if readings.length > 0
-        @books = readings.books
+        @books = []
+        readings.each do |book| @books << book end 
+          
       else
         @books = { recommended: "Add books to your current reading list, queue, or favorites to receive recommendations!", current: "Books in progress appear here. Don't forget to share your reactions!", favorite: "What are your favorite books? Everyone wants to know!", queue: "Just heard about a great book? Add it here so you can read it later!", history: "Any books you finish automatically appear here. Better get to reading!"}
       end
     end
-end
+ end
+
+

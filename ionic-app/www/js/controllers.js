@@ -11,6 +11,31 @@ angular.module('starter.controllers', [])
   };
 })
 
+.controller('QueueCtrl', function($scope, $http, Books){
+  userId = window.localStorage['authToken']
+  $http.get("http://localhost:3000/users/" + userId + '/queue')
+  .then(function(response){
+    console.log(response); 
+  })
+})
+
+
+.controller('HistoryCtrl', function($scope, $http){
+  userId = window.localStorage['authToken']
+  $http.get('http://localhost:3000/users/' + userId + '/history').then(function(response){
+    console.log(response); 
+  })
+})
+
+
+.controller('FavoriteCtrl', function($scope, $http){
+  userId = window.localStorage['authToken']
+  $http.get('http://localhost:3000/users/' + userId + '/favorite').then(function(response){
+    console.log(response); 
+  })
+
+})
+
 
 .controller('AccountCtrl', function($scope, $http) {
   $scope.settings = {
@@ -18,16 +43,13 @@ angular.module('starter.controllers', [])
   };
 
     var data =  window.localStorage['authToken']
-    console.log(data)
-    $http({
-      method: 'GET',
-      url: 'http://localhost:3000/users/' + data,
-    }).then(function(response){
+    $http.get('http://localhost:3000/users/' + data).
+    then(function(response){
       $scope.user = response
-      console.log(response)
     })
 
 })
+
 
 .controller('ChapterCtrl', function($scope, $http, $stateParams, Books) {
   $scope.book = Books.get($stateParams.bookId)
@@ -85,7 +107,11 @@ angular.module('starter.controllers', [])
 
 })
 
-.controller('SearchCtrl', function($scope, $http,Books){
+
+
+
+
+.controller('SearchCtrl', function($scope, $http, Books){
   $scope.data = {};
 
   $scope.books = Books.all();

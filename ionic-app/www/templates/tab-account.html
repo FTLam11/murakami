@@ -1,23 +1,26 @@
 <ion-view view-title="Profile">
   <ion-content class="padding">
   <div class="profile-pic-container">
-  <img class="profile-picture" src= "{{user.image_url}}" alt="profile-picture">
+  <img class="profile-picture" src= {{user.data.image}} alt="profile-picture">
 </div>
 
-<h2 class = "profile-name">{{user.user_name}}</h2>
+<h2 class = "profile-name">{{user.data.username}}</h2>
 
   <ion-list>
-    <ion-item class = "user-item">Current Books</a></ion-item>
+    <a href = "http://localhost:8100/#/tab/dash"><ion-item class = "user-item">Current Books</a></ion-item>
   </ion-list> 
 
   <ion-list> 
-    <ion-item class = "user-item">Queue</ion-item>
+    <ion-item class = "user-item"><a href = "http://localhost:8100/#/queue">Queue</a></ion-item>
   </ion-list> 
 
   <ion-list> 
-    <ion-item class = "user-item"> History</ion-item>
-  </ion-list>  
-    <ion-item class = "user-item">Favorites</ion-item>
+    <ion-item class = "user-item"><a href = "http://localhost:8100/#/history">History</a></ion-item>
+  </ion-list> 
+
+  <ion-list> 
+    <ion-item class = "user-item"><a href = "http://localhost:8100/#/favorites">Favorites</a></ion-item>
+  </ion-list>   
     <ion-item class = "user-item"><a href = '/reviews'> Reviews</a></ion-item>  
   
 

@@ -14,17 +14,18 @@ class SoloReadingsController < ApplicationController
   end
 
   def favorite_books
-    favorite_books = book_lists(params[:user_id], "favorite")
+    favorite_books = SoloReading.book_lists(params[:user_id], "favorite")
     render json: { favorite_books: favorite_books }
   end
 
   def queue_books
-    queue_books = book_lists(params[:user_id], "queue")
+    queue_books = SoloReading.book_lists(params[:user_id], "queue")
+    p queue_books
     render json: { queue_books: queue_books }
   end
 
   def history_books
-    history_books = book_lists(params[:user_id], "history")
+    history_books = SoloReading.book_lists(params[:user_id], "history")
     render json: { history_books: history_books }
   end
 
