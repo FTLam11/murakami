@@ -1,7 +1,10 @@
 angular.module('starter.controllers', [])
 
-.controller('DashCtrl', function($scope, Books) {
-  window.localStorage['authToken']
+.controller('DashCtrl', function($scope, $http, Books) {
+  userId = window.localStorage['authToken']
+  $http.get("http://localhost:3000/users/" + userId + "/current")
+  .then(function(response){
+  })
   $scope.books = Books.all();
   $scope.remove = function(book) {
     Books.remove(book);
@@ -52,7 +55,6 @@ angular.module('starter.controllers', [])
 
   if ($stateParams.bookId < 100) {
     var book = Books.get($stateParams.bookId);
-    console.log(book)
     $scope.book_id = book.id
     $scope.author = book.author
     $scope.title = book.title
@@ -62,7 +64,6 @@ angular.module('starter.controllers', [])
   }else{
     $http.get('https://www.googleapis.com/books/v1/volumes?q=' + $stateParams.bookId)
     .then(function(response){
-      console.log(response.data.items[0])
       var book = response.data.items[0]
       $scope.author = book.volumeInfo.authors[0]
       $scope.title = book.volumeInfo.title
@@ -102,7 +103,6 @@ angular.module('starter.controllers', [])
 
     var userData = $scope.data;
     var jsonData = JSON.stringify(userData);
-    console.log(jsonData)
     $http({
       method: 'POST',
       url: 'http://localhost:3000/login',
@@ -110,7 +110,6 @@ angular.module('starter.controllers', [])
       data: jsonData
     })
       .success(function(response) {
-        console.log(response.token)
         if (response.token == "failed") {
           var alertPopup = $ionicPopup.alert({
               title: 'Login failed!',
