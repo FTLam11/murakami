@@ -1,7 +1,7 @@
 angular.module('starter.controllers', [])
 
 .controller('DashCtrl', function($scope, Books) {
-
+  window.localStorage['authToken']
   $scope.books = Books.all();
   $scope.remove = function(book) {
     Books.remove(book);
@@ -122,16 +122,15 @@ angular.module('starter.controllers', [])
   $scope.register = function(){
     var userData = $scope.data
     var jsonData = JSON.stringify(userData)
-    console.log(jsonData)
-    $location.path('/tab/dash')
   $http({
     method: 'POST',
-    url: 'http://tranquil-tundra-32569.herokuapp.com/register',
+    url: 'http://localhost:3000/register',
     dataType: "json",
     data: jsonData
   }).then(function(response){
-  console.log("success")
+    window.localStorage['authToken'] = response.data.token
   })
+    $location.path('/tab/dash')
   }
   })
 
