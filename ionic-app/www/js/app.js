@@ -61,15 +61,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
   })
 
 
-  .state('tab.book-detail', {
-    url: '/books/:bookId',
-    views: {
-      'tab-search': {
-        templateUrl: 'templates/book-detail.html',
-        controller: 'BookDetailCtrl'
-      }
-    }
-  })
 
   .state('tab.chapter', {
     url: '/books/:bookId/chapters/:chapterId',
@@ -91,10 +82,19 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     }
   })
 
-  .state('tab.reviews',{
-    url: '/reviews',
+  .state('tab.book-detail', {
+    url: '/books/:bookId',
     views: {
-      'tab-review': {
+      'tab-search': {
+        templateUrl: 'templates/book-detail.html',
+        controller: 'BookDetailCtrl'
+      }
+    }
+  })
+  .state('tab.reviews',{
+    url: '/books/:bookId/reviews',
+    views: {
+      'tab-search': {
         templateUrl: 'templates/tab-review.html', 
         controller: 'ReviewCtrl'
       }
@@ -102,6 +102,23 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
    }) 
 
 
+  .state('reader-queue', {
+    url : '/queue', 
+    templateUrl: 'templates/reader-queue.html',
+    controller: 'QueueCtrl'
+  })
+
+  .state('history', {
+    url: '/history', 
+    temlateUrl: 'templates/history.html',
+    controller: 'HistoryCtrl'
+  })
+
+  .state('favorites', {
+      url: '/favorites', 
+      templateUrl: 'templates/favorite.html', 
+      controller: 'FavoriteCtrl'
+  })
 
   .state('login', {
       url: '/login',

@@ -9,6 +9,7 @@ class SoloReadingsController < ApplicationController
 
   def current_books
     current_books = SoloReading.book_lists(params[:user_id], "current")
+    p current_books
     render json: { current_books: current_books }
   end
 
@@ -19,6 +20,7 @@ class SoloReadingsController < ApplicationController
 
   def queue_books
     queue_books = SoloReading.book_lists(params[:user_id], "queue")
+    p queue_books
     render json: { queue_books: queue_books }
   end
 

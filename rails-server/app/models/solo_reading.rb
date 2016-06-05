@@ -70,11 +70,14 @@ class SoloReading < ActiveRecord::Base
     else
       readings = SoloReading.where(user_id: user_id, "#{type}" => true)
     end
+      @books = []
 
-    if readings.length > 0
-      @books = readings.books
-    else
-      @books = { recommended: "Add books to your current reading list, queue, or favorites to receive recommendations!", current: "Books in progress appear here. Don't forget to share your reactions!", favorite: "What are your favorite books? Everyone wants to know!", queue: "Just heard about a great book? Add it here so you can read it later!", history: "Any books you finish automatically appear here. Better get to reading!"}
+      if readings.length > 0
+        readings.each do |reading|
+          @books << reading.book
+        end
+      end
     end
-  end
-end
+ end
+
+
