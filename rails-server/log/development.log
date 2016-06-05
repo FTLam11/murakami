@@ -6902,3 +6902,6 @@ AbstractController::ActionNotFound (The action 'login' could not be found for Se
   [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
   [1m[35mUser Load (3.1ms)[0m  SELECT  "users".* FROM "users"  ORDER BY "users"."id" DESC LIMIT 1
 
+  [1m[36mSoloReading Load (0.8ms)[0m  [1mSELECT  "solo_readings".* FROM "solo_readings"  ORDER BY "solo_readings"."id" ASC LIMIT 1[0m
+  [1m[35mUser Load (0.8ms)[0m  SELECT "users".* FROM "users"
+  [1m[36mBook Load (48.7ms)[0m  [1mSELECT "books".* FROM "books"[0m
