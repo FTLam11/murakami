@@ -1,13 +1,13 @@
 class SessionsController < ApplicationController
 
   def login
-    print params[:username]
-    user = User.find_by(user_name: params[:username].downcase)
-    if user && user.authenticate(params[:password])
+    p params
+    user = User.find_by(user_name: params["username"].downcase)
+    if user && user.authenticate(params["password"])
       session[:user_id] = user.id
-      render json: { session: session }
+      render json: {token: user.id}, status: :ok
     else
-      render json: { errors: user.errors.full_messages }
+      render json: { token: "failed" }
     end
   end
 

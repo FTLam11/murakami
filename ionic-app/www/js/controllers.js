@@ -100,16 +100,26 @@ angular.module('starter.controllers', [])
 
     $scope.login = function() {
 
-      var request = {
-        method: 'GET',
-        url: 'http://localhost:3000/login',
-        dataType: "json",
-        data: $scope.data
-      }
-
-      $http(request)
-      .success(function(data) {
-        $state.go('tab.dash');
+    var userData = $scope.data;
+    var jsonData = JSON.stringify(userData);
+    console.log(jsonData)
+    $http({
+      method: 'POST',
+      url: 'http://localhost:3000/login',
+      dataType: "json",
+      data: jsonData
+    })
+      .success(function(response) {
+        console.log(response.token)
+        if (response.token == "failed") {
+          var alertPopup = $ionicPopup.alert({
+              title: 'Login failed!',
+              template: 'Please check your credentials!'
+          })
+          } else {
+          window.localStorage['authToken'] = response.token
+          $state.go('tab.dash');
+        }
         })
       .error(function(data) {
             var alertPopup = $ionicPopup.alert({
@@ -127,9 +137,9 @@ angular.module('starter.controllers', [])
 
   $scope.register = function(){
 
-    var userData = $scope.data
-        console.log(userData)
-        var jsonData = JSON.stringify(userData)
+  var userData = $scope.data;
+  var jsonData = JSON.stringify(userData);
+  console.log(jsonData)
   $http({
     method: 'POST',
     url: 'http://localhost:3000/register',
