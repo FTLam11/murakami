@@ -1,8 +1,11 @@
 class SoloReading < ActiveRecord::Base
-  belongs_to :reader, class_name: "User"
+  include ApplicationHelper
+
+
+  belongs_to :reader, class_name: "User", foreign_key: :user_id
   belongs_to :book
 
-  validates :user_id, :book_id, :favorite, :complete, :queue, :current, presence: true
+  validates :user_id, :book_id, presence: true
 
   def recommendations(user_id)
     rec_criteria = {author: [], genre: []}
@@ -31,16 +34,25 @@ class SoloReading < ActiveRecord::Base
   end
 
   def trending_now
-    SoloReading.where()
+    current_books = SoloReading.where(current: true)
+
   end
 
-  private
-    def book_lists(user_id, type)
+  def select_popular_readings(readings_arr)
+    books = {}
+
+    readings_arr.select { |reading| readings_arr.count(reading.book_id) > 1 }
+  end
+
+  def
+  end
+
+    def self.book_lists(user_id, type)
 
       if type == "history"
         readings = SoloReading.where(user_id: current_user.id, current: false, queue: false)
       else
-        readings = SoloReading.where(user_id: current_user.id, "#{type}" => true)
+        readings = SoloReading.where(user_id: user_id, "#{type}" => true)
       end
 
       if readings.length > 0
