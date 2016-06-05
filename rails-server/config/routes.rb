@@ -6,11 +6,11 @@ Rails.application.routes.draw do
     resources :books, only: [:create, :show]
   end
 
-  get '/users/:user_id/recommended', to: 'soloreadings#recommended_books'
-  get '/users/:user_id/current', to: 'soloreadings#current_books'
-  get '/users/:user_id/favorite', to: 'soloreadings#favorite_books'
-  get '/users/:user_id/queue', to: 'soloreadings#queue_books'
-  get '/users/:user_id/history', to: 'soloreadings#history_books'
+  get '/users/:user_id/recommended', to: 'solo_readings#recommended_books'
+  get '/users/:user_id/current', to: 'solo_readings#current_books'
+  get '/users/:user_id/favorite', to: 'solo_readings#favorite_books'
+  get '/users/:user_id/queue', to: 'solo_readings#queue_books'
+  get '/users/:user_id/history', to: 'solo_readings#history_books'
 
   get '/users/:user_id/books/:book_id/add_to_current', to: 'books#add_to_current'
   get '/users/:user_id/books/:book_id/add_to_favorites', to: 'books#add_to_favorites'

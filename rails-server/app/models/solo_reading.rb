@@ -31,7 +31,17 @@ class SoloReading < ActiveRecord::Base
   end
 
   def trending_now
-    SoloReading.where()
+    current_books = SoloReading.where(current: true)
+
+  end
+
+  def select_popular_readings(readings_arr)
+    books = {}
+
+    readings_arr.select { |reading| readings_arr.count(reading.book_id) > 1 }
+  end
+
+  def
   end
 
   private

@@ -8668,3 +8668,26 @@ ORDER BY c.conname
   [1m[36mReview Load (0.4ms)[0m  [1mSELECT  "reviews".* FROM "reviews" WHERE "reviews"."user_id" = $1  ORDER BY "reviews"."id" ASC LIMIT 1[0m  [["user_id", 60]]
   [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 60]]
   [1m[36mBook Load (0.4ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[36mSoloReading Load (0.5ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings"[0m
+  [1m[35m (0.6ms)[0m  BEGIN
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "solo_readings" ("user_id", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 1], ["book_id", 2], ["created_at", "2016-06-05 16:48:34.235289"], ["updated_at", "2016-06-05 16:48:34.235289"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36mUser Load (1.1ms)[0m  [1mSELECT  "users".* FROM "users"  ORDER BY "users"."id" DESC LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "books" ("name", "author", "genre", "image_url", "page_numbers", "date_published", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["name", "yo"], ["author", "me"], ["genre", "yo"], ["image_url", "hue"], ["page_numbers", 23], ["date_published", 1945], ["created_at", "2016-06-05 16:50:35.091636"], ["updated_at", "2016-06-05 16:50:35.091636"]]
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "solo_readings" ("user_id", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["user_id", 60], ["book_id", 61], ["created_at", "2016-06-05 16:50:35.096667"], ["updated_at", "2016-06-05 16:50:35.096667"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35mSoloReading Load (2.0ms)[0m  SELECT  "solo_readings".* FROM "solo_readings"  ORDER BY "solo_readings"."id" DESC LIMIT 1
+  [1m[36mSoloReading Load (0.5ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."current" = $1[0m  [["current", "t"]]
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "solo_readings" ("user_id", "book_id", "current", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["user_id", 2], ["book_id", 1], ["current", "t"], ["created_at", "2016-06-05 17:32:42.937108"], ["updated_at", "2016-06-05 17:32:42.937108"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36mSoloReading Load (1.1ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."current" = $1[0m  [["current", "t"]]
+  [1m[35m (0.4ms)[0m  SELECT COUNT(1) FROM "solo_readings" WHERE "solo_readings"."current" = $1  [["current", "t"]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(1) FROM "solo_readings" WHERE "solo_readings"."current" = $1[0m  [["current", "t"]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(1) FROM "solo_readings" WHERE "solo_readings"."current" = $1  [["current", "t"]]
+  [1m[36mSoloReading Load (0.4ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings"[0m
+  [1m[35m (3.3ms)[0m  SELECT COUNT(*) FROM "solo_readings"
+  [1m[36m (0.7ms)[0m  [1mSELECT COUNT(1) FROM "solo_readings" WHERE "solo_readings"."current" = $1[0m  [["current", "t"]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(1) FROM "solo_readings" WHERE "solo_readings"."current" = $1  [["current", "t"]]
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(1) FROM "solo_readings" WHERE "solo_readings"."current" = $1[0m  [["current", "t"]]
