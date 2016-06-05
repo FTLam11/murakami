@@ -117,7 +117,7 @@ angular.module('starter.controllers', [])
     $location.path('/tab/dash')
   $http({
     method: 'POST',
-    url: 'http://localhost:3000/user',
+    url: 'http://tranquil-tundra-32569.herokuapp.com/register',
     dataType: "json",
     data: jsonData
   }).then(function(response){
