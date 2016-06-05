@@ -8,7 +8,7 @@
 /.bundle
 
 # Ignore all logfiles and tempfiles.
-/log/*
+/rails-server/log/*
 !/log/.keep
 /tmp
 coverage
