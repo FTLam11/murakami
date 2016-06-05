@@ -2,7 +2,7 @@ class ReactionsController < ApplicationController
 
   def index
     reactions = Chapter.find(params[:chapter_id]).reactions
-    render :json { reactions: reactions }
+    render json: { reactions: reactions }
   end
 
   def create
@@ -14,7 +14,7 @@ class ReactionsController < ApplicationController
   def show
     reaction = Reaction.find(params[:id])
     comments = reaction.comments
-    render :json { reaction: reaction, comments: comments }
+    render json: { reaction: reaction, comments: comments }
   end
 
   private

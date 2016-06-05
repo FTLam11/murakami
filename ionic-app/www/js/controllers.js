@@ -33,7 +33,7 @@ angular.module('starter.controllers', [])
   };
 })
 
-.controller('BookDiscussCtrl', function($scope, $http, $stateParams, Books) {
+.controller('ChapterCtrl', function($scope, $http, $stateParams, Books) {
   $scope.book = Books.get($stateParams.bookId)
 })
 
