@@ -1,19 +1,20 @@
 class BooksController < ApplicationController
 
   def create
-    Book.add_book
+
+    Book.add_book(params)
     @reading.queue = true
   end
 
   def add_to_current
-    add_book
+    add_book(params)
     @reading.current = true
     @reading.queue = false
     @reading.complete = false
   end
 
   def add_to_favorites
-    add_book
+    add_book(params)
     @reading.favorite = true
   end
 

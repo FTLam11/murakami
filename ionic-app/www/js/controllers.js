@@ -55,7 +55,7 @@ angular.module('starter.controllers', [])
 
 
   $scope.addQueue = function() {
-    var bookData = $stateParams.bookId
+    var bookData = book
     var userId = window.localStorage['authToken']
     var jsonData = JSON.stringify(bookData)
     console.log(jsonData)
