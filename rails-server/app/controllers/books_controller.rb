@@ -1,8 +1,10 @@
 class BooksController < ApplicationController
+  include ApplicationHelper
 
   def create
-
-    Book.add_book(params)
+    p params[:user_id]
+    current_user = User.find(params[:user_id])
+    Book.add_book(params, current_user)
     @reading.queue = true
   end
 

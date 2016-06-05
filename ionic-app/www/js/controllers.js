@@ -35,13 +35,7 @@ angular.module('starter.controllers', [])
   // $scope.reactions = chapter.reactions
 })
 
-.controller('BookDetailCtrl', function($scope, $http, $stateParams, Books, $location){
-
-  $scope.go = function ( path ){
-    $location.path( path );
-  }
-
-
+.controller('BookDetailCtrl', function($scope, $http, $stateParams, Books, $location, $ionicPopup){
 
   if (Books.get($stateParams.bookId) !=null) {
     var book = Books.get($stateParams.bookId);
@@ -65,12 +59,46 @@ angular.module('starter.controllers', [])
   }
 
 
+  $scope.go = function ( path ){
+    $location.path( path );
+  }
 
-  $scope.addQueue = function() {
+  $scope.createBook = function() {
+    chapter_number = $scope.showPopup()
+   $scope.sendBookReq(chapter_number)
+  }
+
+  $scope.showPopup = function() {
+    $scope.data = {};
+
+    var myPopup = $ionicPopup.show({
+      template: '<input type="text" ng-model="data.wifi">',
+      title: 'Enter number of chapters',
+      subTitle: 'YYEEeeeeeeee',
+      scope: $scope,
+      buttons: [
+        { text: 'Cancel' },
+        {
+          text: '<b>Save</b>',
+          type: 'button-positive',
+          onTap: function(e) {
+            if (!$scope.data.wifi) {
+              //don't allow the user to close unless he enters wifi password
+              e.preventDefault();
+            } else {
+              return $scope.data.wifi;
+            }
+          }
+        }
+      ]
+    })
+  }
+
+  $scope.sendBookReq = function(chapter_number) {
     var bookData = book
+    console.log(bookData)
     var userId = window.localStorage['authToken']
     var jsonData = JSON.stringify(bookData)
-    console.log(jsonData)
 
   $http({
     method: 'POST',
@@ -80,7 +108,7 @@ angular.module('starter.controllers', [])
   }).then(function(response){
     window.localStorage['authToken'] = response.data.token
   })
-    // $location.path('/tab/dash')
+    $location.path('/tab/dash')
   }
 
 })

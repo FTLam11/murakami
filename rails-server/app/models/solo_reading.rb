@@ -44,8 +44,6 @@ class SoloReading < ActiveRecord::Base
     readings_arr.select { |reading| readings_arr.count(reading.book_id) > 1 }
   end
 
-  def
-  end
 
     def self.book_lists(user_id, type)
 
