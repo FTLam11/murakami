@@ -39,6 +39,7 @@ angular.module('starter.controllers', [])
 
   if (Books.get($stateParams.bookId) !=null) {
     var book = Books.get($stateParams.bookId);
+    $scope.book = {}
     $scope.book.book_id = book.id
     $scope.book.author = book.author
     $scope.book.title = book.title

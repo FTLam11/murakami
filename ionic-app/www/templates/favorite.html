@@ -1,11 +1,10 @@
 <ion-view view-title="Dashboard" class="dash-view">
   <ion-content class="padding">
-    <h2 class="questrial">Currently Reading</h2>
-    <div>{{message}}</div>
+    <h2 class="questrial">Favorites</h2>
     <ion-list>
     <ion-item class="col-50 book-cover" ng-repeat="book in books">
       <a href="#/tab/books/{{book.id}}">
-      <img src= "{{book.image_url}}" class="book-image"></a>
+      <img src= "{{book.image}}" class="book-image"></a>
     </ion-item>
     </ion-list>
   </ion-content>
