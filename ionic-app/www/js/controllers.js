@@ -6,6 +6,8 @@ angular.module('starter.controllers', [])
   .then(function(response){
     var currentBooks = response.data.current_books;
     $scope.books = currentBooks;
+    console.log('The call to server occurs only after login page')
+    console.log(currentBooks);
     if (currentBooks.length === 0) {
       $scope.message = "Go to search and add books."
     } else {
@@ -21,8 +23,10 @@ angular.module('starter.controllers', [])
   userId = window.localStorage['authToken']
   $http.get("http://localhost:3000/users/" + userId + '/queue')
   .then(function(response){
+    // console.log(response)
     $scope.books = response.data
-    if ($scope.books === null){
+    console.log($scope.books)
+    if ($scope.books.queue_books.length === 0){
       $scope.message = "No Books in Your Queue Yet! Add one!"
     }
   })
@@ -83,11 +87,11 @@ angular.module('starter.controllers', [])
     $scope.reactions = response.data.reactions
     if ($scope.reactions === null){
       $scope.message = "There are no reactions! React!"
-    } 
+    }
   })
 
   $scope.nextChapter = function() {
-    $stateParams.chapterId 
+    $stateParams.chapterId
     $location.path("/books/" + 5 + "/chapters/" + 2)
   }
 })
@@ -132,8 +136,9 @@ angular.module('starter.controllers', [])
     $scope.data = {};
 
     var myPopup = $ionicPopup.show({
-      template: '<input type="text" ng-model="data.wifi">',
+      template: '<input type="text" ng-model="data.chapters">',
       title: 'Enter number of chapters',
+      subTitle: 'This is for Current',
       scope: $scope,
       buttons: [
         { text: 'Cancel' },
@@ -141,25 +146,43 @@ angular.module('starter.controllers', [])
           text: '<b>Save</b>',
           type: 'button-positive',
           onTap: function(e) {
-            if (!$scope.data.wifi) {
+            if (!$scope.data.chapters) {
               //don't allow the user to close unless he enters wifi password
               e.preventDefault();
             } else {
-              $scope.sendBookReq($scope.data.wifi, $scope)
-              // go('/#/tab/books/5/chapters/1')
+              $scope.BookReq($scope.data.chapters, $scope)
             }
           }
         }
       ]
     })
   }
+  $scope.BookReq = function(chapter_number, $scope) {
+    var bookData = $scope.book
+    bookData.chapter_count = parseInt(chapter_number)
+    var userId = window.localStorage['authToken']
+    var jsonData = JSON.stringify(bookData)
+
+  $http({
+    method: 'POST',
+    url: 'http://localhost:3000/users/'+userId+'/books',
+    dataType: "json",
+    data: jsonData
+  }).then(function(response){
+    window.localStorage['authToken'] = response.data.token
+  })
+
+
+    $location.path('/tab/dash')
+  }
 
   $scope.queue = function() {
     $scope.data = {};
 
     var myPopup = $ionicPopup.show({
-      template: '<input type="text" ng-model="data.wifi">',
+      template: '<input type="text" ng-model="data.chapters">',
       title: 'Enter number of chapters',
+      subTitle: 'This is for Queue',
       scope: $scope,
       buttons: [
         { text: 'Cancel' },
@@ -167,11 +190,11 @@ angular.module('starter.controllers', [])
           text: '<b>Save</b>',
           type: 'button-positive',
           onTap: function(e) {
-            if (!$scope.data.wifi) {
+            if (!$scope.data.chapters) {
               //don't allow the user to close unless he enters wifi password
               e.preventDefault();
             } else {
-              $scope.sendBookReq($scope.data.wifi, $scope)
+              $scope.sendBookReq($scope.data.chapters, $scope)
             }
           }
         }

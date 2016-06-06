@@ -1,7 +1,6 @@
 class SoloReading < ActiveRecord::Base
   include ApplicationHelper
 
-
   belongs_to :reader, class_name: "User", foreign_key: :user_id
   belongs_to :book
 
@@ -21,6 +20,7 @@ class SoloReading < ActiveRecord::Base
 
   def self.retrieve_rec_books(criteria)
     rec_books = []
+
     Book.all.each do |book|
       criteria[:author].each do |author|
         rec_books << book if book.author == author
@@ -65,21 +65,20 @@ class SoloReading < ActiveRecord::Base
   end
 
   def self.book_lists(user_id, type)
+    @books = []
 
     if type == "history"
       readings = SoloReading.where(user_id: user_id, current: false, queue: false)
     else
       readings = SoloReading.where(user_id: user_id, "#{type}" => true)
     end
-      @books = []
 
-      if readings.length > 0
-        readings.each do |reading|
-          @books << reading.book
-        end
-      end
-      return @books
+    if readings.length > 0
+      readings.each { |reading| @books << reading.book }
     end
+
+    return @books
+  end
  end
 
 

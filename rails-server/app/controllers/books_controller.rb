@@ -2,12 +2,11 @@ class BooksController < ApplicationController
   include ApplicationHelper
 
   def create
-    p params
     user = User.find(params["user_id"])
     @reading = Book.add_book(params, user)
-    @reading.queue = true
+    @reading.current = true
     @reading.save
-    render json: {token: user.id}, status: :ok
+    render json: {token: user.id, book: @reading.book}, status: :ok
   end
 
   def check_books
@@ -17,6 +16,7 @@ class BooksController < ApplicationController
   end
 
   def add_to_current
+    puts "==============================="
     p params
     user = User.find(params["user_id"])
     @reading = Book.add_book_by_id(params["book_id"], params["user_id"])
@@ -28,7 +28,7 @@ class BooksController < ApplicationController
   end
 
   def add_to_favorites
-    add_book(params)
+    add_book(params, user)
     @reading.favorite = true
   end
 

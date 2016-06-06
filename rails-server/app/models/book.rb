@@ -9,10 +9,9 @@ class Book < ActiveRecord::Base
 
   # validates :title, :author, :genre, :image_url, :page_numbers, :date_published, presence: true
 
-  def self.add_book(params,user)
-
+  def self.add_book(params, user)
     book = Book.find_by(title: params['book']['title'])
-    p params['book']
+
     if book == nil
       new_book = user.books.create(title: params['book']['title'], description: params['book']['description'], author: params['book']['author'], image_url: params['book']['image_url'], page_numbers: params['book']['pageCount'], date_published: params['book']['publishedDate'])
       params[:chapter_count].times do |num|
@@ -25,12 +24,12 @@ class Book < ActiveRecord::Base
         user.books << book
         @reading = SoloReading.last
       end
+
       @reading
     end
   end
 
   def self.add_book_by_id(book_id, user_id)
-
     book = Book.find(book_id)
 
     if book == nil
