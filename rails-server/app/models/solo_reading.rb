@@ -67,7 +67,7 @@ class SoloReading < ActiveRecord::Base
   def self.book_lists(user_id, type)
 
     if type == "history"
-      readings = SoloReading.where(user_id: user.id, current: false, queue: false)
+      readings = SoloReading.where(user_id: user_id, current: false, queue: false)
     else
       readings = SoloReading.where(user_id: user_id, "#{type}" => true)
     end
@@ -77,8 +77,8 @@ class SoloReading < ActiveRecord::Base
         readings.each do |reading|
           @books << reading.book
         end
-      return @books
       end
+      return @books
     end
  end
 

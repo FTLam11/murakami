@@ -1,0 +1,11 @@
+<ion-view view-title="Dashboard" class="dash-view">
+  <ion-content class="padding">
+    <h2 class="questrial">Reviews</h2>
+    <h2 class="questrial">{{message}}</h2>
+    <ion-list>
+    <ion-item class="col-50 book-cover" ng-repeat="review in reviews">
+     <ion-item>review.content</ion-item>
+    </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>

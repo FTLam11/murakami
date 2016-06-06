@@ -17,6 +17,13 @@ class UsersController < ApplicationController
     render json: {username: user.user_name, image: user.image_url}
   end
 
+  def reviews
+    user = User.find(params[:user_id])
+    reviews = user.reviews 
+    p reviews 
+    render json: {reviews: reviews} 
+  end 
+
   private
 
   def user_params

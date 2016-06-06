@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 
   root "users#index"
 
+  get '/users/:user_id/reviews', to: "users#reviews"
+
   resources :users, only: [:show] do
     resources :books, only: [:create, :show]
   end
@@ -33,5 +35,5 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#login'
   get '/logout', to: 'sessions#logout'
 
-
+  get '/check_books/:book_id', to: 'books#check_books'
 end
