@@ -89,6 +89,9 @@ angular.module('starter.controllers', [])
     $scope.reactions = response.data.reactions
     $scope.users = response.data.users
     $scope.book = response.data.specific_book
+    $scope.msgs = [];
+    $scope.msg = "";
+
 
     if ($scope.reactions === null){
       $scope.message = "There are no reactions! React!"
@@ -107,10 +110,24 @@ angular.module('starter.controllers', [])
     $location.path("/tab/books/" + bookId + "/chapters/" + nextChapterNum)
   }
 
-  $scope.submitReaction() = function() {
+   $scope.submitReaction = function(){
+      var userReaction = {content: $scope.msg, user:id = window.localStorage['authToken'], chapter_id: $stateParams.chapterId};
+
+      var jsonData = JSON.stringify(userReaction);
+
+      $http({
+        method: 'POST',
+        url: 'http://localhost:3000/chapters/'+ $stateParams.chapterId +'/reactions',
+        dataType: "json",
+        data: jsonData
+      }).then(function(response){
+        console.log(response)
+        console.log("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
+      })
+
+    }
 
 
-  }
 
 })
 

@@ -12,7 +12,7 @@
 
       <div class="item item-text-wrap">
         <form name="reaction" ng-submit="submitReaction()">
-          <textarea type="text" placeholder="Reaction"></textarea>
+          <textarea type="text" placeholder="Reaction" ng-model="$parent.msg"></textarea>
           <input type='submit' name='submit'>
         </form>
       </div>
