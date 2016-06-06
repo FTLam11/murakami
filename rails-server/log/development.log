@@ -1,0 +1,1338 @@
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT  "users".* FROM "users"  ORDER BY "users"."id" DESC LIMIT 1[0m
+  [1m[35mBook Load (0.5ms)[0m  SELECT "books".* FROM "books" INNER JOIN "solo_readings" ON "books"."id" = "solo_readings"."book_id" WHERE "solo_readings"."user_id" = $1  [["user_id", 5]]
+  [1m[36mSoloReading Load (0.3ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1[0m  [["user_id", 5]]
+  [1m[36mBook Load (1.0ms)[0m  [1mSELECT  "books".* FROM "books"  ORDER BY "books"."id" DESC LIMIT 1[0m
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users"  ORDER BY "users"."id" DESC LIMIT 1
+  [1m[36mBook Load (0.7ms)[0m  [1mSELECT "books".* FROM "books" INNER JOIN "solo_readings" ON "books"."id" = "solo_readings"."book_id" WHERE "solo_readings"."user_id" = $1[0m  [["user_id", 5]]
+
+
+Started POST "/login" for ::1 at 2016-06-06 01:04:27 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (50.7ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by SessionsController#login as HTML
+  Parameters: {"username"=>"fronk", "password"=>"[FILTERED]", "session"=>{"username"=>"fronk", "password"=>"[FILTERED]"}}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (1.1ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."user_name" = $1 LIMIT 1  [["user_name", "fronk"]]
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+Completed 200 OK in 294ms (Views: 0.3ms | ActiveRecord: 120.2ms)
+
+
+Started GET "/users/5/current" for ::1 at 2016-06-06 01:04:28 -0500
+Processing by SoloReadingsController#current_books as HTML
+  Parameters: {"user_id"=>"5"}
+  [1m[35mSoloReading Load (0.5ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2  [["user_id", 5], ["current", "t"]]
+Completed 200 OK in 85ms (Views: 0.2ms | ActiveRecord: 14.8ms)
+  [1m[36mUser Load (45.0ms)[0m  [1mSELECT  "users".* FROM "users"  ORDER BY "users"."id" DESC LIMIT 1[0m
+  [1m[35mSoloReading Load (0.3ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1  [["user_id", 5]]
+
+
+Started POST "/users/5/books" for ::1 at 2016-06-06 01:15:18 -0500
+Processing by BooksController#create as HTML
+  Parameters: {"author"=>"Michael Ashley", "title"=>"The Book of Five Rings", "description"=>"The Book of Five Rings is a life-changing classic that will benefit students and businessmen alike. From strategy to spirituality, Miyamoto Musashi takes you through the five books of Ichi Ryu Ni To (One school - two swords) and clearly explains the benefits of each ring. Whether this is your first time reading the Book of Five Rings or your tenth, you will experience something new and immortal in the words of Miyamoto Musashi.", "image_url"=>"http://books.google.com/books/content?id=5nkQA0YCv4oC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api", "publishedDate"=>"2010-08-04", "chapter_count"=>2, "user_id"=>"5", "book"=>{"title"=>"The Book of Five Rings", "author"=>"Michael Ashley", "image_url"=>"http://books.google.com/books/content?id=5nkQA0YCv4oC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api", "description"=>"The Book of Five Rings is a life-changing classic that will benefit students and businessmen alike. From strategy to spirituality, Miyamoto Musashi takes you through the five books of Ichi Ryu Ni To (One school - two swords) and clearly explains the benefits of each ring. Whether this is your first time reading the Book of Five Rings or your tenth, you will experience something new and immortal in the words of Miyamoto Musashi."}}
+Can't verify CSRF token authenticity
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mBook Load (4.7ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."title" = $1 LIMIT 1  [["title", "The Book of Five Rings"]]
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (1.9ms)[0m  INSERT INTO "books" ("title", "description", "author", "image_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["title", "The Book of Five Rings"], ["description", "The Book of Five Rings is a life-changing classic that will benefit students and businessmen alike. From strategy to spirituality, Miyamoto Musashi takes you through the five books of Ichi Ryu Ni To (One school - two swords) and clearly explains the benefits of each ring. Whether this is your first time reading the Book of Five Rings or your tenth, you will experience something new and immortal in the words of Miyamoto Musashi."], ["author", "Michael Ashley"], ["image_url", "http://books.google.com/books/content?id=5nkQA0YCv4oC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"], ["created_at", "2016-06-06 06:15:18.570052"], ["updated_at", "2016-06-06 06:15:18.570052"]]
+  [1m[36mSQL (27.7ms)[0m  [1mINSERT INTO "solo_readings" ("user_id", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 5], ["book_id", 11], ["created_at", "2016-06-06 06:15:18.600331"], ["updated_at", "2016-06-06 06:15:18.600331"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "chapters" ("number", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["number", 0], ["book_id", 11], ["created_at", "2016-06-06 06:15:18.711882"], ["updated_at", "2016-06-06 06:15:18.711882"]]
+  [1m[36m (1.2ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "chapters" ("number", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["number", 1], ["book_id", 11], ["created_at", "2016-06-06 06:15:18.717999"], ["updated_at", "2016-06-06 06:15:18.717999"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36mSoloReading Load (0.4ms)[0m  [1mSELECT  "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."book_id" = $2 LIMIT 1[0m  [["user_id", 5], ["book_id", 11]]
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "solo_readings" SET "queue" = $1, "updated_at" = $2 WHERE "solo_readings"."id" = $3[0m  [["queue", "t"], ["updated_at", "2016-06-06 06:15:18.730823"], ["id", 11]]
+  [1m[35m (1.4ms)[0m  COMMIT
+Completed 200 OK in 293ms (Views: 0.3ms | ActiveRecord: 88.0ms)
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT  "users".* FROM "users"  ORDER BY "users"."id" DESC LIMIT 1[0m
+  [1m[35mBook Load (0.6ms)[0m  SELECT "books".* FROM "books" INNER JOIN "solo_readings" ON "books"."id" = "solo_readings"."book_id" WHERE "solo_readings"."user_id" = $1  [["user_id", 5]]
+  [1m[36mSoloReading Load (0.4ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1[0m  [["user_id", 5]]
+
+
+Started POST "/users/5/books" for ::1 at 2016-06-06 01:20:45 -0500
+Processing by BooksController#create as HTML
+  Parameters: {"author"=>"Christopher J. Earnshaw", "title"=>"Sho Japanese Calligraphy", "description"=>"Master calligrapher Christopher Earnshaw illuminates the techniques, history and philosophy of calligraphy with over 300 illustrations in Sho: Japanese Calligraphy. Calligraphy, along with poetry and painting, has been for centuries a discipline that all students of culture had to master. Brush writing reflected inner character, and many great masters of calligraphy were respected Zen priests, warriors and emperors. From practical lessons on brushwork to hints about exhibiting finished work, this beautiful volume is the fledgling calligrapher's best reference source. Its meditations on the philosophy of calligraphy will also offer new insights to students of Japanese culture and character.", "image_url"=>"http://books.google.com/books/content?id=0rWoLZOLnqUC&printsec=frontcover&img=1&zoom=1&source=gbs_api", "pageCount"=>176, "publishedDate"=>"1989-12-15", "chapter_count"=>1, "user_id"=>"5", "book"=>{"title"=>"Sho Japanese Calligraphy", "author"=>"Christopher J. Earnshaw", "image_url"=>"http://books.google.com/books/content?id=0rWoLZOLnqUC&printsec=frontcover&img=1&zoom=1&source=gbs_api", "description"=>"Master calligrapher Christopher Earnshaw illuminates the techniques, history and philosophy of calligraphy with over 300 illustrations in Sho: Japanese Calligraphy. Calligraphy, along with poetry and painting, has been for centuries a discipline that all students of culture had to master. Brush writing reflected inner character, and many great masters of calligraphy were respected Zen priests, warriors and emperors. From practical lessons on brushwork to hints about exhibiting finished work, this beautiful volume is the fledgling calligrapher's best reference source. Its meditations on the philosophy of calligraphy will also offer new insights to students of Japanese culture and character."}}
+Can't verify CSRF token authenticity
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mBook Load (0.4ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."title" = $1 LIMIT 1  [["title", "Sho Japanese Calligraphy"]]
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "books" ("title", "description", "author", "image_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["title", "Sho Japanese Calligraphy"], ["description", "Master calligrapher Christopher Earnshaw illuminates the techniques, history and philosophy of calligraphy with over 300 illustrations in Sho: Japanese Calligraphy. Calligraphy, along with poetry and painting, has been for centuries a discipline that all students of culture had to master. Brush writing reflected inner character, and many great masters of calligraphy were respected Zen priests, warriors and emperors. From practical lessons on brushwork to hints about exhibiting finished work, this beautiful volume is the fledgling calligrapher's best reference source. Its meditations on the philosophy of calligraphy will also offer new insights to students of Japanese culture and character."], ["author", "Christopher J. Earnshaw"], ["image_url", "http://books.google.com/books/content?id=0rWoLZOLnqUC&printsec=frontcover&img=1&zoom=1&source=gbs_api"], ["created_at", "2016-06-06 06:20:45.654037"], ["updated_at", "2016-06-06 06:20:45.654037"]]
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "solo_readings" ("user_id", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 5], ["book_id", 12], ["created_at", "2016-06-06 06:20:45.668611"], ["updated_at", "2016-06-06 06:20:45.668611"]]
+  [1m[35m (1.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "chapters" ("number", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["number", 0], ["book_id", 12], ["created_at", "2016-06-06 06:20:45.688411"], ["updated_at", "2016-06-06 06:20:45.688411"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35mSoloReading Load (0.4ms)[0m  SELECT  "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."book_id" = $2 LIMIT 1  [["user_id", 5], ["book_id", 12]]
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  UPDATE "solo_readings" SET "queue" = $1, "updated_at" = $2 WHERE "solo_readings"."id" = $3  [["queue", "t"], ["updated_at", "2016-06-06 06:20:45.695003"], ["id", 12]]
+  [1m[36m (5.4ms)[0m  [1mCOMMIT[0m
+Completed 200 OK in 100ms (Views: 0.4ms | ActiveRecord: 18.4ms)
+
+
+Started POST "/users/5/books" for ::1 at 2016-06-06 01:23:29 -0500
+Processing by BooksController#create as HTML
+  Parameters: {"author"=>"Jules Older", "title"=>"Cow", "description"=>"Here's a COW quiz (I'll start you off with an easy one): 1. Where is the Brown Swiss cow from? 2. How much milk does a cow produce in a day? 3. Which one of the cow's four stomachs rhymes with \"Yo! Chase 'em!\"? The answers to these and many other questions about cows can be found in the amusing but factual book about, you guessed it, COWS! With his clever and humorous text, Jules Older has again collaborated with popular Ben & Jerry's illustrator Lyn Severance. This book is chock-full of facts with rich, bold colors that shouldn't be missed.", "image_url"=>"http://books.google.com/books/content?id=orTVCQAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api", "publishedDate"=>"2013-11-14", "chapter_count"=>1, "user_id"=>"5", "book"=>{"title"=>"Cow", "author"=>"Jules Older", "image_url"=>"http://books.google.com/books/content?id=orTVCQAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api", "description"=>"Here's a COW quiz (I'll start you off with an easy one): 1. Where is the Brown Swiss cow from? 2. How much milk does a cow produce in a day? 3. Which one of the cow's four stomachs rhymes with \"Yo! Chase 'em!\"? The answers to these and many other questions about cows can be found in the amusing but factual book about, you guessed it, COWS! With his clever and humorous text, Jules Older has again collaborated with popular Ben & Jerry's illustrator Lyn Severance. This book is chock-full of facts with rich, bold colors that shouldn't be missed."}}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mBook Load (0.3ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."title" = $1 LIMIT 1[0m  [["title", "Cow"]]
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.9ms)[0m  [1mINSERT INTO "books" ("title", "description", "author", "image_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "Cow"], ["description", "Here's a COW quiz (I'll start you off with an easy one): 1. Where is the Brown Swiss cow from? 2. How much milk does a cow produce in a day? 3. Which one of the cow's four stomachs rhymes with \"Yo! Chase 'em!\"? The answers to these and many other questions about cows can be found in the amusing but factual book about, you guessed it, COWS! With his clever and humorous text, Jules Older has again collaborated with popular Ben & Jerry's illustrator Lyn Severance. This book is chock-full of facts with rich, bold colors that shouldn't be missed."], ["author", "Jules Older"], ["image_url", "http://books.google.com/books/content?id=orTVCQAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"], ["created_at", "2016-06-06 06:23:30.046475"], ["updated_at", "2016-06-06 06:23:30.046475"]]
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "solo_readings" ("user_id", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["user_id", 5], ["book_id", 13], ["created_at", "2016-06-06 06:23:30.056590"], ["updated_at", "2016-06-06 06:23:30.056590"]]
+  [1m[36m (1.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "chapters" ("number", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["number", 0], ["book_id", 13], ["created_at", "2016-06-06 06:23:30.074671"], ["updated_at", "2016-06-06 06:23:30.074671"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36mSoloReading Load (0.6ms)[0m  [1mSELECT  "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."book_id" = $2 LIMIT 1[0m  [["user_id", 5], ["book_id", 13]]
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mUPDATE "solo_readings" SET "queue" = $1, "updated_at" = $2 WHERE "solo_readings"."id" = $3[0m  [["queue", "t"], ["updated_at", "2016-06-06 06:23:30.080122"], ["id", 13]]
+  [1m[35m (0.4ms)[0m  COMMIT
+Completed 200 OK in 75ms (Views: 0.3ms | ActiveRecord: 11.4ms)
+
+
+Started POST "/users/5/books" for ::1 at 2016-06-06 01:24:44 -0500
+Processing by BooksController#create as HTML
+  Parameters: {"author"=>"Dwijendra Narayan Jha", "title"=>"The Myth of the Holy Cow", "description"=>"A book the government of India demands be ritually burned.", "image_url"=>"http://books.google.com/books/content?id=VQ046M8T7IkC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api", "pageCount"=>183, "publishedDate"=>"2003-12-30", "chapter_count"=>2, "user_id"=>"5", "book"=>{"title"=>"The Myth of the Holy Cow", "author"=>"Dwijendra Narayan Jha", "image_url"=>"http://books.google.com/books/content?id=VQ046M8T7IkC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api", "description"=>"A book the government of India demands be ritually burned."}}
+Can't verify CSRF token authenticity
+  [1m[36mUser Load (0.9ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mBook Load (0.3ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."title" = $1 LIMIT 1  [["title", "The Myth of the Holy Cow"]]
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.8ms)[0m  INSERT INTO "books" ("title", "description", "author", "image_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["title", "The Myth of the Holy Cow"], ["description", "A book the government of India demands be ritually burned."], ["author", "Dwijendra Narayan Jha"], ["image_url", "http://books.google.com/books/content?id=VQ046M8T7IkC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"], ["created_at", "2016-06-06 06:24:44.197565"], ["updated_at", "2016-06-06 06:24:44.197565"]]
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "solo_readings" ("user_id", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 5], ["book_id", 14], ["created_at", "2016-06-06 06:24:44.208362"], ["updated_at", "2016-06-06 06:24:44.208362"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "chapters" ("number", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["number", 0], ["book_id", 14], ["created_at", "2016-06-06 06:24:44.223388"], ["updated_at", "2016-06-06 06:24:44.223388"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "chapters" ("number", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["number", 1], ["book_id", 14], ["created_at", "2016-06-06 06:24:44.226411"], ["updated_at", "2016-06-06 06:24:44.226411"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36mSoloReading Load (0.8ms)[0m  [1mSELECT  "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."book_id" = $2 LIMIT 1[0m  [["user_id", 5], ["book_id", 14]]
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mUPDATE "solo_readings" SET "queue" = $1, "updated_at" = $2 WHERE "solo_readings"."id" = $3[0m  [["queue", "t"], ["updated_at", "2016-06-06 06:24:44.231262"], ["id", 14]]
+  [1m[35m (0.4ms)[0m  COMMIT
+Completed 200 OK in 79ms (Views: 0.3ms | ActiveRecord: 12.8ms)
+
+
+Started POST "/users/5/books" for ::1 at 2016-06-06 01:26:03 -0500
+Processing by BooksController#create as HTML
+  Parameters: {"author"=>"Sandra Boynton", "title"=>"Moo Cow Book", "description"=>"It's soft! It's silly! It even moos! Here's a spiffy plush cow book with a squeeze-it moo, a vivid pink terry cloth tongue, dazzling satin teeth, and four padded cloth pages of jaunty rhyming text. Sort of a book, sort off a toy, sort of a blankie, Boynton's Moo Cow Book is an absurdly soft companion for the smallest of book lovers -- for car rides, for quiet times, for right this moment. Perfect for babies, toddlers, and sensitive high-powered executives.", "image_url"=>"http://books.google.com/books/content?id=Z50-AAAACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api", "pageCount"=>10, "publishedDate"=>"2004-10-01", "chapter_count"=>1, "user_id"=>"5", "book"=>{"title"=>"Moo Cow Book", "author"=>"Sandra Boynton", "image_url"=>"http://books.google.com/books/content?id=Z50-AAAACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api", "description"=>"It's soft! It's silly! It even moos! Here's a spiffy plush cow book with a squeeze-it moo, a vivid pink terry cloth tongue, dazzling satin teeth, and four padded cloth pages of jaunty rhyming text. Sort of a book, sort off a toy, sort of a blankie, Boynton's Moo Cow Book is an absurdly soft companion for the smallest of book lovers -- for car rides, for quiet times, for right this moment. Perfect for babies, toddlers, and sensitive high-powered executives."}}
+Can't verify CSRF token authenticity
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mBook Load (0.4ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."title" = $1 LIMIT 1  [["title", "Moo Cow Book"]]
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "books" ("title", "description", "author", "image_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["title", "Moo Cow Book"], ["description", "It's soft! It's silly! It even moos! Here's a spiffy plush cow book with a squeeze-it moo, a vivid pink terry cloth tongue, dazzling satin teeth, and four padded cloth pages of jaunty rhyming text. Sort of a book, sort off a toy, sort of a blankie, Boynton's Moo Cow Book is an absurdly soft companion for the smallest of book lovers -- for car rides, for quiet times, for right this moment. Perfect for babies, toddlers, and sensitive high-powered executives."], ["author", "Sandra Boynton"], ["image_url", "http://books.google.com/books/content?id=Z50-AAAACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"], ["created_at", "2016-06-06 06:26:03.802167"], ["updated_at", "2016-06-06 06:26:03.802167"]]
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "solo_readings" ("user_id", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 5], ["book_id", 15], ["created_at", "2016-06-06 06:26:03.815398"], ["updated_at", "2016-06-06 06:26:03.815398"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "chapters" ("number", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["number", 0], ["book_id", 15], ["created_at", "2016-06-06 06:26:03.834531"], ["updated_at", "2016-06-06 06:26:03.834531"]]
+  [1m[36m (2.1ms)[0m  [1mCOMMIT[0m
+  [1m[35mSoloReading Load (0.5ms)[0m  SELECT  "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."book_id" = $2 LIMIT 1  [["user_id", 5], ["book_id", 15]]
+  [1m[36m (5.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.9ms)[0m  UPDATE "solo_readings" SET "queue" = $1, "updated_at" = $2 WHERE "solo_readings"."id" = $3  [["queue", "t"], ["updated_at", "2016-06-06 06:26:03.847990"], ["id", 15]]
+  [1m[36m (2.4ms)[0m  [1mCOMMIT[0m
+Completed 200 OK in 101ms (Views: 0.3ms | ActiveRecord: 22.9ms)
+
+
+Started POST "/users/5/books" for ::1 at 2016-06-06 01:27:05 -0500
+Processing by BooksController#create as HTML
+  Parameters: {"author"=>"Walter Wangerin", "title"=>"The Book of the Dun Cow", "description"=>"The timeless National Book Award-winning story of the epic struggle between good and evil. “Far and away the most literate and intelligent story of the year … Mr. Wangerin’s allegorical fantasy about the age-old struggle between good and evil produces a resonance; it is a taut string plucked that reverberates in memory” —New York Times “Belongs on the shelf with Animal Farm, Watership Down and The Lord of the Rings. It is, like them, an absorbing, fanciful parade of the war between good and evil. A powerful and enjoyable work of the imagination.” —Los Angeles Times In a time when the sun revolved around the Earth, and the animals could speak, Chauntecleer the Rooster rules justly over his kingdom. But while peace reigns for Chauntecleer, evil is brewing across the river, as the monstrous Cockatrice pillages his own lands and people, preparing for the return of Wyrm. Imprisoned within the Earth to contain this ancient evil, Wyrm is determined to return, with the help of Cockatrice. Keeping Wyrm in his prison is a task too great for any individual animal, so it is up to Chantecleer to rally all of the animals, great and small, to work together to keep the Earth safe once again. “Good and evil were never seen more distinctly not pitted more ferociously than in this animal fable, reverberating with the righteousness of the Bible or a medieval morality play … The animals are not mere literary symbols but are invested with a humanness all their won.” —The Saturday Evening Post “Wangerin’s story functions as a frightening representation of modern evil … a parable for adults to ponder.” —The Christian Century “Wangerin has so fluidly woven all these legends together into one small gem.” —Washington Post Book World", "image_url"=>"http://books.google.com/books/content?id=K0XaRiKX9NcC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api", "pageCount"=>295, "publishedDate"=>"2013-06-18", "chapter_count"=>1, "user_id"=>"5", "book"=>{"title"=>"The Book of the Dun Cow", "author"=>"Walter Wangerin", "image_url"=>"http://books.google.com/books/content?id=K0XaRiKX9NcC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api", "description"=>"The timeless National Book Award-winning story of the epic struggle between good and evil. “Far and away the most literate and intelligent story of the year … Mr. Wangerin’s allegorical fantasy about the age-old struggle between good and evil produces a resonance; it is a taut string plucked that reverberates in memory” —New York Times “Belongs on the shelf with Animal Farm, Watership Down and The Lord of the Rings. It is, like them, an absorbing, fanciful parade of the war between good and evil. A powerful and enjoyable work of the imagination.” —Los Angeles Times In a time when the sun revolved around the Earth, and the animals could speak, Chauntecleer the Rooster rules justly over his kingdom. But while peace reigns for Chauntecleer, evil is brewing across the river, as the monstrous Cockatrice pillages his own lands and people, preparing for the return of Wyrm. Imprisoned within the Earth to contain this ancient evil, Wyrm is determined to return, with the help of Cockatrice. Keeping Wyrm in his prison is a task too great for any individual animal, so it is up to Chantecleer to rally all of the animals, great and small, to work together to keep the Earth safe once again. “Good and evil were never seen more distinctly not pitted more ferociously than in this animal fable, reverberating with the righteousness of the Bible or a medieval morality play … The animals are not mere literary symbols but are invested with a humanness all their won.” —The Saturday Evening Post “Wangerin’s story functions as a frightening representation of modern evil … a parable for adults to ponder.” —The Christian Century “Wangerin has so fluidly woven all these legends together into one small gem.” —Washington Post Book World"}}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mBook Load (0.3ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."title" = $1 LIMIT 1[0m  [["title", "The Book of the Dun Cow"]]
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "books" ("title", "description", "author", "image_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "The Book of the Dun Cow"], ["description", "The timeless National Book Award-winning story of the epic struggle between good and evil. “Far and away the most literate and intelligent story of the year … Mr. Wangerin’s allegorical fantasy about the age-old struggle between good and evil produces a resonance; it is a taut string plucked that reverberates in memory” —New York Times “Belongs on the shelf with Animal Farm, Watership Down and The Lord of the Rings. It is, like them, an absorbing, fanciful parade of the war between good and evil. A powerful and enjoyable work of the imagination.” —Los Angeles Times In a time when the sun revolved around the Earth, and the animals could speak, Chauntecleer the Rooster rules justly over his kingdom. But while peace reigns for Chauntecleer, evil is brewing across the river, as the monstrous Cockatrice pillages his own lands and people, preparing for the return of Wyrm. Imprisoned within the Earth to contain this ancient evil, Wyrm is determined to return, with the help of Cockatrice. Keeping Wyrm in his prison is a task too great for any individual animal, so it is up to Chantecleer to rally all of the animals, great and small, to work together to keep the Earth safe once again. “Good and evil were never seen more distinctly not pitted more ferociously than in this animal fable, reverberating with the righteousness of the Bible or a medieval morality play … The animals are not mere literary symbols but are invested with a humanness all their won.” —The Saturday Evening Post “Wangerin’s story functions as a frightening representation of modern evil … a parable for adults to ponder.” —The Christian Century “Wangerin has so fluidly woven all these legends together into one small gem.” —Washington Post Book World"], ["author", "Walter Wangerin"], ["image_url", "http://books.google.com/books/content?id=K0XaRiKX9NcC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"], ["created_at", "2016-06-06 06:27:05.835678"], ["updated_at", "2016-06-06 06:27:05.835678"]]
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "solo_readings" ("user_id", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["user_id", 5], ["book_id", 16], ["created_at", "2016-06-06 06:27:05.851087"], ["updated_at", "2016-06-06 06:27:05.851087"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "chapters" ("number", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["number", 0], ["book_id", 16], ["created_at", "2016-06-06 06:27:05.867485"], ["updated_at", "2016-06-06 06:27:05.867485"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36mSoloReading Load (0.3ms)[0m  [1mSELECT  "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."book_id" = $2 LIMIT 1[0m  [["user_id", 5], ["book_id", 16]]
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "solo_readings" SET "queue" = $1, "updated_at" = $2 WHERE "solo_readings"."id" = $3[0m  [["queue", "t"], ["updated_at", "2016-06-06 06:27:05.877247"], ["id", 16]]
+  [1m[35m (0.4ms)[0m  COMMIT
+Completed 200 OK in 79ms (Views: 0.2ms | ActiveRecord: 9.9ms)
+
+
+Started POST "/users/5/books" for ::1 at 2016-06-06 01:28:55 -0500
+Processing by BooksController#create as HTML
+  Parameters: {"author"=>"David Duchovny", "title"=>"Holy Cow", "description"=>"Holy Cow by David Duchovny is a comic delight that will thrill fans of Jasper Fforde and Ben Aaronovitch. And anyone who enjoys a witty wisecrack in a novel. Elsie Bovary is a cow and a pretty happy one at that. Until one night, Elsie sneaks out of the pasture and finds herself drawn to the farmhouse. Through the window, she sees the farmer's family gathered around a bright Box God - and what the Box God reveals about something called an 'industrial meat farm' shakes Elsie's understanding of her world to its core. The only solution? To escape to a better, safer world. And so a motley crew is formed: Elsie; Shalom, a grumpy pig who's recently converted to Judaism; and Tom, a suave turkey who can't fly, but can work an iPhone with his beak. Toting stolen passports and slapdash human disguises, they head for the airport ... Elsie is a wise-cracking, slyly witty narrator; Tom dispenses psychiatric advice in a fake German accent; and Shalom ends up unexpectedly uniting Israelis and Palestinians. David Duchovny's charismatic creatures point the way toward a mutual understanding and acceptance the world desperately needs.", "image_url"=>"http://books.google.com/books/content?id=OZWWBAAAQBAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api", "pageCount"=>144, "publishedDate"=>"2015-02-03", "chapter_count"=>1, "user_id"=>"5", "book"=>{"title"=>"Holy Cow", "author"=>"David Duchovny", "image_url"=>"http://books.google.com/books/content?id=OZWWBAAAQBAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api", "description"=>"Holy Cow by David Duchovny is a comic delight that will thrill fans of Jasper Fforde and Ben Aaronovitch. And anyone who enjoys a witty wisecrack in a novel. Elsie Bovary is a cow and a pretty happy one at that. Until one night, Elsie sneaks out of the pasture and finds herself drawn to the farmhouse. Through the window, she sees the farmer's family gathered around a bright Box God - and what the Box God reveals about something called an 'industrial meat farm' shakes Elsie's understanding of her world to its core. The only solution? To escape to a better, safer world. And so a motley crew is formed: Elsie; Shalom, a grumpy pig who's recently converted to Judaism; and Tom, a suave turkey who can't fly, but can work an iPhone with his beak. Toting stolen passports and slapdash human disguises, they head for the airport ... Elsie is a wise-cracking, slyly witty narrator; Tom dispenses psychiatric advice in a fake German accent; and Shalom ends up unexpectedly uniting Israelis and Palestinians. David Duchovny's charismatic creatures point the way toward a mutual understanding and acceptance the world desperately needs."}}
+Can't verify CSRF token authenticity
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mBook Load (0.2ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."title" = $1 LIMIT 1  [["title", "Holy Cow"]]
+  [1m[36m (0.4ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "books" ("title", "description", "author", "image_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["title", "Holy Cow"], ["description", "Holy Cow by David Duchovny is a comic delight that will thrill fans of Jasper Fforde and Ben Aaronovitch. And anyone who enjoys a witty wisecrack in a novel. Elsie Bovary is a cow and a pretty happy one at that. Until one night, Elsie sneaks out of the pasture and finds herself drawn to the farmhouse. Through the window, she sees the farmer's family gathered around a bright Box God - and what the Box God reveals about something called an 'industrial meat farm' shakes Elsie's understanding of her world to its core. The only solution? To escape to a better, safer world. And so a motley crew is formed: Elsie; Shalom, a grumpy pig who's recently converted to Judaism; and Tom, a suave turkey who can't fly, but can work an iPhone with his beak. Toting stolen passports and slapdash human disguises, they head for the airport ... Elsie is a wise-cracking, slyly witty narrator; Tom dispenses psychiatric advice in a fake German accent; and Shalom ends up unexpectedly uniting Israelis and Palestinians. David Duchovny's charismatic creatures point the way toward a mutual understanding and acceptance the world desperately needs."], ["author", "David Duchovny"], ["image_url", "http://books.google.com/books/content?id=OZWWBAAAQBAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"], ["created_at", "2016-06-06 06:28:55.607824"], ["updated_at", "2016-06-06 06:28:55.607824"]]
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "solo_readings" ("user_id", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 5], ["book_id", 17], ["created_at", "2016-06-06 06:28:55.625226"], ["updated_at", "2016-06-06 06:28:55.625226"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "chapters" ("number", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["number", 0], ["book_id", 17], ["created_at", "2016-06-06 06:28:55.642728"], ["updated_at", "2016-06-06 06:28:55.642728"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35mSoloReading Load (0.2ms)[0m  SELECT  "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."book_id" = $2 LIMIT 1  [["user_id", 5], ["book_id", 17]]
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE "solo_readings" SET "current" = $1, "updated_at" = $2 WHERE "solo_readings"."id" = $3  [["current", "t"], ["updated_at", "2016-06-06 06:28:55.648794"], ["id", 17]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+Completed 200 OK in 81ms (Views: 0.5ms | ActiveRecord: 10.0ms)
+  [1m[36mSoloReading Load (0.7ms)[0m  [1mSELECT  "solo_readings".* FROM "solo_readings"  ORDER BY "solo_readings"."id" DESC LIMIT 1[0m
+  [1m[35mUser Load (1.0ms)[0m  SELECT  "users".* FROM "users"  ORDER BY "users"."id" DESC LIMIT 1
+  [1m[36mSoloReading Load (0.3ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1[0m  [["user_id", 5]]
+  [1m[35mSoloReading Load (2.2ms)[0m  SELECT  "solo_readings".* FROM "solo_readings"  ORDER BY "solo_readings"."id" DESC LIMIT 1
+  [1m[36mSoloReading Load (2.1ms)[0m  [1mSELECT  "solo_readings".* FROM "solo_readings"  ORDER BY "solo_readings"."id" DESC LIMIT 1[0m
+  [1m[35mBook Load (0.3ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 17]]
+
+
+Started GET "/users/5/current" for ::1 at 2016-06-06 01:35:00 -0500
+Processing by SoloReadingsController#current_books as HTML
+  Parameters: {"user_id"=>"5"}
+  [1m[35mSoloReading Load (0.3ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2  [["user_id", 5], ["current", "t"]]
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 17]]
+Completed 200 OK in 31ms (Views: 0.6ms | ActiveRecord: 3.6ms)
+
+
+Started GET "/users/5/current" for ::1 at 2016-06-06 01:36:42 -0500
+Processing by SoloReadingsController#current_books as HTML
+  Parameters: {"user_id"=>"5"}
+  [1m[35mSoloReading Load (0.3ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2  [["user_id", 5], ["current", "t"]]
+  [1m[36mBook Load (0.3ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 17]]
+Completed 200 OK in 4ms (Views: 0.5ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/check_books/17" for ::1 at 2016-06-06 01:37:30 -0500
+Processing by BooksController#check_books as HTML
+  Parameters: {"book_id"=>"17"}
+  [1m[35mBook Load (0.5ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 17]]
+Completed 200 OK in 3ms (Views: 0.8ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users/5" for ::1 at 2016-06-06 01:37:46 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+Completed 200 OK in 16ms (Views: 0.2ms | ActiveRecord: 1.2ms)
+
+
+Started POST "/users/5/books" for ::1 at 2016-06-06 01:38:10 -0500
+Processing by BooksController#create as HTML
+  Parameters: {"author"=>"American Kennel Club", "title"=>"The Complete Dog Book", "description"=>"For more than seventy-five years, The Complete Dog Book has been the premier reference on purebred dogs. Now in its twentieth edition, this treasured guide is an essential volume for every dog owner and owner-to-be. Comprehensive and thoughtfully organized, The Complete Dog Book features all 153 breeds recognized by the American Kennel Club, the official breed standards, breed histories, and photographs. Also included are the twelve most recently recognized breeds: Anatolian Shepherd Dog, Black Russian Terrier, German Pinscher, Glen of Imaal Terrier, Havanese, Löwchen, Neapolitan Mastiff, Nova Scotia Duck Tolling Retriever, Parson Russell Terrier, Polish Lowland Sheepdog, Spinone Italiano, and Toy Fox Terrier. Along with AKC registration procedures and current forms, The Complete Dog Book includes sections on • choosing the dog that’s right for you • training • nutrition • grooming • responsible breeding • canine first-aid • joining a dog club • Canine Good Citizen® program • every AKC sport: Agility, Conformation, Coonhound, Earthdog, Field Trials, Herding, Hunt Tests, Junior Showmanship, Lure Coursing, Obedience, Rally, and Tracking Concluding with an extensive glossary of terms and line drawings, The Complete Dog Book is a reference that dog aficionados will turn to again and again. From the Hardcover edition.", "image_url"=>"http://books.google.com/books/content?id=NqXaduT6Ak0C&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api", "pageCount"=>880, "publishedDate"=>"2007-12-18", "chapter_count"=>2, "user_id"=>"5", "book"=>{"title"=>"The Complete Dog Book", "author"=>"American Kennel Club", "image_url"=>"http://books.google.com/books/content?id=NqXaduT6Ak0C&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api", "description"=>"For more than seventy-five years, The Complete Dog Book has been the premier reference on purebred dogs. Now in its twentieth edition, this treasured guide is an essential volume for every dog owner and owner-to-be. Comprehensive and thoughtfully organized, The Complete Dog Book features all 153 breeds recognized by the American Kennel Club, the official breed standards, breed histories, and photographs. Also included are the twelve most recently recognized breeds: Anatolian Shepherd Dog, Black Russian Terrier, German Pinscher, Glen of Imaal Terrier, Havanese, Löwchen, Neapolitan Mastiff, Nova Scotia Duck Tolling Retriever, Parson Russell Terrier, Polish Lowland Sheepdog, Spinone Italiano, and Toy Fox Terrier. Along with AKC registration procedures and current forms, The Complete Dog Book includes sections on • choosing the dog that’s right for you • training • nutrition • grooming • responsible breeding • canine first-aid • joining a dog club • Canine Good Citizen® program • every AKC sport: Agility, Conformation, Coonhound, Earthdog, Field Trials, Herding, Hunt Tests, Junior Showmanship, Lure Coursing, Obedience, Rally, and Tracking Concluding with an extensive glossary of terms and line drawings, The Complete Dog Book is a reference that dog aficionados will turn to again and again. From the Hardcover edition."}}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."title" = $1 LIMIT 1[0m  [["title", "The Complete Dog Book"]]
+  [1m[35mSoloReading Load (0.2ms)[0m  SELECT  "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."book_id" = $2 LIMIT 1  [["user_id", 5], ["book_id", 10]]
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE "solo_readings" SET "current" = $1, "updated_at" = $2 WHERE "solo_readings"."id" = $3  [["current", "t"], ["updated_at", "2016-06-06 06:38:10.078483"], ["id", 10]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35mBook Load (0.4ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 10]]
+Completed 200 OK in 10ms (Views: 0.7ms | ActiveRecord: 2.0ms)
+  [1m[36mSoloReading Load (0.7ms)[0m  [1mSELECT  "solo_readings".* FROM "solo_readings"  ORDER BY "solo_readings"."id" DESC LIMIT 1[0m
+
+
+Started GET "/users/5/current" for ::1 at 2016-06-06 01:40:24 -0500
+Processing by SoloReadingsController#current_books as HTML
+  Parameters: {"user_id"=>"5"}
+  [1m[36mSoloReading Load (0.3ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2[0m  [["user_id", 5], ["current", "t"]]
+  [1m[35mBook Load (0.3ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 17]]
+  [1m[36mBook Load (0.3ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 10]]
+Completed 200 OK in 5ms (Views: 0.8ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/users/5" for ::1 at 2016-06-06 01:40:33 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+Completed 200 OK in 2ms (Views: 0.3ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/users/5/books" for ::1 at 2016-06-06 01:40:43 -0500
+Processing by BooksController#create as HTML
+  Parameters: {"author"=>"Grumpy Cat", "title"=>"Grumpy Cat", "description"=>"Internet sensation Grumpy Cat's epic feline frown has inspired legions of devoted fans. Celebrating the grouch in everyone, the Grumpy Cat book teaches the fine art of grumpiness and includes enough bad attitude to cast a dark cloud over the whole world. Featuring brand new as well as classic photos, and including grump-inspiring activities and games, Grumpy Cat delivers unmatched, hilarious grumpiness that puts any bad mood in perspective.", "image_url"=>"http://books.google.com/books/content?id=97BwmQEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api", "pageCount"=>96, "publishedDate"=>"2013-07-23", "chapter_count"=>2, "user_id"=>"5", "book"=>{"title"=>"Grumpy Cat", "author"=>"Grumpy Cat", "image_url"=>"http://books.google.com/books/content?id=97BwmQEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api", "description"=>"Internet sensation Grumpy Cat's epic feline frown has inspired legions of devoted fans. Celebrating the grouch in everyone, the Grumpy Cat book teaches the fine art of grumpiness and includes enough bad attitude to cast a dark cloud over the whole world. Featuring brand new as well as classic photos, and including grump-inspiring activities and games, Grumpy Cat delivers unmatched, hilarious grumpiness that puts any bad mood in perspective."}}
+Can't verify CSRF token authenticity
+  [1m[36mUser Load (1.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mBook Load (0.2ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."title" = $1 LIMIT 1  [["title", "Grumpy Cat"]]
+  [1m[36m (1.7ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "books" ("title", "description", "author", "image_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["title", "Grumpy Cat"], ["description", "Internet sensation Grumpy Cat's epic feline frown has inspired legions of devoted fans. Celebrating the grouch in everyone, the Grumpy Cat book teaches the fine art of grumpiness and includes enough bad attitude to cast a dark cloud over the whole world. Featuring brand new as well as classic photos, and including grump-inspiring activities and games, Grumpy Cat delivers unmatched, hilarious grumpiness that puts any bad mood in perspective."], ["author", "Grumpy Cat"], ["image_url", "http://books.google.com/books/content?id=97BwmQEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"], ["created_at", "2016-06-06 06:40:43.523685"], ["updated_at", "2016-06-06 06:40:43.523685"]]
+  [1m[36mSQL (2.0ms)[0m  [1mINSERT INTO "solo_readings" ("user_id", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 5], ["book_id", 18], ["created_at", "2016-06-06 06:40:43.529190"], ["updated_at", "2016-06-06 06:40:43.529190"]]
+  [1m[35m (0.8ms)[0m  COMMIT
+  [1m[36m (1.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "chapters" ("number", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["number", 0], ["book_id", 18], ["created_at", "2016-06-06 06:40:43.559283"], ["updated_at", "2016-06-06 06:40:43.559283"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "chapters" ("number", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["number", 1], ["book_id", 18], ["created_at", "2016-06-06 06:40:43.562607"], ["updated_at", "2016-06-06 06:40:43.562607"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36mSoloReading Load (0.3ms)[0m  [1mSELECT  "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."book_id" = $2 LIMIT 1[0m  [["user_id", 5], ["book_id", 18]]
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "solo_readings" SET "current" = $1, "updated_at" = $2 WHERE "solo_readings"."id" = $3[0m  [["current", "t"], ["updated_at", "2016-06-06 06:40:43.567235"], ["id", 18]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 18]]
+Completed 200 OK in 58ms (Views: 0.6ms | ActiveRecord: 15.8ms)
+
+
+Started GET "/users/5/current" for ::1 at 2016-06-06 01:43:28 -0500
+Processing by SoloReadingsController#current_books as HTML
+  Parameters: {"user_id"=>"5"}
+  [1m[35mSoloReading Load (0.3ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2  [["user_id", 5], ["current", "t"]]
+  [1m[36mBook Load (0.3ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 17]]
+  [1m[35mBook Load (0.3ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 10]]
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 18]]
+Completed 200 OK in 7ms (Views: 1.1ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/users/5/current" for ::1 at 2016-06-06 01:48:28 -0500
+Processing by SoloReadingsController#current_books as HTML
+  Parameters: {"user_id"=>"5"}
+  [1m[35mSoloReading Load (0.3ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2  [["user_id", 5], ["current", "t"]]
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 17]]
+  [1m[35mBook Load (0.2ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 10]]
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 18]]
+Completed 200 OK in 6ms (Views: 1.0ms | ActiveRecord: 0.9ms)
+
+
+Started POST "/users/5/books" for ::1 at 2016-06-06 01:48:54 -0500
+Processing by BooksController#create as HTML
+  Parameters: {"author"=>"Guy Kawasaki", "title"=>"Reality Check", "description"=>"Challenges popular corporate practices of using buzzwords and a pedigreed workforce to promote agenda-based productivity, and makes lighthearted and common-sense recommendations for being professionally competitive in the real world.", "image_url"=>"http://books.google.com/books/content?id=VE2CMTHnZZYC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api", "pageCount"=>474, "publishedDate"=>"2008", "chapter_count"=>2, "user_id"=>"5", "book"=>{"title"=>"Reality Check", "author"=>"Guy Kawasaki", "image_url"=>"http://books.google.com/books/content?id=VE2CMTHnZZYC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api", "description"=>"Challenges popular corporate practices of using buzzwords and a pedigreed workforce to promote agenda-based productivity, and makes lighthearted and common-sense recommendations for being professionally competitive in the real world."}}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."title" = $1 LIMIT 1[0m  [["title", "Reality Check"]]
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "books" ("title", "description", "author", "image_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "Reality Check"], ["description", "Challenges popular corporate practices of using buzzwords and a pedigreed workforce to promote agenda-based productivity, and makes lighthearted and common-sense recommendations for being professionally competitive in the real world."], ["author", "Guy Kawasaki"], ["image_url", "http://books.google.com/books/content?id=VE2CMTHnZZYC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"], ["created_at", "2016-06-06 06:48:54.077813"], ["updated_at", "2016-06-06 06:48:54.077813"]]
+  [1m[35mSQL (1.1ms)[0m  INSERT INTO "solo_readings" ("user_id", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["user_id", 5], ["book_id", 19], ["created_at", "2016-06-06 06:48:54.081073"], ["updated_at", "2016-06-06 06:48:54.081073"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "chapters" ("number", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["number", 0], ["book_id", 19], ["created_at", "2016-06-06 06:48:54.085888"], ["updated_at", "2016-06-06 06:48:54.085888"]]
+  [1m[35m (2.1ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "chapters" ("number", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["number", 1], ["book_id", 19], ["created_at", "2016-06-06 06:48:54.090485"], ["updated_at", "2016-06-06 06:48:54.090485"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35mSoloReading Load (0.3ms)[0m  SELECT  "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."book_id" = $2 LIMIT 1  [["user_id", 5], ["book_id", 19]]
+  [1m[36m (0.6ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  UPDATE "solo_readings" SET "current" = $1, "updated_at" = $2 WHERE "solo_readings"."id" = $3  [["current", "t"], ["updated_at", "2016-06-06 06:48:54.095529"], ["id", 19]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35mBook Load (0.2ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 19]]
+Completed 200 OK in 26ms (Views: 0.9ms | ActiveRecord: 7.6ms)
+
+
+Started POST "/users/5/books" for ::1 at 2016-06-06 01:49:08 -0500
+Processing by BooksController#create as HTML
+  Parameters: {"author"=>"Guy Kawasaki", "title"=>"Reality Check", "description"=>"Challenges popular corporate practices of using buzzwords and a pedigreed workforce to promote agenda-based productivity, and makes lighthearted and common-sense recommendations for being professionally competitive in the real world.", "image_url"=>"http://books.google.com/books/content?id=VE2CMTHnZZYC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api", "pageCount"=>474, "publishedDate"=>"2008", "chapter_count"=>1, "user_id"=>"5", "book"=>{"title"=>"Reality Check", "author"=>"Guy Kawasaki", "image_url"=>"http://books.google.com/books/content?id=VE2CMTHnZZYC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api", "description"=>"Challenges popular corporate practices of using buzzwords and a pedigreed workforce to promote agenda-based productivity, and makes lighthearted and common-sense recommendations for being professionally competitive in the real world."}}
+Can't verify CSRF token authenticity
+  [1m[36mUser Load (3.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mBook Load (0.3ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."title" = $1 LIMIT 1  [["title", "Reality Check"]]
+  [1m[36mSoloReading Load (0.6ms)[0m  [1mSELECT  "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."book_id" = $2 LIMIT 1[0m  [["user_id", 5], ["book_id", 19]]
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mCOMMIT[0m
+  [1m[35mBook Load (0.3ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 19]]
+Completed 200 OK in 11ms (Views: 0.9ms | ActiveRecord: 4.6ms)
+
+
+Started GET "/users/5/current" for ::1 at 2016-06-06 01:49:08 -0500
+Processing by SoloReadingsController#current_books as HTML
+  Parameters: {"user_id"=>"5"}
+  [1m[36mSoloReading Load (0.3ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2[0m  [["user_id", 5], ["current", "t"]]
+  [1m[35mBook Load (0.3ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 17]]
+  [1m[36mBook Load (0.3ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 10]]
+  [1m[35mBook Load (1.5ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 18]]
+  [1m[36mBook Load (0.4ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 19]]
+Completed 200 OK in 11ms (Views: 1.1ms | ActiveRecord: 2.7ms)
+
+
+Started GET "/users/5" for ::1 at 2016-06-06 01:49:17 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+Completed 200 OK in 2ms (Views: 0.3ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/users/5/books" for ::1 at 2016-06-06 01:49:37 -0500
+Processing by BooksController#create as HTML
+  Parameters: {"author"=>"Mikael Krogerus", "title"=>"The Test Book", "description"=>"An essential library of tests for self-knowledge and success, from the strategic thinking experts behind the international bestseller The Decision Book. Are you clever? Can you self-motivate? Are you creative? How do you handle money? Can you lead others well? With their trademark style and wit, best-selling authors Mikael Krogerus and Roman Tschäppeler present sixty-four tests spanning intelligence and personality type; creativity and leadership skills; fitness and lifestyle; and knowledge and belief. From what you see in a Rorschach test to comparing your workout against a Navy SEAL’s, from EQ to IQ and Myers-Briggs in between, The Test Book offers a panoply of ways to assess yourself and decide what you need to succeed. As Krogerus and Tschäppeler highlight, you can only know whether you have the right skills, the right job, or the right partner when you know where you stand right now. Small enough to fit in your pocket but packed with insight and good humor, The Test Book delivers a quick, fun way to evaluate your life and happiness.", "image_url"=>"http://books.google.com/books/content?id=lPV1CQAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api", "pageCount"=>208, "publishedDate"=>"2015-10-05", "chapter_count"=>1, "user_id"=>"5", "book"=>{"title"=>"The Test Book", "author"=>"Mikael Krogerus", "image_url"=>"http://books.google.com/books/content?id=lPV1CQAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api", "description"=>"An essential library of tests for self-knowledge and success, from the strategic thinking experts behind the international bestseller The Decision Book. Are you clever? Can you self-motivate? Are you creative? How do you handle money? Can you lead others well? With their trademark style and wit, best-selling authors Mikael Krogerus and Roman Tschäppeler present sixty-four tests spanning intelligence and personality type; creativity and leadership skills; fitness and lifestyle; and knowledge and belief. From what you see in a Rorschach test to comparing your workout against a Navy SEAL’s, from EQ to IQ and Myers-Briggs in between, The Test Book offers a panoply of ways to assess yourself and decide what you need to succeed. As Krogerus and Tschäppeler highlight, you can only know whether you have the right skills, the right job, or the right partner when you know where you stand right now. Small enough to fit in your pocket but packed with insight and good humor, The Test Book delivers a quick, fun way to evaluate your life and happiness."}}
+Can't verify CSRF token authenticity
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mBook Load (0.3ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."title" = $1 LIMIT 1  [["title", "The Test Book"]]
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (1.4ms)[0m  INSERT INTO "books" ("title", "description", "author", "image_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["title", "The Test Book"], ["description", "An essential library of tests for self-knowledge and success, from the strategic thinking experts behind the international bestseller The Decision Book. Are you clever? Can you self-motivate? Are you creative? How do you handle money? Can you lead others well? With their trademark style and wit, best-selling authors Mikael Krogerus and Roman Tschäppeler present sixty-four tests spanning intelligence and personality type; creativity and leadership skills; fitness and lifestyle; and knowledge and belief. From what you see in a Rorschach test to comparing your workout against a Navy SEAL’s, from EQ to IQ and Myers-Briggs in between, The Test Book offers a panoply of ways to assess yourself and decide what you need to succeed. As Krogerus and Tschäppeler highlight, you can only know whether you have the right skills, the right job, or the right partner when you know where you stand right now. Small enough to fit in your pocket but packed with insight and good humor, The Test Book delivers a quick, fun way to evaluate your life and happiness."], ["author", "Mikael Krogerus"], ["image_url", "http://books.google.com/books/content?id=lPV1CQAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"], ["created_at", "2016-06-06 06:49:37.196246"], ["updated_at", "2016-06-06 06:49:37.196246"]]
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "solo_readings" ("user_id", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 5], ["book_id", 20], ["created_at", "2016-06-06 06:49:37.203173"], ["updated_at", "2016-06-06 06:49:37.203173"]]
+  [1m[35m (14.5ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "chapters" ("number", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["number", 0], ["book_id", 20], ["created_at", "2016-06-06 06:49:37.221965"], ["updated_at", "2016-06-06 06:49:37.221965"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35mSoloReading Load (0.2ms)[0m  SELECT  "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."book_id" = $2 LIMIT 1  [["user_id", 5], ["book_id", 20]]
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE "solo_readings" SET "current" = $1, "updated_at" = $2 WHERE "solo_readings"."id" = $3  [["current", "t"], ["updated_at", "2016-06-06 06:49:37.226342"], ["id", 20]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35mBook Load (0.2ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 20]]
+Completed 200 OK in 40ms (Views: 1.0ms | ActiveRecord: 19.3ms)
+
+
+Started GET "/check_books/19" for ::1 at 2016-06-06 01:49:45 -0500
+Processing by BooksController#check_books as HTML
+  Parameters: {"book_id"=>"19"}
+  [1m[36mBook Load (0.3ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 19]]
+Completed 200 OK in 2ms (Views: 0.9ms | ActiveRecord: 0.3ms)
+  [1m[36mSoloReading Load (0.8ms)[0m  [1mSELECT  "solo_readings".* FROM "solo_readings"  ORDER BY "solo_readings"."id" DESC LIMIT 1[0m
+  [1m[35mBook Load (0.4ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 20]]
+  [1m[36mSoloReading Load (2.4ms)[0m  [1mSELECT  "solo_readings".* FROM "solo_readings"  ORDER BY "solo_readings"."id" DESC LIMIT 1[0m
+
+
+Started GET "/users/5/current" for ::1 at 2016-06-06 01:53:09 -0500
+Processing by SoloReadingsController#current_books as HTML
+  Parameters: {"user_id"=>"5"}
+  [1m[35mSoloReading Load (0.3ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2  [["user_id", 5], ["current", "t"]]
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 17]]
+  [1m[35mBook Load (0.2ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 10]]
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 18]]
+  [1m[35mBook Load (0.2ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 19]]
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 20]]
+Completed 200 OK in 11ms (Views: 1.8ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/users/5/current" for ::1 at 2016-06-06 01:53:20 -0500
+Processing by SoloReadingsController#current_books as HTML
+  Parameters: {"user_id"=>"5"}
+  [1m[35mSoloReading Load (0.2ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2  [["user_id", 5], ["current", "t"]]
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 17]]
+  [1m[35mBook Load (0.2ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 10]]
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 18]]
+  [1m[35mBook Load (0.2ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 19]]
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 20]]
+Completed 200 OK in 9ms (Views: 1.9ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/users/5/current" for ::1 at 2016-06-06 01:54:00 -0500
+Processing by SoloReadingsController#current_books as HTML
+  Parameters: {"user_id"=>"5"}
+  [1m[35mSoloReading Load (0.2ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2  [["user_id", 5], ["current", "t"]]
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 17]]
+  [1m[35mBook Load (0.2ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 10]]
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 18]]
+  [1m[35mBook Load (0.2ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 19]]
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 20]]
+Completed 200 OK in 8ms (Views: 1.7ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/users/5/current" for ::1 at 2016-06-06 01:54:04 -0500
+Processing by SoloReadingsController#current_books as HTML
+  Parameters: {"user_id"=>"5"}
+  [1m[35mSoloReading Load (0.3ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2  [["user_id", 5], ["current", "t"]]
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 17]]
+  [1m[35mBook Load (0.2ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 10]]
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 18]]
+  [1m[35mBook Load (0.2ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 19]]
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 20]]
+Completed 200 OK in 8ms (Views: 1.2ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/users/5/current" for ::1 at 2016-06-06 01:54:06 -0500
+Processing by SoloReadingsController#current_books as HTML
+  Parameters: {"user_id"=>"5"}
+  [1m[35mSoloReading Load (0.2ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2  [["user_id", 5], ["current", "t"]]
+  [1m[36mBook Load (0.3ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 17]]
+  [1m[35mBook Load (0.3ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 10]]
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 18]]
+  [1m[35mBook Load (0.3ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 19]]
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 20]]
+Completed 200 OK in 9ms (Views: 1.5ms | ActiveRecord: 1.5ms)
+
+
+Started POST "/users/5/books" for ::1 at 2016-06-06 01:54:23 -0500
+Processing by BooksController#create as HTML
+  Parameters: {"author"=>"Thomas N. Bainter", "title"=>"The Shit Book", "description"=>"This book is about shit. Not the shit you have in your closet or those lying around the house or the shit in your car, but it is about shit. The stuff that comes out of your body when you have to go to the bathroom. Not the stuff that comes out the front side but the stuff that comes out of your butt. It doesn’t matter how poor you are, how rich you are, how ugly you are, or how beautiful you are. It doesn’t matter if you are skinny or overweight. And no matter what you may think, your shit does stink sometimes. This book is for all of you who have ever admired your dirty deed. For those of you whose brother made you run to the bathroom because you thought someone had died only to see the longest turd ever in the stool.", "image_url"=>"http://books.google.com/books/content?id=LHTexEiizN4C&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api", "pageCount"=>60, "publishedDate"=>"2011-11-04", "chapter_count"=>1, "user_id"=>"5", "book"=>{"title"=>"The Shit Book", "author"=>"Thomas N. Bainter", "image_url"=>"http://books.google.com/books/content?id=LHTexEiizN4C&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api", "description"=>"This book is about shit. Not the shit you have in your closet or those lying around the house or the shit in your car, but it is about shit. The stuff that comes out of your body when you have to go to the bathroom. Not the stuff that comes out the front side but the stuff that comes out of your butt. It doesn’t matter how poor you are, how rich you are, how ugly you are, or how beautiful you are. It doesn’t matter if you are skinny or overweight. And no matter what you may think, your shit does stink sometimes. This book is for all of you who have ever admired your dirty deed. For those of you whose brother made you run to the bathroom because you thought someone had died only to see the longest turd ever in the stool."}}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mBook Load (0.3ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."title" = $1 LIMIT 1[0m  [["title", "The Shit Book"]]
+  [1m[35m (2.6ms)[0m  BEGIN
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "books" ("title", "description", "author", "image_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "The Shit Book"], ["description", "This book is about shit. Not the shit you have in your closet or those lying around the house or the shit in your car, but it is about shit. The stuff that comes out of your body when you have to go to the bathroom. Not the stuff that comes out the front side but the stuff that comes out of your butt. It doesn’t matter how poor you are, how rich you are, how ugly you are, or how beautiful you are. It doesn’t matter if you are skinny or overweight. And no matter what you may think, your shit does stink sometimes. This book is for all of you who have ever admired your dirty deed. For those of you whose brother made you run to the bathroom because you thought someone had died only to see the longest turd ever in the stool."], ["author", "Thomas N. Bainter"], ["image_url", "http://books.google.com/books/content?id=LHTexEiizN4C&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"], ["created_at", "2016-06-06 06:54:23.141846"], ["updated_at", "2016-06-06 06:54:23.141846"]]
+  [1m[35mSQL (0.9ms)[0m  INSERT INTO "solo_readings" ("user_id", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["user_id", 5], ["book_id", 21], ["created_at", "2016-06-06 06:54:23.145934"], ["updated_at", "2016-06-06 06:54:23.145934"]]
+  [1m[36m (0.8ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.5ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "chapters" ("number", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["number", 0], ["book_id", 21], ["created_at", "2016-06-06 06:54:23.152740"], ["updated_at", "2016-06-06 06:54:23.152740"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36mSoloReading Load (0.3ms)[0m  [1mSELECT  "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."book_id" = $2 LIMIT 1[0m  [["user_id", 5], ["book_id", 21]]
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "solo_readings" SET "current" = $1, "updated_at" = $2 WHERE "solo_readings"."id" = $3[0m  [["current", "t"], ["updated_at", "2016-06-06 06:54:23.157313"], ["id", 21]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36mBook Load (0.3ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 21]]
+Completed 200 OK in 29ms (Views: 1.0ms | ActiveRecord: 8.1ms)
+  [1m[36mSoloReading Load (1.3ms)[0m  [1mSELECT  "solo_readings".* FROM "solo_readings"  ORDER BY "solo_readings"."id" DESC LIMIT 1[0m
+  [1m[35mBook Load (0.5ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 21]]
+  [1m[36mSoloReading Load (2.1ms)[0m  [1mSELECT  "solo_readings".* FROM "solo_readings"  ORDER BY "solo_readings"."id" DESC LIMIT 1[0m
+
+
+Started GET "/users/5/current" for ::1 at 2016-06-06 01:54:52 -0500
+Processing by SoloReadingsController#current_books as HTML
+  Parameters: {"user_id"=>"5"}
+  [1m[35mSoloReading Load (0.2ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2  [["user_id", 5], ["current", "t"]]
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 17]]
+  [1m[35mBook Load (0.2ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 10]]
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 18]]
+  [1m[35mBook Load (0.2ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 19]]
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 20]]
+  [1m[35mBook Load (0.2ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 21]]
+Completed 200 OK in 10ms (Views: 2.6ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/users/5/current" for ::1 at 2016-06-06 01:55:00 -0500
+Processing by SoloReadingsController#current_books as HTML
+  Parameters: {"user_id"=>"5"}
+  [1m[36mSoloReading Load (0.2ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2[0m  [["user_id", 5], ["current", "t"]]
+  [1m[35mBook Load (0.2ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 17]]
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 10]]
+  [1m[35mBook Load (0.2ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 18]]
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 19]]
+  [1m[35mBook Load (0.2ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 20]]
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 21]]
+Completed 200 OK in 10ms (Views: 2.8ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/users/5" for ::1 at 2016-06-06 01:56:25 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/check_books/20" for ::1 at 2016-06-06 01:59:27 -0500
+Processing by BooksController#check_books as HTML
+  Parameters: {"book_id"=>"20"}
+  [1m[36mBook Load (0.3ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 20]]
+Completed 200 OK in 2ms (Views: 0.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/5/current" for ::1 at 2016-06-06 01:59:35 -0500
+Processing by SoloReadingsController#current_books as HTML
+  Parameters: {"user_id"=>"5"}
+  [1m[35mSoloReading Load (0.3ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2  [["user_id", 5], ["current", "t"]]
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 17]]
+  [1m[35mBook Load (0.2ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 10]]
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 18]]
+  [1m[35mBook Load (0.2ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 19]]
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 20]]
+  [1m[35mBook Load (0.2ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 21]]
+Completed 200 OK in 11ms (Views: 2.9ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/users/5" for ::1 at 2016-06-06 01:59:55 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+Completed 200 OK in 2ms (Views: 0.3ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/5/queue" for ::1 at 2016-06-06 01:59:57 -0500
+Processing by SoloReadingsController#queue_books as HTML
+  Parameters: {"user_id"=>"5"}
+  [1m[35mSoloReading Load (0.4ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."queue" = $2  [["user_id", 5], ["queue", "t"]]
+  [1m[36mBook Load (0.3ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 9]]
+  [1m[35mBook Load (1.0ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 11]]
+  [1m[36mBook Load (0.3ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 12]]
+  [1m[35mBook Load (0.6ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 13]]
+  [1m[36mBook Load (0.4ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 14]]
+  [1m[35mBook Load (0.4ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 15]]
+  [1m[36mBook Load (0.3ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 16]]
+  [1m[35mBook Load (1.8ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 10]]
+Completed 200 OK in 24ms (Views: 3.8ms | ActiveRecord: 5.4ms)
+
+
+Started GET "/users/5/queue" for ::1 at 2016-06-06 02:00:33 -0500
+Processing by SoloReadingsController#queue_books as HTML
+  Parameters: {"user_id"=>"5"}
+  [1m[36mSoloReading Load (1.4ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."queue" = $2[0m  [["user_id", 5], ["queue", "t"]]
+  [1m[35mBook Load (0.3ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 9]]
+  [1m[36mBook Load (0.3ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 11]]
+  [1m[35mBook Load (0.4ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 12]]
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 13]]
+  [1m[35mBook Load (0.3ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 14]]
+  [1m[36mBook Load (0.6ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 15]]
+  [1m[35mBook Load (0.4ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 16]]
+  [1m[36mBook Load (0.4ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 10]]
+Completed 200 OK in 18ms (Views: 1.9ms | ActiveRecord: 4.3ms)
+
+
+Started GET "/users/5/queue" for ::1 at 2016-06-06 02:01:07 -0500
+Processing by SoloReadingsController#queue_books as HTML
+  Parameters: {"user_id"=>"5"}
+  [1m[35mSoloReading Load (0.3ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."queue" = $2  [["user_id", 5], ["queue", "t"]]
+  [1m[36mBook Load (0.3ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 9]]
+  [1m[35mBook Load (0.2ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 11]]
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 12]]
+  [1m[35mBook Load (0.2ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 13]]
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 14]]
+  [1m[35mBook Load (0.2ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 15]]
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 16]]
+  [1m[35mBook Load (0.5ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 10]]
+Completed 200 OK in 16ms (Views: 3.3ms | ActiveRecord: 2.4ms)
+
+
+Started GET "/users/5/queue" for ::1 at 2016-06-06 02:01:56 -0500
+Processing by SoloReadingsController#queue_books as HTML
+  Parameters: {"user_id"=>"5"}
+  [1m[36mSoloReading Load (0.3ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."queue" = $2[0m  [["user_id", 5], ["queue", "t"]]
+  [1m[35mBook Load (0.2ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 9]]
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 11]]
+  [1m[35mBook Load (0.2ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 12]]
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 13]]
+  [1m[35mBook Load (0.3ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 14]]
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 15]]
+  [1m[35mBook Load (0.2ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 16]]
+  [1m[36mBook Load (1.0ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 10]]
+Completed 200 OK in 15ms (Views: 2.4ms | ActiveRecord: 2.9ms)
+
+
+Started GET "/users/5/current" for ::1 at 2016-06-06 02:02:37 -0500
+Processing by SoloReadingsController#current_books as HTML
+  Parameters: {"user_id"=>"5"}
+  [1m[35mSoloReading Load (0.3ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2  [["user_id", 5], ["current", "t"]]
+  [1m[36mBook Load (0.3ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 17]]
+  [1m[35mBook Load (0.4ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 10]]
+  [1m[36mBook Load (0.3ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 18]]
+  [1m[35mBook Load (0.3ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 19]]
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 20]]
+  [1m[35mBook Load (0.2ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 21]]
+Completed 200 OK in 13ms (Views: 2.2ms | ActiveRecord: 1.9ms)
+
+
+Started POST "/users/5/books" for ::1 at 2016-06-06 02:13:43 -0500
+Processing by BooksController#create as HTML
+  Parameters: {"author"=>"Matt Ivester", "title"=>"Lol...OMG!", "description"=>"The ease with which digital content can be shared online has, in addition to its many benefits, created a host of problems for today's high school students. All too often, students are uploading, updating, posting, publishing without giving a second thought to who might see their content or how it might be perceived. lol..OMG! provides a cautionary look at the many ways that today's students are experiencing the unanticipated negative consequences of their digital decisions--from lost job opportunities and denied college admissions to full-blown national scandals. It also examines how technology is allowing students to bully one another in new and disturbing ways, and why students are often crueler online than in-person. By using real-life case studies and offering actionable strategies and best practices, this book empowers students to clean up and maintain a positive online presence, and to become responsible digital citizens.", "image_url"=>"http://books.google.com/books/content?id=WoQ2NAEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api", "pageCount"=>160, "publishedDate"=>"2012-09-28", "chapter_count"=>9, "user_id"=>"5", "book"=>{"title"=>"Lol...OMG!", "author"=>"Matt Ivester", "image_url"=>"http://books.google.com/books/content?id=WoQ2NAEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api", "description"=>"The ease with which digital content can be shared online has, in addition to its many benefits, created a host of problems for today's high school students. All too often, students are uploading, updating, posting, publishing without giving a second thought to who might see their content or how it might be perceived. lol..OMG! provides a cautionary look at the many ways that today's students are experiencing the unanticipated negative consequences of their digital decisions--from lost job opportunities and denied college admissions to full-blown national scandals. It also examines how technology is allowing students to bully one another in new and disturbing ways, and why students are often crueler online than in-person. By using real-life case studies and offering actionable strategies and best practices, this book empowers students to clean up and maintain a positive online presence, and to become responsible digital citizens."}}
+Can't verify CSRF token authenticity
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mBook Load (0.2ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."title" = $1 LIMIT 1  [["title", "Lol...OMG!"]]
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "books" ("title", "description", "author", "image_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["title", "Lol...OMG!"], ["description", "The ease with which digital content can be shared online has, in addition to its many benefits, created a host of problems for today's high school students. All too often, students are uploading, updating, posting, publishing without giving a second thought to who might see their content or how it might be perceived. lol..OMG! provides a cautionary look at the many ways that today's students are experiencing the unanticipated negative consequences of their digital decisions--from lost job opportunities and denied college admissions to full-blown national scandals. It also examines how technology is allowing students to bully one another in new and disturbing ways, and why students are often crueler online than in-person. By using real-life case studies and offering actionable strategies and best practices, this book empowers students to clean up and maintain a positive online presence, and to become responsible digital citizens."], ["author", "Matt Ivester"], ["image_url", "http://books.google.com/books/content?id=WoQ2NAEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"], ["created_at", "2016-06-06 07:13:43.737552"], ["updated_at", "2016-06-06 07:13:43.737552"]]
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "solo_readings" ("user_id", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 5], ["book_id", 22], ["created_at", "2016-06-06 07:13:43.740390"], ["updated_at", "2016-06-06 07:13:43.740390"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "chapters" ("number", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["number", 0], ["book_id", 22], ["created_at", "2016-06-06 07:13:43.744062"], ["updated_at", "2016-06-06 07:13:43.744062"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "chapters" ("number", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["number", 1], ["book_id", 22], ["created_at", "2016-06-06 07:13:43.747343"], ["updated_at", "2016-06-06 07:13:43.747343"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "chapters" ("number", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["number", 2], ["book_id", 22], ["created_at", "2016-06-06 07:13:43.751221"], ["updated_at", "2016-06-06 07:13:43.751221"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "chapters" ("number", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["number", 3], ["book_id", 22], ["created_at", "2016-06-06 07:13:43.755983"], ["updated_at", "2016-06-06 07:13:43.755983"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "chapters" ("number", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["number", 4], ["book_id", 22], ["created_at", "2016-06-06 07:13:43.759613"], ["updated_at", "2016-06-06 07:13:43.759613"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.4ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "chapters" ("number", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["number", 5], ["book_id", 22], ["created_at", "2016-06-06 07:13:43.764209"], ["updated_at", "2016-06-06 07:13:43.764209"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "chapters" ("number", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["number", 6], ["book_id", 22], ["created_at", "2016-06-06 07:13:43.767420"], ["updated_at", "2016-06-06 07:13:43.767420"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "chapters" ("number", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["number", 7], ["book_id", 22], ["created_at", "2016-06-06 07:13:43.770382"], ["updated_at", "2016-06-06 07:13:43.770382"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "chapters" ("number", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["number", 8], ["book_id", 22], ["created_at", "2016-06-06 07:13:43.773982"], ["updated_at", "2016-06-06 07:13:43.773982"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35mSoloReading Load (0.2ms)[0m  SELECT  "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."book_id" = $2 LIMIT 1  [["user_id", 5], ["book_id", 22]]
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  UPDATE "solo_readings" SET "current" = $1, "updated_at" = $2 WHERE "solo_readings"."id" = $3  [["current", "t"], ["updated_at", "2016-06-06 07:13:43.777423"], ["id", 22]]
+  [1m[36m (1.0ms)[0m  [1mCOMMIT[0m
+  [1m[35mBook Load (0.3ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 22]]
+Completed 200 OK in 49ms (Views: 0.8ms | ActiveRecord: 10.8ms)
+
+
+Started POST "/login" for ::1 at 2016-06-06 02:14:29 -0500
+Processing by SessionsController#login as HTML
+  Parameters: {"username"=>"fronk", "password"=>"[FILTERED]", "session"=>{"username"=>"fronk", "password"=>"[FILTERED]"}}
+Can't verify CSRF token authenticity
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."user_name" = $1 LIMIT 1[0m  [["user_name", "fronk"]]
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+Completed 200 OK in 77ms (Views: 0.2ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/check_books/21" for ::1 at 2016-06-06 02:14:48 -0500
+Processing by BooksController#check_books as HTML
+  Parameters: {"book_id"=>"21"}
+  [1m[36mBook Load (0.7ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 21]]
+Completed 200 OK in 4ms (Views: 1.0ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/check_books/17" for ::1 at 2016-06-06 02:15:20 -0500
+Processing by BooksController#check_books as HTML
+  Parameters: {"book_id"=>"17"}
+  [1m[35mBook Load (0.3ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 17]]
+Completed 200 OK in 3ms (Views: 1.2ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/users/5/books" for ::1 at 2016-06-06 02:15:29 -0500
+Processing by BooksController#create as HTML
+  Parameters: {"book_id"=>17, "author"=>"David Duchovny", "title"=>"Holy Cow", "image_url"=>"http://books.google.com/books/content?id=OZWWBAAAQBAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api", "description"=>"Holy Cow by David Duchovny is a comic delight that will thrill fans of Jasper Fforde and Ben Aaronovitch. And anyone who enjoys a witty wisecrack in a novel. Elsie Bovary is a cow and a pretty happy one at that. Until one night, Elsie sneaks out of the pasture and finds herself drawn to the farmhouse. Through the window, she sees the farmer's family gathered around a bright Box God - and what the Box God reveals about something called an 'industrial meat farm' shakes Elsie's understanding of her world to its core. The only solution? To escape to a better, safer world. And so a motley crew is formed: Elsie; Shalom, a grumpy pig who's recently converted to Judaism; and Tom, a suave turkey who can't fly, but can work an iPhone with his beak. Toting stolen passports and slapdash human disguises, they head for the airport ... Elsie is a wise-cracking, slyly witty narrator; Tom dispenses psychiatric advice in a fake German accent; and Shalom ends up unexpectedly uniting Israelis and Palestinians. David Duchovny's charismatic creatures point the way toward a mutual understanding and acceptance the world desperately needs.", "page_numbers"=>nil, "chapter_count"=>2, "user_id"=>"5", "book"=>{"title"=>"Holy Cow", "author"=>"David Duchovny", "image_url"=>"http://books.google.com/books/content?id=OZWWBAAAQBAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api", "description"=>"Holy Cow by David Duchovny is a comic delight that will thrill fans of Jasper Fforde and Ben Aaronovitch. And anyone who enjoys a witty wisecrack in a novel. Elsie Bovary is a cow and a pretty happy one at that. Until one night, Elsie sneaks out of the pasture and finds herself drawn to the farmhouse. Through the window, she sees the farmer's family gathered around a bright Box God - and what the Box God reveals about something called an 'industrial meat farm' shakes Elsie's understanding of her world to its core. The only solution? To escape to a better, safer world. And so a motley crew is formed: Elsie; Shalom, a grumpy pig who's recently converted to Judaism; and Tom, a suave turkey who can't fly, but can work an iPhone with his beak. Toting stolen passports and slapdash human disguises, they head for the airport ... Elsie is a wise-cracking, slyly witty narrator; Tom dispenses psychiatric advice in a fake German accent; and Shalom ends up unexpectedly uniting Israelis and Palestinians. David Duchovny's charismatic creatures point the way toward a mutual understanding and acceptance the world desperately needs.", "page_numbers"=>nil}}
+Can't verify CSRF token authenticity
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mBook Load (0.3ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."title" = $1 LIMIT 1  [["title", "Holy Cow"]]
+  [1m[36mSoloReading Load (0.4ms)[0m  [1mSELECT  "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."book_id" = $2 LIMIT 1[0m  [["user_id", 5], ["book_id", 17]]
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mCOMMIT[0m
+  [1m[35mBook Load (0.2ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 17]]
+Completed 200 OK in 11ms (Views: 1.0ms | ActiveRecord: 1.6ms)
+  [1m[36mSoloReading Load (0.7ms)[0m  [1mSELECT  "solo_readings".* FROM "solo_readings"  ORDER BY "solo_readings"."id" DESC LIMIT 1[0m
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users"  ORDER BY "users"."id" DESC LIMIT 1
+  [1m[36mSoloReading Load (0.3ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1[0m  [["user_id", 5]]
+  [1m[35m (0.4ms)[0m  SELECT COUNT(9) FROM "solo_readings" WHERE "solo_readings"."user_id" = $1  [["user_id", 5]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(11) FROM "solo_readings" WHERE "solo_readings"."user_id" = $1[0m  [["user_id", 5]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(12) FROM "solo_readings" WHERE "solo_readings"."user_id" = $1  [["user_id", 5]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(13) FROM "solo_readings" WHERE "solo_readings"."user_id" = $1[0m  [["user_id", 5]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(14) FROM "solo_readings" WHERE "solo_readings"."user_id" = $1  [["user_id", 5]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(15) FROM "solo_readings" WHERE "solo_readings"."user_id" = $1[0m  [["user_id", 5]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(16) FROM "solo_readings" WHERE "solo_readings"."user_id" = $1  [["user_id", 5]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(17) FROM "solo_readings" WHERE "solo_readings"."user_id" = $1[0m  [["user_id", 5]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(10) FROM "solo_readings" WHERE "solo_readings"."user_id" = $1  [["user_id", 5]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(18) FROM "solo_readings" WHERE "solo_readings"."user_id" = $1[0m  [["user_id", 5]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(19) FROM "solo_readings" WHERE "solo_readings"."user_id" = $1  [["user_id", 5]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(20) FROM "solo_readings" WHERE "solo_readings"."user_id" = $1[0m  [["user_id", 5]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(21) FROM "solo_readings" WHERE "solo_readings"."user_id" = $1  [["user_id", 5]]
+  [1m[36m (0.1ms)[0m  [1mSELECT COUNT(22) FROM "solo_readings" WHERE "solo_readings"."user_id" = $1[0m  [["user_id", 5]]
+  [1m[35m (0.4ms)[0m  SELECT COUNT(9) FROM "solo_readings" WHERE "solo_readings"."user_id" = $1  [["user_id", 5]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(11) FROM "solo_readings" WHERE "solo_readings"."user_id" = $1[0m  [["user_id", 5]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(12) FROM "solo_readings" WHERE "solo_readings"."user_id" = $1  [["user_id", 5]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(13) FROM "solo_readings" WHERE "solo_readings"."user_id" = $1[0m  [["user_id", 5]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(14) FROM "solo_readings" WHERE "solo_readings"."user_id" = $1  [["user_id", 5]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(15) FROM "solo_readings" WHERE "solo_readings"."user_id" = $1[0m  [["user_id", 5]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(16) FROM "solo_readings" WHERE "solo_readings"."user_id" = $1  [["user_id", 5]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(17) FROM "solo_readings" WHERE "solo_readings"."user_id" = $1[0m  [["user_id", 5]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(10) FROM "solo_readings" WHERE "solo_readings"."user_id" = $1  [["user_id", 5]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(18) FROM "solo_readings" WHERE "solo_readings"."user_id" = $1[0m  [["user_id", 5]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(19) FROM "solo_readings" WHERE "solo_readings"."user_id" = $1  [["user_id", 5]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(20) FROM "solo_readings" WHERE "solo_readings"."user_id" = $1[0m  [["user_id", 5]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(21) FROM "solo_readings" WHERE "solo_readings"."user_id" = $1  [["user_id", 5]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(22) FROM "solo_readings" WHERE "solo_readings"."user_id" = $1[0m  [["user_id", 5]]
+  [1m[35mSoloReading Load (1.8ms)[0m  SELECT  "solo_readings".* FROM "solo_readings"  ORDER BY "solo_readings"."id" DESC LIMIT 1
+  [1m[36mBook Load (0.4ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 22]]
+
+
+Started POST "/users/5/books" for ::1 at 2016-06-06 02:19:56 -0500
+Processing by BooksController#create as HTML
+  Parameters: {"book_id"=>17, "author"=>"David Duchovny", "title"=>"Holy Cow", "image_url"=>"http://books.google.com/books/content?id=OZWWBAAAQBAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api", "description"=>"Holy Cow by David Duchovny is a comic delight that will thrill fans of Jasper Fforde and Ben Aaronovitch. And anyone who enjoys a witty wisecrack in a novel. Elsie Bovary is a cow and a pretty happy one at that. Until one night, Elsie sneaks out of the pasture and finds herself drawn to the farmhouse. Through the window, she sees the farmer's family gathered around a bright Box God - and what the Box God reveals about something called an 'industrial meat farm' shakes Elsie's understanding of her world to its core. The only solution? To escape to a better, safer world. And so a motley crew is formed: Elsie; Shalom, a grumpy pig who's recently converted to Judaism; and Tom, a suave turkey who can't fly, but can work an iPhone with his beak. Toting stolen passports and slapdash human disguises, they head for the airport ... Elsie is a wise-cracking, slyly witty narrator; Tom dispenses psychiatric advice in a fake German accent; and Shalom ends up unexpectedly uniting Israelis and Palestinians. David Duchovny's charismatic creatures point the way toward a mutual understanding and acceptance the world desperately needs.", "page_numbers"=>nil, "chapter_count"=>1, "user_id"=>"5", "book"=>{"title"=>"Holy Cow", "author"=>"David Duchovny", "image_url"=>"http://books.google.com/books/content?id=OZWWBAAAQBAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api", "description"=>"Holy Cow by David Duchovny is a comic delight that will thrill fans of Jasper Fforde and Ben Aaronovitch. And anyone who enjoys a witty wisecrack in a novel. Elsie Bovary is a cow and a pretty happy one at that. Until one night, Elsie sneaks out of the pasture and finds herself drawn to the farmhouse. Through the window, she sees the farmer's family gathered around a bright Box God - and what the Box God reveals about something called an 'industrial meat farm' shakes Elsie's understanding of her world to its core. The only solution? To escape to a better, safer world. And so a motley crew is formed: Elsie; Shalom, a grumpy pig who's recently converted to Judaism; and Tom, a suave turkey who can't fly, but can work an iPhone with his beak. Toting stolen passports and slapdash human disguises, they head for the airport ... Elsie is a wise-cracking, slyly witty narrator; Tom dispenses psychiatric advice in a fake German accent; and Shalom ends up unexpectedly uniting Israelis and Palestinians. David Duchovny's charismatic creatures point the way toward a mutual understanding and acceptance the world desperately needs.", "page_numbers"=>nil}}
+Can't verify CSRF token authenticity
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mBook Load (0.2ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."title" = $1 LIMIT 1  [["title", "Holy Cow"]]
+  [1m[36mSoloReading Load (0.5ms)[0m  [1mSELECT  "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."book_id" = $2 LIMIT 1[0m  [["user_id", 5], ["book_id", 17]]
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (1.0ms)[0m  [1mCOMMIT[0m
+  [1m[35mBook Load (0.3ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 17]]
+Completed 200 OK in 9ms (Views: 1.1ms | ActiveRecord: 2.4ms)
+  [1m[36m (0.5ms)[0m  [1mSELECT COUNT(*) FROM "solo_readings"[0m
+  [1m[35mSoloReading Load (0.4ms)[0m  SELECT  "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."id" = $1 LIMIT 1  [["id", 21]]
+  [1m[36mSoloReading Load (1.4ms)[0m  [1mSELECT  "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."id" = $1 LIMIT 1[0m  [["id", 21]]
+  [1m[35mBook Load (0.7ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 21]]
+  [1m[36mSoloReading Load (1.9ms)[0m  [1mSELECT  "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."id" = $1 LIMIT 1[0m  [["id", 22]]
+  [1m[35mBook Load (0.5ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 22]]
+
+
+Started POST "/login" for ::1 at 2016-06-06 02:30:38 -0500
+Processing by SessionsController#login as HTML
+  Parameters: {"username"=>"fronk", "password"=>"[FILTERED]", "session"=>{"username"=>"fronk", "password"=>"[FILTERED]"}}
+Can't verify CSRF token authenticity
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."user_name" = $1 LIMIT 1[0m  [["user_name", "fronk"]]
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+Completed 200 OK in 88ms (Views: 0.2ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/users/5/current" for ::1 at 2016-06-06 02:30:38 -0500
+Processing by SoloReadingsController#current_books as HTML
+  Parameters: {"user_id"=>"5"}
+  [1m[36mSoloReading Load (0.3ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2[0m  [["user_id", 5], ["current", "t"]]
+  [1m[35mBook Load (0.2ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 17]]
+  [1m[36mBook Load (0.3ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 10]]
+  [1m[35mBook Load (0.2ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 18]]
+  [1m[36mBook Load (0.3ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 19]]
+  [1m[35mBook Load (0.3ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 20]]
+  [1m[36mBook Load (0.3ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 21]]
+  [1m[35mBook Load (0.3ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 22]]
+Completed 200 OK in 83ms (Views: 3.1ms | ActiveRecord: 8.6ms)
+
+
+Started GET "/users/5/current" for ::1 at 2016-06-06 02:32:45 -0500
+Processing by SoloReadingsController#current_books as HTML
+  Parameters: {"user_id"=>"5"}
+  [1m[36mSoloReading Load (0.2ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2[0m  [["user_id", 5], ["current", "t"]]
+  [1m[35mBook Load (0.2ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 17]]
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 10]]
+  [1m[35mBook Load (0.2ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 18]]
+  [1m[36mBook Load (0.3ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 19]]
+  [1m[35mBook Load (0.2ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 20]]
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 21]]
+  [1m[35mBook Load (0.2ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 22]]
+Completed 200 OK in 14ms (Views: 2.2ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/users/5/current" for ::1 at 2016-06-06 02:34:34 -0500
+Processing by SoloReadingsController#current_books as HTML
+  Parameters: {"user_id"=>"5"}
+  [1m[36mSoloReading Load (0.2ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2[0m  [["user_id", 5], ["current", "t"]]
+  [1m[35mBook Load (0.3ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 17]]
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 10]]
+  [1m[35mBook Load (0.2ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 18]]
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 19]]
+  [1m[35mBook Load (0.2ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 20]]
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 21]]
+  [1m[35mBook Load (0.2ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 22]]
+Completed 200 OK in 14ms (Views: 3.3ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/users/5" for ::1 at 2016-06-06 02:36:28 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+Completed 200 OK in 2ms (Views: 0.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/5" for ::1 at 2016-06-06 02:38:04 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users/5" for ::1 at 2016-06-06 02:38:40 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/5/current" for ::1 at 2016-06-06 02:38:43 -0500
+Processing by SoloReadingsController#current_books as HTML
+  Parameters: {"user_id"=>"5"}
+  [1m[35mSoloReading Load (0.3ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2  [["user_id", 5], ["current", "t"]]
+  [1m[36mBook Load (0.3ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 17]]
+  [1m[35mBook Load (0.6ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 10]]
+  [1m[36mBook Load (0.3ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 18]]
+  [1m[35mBook Load (0.6ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 19]]
+  [1m[36mBook Load (0.3ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 20]]
+  [1m[35mBook Load (0.5ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 21]]
+  [1m[36mBook Load (0.3ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 22]]
+Completed 200 OK in 18ms (Views: 2.9ms | ActiveRecord: 3.3ms)
+
+
+Started GET "/check_books/22" for ::1 at 2016-06-06 02:38:47 -0500
+Processing by BooksController#check_books as HTML
+  Parameters: {"book_id"=>"22"}
+  [1m[35mBook Load (0.3ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 22]]
+Completed 200 OK in 4ms (Views: 1.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/check_books/22" for ::1 at 2016-06-06 02:39:36 -0500
+Processing by BooksController#check_books as HTML
+  Parameters: {"book_id"=>"22"}
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 22]]
+Completed 200 OK in 2ms (Views: 0.6ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users/5" for ::1 at 2016-06-06 02:39:44 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/5/current" for ::1 at 2016-06-06 02:39:49 -0500
+Processing by SoloReadingsController#current_books as HTML
+  Parameters: {"user_id"=>"5"}
+  [1m[36mSoloReading Load (0.4ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2[0m  [["user_id", 5], ["current", "t"]]
+  [1m[35mBook Load (0.5ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 17]]
+  [1m[36mBook Load (0.4ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 10]]
+  [1m[35mBook Load (0.4ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 18]]
+  [1m[36mBook Load (0.3ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 19]]
+  [1m[35mBook Load (1.0ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 20]]
+  [1m[36mBook Load (0.3ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 21]]
+  [1m[35mBook Load (0.3ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 22]]
+Completed 200 OK in 23ms (Views: 2.3ms | ActiveRecord: 3.6ms)
+
+
+Started GET "/check_books/20" for ::1 at 2016-06-06 02:40:00 -0500
+Processing by BooksController#check_books as HTML
+  Parameters: {"book_id"=>"20"}
+  [1m[36mBook Load (0.3ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 20]]
+Completed 200 OK in 5ms (Views: 2.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/5/reviews" for ::1 at 2016-06-06 02:43:54 -0500
+Processing by UsersController#reviews as HTML
+  Parameters: {"user_id"=>"5"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mReview Load (13.1ms)[0m  [1mSELECT "reviews".* FROM "reviews" WHERE "reviews"."user_id" = $1[0m  [["user_id", 5]]
+Completed 200 OK in 65ms (Views: 0.3ms | ActiveRecord: 14.4ms)
+
+
+Started POST "/users/5/books" for ::1 at 2016-06-06 02:47:25 -0500
+Processing by BooksController#create as HTML
+  Parameters: {"book_id"=>20, "author"=>"Mikael Krogerus", "title"=>"The Test Book", "image_url"=>"http://books.google.com/books/content?id=lPV1CQAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api", "description"=>"An essential library of tests for self-knowledge and success, from the strategic thinking experts behind the international bestseller The Decision Book. Are you clever? Can you self-motivate? Are you creative? How do you handle money? Can you lead others well? With their trademark style and wit, best-selling authors Mikael Krogerus and Roman Tschäppeler present sixty-four tests spanning intelligence and personality type; creativity and leadership skills; fitness and lifestyle; and knowledge and belief. From what you see in a Rorschach test to comparing your workout against a Navy SEAL’s, from EQ to IQ and Myers-Briggs in between, The Test Book offers a panoply of ways to assess yourself and decide what you need to succeed. As Krogerus and Tschäppeler highlight, you can only know whether you have the right skills, the right job, or the right partner when you know where you stand right now. Small enough to fit in your pocket but packed with insight and good humor, The Test Book delivers a quick, fun way to evaluate your life and happiness.", "page_numbers"=>nil, "chapter_count"=>1, "user_id"=>"5", "book"=>{"title"=>"The Test Book", "author"=>"Mikael Krogerus", "image_url"=>"http://books.google.com/books/content?id=lPV1CQAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api", "description"=>"An essential library of tests for self-knowledge and success, from the strategic thinking experts behind the international bestseller The Decision Book. Are you clever? Can you self-motivate? Are you creative? How do you handle money? Can you lead others well? With their trademark style and wit, best-selling authors Mikael Krogerus and Roman Tschäppeler present sixty-four tests spanning intelligence and personality type; creativity and leadership skills; fitness and lifestyle; and knowledge and belief. From what you see in a Rorschach test to comparing your workout against a Navy SEAL’s, from EQ to IQ and Myers-Briggs in between, The Test Book offers a panoply of ways to assess yourself and decide what you need to succeed. As Krogerus and Tschäppeler highlight, you can only know whether you have the right skills, the right job, or the right partner when you know where you stand right now. Small enough to fit in your pocket but packed with insight and good humor, The Test Book delivers a quick, fun way to evaluate your life and happiness.", "page_numbers"=>nil}}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mBook Load (0.3ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."title" = $1 LIMIT 1[0m  [["title", "The Test Book"]]
+  [1m[35mSoloReading Load (0.2ms)[0m  SELECT  "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."book_id" = $2 LIMIT 1  [["user_id", 5], ["book_id", 20]]
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36mBook Load (0.3ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 20]]
+Completed 200 OK in 70ms (Views: 1.0ms | ActiveRecord: 9.7ms)
+
+
+Started POST "/users/5/books" for ::1 at 2016-06-06 02:48:34 -0500
+Processing by BooksController#create as HTML
+  Parameters: {"book_id"=>20, "author"=>"Mikael Krogerus", "title"=>"The Test Book", "image_url"=>"http://books.google.com/books/content?id=lPV1CQAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api", "description"=>"An essential library of tests for self-knowledge and success, from the strategic thinking experts behind the international bestseller The Decision Book. Are you clever? Can you self-motivate? Are you creative? How do you handle money? Can you lead others well? With their trademark style and wit, best-selling authors Mikael Krogerus and Roman Tschäppeler present sixty-four tests spanning intelligence and personality type; creativity and leadership skills; fitness and lifestyle; and knowledge and belief. From what you see in a Rorschach test to comparing your workout against a Navy SEAL’s, from EQ to IQ and Myers-Briggs in between, The Test Book offers a panoply of ways to assess yourself and decide what you need to succeed. As Krogerus and Tschäppeler highlight, you can only know whether you have the right skills, the right job, or the right partner when you know where you stand right now. Small enough to fit in your pocket but packed with insight and good humor, The Test Book delivers a quick, fun way to evaluate your life and happiness.", "page_numbers"=>nil, "chapter_count"=>1, "user_id"=>"5", "book"=>{"title"=>"The Test Book", "author"=>"Mikael Krogerus", "image_url"=>"http://books.google.com/books/content?id=lPV1CQAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api", "description"=>"An essential library of tests for self-knowledge and success, from the strategic thinking experts behind the international bestseller The Decision Book. Are you clever? Can you self-motivate? Are you creative? How do you handle money? Can you lead others well? With their trademark style and wit, best-selling authors Mikael Krogerus and Roman Tschäppeler present sixty-four tests spanning intelligence and personality type; creativity and leadership skills; fitness and lifestyle; and knowledge and belief. From what you see in a Rorschach test to comparing your workout against a Navy SEAL’s, from EQ to IQ and Myers-Briggs in between, The Test Book offers a panoply of ways to assess yourself and decide what you need to succeed. As Krogerus and Tschäppeler highlight, you can only know whether you have the right skills, the right job, or the right partner when you know where you stand right now. Small enough to fit in your pocket but packed with insight and good humor, The Test Book delivers a quick, fun way to evaluate your life and happiness.", "page_numbers"=>nil}}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (1.9ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mBook Load (0.3ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."title" = $1 LIMIT 1[0m  [["title", "The Test Book"]]
+  [1m[35mSoloReading Load (0.2ms)[0m  SELECT  "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."book_id" = $2 LIMIT 1  [["user_id", 5], ["book_id", 20]]
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.2ms)[0m  COMMIT
+  [1m[36mBook Load (0.3ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 20]]
+Completed 200 OK in 41ms (Views: 1.0ms | ActiveRecord: 9.0ms)
+
+
+Started POST "/users/5/books" for ::1 at 2016-06-06 02:50:24 -0500
+Processing by BooksController#create as HTML
+  Parameters: {"book_id"=>22, "author"=>"Matt Ivester", "title"=>"Lol...OMG!", "image_url"=>"http://books.google.com/books/content?id=WoQ2NAEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api", "description"=>"The ease with which digital content can be shared online has, in addition to its many benefits, created a host of problems for today's high school students. All too often, students are uploading, updating, posting, publishing without giving a second thought to who might see their content or how it might be perceived. lol..OMG! provides a cautionary look at the many ways that today's students are experiencing the unanticipated negative consequences of their digital decisions--from lost job opportunities and denied college admissions to full-blown national scandals. It also examines how technology is allowing students to bully one another in new and disturbing ways, and why students are often crueler online than in-person. By using real-life case studies and offering actionable strategies and best practices, this book empowers students to clean up and maintain a positive online presence, and to become responsible digital citizens.", "page_numbers"=>nil, "chapter_count"=>1, "user_id"=>"5", "book"=>{"title"=>"Lol...OMG!", "author"=>"Matt Ivester", "image_url"=>"http://books.google.com/books/content?id=WoQ2NAEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api", "description"=>"The ease with which digital content can be shared online has, in addition to its many benefits, created a host of problems for today's high school students. All too often, students are uploading, updating, posting, publishing without giving a second thought to who might see their content or how it might be perceived. lol..OMG! provides a cautionary look at the many ways that today's students are experiencing the unanticipated negative consequences of their digital decisions--from lost job opportunities and denied college admissions to full-blown national scandals. It also examines how technology is allowing students to bully one another in new and disturbing ways, and why students are often crueler online than in-person. By using real-life case studies and offering actionable strategies and best practices, this book empowers students to clean up and maintain a positive online presence, and to become responsible digital citizens.", "page_numbers"=>nil}}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (1.5ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mBook Load (0.3ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."title" = $1 LIMIT 1[0m  [["title", "Lol...OMG!"]]
+  [1m[35mSoloReading Load (0.3ms)[0m  SELECT  "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."book_id" = $2 LIMIT 1  [["user_id", 5], ["book_id", 22]]
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  COMMIT
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 22]]
+Completed 200 OK in 65ms (Views: 1.3ms | ActiveRecord: 10.3ms)
+
+
+Started POST "/users/5/books" for ::1 at 2016-06-06 02:51:07 -0500
+Processing by BooksController#create as HTML
+  Parameters: {"book_id"=>22, "author"=>"Matt Ivester", "title"=>"Lol...OMG!", "image_url"=>"http://books.google.com/books/content?id=WoQ2NAEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api", "description"=>"The ease with which digital content can be shared online has, in addition to its many benefits, created a host of problems for today's high school students. All too often, students are uploading, updating, posting, publishing without giving a second thought to who might see their content or how it might be perceived. lol..OMG! provides a cautionary look at the many ways that today's students are experiencing the unanticipated negative consequences of their digital decisions--from lost job opportunities and denied college admissions to full-blown national scandals. It also examines how technology is allowing students to bully one another in new and disturbing ways, and why students are often crueler online than in-person. By using real-life case studies and offering actionable strategies and best practices, this book empowers students to clean up and maintain a positive online presence, and to become responsible digital citizens.", "page_numbers"=>nil, "chapter_count"=>1, "user_id"=>"5", "book"=>{"title"=>"Lol...OMG!", "author"=>"Matt Ivester", "image_url"=>"http://books.google.com/books/content?id=WoQ2NAEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api", "description"=>"The ease with which digital content can be shared online has, in addition to its many benefits, created a host of problems for today's high school students. All too often, students are uploading, updating, posting, publishing without giving a second thought to who might see their content or how it might be perceived. lol..OMG! provides a cautionary look at the many ways that today's students are experiencing the unanticipated negative consequences of their digital decisions--from lost job opportunities and denied college admissions to full-blown national scandals. It also examines how technology is allowing students to bully one another in new and disturbing ways, and why students are often crueler online than in-person. By using real-life case studies and offering actionable strategies and best practices, this book empowers students to clean up and maintain a positive online presence, and to become responsible digital citizens.", "page_numbers"=>nil}}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mBook Load (0.3ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."title" = $1 LIMIT 1[0m  [["title", "Lol...OMG!"]]
+  [1m[35mSoloReading Load (0.2ms)[0m  SELECT  "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."book_id" = $2 LIMIT 1  [["user_id", 5], ["book_id", 22]]
+Completed 500 Internal Server Error in 50ms (ActiveRecord: 6.7ms)
+
+NoMethodError (undefined method `current=' for "ITS NOT WORKING":String):
+  app/controllers/books_controller.rb:7:in `create'
+
+
+  Rendered /Users/apprentice/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (7.6ms)
+  Rendered /Users/apprentice/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.1ms)
+  Rendered /Users/apprentice/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.0ms)
+  Rendered /Users/apprentice/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (100.6ms)
+  Rendered /Users/apprentice/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.7ms)
+  Rendered /Users/apprentice/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/apprentice/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/apprentice/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (1.0ms)
+  Rendered /Users/apprentice/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (751.1ms)
+  Rendered /Users/apprentice/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/apprentice/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /Users/apprentice/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (885.2ms)
+
+
+Started POST "/users/5/books" for ::1 at 2016-06-06 02:52:19 -0500
+Processing by BooksController#create as HTML
+  Parameters: {"book_id"=>22, "author"=>"Matt Ivester", "title"=>"Lol...OMG!", "image_url"=>"http://books.google.com/books/content?id=WoQ2NAEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api", "description"=>"The ease with which digital content can be shared online has, in addition to its many benefits, created a host of problems for today's high school students. All too often, students are uploading, updating, posting, publishing without giving a second thought to who might see their content or how it might be perceived. lol..OMG! provides a cautionary look at the many ways that today's students are experiencing the unanticipated negative consequences of their digital decisions--from lost job opportunities and denied college admissions to full-blown national scandals. It also examines how technology is allowing students to bully one another in new and disturbing ways, and why students are often crueler online than in-person. By using real-life case studies and offering actionable strategies and best practices, this book empowers students to clean up and maintain a positive online presence, and to become responsible digital citizens.", "page_numbers"=>nil, "chapter_count"=>1, "user_id"=>"5", "book"=>{"title"=>"Lol...OMG!", "author"=>"Matt Ivester", "image_url"=>"http://books.google.com/books/content?id=WoQ2NAEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api", "description"=>"The ease with which digital content can be shared online has, in addition to its many benefits, created a host of problems for today's high school students. All too often, students are uploading, updating, posting, publishing without giving a second thought to who might see their content or how it might be perceived. lol..OMG! provides a cautionary look at the many ways that today's students are experiencing the unanticipated negative consequences of their digital decisions--from lost job opportunities and denied college admissions to full-blown national scandals. It also examines how technology is allowing students to bully one another in new and disturbing ways, and why students are often crueler online than in-person. By using real-life case studies and offering actionable strategies and best practices, this book empowers students to clean up and maintain a positive online presence, and to become responsible digital citizens.", "page_numbers"=>nil}}
+Can't verify CSRF token authenticity
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mBook Load (0.3ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."title" = $1 LIMIT 1  [["title", "Lol...OMG!"]]
+  [1m[36mSoloReading Load (0.3ms)[0m  [1mSELECT  "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."book_id" = $2 LIMIT 1[0m  [["user_id", 5], ["book_id", 22]]
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mCOMMIT[0m
+  [1m[35mBook Load (0.3ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 22]]
+Completed 200 OK in 70ms (Views: 1.2ms | ActiveRecord: 8.8ms)
+
+
+Started POST "/users/5/books" for ::1 at 2016-06-06 02:52:54 -0500
+Processing by BooksController#create as HTML
+  Parameters: {"book_id"=>22, "author"=>"Matt Ivester", "title"=>"Lol...OMG!", "image_url"=>"http://books.google.com/books/content?id=WoQ2NAEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api", "description"=>"The ease with which digital content can be shared online has, in addition to its many benefits, created a host of problems for today's high school students. All too often, students are uploading, updating, posting, publishing without giving a second thought to who might see their content or how it might be perceived. lol..OMG! provides a cautionary look at the many ways that today's students are experiencing the unanticipated negative consequences of their digital decisions--from lost job opportunities and denied college admissions to full-blown national scandals. It also examines how technology is allowing students to bully one another in new and disturbing ways, and why students are often crueler online than in-person. By using real-life case studies and offering actionable strategies and best practices, this book empowers students to clean up and maintain a positive online presence, and to become responsible digital citizens.", "page_numbers"=>nil, "chapter_count"=>1, "user_id"=>"5", "book"=>{"title"=>"Lol...OMG!", "author"=>"Matt Ivester", "image_url"=>"http://books.google.com/books/content?id=WoQ2NAEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api", "description"=>"The ease with which digital content can be shared online has, in addition to its many benefits, created a host of problems for today's high school students. All too often, students are uploading, updating, posting, publishing without giving a second thought to who might see their content or how it might be perceived. lol..OMG! provides a cautionary look at the many ways that today's students are experiencing the unanticipated negative consequences of their digital decisions--from lost job opportunities and denied college admissions to full-blown national scandals. It also examines how technology is allowing students to bully one another in new and disturbing ways, and why students are often crueler online than in-person. By using real-life case studies and offering actionable strategies and best practices, this book empowers students to clean up and maintain a positive online presence, and to become responsible digital citizens.", "page_numbers"=>nil}}
+Can't verify CSRF token authenticity
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mBook Load (0.4ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."title" = $1 LIMIT 1  [["title", "Lol...OMG!"]]
+  [1m[36mSoloReading Load (0.2ms)[0m  [1mSELECT  "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."book_id" = $2 LIMIT 1[0m  [["user_id", 5], ["book_id", 22]]
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mCOMMIT[0m
+  [1m[35mBook Load (0.3ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 22]]
+Completed 200 OK in 54ms (Views: 0.7ms | ActiveRecord: 6.5ms)
+
+
+Started POST "/users/5/books" for ::1 at 2016-06-06 02:53:13 -0500
+Processing by BooksController#create as HTML
+  Parameters: {"book_id"=>22, "author"=>"Matt Ivester", "title"=>"Lol...OMG!", "image_url"=>"http://books.google.com/books/content?id=WoQ2NAEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api", "description"=>"The ease with which digital content can be shared online has, in addition to its many benefits, created a host of problems for today's high school students. All too often, students are uploading, updating, posting, publishing without giving a second thought to who might see their content or how it might be perceived. lol..OMG! provides a cautionary look at the many ways that today's students are experiencing the unanticipated negative consequences of their digital decisions--from lost job opportunities and denied college admissions to full-blown national scandals. It also examines how technology is allowing students to bully one another in new and disturbing ways, and why students are often crueler online than in-person. By using real-life case studies and offering actionable strategies and best practices, this book empowers students to clean up and maintain a positive online presence, and to become responsible digital citizens.", "page_numbers"=>nil, "chapter_count"=>1, "user_id"=>"5", "book"=>{"title"=>"Lol...OMG!", "author"=>"Matt Ivester", "image_url"=>"http://books.google.com/books/content?id=WoQ2NAEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api", "description"=>"The ease with which digital content can be shared online has, in addition to its many benefits, created a host of problems for today's high school students. All too often, students are uploading, updating, posting, publishing without giving a second thought to who might see their content or how it might be perceived. lol..OMG! provides a cautionary look at the many ways that today's students are experiencing the unanticipated negative consequences of their digital decisions--from lost job opportunities and denied college admissions to full-blown national scandals. It also examines how technology is allowing students to bully one another in new and disturbing ways, and why students are often crueler online than in-person. By using real-life case studies and offering actionable strategies and best practices, this book empowers students to clean up and maintain a positive online presence, and to become responsible digital citizens.", "page_numbers"=>nil}}
+Can't verify CSRF token authenticity
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mBook Load (0.3ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."title" = $1 LIMIT 1  [["title", "Lol...OMG!"]]
+  [1m[36mSoloReading Load (0.2ms)[0m  [1mSELECT  "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."book_id" = $2 LIMIT 1[0m  [["user_id", 5], ["book_id", 22]]
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mCOMMIT[0m
+  [1m[35mBook Load (0.3ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 22]]
+Completed 200 OK in 57ms (Views: 0.8ms | ActiveRecord: 6.4ms)
+
+
+Started POST "/users/5/books" for ::1 at 2016-06-06 02:53:39 -0500
+Processing by BooksController#create as HTML
+  Parameters: {"book_id"=>22, "author"=>"Matt Ivester", "title"=>"Lol...OMG!", "image_url"=>"http://books.google.com/books/content?id=WoQ2NAEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api", "description"=>"The ease with which digital content can be shared online has, in addition to its many benefits, created a host of problems for today's high school students. All too often, students are uploading, updating, posting, publishing without giving a second thought to who might see their content or how it might be perceived. lol..OMG! provides a cautionary look at the many ways that today's students are experiencing the unanticipated negative consequences of their digital decisions--from lost job opportunities and denied college admissions to full-blown national scandals. It also examines how technology is allowing students to bully one another in new and disturbing ways, and why students are often crueler online than in-person. By using real-life case studies and offering actionable strategies and best practices, this book empowers students to clean up and maintain a positive online presence, and to become responsible digital citizens.", "page_numbers"=>nil, "chapter_count"=>1, "user_id"=>"5", "book"=>{"title"=>"Lol...OMG!", "author"=>"Matt Ivester", "image_url"=>"http://books.google.com/books/content?id=WoQ2NAEACAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api", "description"=>"The ease with which digital content can be shared online has, in addition to its many benefits, created a host of problems for today's high school students. All too often, students are uploading, updating, posting, publishing without giving a second thought to who might see their content or how it might be perceived. lol..OMG! provides a cautionary look at the many ways that today's students are experiencing the unanticipated negative consequences of their digital decisions--from lost job opportunities and denied college admissions to full-blown national scandals. It also examines how technology is allowing students to bully one another in new and disturbing ways, and why students are often crueler online than in-person. By using real-life case studies and offering actionable strategies and best practices, this book empowers students to clean up and maintain a positive online presence, and to become responsible digital citizens.", "page_numbers"=>nil}}
+Can't verify CSRF token authenticity
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mBook Load (0.3ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."title" = $1 LIMIT 1  [["title", "Lol...OMG!"]]
+  [1m[36mSoloReading Load (0.3ms)[0m  [1mSELECT  "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."book_id" = $2 LIMIT 1[0m  [["user_id", 5], ["book_id", 22]]
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mCOMMIT[0m
+  [1m[35mBook Load (0.2ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 22]]
+Completed 200 OK in 53ms (Views: 0.7ms | ActiveRecord: 6.2ms)
+
+
+Started POST "/login" for ::1 at 2016-06-06 02:54:28 -0500
+Processing by SessionsController#login as HTML
+  Parameters: {"username"=>"fronk", "password"=>"[FILTERED]", "session"=>{"username"=>"fronk", "password"=>"[FILTERED]"}}
+Can't verify CSRF token authenticity
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."user_name" = $1 LIMIT 1[0m  [["user_name", "fronk"]]
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+Completed 200 OK in 92ms (Views: 0.2ms | ActiveRecord: 2.8ms)
+
+
+Started GET "/users/5/current" for ::1 at 2016-06-06 02:54:28 -0500
+Processing by SoloReadingsController#current_books as HTML
+  Parameters: {"user_id"=>"5"}
+  [1m[36mSoloReading Load (0.7ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2[0m  [["user_id", 5], ["current", "t"]]
+  [1m[35mBook Load (0.2ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 17]]
+  [1m[36mBook Load (0.3ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 10]]
+  [1m[35mBook Load (0.3ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 18]]
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 19]]
+  [1m[35mBook Load (0.2ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 20]]
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 21]]
+  [1m[35mBook Load (0.2ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 22]]
+Completed 200 OK in 58ms (Views: 2.1ms | ActiveRecord: 8.4ms)
+
+
+Started POST "/users/5/books" for ::1 at 2016-06-06 02:54:43 -0500
+Processing by BooksController#create as HTML
+  Parameters: {"author"=>"Rob Casey", "title"=>"Stand Up Paddling", "description"=>"Hawaiians were stand-up paddle surfing (known as SUP), in the 50's and e60's, but the sport was first seen on the US mainland in the early 2000s, when surfers Laird Hamilton and Rick Thomas brought it to California. But now you see SUP popping up everywhere, it's ranked as the fastest growing sport in the US by the Outdoor Industry Association.Longtime stand-up paddler and instructor Rob Casey has authored the first and only comprehensive guide to the sport. From choosing the right gear, to stroke techniques (j-stroke, Tahitian technique, sculling brace) and fitness advice, Rob will have you stand-up paddling in no time. Specific chapters focus on flat water paddling, surfing, and river and tidal rapids paddling to show you exactly what you need to take your SUP skills and knowledge to a specific environment. Whether you want to learn about tides and expedition-planning in flat water, or how to forecast waves and current for surfing, or how to prepare for rooster tails andusing river eddies to your advantage, it's all here in this easy-to-reference guidebook from a SUP expert.", "image_url"=>"http://books.google.com/books/content?id=zilWfjL_cTQC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api", "pageCount"=>205, "publishedDate"=>"2011", "chapter_count"=>1, "user_id"=>"5", "book"=>{"title"=>"Stand Up Paddling", "author"=>"Rob Casey", "image_url"=>"http://books.google.com/books/content?id=zilWfjL_cTQC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api", "description"=>"Hawaiians were stand-up paddle surfing (known as SUP), in the 50's and e60's, but the sport was first seen on the US mainland in the early 2000s, when surfers Laird Hamilton and Rick Thomas brought it to California. But now you see SUP popping up everywhere, it's ranked as the fastest growing sport in the US by the Outdoor Industry Association.Longtime stand-up paddler and instructor Rob Casey has authored the first and only comprehensive guide to the sport. From choosing the right gear, to stroke techniques (j-stroke, Tahitian technique, sculling brace) and fitness advice, Rob will have you stand-up paddling in no time. Specific chapters focus on flat water paddling, surfing, and river and tidal rapids paddling to show you exactly what you need to take your SUP skills and knowledge to a specific environment. Whether you want to learn about tides and expedition-planning in flat water, or how to forecast waves and current for surfing, or how to prepare for rooster tails andusing river eddies to your advantage, it's all here in this easy-to-reference guidebook from a SUP expert."}}
+Can't verify CSRF token authenticity
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mBook Load (3.1ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."title" = $1 LIMIT 1  [["title", "Stand Up Paddling"]]
+  [1m[36mSoloReading Load (0.3ms)[0m  [1mSELECT  "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."book_id" = $2 LIMIT 1[0m  [["user_id", 5], ["book_id", 9]]
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mUPDATE "solo_readings" SET "current" = $1, "updated_at" = $2 WHERE "solo_readings"."id" = $3[0m  [["current", "t"], ["updated_at", "2016-06-06 07:54:43.203948"], ["id", 9]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36mBook Load (0.3ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 9]]
+Completed 200 OK in 17ms (Views: 1.1ms | ActiveRecord: 5.1ms)
+
+
+Started GET "/users/5/current" for ::1 at 2016-06-06 02:55:35 -0500
+Processing by SoloReadingsController#current_books as HTML
+  Parameters: {"user_id"=>"5"}
+  [1m[35mSoloReading Load (0.2ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2  [["user_id", 5], ["current", "t"]]
+  [1m[36mBook Load (0.3ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 17]]
+  [1m[35mBook Load (0.2ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 10]]
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 18]]
+  [1m[35mBook Load (0.7ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 19]]
+  [1m[36mBook Load (0.3ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 20]]
+  [1m[35mBook Load (0.3ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 21]]
+  [1m[36mBook Load (0.3ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 22]]
+  [1m[35mBook Load (1.4ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 9]]
+Completed 200 OK in 51ms (Views: 4.0ms | ActiveRecord: 7.3ms)
+
+
+Started POST "/users/5/books" for ::1 at 2016-06-06 02:58:00 -0500
+Processing by BooksController#create as HTML
+  Parameters: {"author"=>"Henry Louis Mencken", "title"=>"Damn!", "image_url"=>"http://books.google.com/books/content?id=vswSAAAAYAAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api", "pageCount"=>139, "publishedDate"=>"1918", "chapter_count"=>1, "user_id"=>"5", "book"=>{"title"=>"Damn!", "author"=>"Henry Louis Mencken", "image_url"=>"http://books.google.com/books/content?id=vswSAAAAYAAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"}}
+Can't verify CSRF token authenticity
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mBook Load (0.2ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."title" = $1 LIMIT 1  [["title", "Damn!"]]
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "books" ("title", "author", "image_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["title", "Damn!"], ["author", "Henry Louis Mencken"], ["image_url", "http://books.google.com/books/content?id=vswSAAAAYAAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"], ["created_at", "2016-06-06 07:58:00.643588"], ["updated_at", "2016-06-06 07:58:00.643588"]]
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "solo_readings" ("user_id", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 5], ["book_id", 23], ["created_at", "2016-06-06 07:58:00.646999"], ["updated_at", "2016-06-06 07:58:00.646999"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "chapters" ("number", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["number", 0], ["book_id", 23], ["created_at", "2016-06-06 07:58:00.671098"], ["updated_at", "2016-06-06 07:58:00.671098"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35mSoloReading Load (0.3ms)[0m  SELECT  "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."book_id" = $2 LIMIT 1  [["user_id", 5], ["book_id", 23]]
+  [1m[36m (0.5ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.9ms)[0m  UPDATE "solo_readings" SET "current" = $1, "updated_at" = $2 WHERE "solo_readings"."id" = $3  [["current", "t"], ["updated_at", "2016-06-06 07:58:00.676854"], ["id", 23]]
+  [1m[36m (4.0ms)[0m  [1mCOMMIT[0m
+  [1m[35mBook Load (0.4ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 23]]
+Completed 200 OK in 72ms (Views: 0.9ms | ActiveRecord: 11.1ms)
+
+
+Started GET "/users/5/current" for ::1 at 2016-06-06 03:00:31 -0500
+Processing by SoloReadingsController#current_books as HTML
+  Parameters: {"user_id"=>"5"}
+  [1m[36mSoloReading Load (0.3ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2[0m  [["user_id", 5], ["current", "t"]]
+  [1m[35mBook Load (0.2ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 17]]
+  [1m[36mBook Load (0.3ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 10]]
+  [1m[35mBook Load (0.2ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 18]]
+  [1m[36mBook Load (0.3ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 19]]
+  [1m[35mBook Load (0.3ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 20]]
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 21]]
+  [1m[35mBook Load (0.3ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 22]]
+  [1m[36mBook Load (0.3ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 9]]
+  [1m[35mBook Load (0.3ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 23]]
+Completed 200 OK in 46ms (Views: 2.7ms | ActiveRecord: 6.2ms)
+
+
+Started GET "/users/5/current" for ::1 at 2016-06-06 03:01:27 -0500
+Processing by SoloReadingsController#current_books as HTML
+  Parameters: {"user_id"=>"5"}
+  [1m[36mSoloReading Load (0.2ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2[0m  [["user_id", 5], ["current", "t"]]
+  [1m[35mBook Load (0.2ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 17]]
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 10]]
+  [1m[35mBook Load (0.2ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 18]]
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 19]]
+  [1m[35mBook Load (0.2ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 20]]
+  [1m[36mBook Load (0.3ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 21]]
+  [1m[35mBook Load (0.3ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 22]]
+  [1m[36mBook Load (0.4ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 9]]
+  [1m[35mBook Load (0.3ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 23]]
+Completed 200 OK in 18ms (Views: 3.6ms | ActiveRecord: 2.4ms)
+
+
+Started POST "/login" for ::1 at 2016-06-06 03:02:31 -0500
+Processing by SessionsController#login as HTML
+  Parameters: {"username"=>"bob", "password"=>"[FILTERED]", "session"=>{"username"=>"bob", "password"=>"[FILTERED]"}}
+Can't verify CSRF token authenticity
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."user_name" = $1 LIMIT 1[0m  [["user_name", "bob"]]
+Completed 200 OK in 92ms (Views: 0.2ms | ActiveRecord: 1.5ms)
+
+
+Started POST "/login" for ::1 at 2016-06-06 03:02:43 -0500
+Processing by SessionsController#login as HTML
+  Parameters: {"username"=>"fronk", "password"=>"[FILTERED]", "session"=>{"username"=>"fronk", "password"=>"[FILTERED]"}}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."user_name" = $1 LIMIT 1  [["user_name", "fronk"]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+Completed 200 OK in 78ms (Views: 0.1ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users/5" for ::1 at 2016-06-06 03:02:48 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/5/queue" for ::1 at 2016-06-06 03:03:04 -0500
+Processing by SoloReadingsController#queue_books as HTML
+  Parameters: {"user_id"=>"5"}
+  [1m[36mSoloReading Load (0.4ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."queue" = $2[0m  [["user_id", 5], ["queue", "t"]]
+  [1m[35mBook Load (0.4ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 11]]
+  [1m[36mBook Load (0.7ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 12]]
+  [1m[35mBook Load (0.9ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 13]]
+  [1m[36mBook Load (0.3ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 14]]
+  [1m[35mBook Load (0.3ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 15]]
+  [1m[36mBook Load (0.3ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 16]]
+  [1m[35mBook Load (0.3ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 10]]
+  [1m[36mBook Load (0.3ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 9]]
+Completed 200 OK in 22ms (Views: 3.2ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/users/5/history" for ::1 at 2016-06-06 03:03:14 -0500
+Processing by SoloReadingsController#history_books as HTML
+  Parameters: {"user_id"=>"5"}
+  [1m[35mSoloReading Load (0.3ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2 AND "solo_readings"."queue" = $3  [["user_id", 5], ["current", "f"], ["queue", "f"]]
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/5/favorite" for ::1 at 2016-06-06 03:03:18 -0500
+Processing by SoloReadingsController#favorite_books as HTML
+  Parameters: {"user_id"=>"5"}
+  [1m[36mSoloReading Load (0.3ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."favorite" = $2[0m  [["user_id", 5], ["favorite", "t"]]
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/5/reviews" for ::1 at 2016-06-06 03:03:20 -0500
+Processing by UsersController#reviews as HTML
+  Parameters: {"user_id"=>"5"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mReview Load (0.4ms)[0m  [1mSELECT "reviews".* FROM "reviews" WHERE "reviews"."user_id" = $1[0m  [["user_id", 5]]
+Completed 200 OK in 13ms (Views: 0.3ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/users/5" for ::1 at 2016-06-06 03:11:41 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users/5/reviews" for ::1 at 2016-06-06 03:11:48 -0500
+Processing by UsersController#reviews as HTML
+  Parameters: {"user_id"=>"5"}
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mReview Load (0.4ms)[0m  SELECT "reviews".* FROM "reviews" WHERE "reviews"."user_id" = $1  [["user_id", 5]]
+Completed 200 OK in 3ms (Views: 0.2ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/users/5/favorite" for ::1 at 2016-06-06 03:11:50 -0500
+Processing by SoloReadingsController#favorite_books as HTML
+  Parameters: {"user_id"=>"5"}
+  [1m[36mSoloReading Load (1.0ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."favorite" = $2[0m  [["user_id", 5], ["favorite", "t"]]
+Completed 200 OK in 3ms (Views: 0.3ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/users/5/reviews" for ::1 at 2016-06-06 03:11:58 -0500
+Processing by UsersController#reviews as HTML
+  Parameters: {"user_id"=>"5"}
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mReview Load (0.3ms)[0m  [1mSELECT "reviews".* FROM "reviews" WHERE "reviews"."user_id" = $1[0m  [["user_id", 5]]
+Completed 200 OK in 3ms (Views: 0.2ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/users/5/favorite" for ::1 at 2016-06-06 03:12:00 -0500
+Processing by SoloReadingsController#favorite_books as HTML
+  Parameters: {"user_id"=>"5"}
+  [1m[35mSoloReading Load (0.7ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."favorite" = $2  [["user_id", 5], ["favorite", "t"]]
+Completed 200 OK in 3ms (Views: 0.2ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/users/5/reviews" for ::1 at 2016-06-06 03:12:47 -0500
+Processing by UsersController#reviews as HTML
+  Parameters: {"user_id"=>"5"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mReview Load (0.3ms)[0m  SELECT "reviews".* FROM "reviews" WHERE "reviews"."user_id" = $1  [["user_id", 5]]
+Completed 200 OK in 3ms (Views: 0.3ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/users/5/reviews" for ::1 at 2016-06-06 03:13:24 -0500
+Processing by UsersController#reviews as HTML
+  Parameters: {"user_id"=>"5"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mReview Load (0.9ms)[0m  SELECT "reviews".* FROM "reviews" WHERE "reviews"."user_id" = $1  [["user_id", 5]]
+Completed 200 OK in 4ms (Views: 0.2ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/users/5/reviews" for ::1 at 2016-06-06 03:14:52 -0500
+Processing by UsersController#reviews as HTML
+  Parameters: {"user_id"=>"5"}
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mReview Load (0.5ms)[0m  SELECT "reviews".* FROM "reviews" WHERE "reviews"."user_id" = $1  [["user_id", 5]]
+Completed 200 OK in 4ms (Views: 0.3ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/users/5/reviews" for ::1 at 2016-06-06 03:15:35 -0500
+Processing by UsersController#reviews as HTML
+  Parameters: {"user_id"=>"5"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mReview Load (0.3ms)[0m  SELECT "reviews".* FROM "reviews" WHERE "reviews"."user_id" = $1  [["user_id", 5]]
+Completed 200 OK in 3ms (Views: 0.3ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/users/5/reviews" for ::1 at 2016-06-06 03:15:58 -0500
+Processing by UsersController#reviews as HTML
+  Parameters: {"user_id"=>"5"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mReview Load (0.2ms)[0m  SELECT "reviews".* FROM "reviews" WHERE "reviews"."user_id" = $1  [["user_id", 5]]
+Completed 200 OK in 3ms (Views: 0.2ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users/5/current" for ::1 at 2016-06-06 03:16:02 -0500
+Processing by SoloReadingsController#current_books as HTML
+  Parameters: {"user_id"=>"5"}
+  [1m[36mSoloReading Load (0.5ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2[0m  [["user_id", 5], ["current", "t"]]
+  [1m[35mBook Load (0.4ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 17]]
+  [1m[36mBook Load (0.4ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 10]]
+  [1m[35mBook Load (0.3ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 18]]
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 19]]
+  [1m[35mBook Load (0.3ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 20]]
+  [1m[36mBook Load (0.3ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 21]]
+  [1m[35mBook Load (0.3ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 22]]
+  [1m[36mBook Load (0.3ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 9]]
+  [1m[35mBook Load (0.3ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 23]]
+Completed 200 OK in 23ms (Views: 4.3ms | ActiveRecord: 3.3ms)
+
+
+Started GET "/check_books/20" for ::1 at 2016-06-06 03:17:13 -0500
+Processing by BooksController#check_books as HTML
+  Parameters: {"book_id"=>"20"}
+  [1m[36mBook Load (0.3ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 20]]
+Completed 200 OK in 3ms (Views: 0.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/check_books/9" for ::1 at 2016-06-06 03:17:19 -0500
+Processing by BooksController#check_books as HTML
+  Parameters: {"book_id"=>"9"}
+  [1m[35mBook Load (0.3ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 9]]
+Completed 200 OK in 2ms (Views: 1.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/check_books/18" for ::1 at 2016-06-06 03:17:37 -0500
+Processing by BooksController#check_books as HTML
+  Parameters: {"book_id"=>"18"}
+  [1m[36mBook Load (0.4ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 18]]
+Completed 200 OK in 3ms (Views: 1.0ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/check_books/17" for ::1 at 2016-06-06 03:17:41 -0500
+Processing by BooksController#check_books as HTML
+  Parameters: {"book_id"=>"17"}
+  [1m[35mBook Load (0.3ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 17]]
+Completed 200 OK in 2ms (Views: 0.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/check_books/19" for ::1 at 2016-06-06 03:17:45 -0500
+Processing by BooksController#check_books as HTML
+  Parameters: {"book_id"=>"19"}
+  [1m[36mBook Load (0.6ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 19]]
+Completed 200 OK in 3ms (Views: 0.9ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/check_books/21" for ::1 at 2016-06-06 03:17:49 -0500
+Processing by BooksController#check_books as HTML
+  Parameters: {"book_id"=>"21"}
+  [1m[35mBook Load (0.3ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 21]]
+Completed 200 OK in 3ms (Views: 1.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/check_books/22" for ::1 at 2016-06-06 03:17:51 -0500
+Processing by BooksController#check_books as HTML
+  Parameters: {"book_id"=>"22"}
+  [1m[36mBook Load (0.3ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 22]]
+Completed 200 OK in 2ms (Views: 1.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/check_books/10" for ::1 at 2016-06-06 04:57:13 -0500
+Processing by BooksController#check_books as HTML
+  Parameters: {"book_id"=>"10"}
+  [1m[35mBook Load (0.3ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 10]]
+Completed 200 OK in 2ms (Views: 0.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/books//reviews" for ::1 at 2016-06-06 04:59:49 -0500
+
+ActionController::RoutingError (No route matches [GET] "/books/reviews"):
+  actionpack (4.2.5) lib/action_dispatch/middleware/debug_exceptions.rb:21:in `call'
+  web-console (2.3.0) lib/web_console/middleware.rb:28:in `block in call'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `catch'
+  web-console (2.3.0) lib/web_console/middleware.rb:18:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/show_exceptions.rb:30:in `call'
+  railties (4.2.5) lib/rails/rack/logger.rb:38:in `call_app'
+  railties (4.2.5) lib/rails/rack/logger.rb:20:in `block in call'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:68:in `block in tagged'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:26:in `tagged'
+  activesupport (4.2.5) lib/active_support/tagged_logging.rb:68:in `tagged'
+  railties (4.2.5) lib/rails/rack/logger.rb:20:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/request_id.rb:21:in `call'
+  rack (1.6.4) lib/rack/methodoverride.rb:22:in `call'
+  rack (1.6.4) lib/rack/runtime.rb:18:in `call'
+  activesupport (4.2.5) lib/active_support/cache/strategy/local_cache_middleware.rb:28:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  actionpack (4.2.5) lib/action_dispatch/middleware/static.rb:116:in `call'
+  rack (1.6.4) lib/rack/sendfile.rb:113:in `call'
+  rack-cors (0.4.0) lib/rack/cors.rb:80:in `call'
+  railties (4.2.5) lib/rails/engine.rb:518:in `call'
+  railties (4.2.5) lib/rails/application.rb:165:in `call'
+  rack-cors (0.4.0) lib/rack/cors.rb:80:in `call'
+  rack (1.6.4) lib/rack/lock.rb:17:in `call'
+  rack (1.6.4) lib/rack/content_length.rb:15:in `call'
+  rack (1.6.4) lib/rack/handler/webrick.rb:88:in `service'
+  /Users/apprentice/.rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/httpserver.rb:140:in `service'
+  /Users/apprentice/.rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/httpserver.rb:96:in `run'
+  /Users/apprentice/.rvm/rubies/ruby-2.3.0/lib/ruby/2.3.0/webrick/server.rb:296:in `block in start_thread'
+
+
+  Rendered /Users/apprentice/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.0ms)
+  Rendered /Users/apprentice/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/routes/_route.html.erb (2.4ms)
+  Rendered /Users/apprentice/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/routes/_table.html.erb (34.0ms)
+  Rendered /Users/apprentice/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.5ms)
+  Rendered /Users/apprentice/.rvm/gems/ruby-2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/routing_error.html.erb within rescues/layout (183.1ms)
+  Rendered /Users/apprentice/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (1.1ms)
+  Rendered /Users/apprentice/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.7ms)
+  Rendered /Users/apprentice/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/apprentice/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/apprentice/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (69.0ms)
+  Rendered /Users/apprentice/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.7ms)
+  Rendered /Users/apprentice/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/apprentice/.rvm/gems/ruby-2.3.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (159.8ms)

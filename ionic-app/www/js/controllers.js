@@ -6,6 +6,8 @@ angular.module('starter.controllers', [])
   .then(function(response){
     var currentBooks = response.data.current_books;
     $scope.books = currentBooks;
+    console.log('The call to server occurs only after login page')
+    console.log(currentBooks);
     if (currentBooks.length === 0) {
       $scope.message = "Go to search and add books."
     } else {
@@ -21,8 +23,10 @@ angular.module('starter.controllers', [])
   userId = window.localStorage['authToken']
   $http.get("http://localhost:3000/users/" + userId + '/queue')
   .then(function(response){
+    // console.log(response)
     $scope.books = response.data
-    if ($scope.books === null){
+    console.log($scope.books)
+    if ($scope.books.queue_books.length === 0){
       $scope.message = "No Books in Your Queue Yet! Add one!"
     }
   })
@@ -125,7 +129,7 @@ angular.module('starter.controllers', [])
     var myPopup = $ionicPopup.show({
       template: '<input type="text" ng-model="data.wifi">',
       title: 'Enter number of chapters',
-      subTitle: 'YYEEeeeeeeee',
+      subTitle: 'This is for Current',
       scope: $scope,
       buttons: [
         { text: 'Cancel' },
@@ -167,7 +171,7 @@ angular.module('starter.controllers', [])
     var myPopup = $ionicPopup.show({
       template: '<input type="text" ng-model="data.wifi">',
       title: 'Enter number of chapters',
-      subTitle: 'YYEEeeeeeeee',
+      subTitle: 'This is for Queue',
       scope: $scope,
       buttons: [
         { text: 'Cancel' },

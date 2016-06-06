@@ -5,8 +5,8 @@
 }
 
 .profile-name {
-  text-align: center; 
-} 
+  text-align: center;
+}
 
 .profile-picture{
   width: 50%;
@@ -34,7 +34,7 @@
 }
 
 #human-details{
-  text-align: center; 
+  text-align: center;
 }
 
 .book-cover{
@@ -151,4 +151,8 @@ margin: 0em 1em 1em 1em;
   height: 50px;
   position: relative;
   margin-top: -50px;
+}
+
+.bar.bar-stable {
+  background-color: salmon;
 }
