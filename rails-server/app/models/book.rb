@@ -7,7 +7,7 @@ class Book < ActiveRecord::Base
   has_many :groups, through: :group_readings
   has_many :readers, through: :solo_readings, foreign_key: :user_id
 
-  validates :name, :author, :genre, :image_url, :page_numbers, :date_published, presence: true
+  validates :title, :author, :genre, :image_url, :page_numbers, :date_published, presence: true
 
   def self.add_book(params)
 
