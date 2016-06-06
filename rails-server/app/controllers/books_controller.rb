@@ -6,14 +6,25 @@ class BooksController < ApplicationController
     user = User.find(params["user_id"])
     @reading = Book.add_book(params, user)
     @reading.queue = true
+    @reading.save
     render json: {token: user.id}, status: :ok
   end
 
+  def check_books
+    p params["book_id"]
+    book = Book.find(params["book_id"])
+    render json: {book: book}, status: :ok
+  end
+
   def add_to_current
-    add_book(params)
+    p params
+    user = User.find(params["user_id"])
+    @reading = Book.add_book_by_id(params["book_id"], params["user_id"])
     @reading.current = true
     @reading.queue = false
     @reading.complete = false
+    @reading.save
+    render json: {token: user.id}, status: :ok
   end
 
   def add_to_favorites
