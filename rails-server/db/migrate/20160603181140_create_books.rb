@@ -5,6 +5,7 @@ class CreateBooks < ActiveRecord::Migration
       t.string :author
       t.string :genre
       t.string :image_url
+      t.text   :description
       t.integer :page_numbers
       t.integer :date_published
 

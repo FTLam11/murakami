@@ -24,7 +24,7 @@ angular.module('starter.controllers', [])
     $scope.books = response.data
     if ($scope.books === null){
       $scope.message = "No Books in Your Queue Yet! Add one!"
-    } 
+    }
   })
 })
 
@@ -34,10 +34,9 @@ angular.module('starter.controllers', [])
   $http.get('http://localhost:3000/users/' + userId + '/history').then(function(response){
     $scope.books = response.data.history_books
     console.log($scope.books)
-    if ($scope.books
- === null){
+    if ($scope.books === null){
       $scope.message = "No Books in your History Yet! Add some!"
-    } 
+    }
   })
 })
 
@@ -58,7 +57,7 @@ angular.module('starter.controllers', [])
     $scope.books = response.data.favorite_books
     if ($scope.books === null){
       $scope.message = "No Books in your Favorites Yet! Add one!"
-    } 
+    }
   })
 
 })
@@ -69,7 +68,6 @@ angular.module('starter.controllers', [])
   };
 
     var data =  window.localStorage['authToken']
-    console.log(data)
     $http({
       method: 'GET',
       url: 'http://localhost:3000/users/' + data,
@@ -86,29 +84,35 @@ angular.module('starter.controllers', [])
 })
 
 .controller('BookDetailCtrl', function($scope, $http, $stateParams, Books, $location, $ionicPopup){
+  userId = window.localStorage['authToken']
 
-  if (Books.get($stateParams.bookId) !=null) {
-    var book = Books.get($stateParams.bookId);
+  if (/^\d+$/.test($stateParams.bookId)) {
+
+
+  $http.get('http://localhost:3000/check_books/' + $stateParams.bookId)
+  .then(function(response){
+    var book = response.data.book
     $scope.book = {}
     $scope.book.book_id = book.id
     $scope.book.author = book.author
     $scope.book.title = book.title
-    $scope.book.image_url = book.image
+    $scope.book.image_url = book.image_url
     $scope.book.description = book.description
-
-  }else{
-    $http.get('https://www.googleapis.com/books/v1/volumes?q=' + $stateParams.bookId)
-    .then(function(response){
-      var book = response.data.items[0]
-      $scope.book = {}
-      $scope.book.author = book.volumeInfo.authors[0]
-      $scope.book.title = book.volumeInfo.title
-      $scope.book.description = book.volumeInfo.description
-      $scope.book.image_url = book.volumeInfo.imageLinks.thumbnail
-      $scope.book.pageCount = book.volumeInfo.pageCount
-      $scope.book.publishedDate = book.volumeInfo.publishedDate
+    $scope.book.page_numbers = book.page_numbers
     })
-  }
+    } else {
+      $http.get('https://www.googleapis.com/books/v1/volumes?q=' + $stateParams.bookId)
+      .then(function(response){
+        var book = response.data.items[0]
+        $scope.book = {}
+        $scope.book.author = book.volumeInfo.authors[0]
+        $scope.book.title = book.volumeInfo.title
+        $scope.book.description = book.volumeInfo.description
+        $scope.book.image_url = book.volumeInfo.imageLinks.thumbnail
+        $scope.book.pageCount = book.volumeInfo.pageCount
+        $scope.book.publishedDate = book.volumeInfo.publishedDate
+        })
+      }
 
 
   $scope.go = function ( path ){

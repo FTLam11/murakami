@@ -35,5 +35,5 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#login'
   get '/logout', to: 'sessions#logout'
 
-
+  get '/check_books/:book_id', to: 'books#check_books'
 end

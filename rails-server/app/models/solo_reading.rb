@@ -77,8 +77,8 @@ class SoloReading < ActiveRecord::Base
         readings.each do |reading|
           @books << reading.book
         end
-      return @books
       end
+      return @books
     end
  end
 
