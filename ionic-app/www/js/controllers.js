@@ -81,19 +81,37 @@ angular.module('starter.controllers', [])
 
 })
 
-.controller('ChapterCtrl', function($scope, $http, $stateParams, Books ,$location) {
+.controller('ChapterCtrl', function($scope, $http, $stateParams,$location) {
   $http.get("http://localhost:3000/chapters/" + $stateParams.chapterId + "/reactions")
   .then(function(response){
+    console.log(response)
+    var book_id = ($stateParams.bookId)
     $scope.reactions = response.data.reactions
+    $scope.users = response.data.users
+    $scope.book = response.data.specific_book
+
     if ($scope.reactions === null){
       $scope.message = "There are no reactions! React!"
     }
   })
 
   $scope.nextChapter = function() {
-    $stateParams.chapterId
-    $location.path("/books/" + 5 + "/chapters/" + 2)
+    bookId = $stateParams.bookId
+    nextChapterNum = parseInt($stateParams.chapterId) + 1
+    $location.path("/tab/books/" + bookId + "/chapters/" + nextChapterNum)
   }
+
+  $scope.backChapter = function() {
+    bookId = $stateParams.bookId
+    nextChapterNum = parseInt($stateParams.chapterId) - 1
+    $location.path("/tab/books/" + bookId + "/chapters/" + nextChapterNum)
+  }
+
+  $scope.submitReaction() = function() {
+
+
+  }
+
 })
 
 .controller('BookDetailCtrl', function($scope, $http, $stateParams, Books, $location, $ionicPopup){

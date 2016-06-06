@@ -60,19 +60,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     }
   })
 
-
-
-  .state('tab.book', {
-    url: '/:bookId/chapters/:chapterId',
-    views: {
-      'tab-book': {
-        templateUrl: 'templates/tab-chapter.html',
-        controller: 'ChapterCtrl'
-      }
-    }
-  })
-
-  .state('tab.search', {
+.state('tab.search', {
     url: '/search',
     views: {
       'tab-search': {
@@ -81,6 +69,18 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       }
     }
   })
+
+
+  .state('tab.chapter', {
+    url: '/books/:bookId/chapters/:chapterId',
+    views: {
+      'tab-search': {
+        templateUrl: 'templates/tab-chapter.html',
+        controller: 'ChapterCtrl'
+      }
+    }
+  })
+
 
   .state('tab.book-detail', {
     url: '/books/:bookId',
@@ -95,37 +95,37 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     url: '/books/:bookId/reviews',
     views: {
       'tab-search': {
-        templateUrl: 'templates/tab-review.html', 
+        templateUrl: 'templates/tab-review.html',
         controller: 'ReviewCtrl'
       }
     }
-   }) 
+   })
 
 
   .state('tab.reader-queue', {
     url : '/queue',
     views:{
-    'tab-account':{ 
+    'tab-account':{
     templateUrl: 'templates/tab-reader-queue.html',
     controller: 'QueueCtrl'
-    }  
+    }
   }
 })
 
 
 .state('tab.user-review', {
-  url: '/user-review', 
+  url: '/user-review',
   views: {
     'tab-account':{
-      templateUrl: 'templates/user-review.html', 
+      templateUrl: 'templates/user-review.html',
       controller: 'UserReviewCtrl'
     }
   }
-}) 
+})
 
 
 .state('tab.history', {
-  url: '/history', 
+  url: '/history',
   views: {
     'tab-account': {
       templateUrl: 'templates/history.html',
@@ -135,10 +135,10 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 })
 
   .state('tab.favorite', {
-      url: '/favorites', 
+      url: '/favorites',
       views:{
         'tab-account':{
-          templateUrl: 'templates/favorite.html', 
+          templateUrl: 'templates/favorite.html',
           controller: 'FavoriteCtrl'
         }
      }
@@ -150,7 +150,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       controller: 'LoginCtrl'
   })
 
-  
+
 
   .state('register', {
       url: '/register',
