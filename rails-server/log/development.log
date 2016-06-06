@@ -4337,3 +4337,838 @@ Processing by ReactionsController#index as HTML
   Parameters: {"chapter_id"=>"1"}
   [1m[35mReaction Load (0.3ms)[0m  SELECT "reactions".* FROM "reactions"
 Completed 200 OK in 2ms (Views: 0.4ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/login" for ::1 at 2016-06-06 07:12:27 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (12.9ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by SessionsController#login as HTML
+  Parameters: {"username"=>"jack", "password"=>"[FILTERED]", "session"=>{"username"=>"jack", "password"=>"[FILTERED]"}}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (25.6ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."user_name" = $1 LIMIT 1  [["user_name", "jack"]]
+Completed 200 OK in 53ms (Views: 0.2ms | ActiveRecord: 32.1ms)
+
+
+Started POST "/register" for ::1 at 2016-06-06 07:12:36 -0500
+Processing by UsersController#create as HTML
+  Parameters: {"email"=>"jack", "username"=>"jack", "password"=>"[FILTERED]", "user"=>{"email"=>"jack"}}
+Can't verify CSRF token authenticity
+  [1m[36m (0.7ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (0.3ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'jack' LIMIT 1
+  [1m[36mSQL (23.8ms)[0m  [1mINSERT INTO "users" ("email", "user_name", "password_digest", "image_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["email", "jack"], ["user_name", "jack"], ["password_digest", "$2a$10$jrEtWtEJpZ8DrO9KOrOcY.FCjvrjW4PMJzn9Jdzv.w/odU.2/85E2"], ["image_url", "image_url"], ["created_at", "2016-06-06 12:12:36.596772"], ["updated_at", "2016-06-06 12:12:36.596772"]]
+  [1m[35m (67.7ms)[0m  COMMIT
+Completed 200 OK in 188ms (Views: 0.2ms | ActiveRecord: 101.2ms)
+
+
+Started POST "/login" for ::1 at 2016-06-06 07:12:38 -0500
+Processing by SessionsController#login as HTML
+  Parameters: {"username"=>"jack", "password"=>"[FILTERED]", "session"=>{"username"=>"jack", "password"=>"[FILTERED]"}}
+Can't verify CSRF token authenticity
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."user_name" = $1 LIMIT 1[0m  [["user_name", "jack"]]
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 3]]
+Completed 200 OK in 78ms (Views: 0.2ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users/3/current" for ::1 at 2016-06-06 07:12:38 -0500
+Processing by SoloReadingsController#current_books as HTML
+  Parameters: {"user_id"=>"3"}
+  [1m[36mSoloReading Load (1.0ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2[0m  [["user_id", 3], ["current", "t"]]
+Completed 200 OK in 32ms (Views: 0.2ms | ActiveRecord: 5.2ms)
+
+
+Started GET "/users/3" for ::1 at 2016-06-06 07:12:39 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"3"}
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 3]]
+Completed 200 OK in 3ms (Views: 0.3ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/login" for ::1 at 2016-06-06 07:12:51 -0500
+Processing by SessionsController#login as HTML
+  Parameters: {"username"=>"bob", "password"=>"[FILTERED]", "session"=>{"username"=>"bob", "password"=>"[FILTERED]"}}
+Can't verify CSRF token authenticity
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."user_name" = $1 LIMIT 1[0m  [["user_name", "bob"]]
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+Completed 200 OK in 74ms (Views: 0.2ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users/1/favorite" for ::1 at 2016-06-06 07:12:56 -0500
+Processing by SoloReadingsController#favorite_books as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mSoloReading Load (0.5ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."favorite" = $2[0m  [["user_id", 1], ["favorite", "t"]]
+  [1m[35mBook Load (1.2ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mBook Load (0.4ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 5]]
+Completed 200 OK in 145ms (Views: 1.1ms | ActiveRecord: 5.4ms)
+
+
+Started POST "/users/1/books" for ::1 at 2016-06-06 07:13:03 -0500
+Processing by BooksController#create as HTML
+  Parameters: {"book_id"=>1, "author"=>"Jane Doe", "title"=>"Second Book", "description"=>"This is a great book that has a plot. The characters exist and they do many things", "chapter_count"=>7, "user_id"=>"1", "book"=>{"title"=>"Second Book", "author"=>"Jane Doe"}}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mBook Load (0.3ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."title" = $1 LIMIT 1[0m  [["title", "Second Book"]]
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "books" ("title", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["title", "Second Book"], ["created_at", "2016-06-06 12:13:04.006675"], ["updated_at", "2016-06-06 12:13:04.006675"]]
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "solo_readings" ("user_id", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["user_id", 1], ["book_id", 6], ["created_at", "2016-06-06 12:13:04.011025"], ["updated_at", "2016-06-06 12:13:04.011025"]]
+  [1m[36m (6.2ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "chapters" ("number", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["number", 0], ["book_id", 6], ["created_at", "2016-06-06 12:13:04.060270"], ["updated_at", "2016-06-06 12:13:04.060270"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "chapters" ("number", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["number", 1], ["book_id", 6], ["created_at", "2016-06-06 12:13:04.063679"], ["updated_at", "2016-06-06 12:13:04.063679"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "chapters" ("number", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["number", 2], ["book_id", 6], ["created_at", "2016-06-06 12:13:04.066370"], ["updated_at", "2016-06-06 12:13:04.066370"]]
+  [1m[35m (0.5ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "chapters" ("number", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["number", 3], ["book_id", 6], ["created_at", "2016-06-06 12:13:04.071219"], ["updated_at", "2016-06-06 12:13:04.071219"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "chapters" ("number", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["number", 4], ["book_id", 6], ["created_at", "2016-06-06 12:13:04.075405"], ["updated_at", "2016-06-06 12:13:04.075405"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "chapters" ("number", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["number", 5], ["book_id", 6], ["created_at", "2016-06-06 12:13:04.078190"], ["updated_at", "2016-06-06 12:13:04.078190"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "chapters" ("number", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["number", 6], ["book_id", 6], ["created_at", "2016-06-06 12:13:04.080992"], ["updated_at", "2016-06-06 12:13:04.080992"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36mSoloReading Load (0.2ms)[0m  [1mSELECT  "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."book_id" = $2 LIMIT 1[0m  [["user_id", 1], ["book_id", 6]]
+Completed 200 OK in 126ms (Views: 0.4ms | ActiveRecord: 14.3ms)
+
+
+Started POST "/login" for ::1 at 2016-06-06 07:14:08 -0500
+Processing by SessionsController#login as HTML
+  Parameters: {"username"=>"bob", "password"=>"[FILTERED]", "session"=>{"username"=>"bob", "password"=>"[FILTERED]"}}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."user_name" = $1 LIMIT 1  [["user_name", "bob"]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+Completed 200 OK in 77ms (Views: 0.2ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/chapters/1/reactions" for ::1 at 2016-06-06 07:17:17 -0500
+Processing by ReactionsController#index as HTML
+  Parameters: {"chapter_id"=>"1"}
+  [1m[35mReaction Load (7.1ms)[0m  SELECT "reactions".* FROM "reactions"
+Completed 200 OK in 21ms (Views: 0.5ms | ActiveRecord: 8.3ms)
+
+
+Started GET "/chapters/1/reactions" for ::1 at 2016-06-06 07:17:30 -0500
+Processing by ReactionsController#index as HTML
+  Parameters: {"chapter_id"=>"1"}
+  [1m[36mReaction Load (0.3ms)[0m  [1mSELECT "reactions".* FROM "reactions"[0m
+Completed 200 OK in 2ms (Views: 0.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/1/current" for ::1 at 2016-06-06 07:18:02 -0500
+Processing by SoloReadingsController#current_books as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[35mSoloReading Load (0.4ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2  [["user_id", 1], ["current", "t"]]
+Completed 200 OK in 3ms (Views: 0.3ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/users/1/books" for ::1 at 2016-06-06 07:18:02 -0500
+Processing by BooksController#create as HTML
+  Parameters: {"book_id"=>1, "author"=>"Jane Doe", "title"=>"Second Book", "description"=>"This is a great book that has a plot. The characters exist and they do many things", "chapter_count"=>6, "user_id"=>"1", "book"=>{"title"=>"Second Book", "author"=>"Jane Doe"}}
+Can't verify CSRF token authenticity
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mBook Load (0.3ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."title" = $1 LIMIT 1  [["title", "Second Book"]]
+  [1m[36mSoloReading Load (3.6ms)[0m  [1mSELECT  "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."book_id" = $2 LIMIT 1[0m  [["user_id", 1], ["book_id", 6]]
+Completed 200 OK in 65ms (Views: 1.2ms | ActiveRecord: 4.5ms)
+
+
+Started POST "/login" for ::1 at 2016-06-06 07:18:32 -0500
+Processing by SessionsController#login as HTML
+  Parameters: {"username"=>"bob", "password"=>"[FILTERED]", "session"=>{"username"=>"bob", "password"=>"[FILTERED]"}}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."user_name" = $1 LIMIT 1  [["user_name", "bob"]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+Completed 200 OK in 76ms (Views: 0.2ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users/1/current" for ::1 at 2016-06-06 07:18:59 -0500
+Processing by SoloReadingsController#current_books as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[35mSoloReading Load (0.7ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2  [["user_id", 1], ["current", "t"]]
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/users/1" for ::1 at 2016-06-06 07:19:31 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+Completed 200 OK in 3ms (Views: 0.9ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/users/1/favorite" for ::1 at 2016-06-06 07:19:41 -0500
+Processing by SoloReadingsController#favorite_books as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[35mSoloReading Load (1.1ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."favorite" = $2  [["user_id", 1], ["favorite", "t"]]
+  [1m[36mBook Load (0.5ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mBook Load (0.9ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 5]]
+Completed 200 OK in 12ms (Views: 1.9ms | ActiveRecord: 2.6ms)
+
+
+Started POST "/users/1/books" for ::1 at 2016-06-06 07:19:53 -0500
+Processing by BooksController#create as HTML
+  Parameters: {"book_id"=>1, "author"=>"Jane Doe", "title"=>"Second Book", "description"=>"This is a great book that has a plot. The characters exist and they do many things", "chapter_count"=>6, "user_id"=>"1", "book"=>{"title"=>"Second Book", "author"=>"Jane Doe"}}
+Can't verify CSRF token authenticity
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mBook Load (0.5ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."title" = $1 LIMIT 1  [["title", "Second Book"]]
+  [1m[36mSoloReading Load (0.2ms)[0m  [1mSELECT  "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."book_id" = $2 LIMIT 1[0m  [["user_id", 1], ["book_id", 6]]
+Completed 200 OK in 5ms (Views: 0.2ms | ActiveRecord: 1.1ms)
+
+
+Started POST "/users/1/books" for ::1 at 2016-06-06 07:20:01 -0500
+Processing by BooksController#create as HTML
+  Parameters: {"book_id"=>1, "author"=>"Jane Doe", "title"=>"Second Book", "description"=>"This is a great book that has a plot. The characters exist and they do many things", "chapter_count"=>5, "user_id"=>"1", "book"=>{"title"=>"Second Book", "author"=>"Jane Doe"}}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."title" = $1 LIMIT 1[0m  [["title", "Second Book"]]
+  [1m[35mSoloReading Load (0.5ms)[0m  SELECT  "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."book_id" = $2 LIMIT 1  [["user_id", 1], ["book_id", 6]]
+Completed 200 OK in 4ms (Views: 0.5ms | ActiveRecord: 1.0ms)
+
+
+Started POST "/login" for ::1 at 2016-06-06 07:20:27 -0500
+Processing by SessionsController#login as HTML
+  Parameters: {"username"=>"bob", "password"=>"[FILTERED]", "session"=>{"username"=>"bob", "password"=>"[FILTERED]"}}
+Can't verify CSRF token authenticity
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."user_name" = $1 LIMIT 1[0m  [["user_name", "bob"]]
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+Completed 200 OK in 74ms (Views: 0.1ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users/1/current" for ::1 at 2016-06-06 07:20:27 -0500
+Processing by SoloReadingsController#current_books as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mSoloReading Load (0.4ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2[0m  [["user_id", 1], ["current", "t"]]
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/1" for ::1 at 2016-06-06 07:20:56 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/1/history" for ::1 at 2016-06-06 07:20:58 -0500
+Processing by SoloReadingsController#history_books as HTML
+  Parameters: {"user_id"=>"1"}
+Completed 500 Internal Server Error in 16ms (ActiveRecord: 0.0ms)
+
+NameError (undefined local variable or method `user' for #<Class:0x007fee451c30c8>):
+  app/models/solo_reading.rb:70:in `book_lists'
+  app/controllers/solo_readings_controller.rb:28:in `history_books'
+
+
+  Rendered /Users/jthatcher/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (3.6ms)
+  Rendered /Users/jthatcher/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.5ms)
+  Rendered /Users/jthatcher/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (4.2ms)
+  Rendered /Users/jthatcher/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (93.0ms)
+  Rendered /Users/jthatcher/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /Users/jthatcher/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/jthatcher/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/jthatcher/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/jthatcher/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (423.1ms)
+  Rendered /Users/jthatcher/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/jthatcher/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.8ms)
+  Rendered /Users/jthatcher/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (504.9ms)
+
+
+Started GET "/users/1/favorite" for ::1 at 2016-06-06 07:21:02 -0500
+Processing by SoloReadingsController#favorite_books as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mSoloReading Load (0.9ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."favorite" = $2[0m  [["user_id", 1], ["favorite", "t"]]
+  [1m[35mBook Load (1.2ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mBook Load (0.8ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 5]]
+Completed 200 OK in 9ms (Views: 1.8ms | ActiveRecord: 2.9ms)
+
+
+Started POST "/users/1/books" for ::1 at 2016-06-06 07:21:14 -0500
+Processing by BooksController#create as HTML
+  Parameters: {"book_id"=>1, "author"=>"Jane Doe", "title"=>"Second Book", "description"=>"This is a great book that has a plot. The characters exist and they do many things", "chapter_count"=>6, "user_id"=>"1", "book"=>{"title"=>"Second Book", "author"=>"Jane Doe"}}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mBook Load (0.4ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."title" = $1 LIMIT 1[0m  [["title", "Second Book"]]
+  [1m[35mSoloReading Load (0.3ms)[0m  SELECT  "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."book_id" = $2 LIMIT 1  [["user_id", 1], ["book_id", 6]]
+Completed 200 OK in 5ms (Views: 0.3ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/users/1/current" for ::1 at 2016-06-06 07:21:58 -0500
+Processing by SoloReadingsController#current_books as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mSoloReading Load (0.3ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2[0m  [["user_id", 1], ["current", "t"]]
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/1/current" for ::1 at 2016-06-06 07:22:46 -0500
+Processing by SoloReadingsController#current_books as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[35mSoloReading Load (0.3ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2  [["user_id", 1], ["current", "t"]]
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/1" for ::1 at 2016-06-06 07:22:49 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+Completed 200 OK in 2ms (Views: 0.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users/1/favorite" for ::1 at 2016-06-06 07:22:53 -0500
+Processing by SoloReadingsController#favorite_books as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[35mSoloReading Load (0.5ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."favorite" = $2  [["user_id", 1], ["favorite", "t"]]
+  [1m[36mBook Load (0.3ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mBook Load (0.3ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 5]]
+Completed 200 OK in 7ms (Views: 1.4ms | ActiveRecord: 1.1ms)
+
+
+Started POST "/users/1/books" for ::1 at 2016-06-06 07:23:02 -0500
+Processing by BooksController#create as HTML
+  Parameters: {"book_id"=>1, "author"=>"Jane Doe", "title"=>"Second Book", "description"=>"This is a great book that has a plot. The characters exist and they do many things", "chapter_count"=>7, "user_id"=>"1", "book"=>{"title"=>"Second Book", "author"=>"Jane Doe"}}
+Can't verify CSRF token authenticity
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mBook Load (0.3ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."title" = $1 LIMIT 1  [["title", "Second Book"]]
+  [1m[36mSoloReading Load (1.1ms)[0m  [1mSELECT  "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."book_id" = $2 LIMIT 1[0m  [["user_id", 1], ["book_id", 6]]
+Completed 200 OK in 5ms (Views: 0.5ms | ActiveRecord: 1.5ms)
+
+
+Started POST "/login" for ::1 at 2016-06-06 07:25:26 -0500
+Processing by SessionsController#login as HTML
+  Parameters: {"username"=>"bob", "password"=>"[FILTERED]", "session"=>{"username"=>"bob", "password"=>"[FILTERED]"}}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."user_name" = $1 LIMIT 1  [["user_name", "bob"]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+Completed 200 OK in 73ms (Views: 0.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/1/current" for ::1 at 2016-06-06 07:25:26 -0500
+Processing by SoloReadingsController#current_books as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[35mSoloReading Load (0.2ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2  [["user_id", 1], ["current", "t"]]
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users/1" for ::1 at 2016-06-06 07:25:28 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users/1/history" for ::1 at 2016-06-06 07:25:30 -0500
+Processing by SoloReadingsController#history_books as HTML
+  Parameters: {"user_id"=>"1"}
+Completed 500 Internal Server Error in 12ms (ActiveRecord: 0.0ms)
+
+NameError (undefined local variable or method `user' for #<Class:0x007fee451c30c8>):
+  app/models/solo_reading.rb:70:in `book_lists'
+  app/controllers/solo_readings_controller.rb:28:in `history_books'
+
+
+  Rendered /Users/jthatcher/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (9.9ms)
+  Rendered /Users/jthatcher/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.0ms)
+  Rendered /Users/jthatcher/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /Users/jthatcher/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (82.7ms)
+  Rendered /Users/jthatcher/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.8ms)
+  Rendered /Users/jthatcher/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (1.7ms)
+  Rendered /Users/jthatcher/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/jthatcher/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/jthatcher/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (76.9ms)
+  Rendered /Users/jthatcher/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/jthatcher/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/jthatcher/.rbenv/versions/2.3.0/lib/ruby/gems/2.3.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (165.4ms)
+
+
+Started GET "/users/1/favorite" for ::1 at 2016-06-06 07:25:35 -0500
+Processing by SoloReadingsController#favorite_books as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[35mSoloReading Load (0.7ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."favorite" = $2  [["user_id", 1], ["favorite", "t"]]
+  [1m[36mBook Load (0.4ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mBook Load (0.5ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 5]]
+Completed 200 OK in 8ms (Views: 1.4ms | ActiveRecord: 1.6ms)
+
+
+Started POST "/users/1/books" for ::1 at 2016-06-06 07:25:41 -0500
+Processing by BooksController#create as HTML
+  Parameters: {"book_id"=>1, "author"=>"Jane Doe", "title"=>"Second Book", "description"=>"This is a great book that has a plot. The characters exist and they do many things", "chapter_count"=>8, "user_id"=>"1", "book"=>{"title"=>"Second Book", "author"=>"Jane Doe"}}
+Can't verify CSRF token authenticity
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mBook Load (0.2ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."title" = $1 LIMIT 1  [["title", "Second Book"]]
+  [1m[36mSoloReading Load (0.5ms)[0m  [1mSELECT  "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."book_id" = $2 LIMIT 1[0m  [["user_id", 1], ["book_id", 6]]
+Completed 200 OK in 4ms (Views: 0.2ms | ActiveRecord: 0.9ms)
+
+
+Started POST "/login" for ::1 at 2016-06-06 07:26:03 -0500
+Processing by SessionsController#login as HTML
+  Parameters: {"username"=>"bob", "password"=>"[FILTERED]", "session"=>{"username"=>"bob", "password"=>"[FILTERED]"}}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."user_name" = $1 LIMIT 1  [["user_name", "bob"]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+Completed 200 OK in 79ms (Views: 0.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/1/current" for ::1 at 2016-06-06 07:26:03 -0500
+Processing by SoloReadingsController#current_books as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[35mSoloReading Load (1.1ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2  [["user_id", 1], ["current", "t"]]
+Completed 200 OK in 3ms (Views: 0.3ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/users/1" for ::1 at 2016-06-06 07:26:05 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/1/favorite" for ::1 at 2016-06-06 07:26:06 -0500
+Processing by SoloReadingsController#favorite_books as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[35mSoloReading Load (0.4ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."favorite" = $2  [["user_id", 1], ["favorite", "t"]]
+  [1m[36mBook Load (0.3ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mBook Load (0.7ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 5]]
+Completed 200 OK in 7ms (Views: 1.4ms | ActiveRecord: 1.5ms)
+
+
+Started POST "/users/1/books" for ::1 at 2016-06-06 07:26:13 -0500
+Processing by BooksController#create as HTML
+  Parameters: {"book_id"=>1, "author"=>"Jane Doe", "title"=>"Second Book", "description"=>"This is a great book that has a plot. The characters exist and they do many things", "chapter_count"=>9, "user_id"=>"1", "book"=>{"title"=>"Second Book", "author"=>"Jane Doe"}}
+Can't verify CSRF token authenticity
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mBook Load (0.2ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."title" = $1 LIMIT 1  [["title", "Second Book"]]
+  [1m[36mSoloReading Load (0.2ms)[0m  [1mSELECT  "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."book_id" = $2 LIMIT 1[0m  [["user_id", 1], ["book_id", 6]]
+Completed 200 OK in 4ms (Views: 0.3ms | ActiveRecord: 0.9ms)
+
+
+Started POST "/login" for ::1 at 2016-06-06 07:33:34 -0500
+Processing by SessionsController#login as HTML
+  Parameters: {"username"=>"bob", "password"=>"[FILTERED]", "session"=>{"username"=>"bob", "password"=>"[FILTERED]"}}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."user_name" = $1 LIMIT 1  [["user_name", "bob"]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+Completed 200 OK in 76ms (Views: 0.1ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/1/current" for ::1 at 2016-06-06 07:33:34 -0500
+Processing by SoloReadingsController#current_books as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[35mSoloReading Load (0.8ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2  [["user_id", 1], ["current", "t"]]
+Completed 200 OK in 4ms (Views: 0.3ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/users/1" for ::1 at 2016-06-06 07:33:42 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users/1/favorite" for ::1 at 2016-06-06 07:33:43 -0500
+Processing by SoloReadingsController#favorite_books as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[35mSoloReading Load (0.4ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."favorite" = $2  [["user_id", 1], ["favorite", "t"]]
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mBook Load (0.3ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 5]]
+Completed 200 OK in 5ms (Views: 0.8ms | ActiveRecord: 0.9ms)
+
+
+Started POST "/users/1/books" for ::1 at 2016-06-06 07:33:49 -0500
+Processing by BooksController#create as HTML
+  Parameters: {"book_id"=>1, "author"=>"Jane Doe", "title"=>"Second Book", "description"=>"This is a great book that has a plot. The characters exist and they do many things", "chapter_count"=>6, "user_id"=>"1", "book"=>{"title"=>"Second Book", "author"=>"Jane Doe"}}
+Can't verify CSRF token authenticity
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mBook Load (0.2ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."title" = $1 LIMIT 1  [["title", "Second Book"]]
+  [1m[36mSoloReading Load (0.7ms)[0m  [1mSELECT  "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."book_id" = $2 LIMIT 1[0m  [["user_id", 1], ["book_id", 6]]
+Completed 200 OK in 4ms (Views: 0.2ms | ActiveRecord: 1.1ms)
+
+
+Started POST "/login" for ::1 at 2016-06-06 07:34:53 -0500
+Processing by SessionsController#login as HTML
+  Parameters: {"username"=>"bob", "password"=>"[FILTERED]", "session"=>{"username"=>"bob", "password"=>"[FILTERED]"}}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."user_name" = $1 LIMIT 1  [["user_name", "bob"]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+Completed 200 OK in 76ms (Views: 0.1ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/1/current" for ::1 at 2016-06-06 07:34:53 -0500
+Processing by SoloReadingsController#current_books as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[35mSoloReading Load (0.7ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2  [["user_id", 1], ["current", "t"]]
+Completed 200 OK in 3ms (Views: 0.3ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/users/1" for ::1 at 2016-06-06 07:34:54 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+Completed 200 OK in 2ms (Views: 0.3ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users/1/favorite" for ::1 at 2016-06-06 07:34:56 -0500
+Processing by SoloReadingsController#favorite_books as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[35mSoloReading Load (0.5ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."favorite" = $2  [["user_id", 1], ["favorite", "t"]]
+  [1m[36mBook Load (0.3ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mBook Load (1.0ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 5]]
+Completed 200 OK in 9ms (Views: 3.2ms | ActiveRecord: 1.7ms)
+
+
+Started POST "/users/1/books" for ::1 at 2016-06-06 07:35:02 -0500
+Processing by BooksController#create as HTML
+  Parameters: {"book_id"=>1, "author"=>"Jane Doe", "title"=>"Second Book", "description"=>"This is a great book that has a plot. The characters exist and they do many things", "chapter_count"=>9, "user_id"=>"1", "book"=>{"title"=>"Second Book", "author"=>"Jane Doe"}}
+Can't verify CSRF token authenticity
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mBook Load (0.3ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."title" = $1 LIMIT 1  [["title", "Second Book"]]
+  [1m[36mSoloReading Load (0.3ms)[0m  [1mSELECT  "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."book_id" = $2 LIMIT 1[0m  [["user_id", 1], ["book_id", 6]]
+Completed 200 OK in 4ms (Views: 0.2ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/users/1/books" for ::1 at 2016-06-06 07:35:06 -0500
+Processing by BooksController#create as HTML
+  Parameters: {"book_id"=>1, "author"=>"Jane Doe", "title"=>"Second Book", "description"=>"This is a great book that has a plot. The characters exist and they do many things", "chapter_count"=>9, "user_id"=>"1", "book"=>{"title"=>"Second Book", "author"=>"Jane Doe"}}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mBook Load (0.1ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."title" = $1 LIMIT 1[0m  [["title", "Second Book"]]
+  [1m[35mSoloReading Load (0.1ms)[0m  SELECT  "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."book_id" = $2 LIMIT 1  [["user_id", 1], ["book_id", 6]]
+Completed 200 OK in 2ms (Views: 0.1ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/users/1/books" for ::1 at 2016-06-06 07:35:53 -0500
+Processing by BooksController#create as HTML
+  Parameters: {"book_id"=>1, "author"=>"Jane Doe", "title"=>"Second Book", "description"=>"This is a great book that has a plot. The characters exist and they do many things", "chapter_count"=>5, "user_id"=>"1", "book"=>{"title"=>"Second Book", "author"=>"Jane Doe"}}
+Can't verify CSRF token authenticity
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mBook Load (0.2ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."title" = $1 LIMIT 1  [["title", "Second Book"]]
+  [1m[36mSoloReading Load (0.2ms)[0m  [1mSELECT  "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."book_id" = $2 LIMIT 1[0m  [["user_id", 1], ["book_id", 6]]
+Completed 200 OK in 3ms (Views: 0.1ms | ActiveRecord: 0.7ms)
+
+
+Started POST "/users/1/books" for ::1 at 2016-06-06 07:36:51 -0500
+Processing by BooksController#create as HTML
+  Parameters: {"book_id"=>1, "author"=>"Jane Doe", "title"=>"Second Book", "description"=>"This is a great book that has a plot. The characters exist and they do many things", "chapter_count"=>5, "user_id"=>"1", "book"=>{"title"=>"Second Book", "author"=>"Jane Doe"}}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mBook Load (0.1ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."title" = $1 LIMIT 1[0m  [["title", "Second Book"]]
+  [1m[35mSoloReading Load (0.2ms)[0m  SELECT  "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."book_id" = $2 LIMIT 1  [["user_id", 1], ["book_id", 6]]
+Completed 200 OK in 2ms (Views: 0.1ms | ActiveRecord: 0.5ms)
+
+
+Started POST "/users/1/books" for ::1 at 2016-06-06 07:37:13 -0500
+Processing by BooksController#create as HTML
+  Parameters: {"book_id"=>1, "author"=>"Jane Doe", "title"=>"Second Book", "description"=>"This is a great book that has a plot. The characters exist and they do many things", "chapter_count"=>9, "user_id"=>"1", "book"=>{"title"=>"Second Book", "author"=>"Jane Doe"}}
+Can't verify CSRF token authenticity
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mBook Load (0.2ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."title" = $1 LIMIT 1  [["title", "Second Book"]]
+  [1m[36mSoloReading Load (0.2ms)[0m  [1mSELECT  "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."book_id" = $2 LIMIT 1[0m  [["user_id", 1], ["book_id", 6]]
+Completed 200 OK in 3ms (Views: 0.1ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/users/1/books" for ::1 at 2016-06-06 07:37:33 -0500
+Processing by BooksController#create as HTML
+  Parameters: {"book_id"=>1, "author"=>"Jane Doe", "title"=>"Second Book", "description"=>"This is a great book that has a plot. The characters exist and they do many things", "chapter_count"=>8, "user_id"=>"1", "book"=>{"title"=>"Second Book", "author"=>"Jane Doe"}}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mBook Load (0.5ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."title" = $1 LIMIT 1[0m  [["title", "Second Book"]]
+  [1m[35mSoloReading Load (0.3ms)[0m  SELECT  "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."book_id" = $2 LIMIT 1  [["user_id", 1], ["book_id", 6]]
+Completed 200 OK in 4ms (Views: 0.2ms | ActiveRecord: 1.1ms)
+
+
+Started POST "/login" for ::1 at 2016-06-06 07:39:56 -0500
+Processing by SessionsController#login as HTML
+  Parameters: {"username"=>"bob", "password"=>"[FILTERED]", "session"=>{"username"=>"bob", "password"=>"[FILTERED]"}}
+Can't verify CSRF token authenticity
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."user_name" = $1 LIMIT 1[0m  [["user_name", "bob"]]
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+Completed 200 OK in 77ms (Views: 0.1ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/1/current" for ::1 at 2016-06-06 07:39:56 -0500
+Processing by SoloReadingsController#current_books as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mSoloReading Load (0.7ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2[0m  [["user_id", 1], ["current", "t"]]
+Completed 200 OK in 3ms (Views: 0.3ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/users/1" for ::1 at 2016-06-06 07:39:58 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+Completed 200 OK in 2ms (Views: 0.3ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users/1/favorite" for ::1 at 2016-06-06 07:40:00 -0500
+Processing by SoloReadingsController#favorite_books as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[36mSoloReading Load (0.3ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."favorite" = $2[0m  [["user_id", 1], ["favorite", "t"]]
+  [1m[35mBook Load (0.6ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mBook Load (0.3ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 5]]
+Completed 200 OK in 6ms (Views: 1.1ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/users/1/favorite" for ::1 at 2016-06-06 07:40:10 -0500
+Processing by SoloReadingsController#favorite_books as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[35mSoloReading Load (0.4ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."favorite" = $2  [["user_id", 1], ["favorite", "t"]]
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mBook Load (0.2ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 5]]
+Completed 200 OK in 5ms (Views: 1.0ms | ActiveRecord: 0.9ms)
+
+
+Started POST "/users/1/books" for ::1 at 2016-06-06 07:43:31 -0500
+Processing by BooksController#create as HTML
+  Parameters: {"book_id"=>1, "author"=>"Jane Doe", "title"=>"Second Book", "description"=>"This is a great book that has a plot. The characters exist and they do many things", "chapter_count"=>9, "user_id"=>"1", "book"=>{"title"=>"Second Book", "author"=>"Jane Doe"}}
+Can't verify CSRF token authenticity
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mBook Load (0.7ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."title" = $1 LIMIT 1  [["title", "Second Book"]]
+  [1m[36mSoloReading Load (0.5ms)[0m  [1mSELECT  "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."book_id" = $2 LIMIT 1[0m  [["user_id", 1], ["book_id", 6]]
+Completed 200 OK in 4ms (Views: 0.2ms | ActiveRecord: 1.5ms)
+
+
+Started POST "/login" for ::1 at 2016-06-06 07:51:59 -0500
+Processing by SessionsController#login as HTML
+  Parameters: {"username"=>"bob", "password"=>"[FILTERED]", "session"=>{"username"=>"bob", "password"=>"[FILTERED]"}}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."user_name" = $1 LIMIT 1  [["user_name", "bob"]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+Completed 200 OK in 75ms (Views: 0.2ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/users/1/current" for ::1 at 2016-06-06 07:51:59 -0500
+Processing by SoloReadingsController#current_books as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[35mSoloReading Load (0.2ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2  [["user_id", 1], ["current", "t"]]
+Completed 200 OK in 3ms (Views: 0.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users/1" for ::1 at 2016-06-06 07:52:01 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users/1/favorite" for ::1 at 2016-06-06 07:52:02 -0500
+Processing by SoloReadingsController#favorite_books as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[35mSoloReading Load (0.3ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."favorite" = $2  [["user_id", 1], ["favorite", "t"]]
+  [1m[36mBook Load (0.9ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mBook Load (0.8ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 5]]
+Completed 200 OK in 7ms (Views: 1.3ms | ActiveRecord: 2.0ms)
+
+
+Started POST "/users/1/books" for ::1 at 2016-06-06 07:52:14 -0500
+Processing by BooksController#create as HTML
+  Parameters: {"book_id"=>1, "author"=>"Jane Doe", "title"=>"Second Book", "description"=>"This is a great book that has a plot. The characters exist and they do many things", "chapter_count"=>9, "user_id"=>"1", "book"=>{"title"=>"Second Book", "author"=>"Jane Doe"}}
+Can't verify CSRF token authenticity
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mBook Load (0.2ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."title" = $1 LIMIT 1  [["title", "Second Book"]]
+  [1m[36mSoloReading Load (0.2ms)[0m  [1mSELECT  "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."book_id" = $2 LIMIT 1[0m  [["user_id", 1], ["book_id", 6]]
+Completed 200 OK in 4ms (Views: 0.3ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/users/1/current" for ::1 at 2016-06-06 07:53:52 -0500
+Processing by SoloReadingsController#current_books as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[35mSoloReading Load (0.2ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2  [["user_id", 1], ["current", "t"]]
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/login" for ::1 at 2016-06-06 07:54:02 -0500
+Processing by SessionsController#login as HTML
+  Parameters: {"username"=>"bob", "password"=>"[FILTERED]", "session"=>{"username"=>"bob", "password"=>"[FILTERED]"}}
+Can't verify CSRF token authenticity
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."user_name" = $1 LIMIT 1[0m  [["user_name", "bob"]]
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+Completed 200 OK in 75ms (Views: 0.1ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/1" for ::1 at 2016-06-06 07:54:04 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users/1/favorite" for ::1 at 2016-06-06 07:54:05 -0500
+Processing by SoloReadingsController#favorite_books as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[35mSoloReading Load (0.3ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."favorite" = $2  [["user_id", 1], ["favorite", "t"]]
+  [1m[36mBook Load (0.4ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mBook Load (0.2ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 5]]
+Completed 200 OK in 6ms (Views: 1.1ms | ActiveRecord: 0.9ms)
+
+
+Started POST "/users/1/books" for ::1 at 2016-06-06 07:54:11 -0500
+Processing by BooksController#create as HTML
+  Parameters: {"book_id"=>1, "author"=>"Jane Doe", "title"=>"Second Book", "description"=>"This is a great book that has a plot. The characters exist and they do many things", "chapter_count"=>8, "user_id"=>"1", "book"=>{"title"=>"Second Book", "author"=>"Jane Doe"}}
+Can't verify CSRF token authenticity
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mBook Load (0.3ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."title" = $1 LIMIT 1  [["title", "Second Book"]]
+  [1m[36mSoloReading Load (0.2ms)[0m  [1mSELECT  "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."book_id" = $2 LIMIT 1[0m  [["user_id", 1], ["book_id", 6]]
+Completed 200 OK in 5ms (Views: 0.2ms | ActiveRecord: 0.9ms)
+
+
+Started POST "/login" for ::1 at 2016-06-06 07:54:39 -0500
+Processing by SessionsController#login as HTML
+  Parameters: {"username"=>"bob", "password"=>"[FILTERED]", "session"=>{"username"=>"bob", "password"=>"[FILTERED]"}}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."user_name" = $1 LIMIT 1  [["user_name", "bob"]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+Completed 200 OK in 74ms (Views: 0.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/1/current" for ::1 at 2016-06-06 07:54:40 -0500
+Processing by SoloReadingsController#current_books as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[35mSoloReading Load (0.3ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2  [["user_id", 1], ["current", "t"]]
+Completed 200 OK in 3ms (Views: 0.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/1" for ::1 at 2016-06-06 07:54:41 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+Completed 200 OK in 2ms (Views: 0.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/1/favorite" for ::1 at 2016-06-06 07:54:42 -0500
+Processing by SoloReadingsController#favorite_books as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[35mSoloReading Load (0.3ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."favorite" = $2  [["user_id", 1], ["favorite", "t"]]
+  [1m[36mBook Load (0.3ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mBook Load (0.6ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 5]]
+Completed 200 OK in 7ms (Views: 1.6ms | ActiveRecord: 1.2ms)
+
+
+Started POST "/users/1/books" for ::1 at 2016-06-06 07:54:50 -0500
+Processing by BooksController#create as HTML
+  Parameters: {"book_id"=>1, "author"=>"Jane Doe", "title"=>"Second Book", "description"=>"This is a great book that has a plot. The characters exist and they do many things", "chapter_count"=>9, "user_id"=>"1", "book"=>{"title"=>"Second Book", "author"=>"Jane Doe"}}
+Can't verify CSRF token authenticity
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mBook Load (0.2ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."title" = $1 LIMIT 1  [["title", "Second Book"]]
+  [1m[36mSoloReading Load (0.2ms)[0m  [1mSELECT  "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."book_id" = $2 LIMIT 1[0m  [["user_id", 1], ["book_id", 6]]
+Completed 200 OK in 4ms (Views: 0.1ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/login" for ::1 at 2016-06-06 07:55:44 -0500
+Processing by SessionsController#login as HTML
+  Parameters: {"username"=>"bob", "password"=>"[FILTERED]", "session"=>{"username"=>"bob", "password"=>"[FILTERED]"}}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."user_name" = $1 LIMIT 1  [["user_name", "bob"]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+Completed 200 OK in 73ms (Views: 0.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/1/current" for ::1 at 2016-06-06 07:55:44 -0500
+Processing by SoloReadingsController#current_books as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[35mSoloReading Load (1.1ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2  [["user_id", 1], ["current", "t"]]
+Completed 200 OK in 3ms (Views: 0.3ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/users/1" for ::1 at 2016-06-06 07:55:46 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/1/favorite" for ::1 at 2016-06-06 07:55:47 -0500
+Processing by SoloReadingsController#favorite_books as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[35mSoloReading Load (0.7ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."favorite" = $2  [["user_id", 1], ["favorite", "t"]]
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mBook Load (0.2ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 5]]
+Completed 200 OK in 5ms (Views: 0.9ms | ActiveRecord: 1.1ms)
+
+
+Started POST "/users/1/books" for ::1 at 2016-06-06 07:55:52 -0500
+Processing by BooksController#create as HTML
+  Parameters: {"book_id"=>1, "author"=>"Jane Doe", "title"=>"Second Book", "description"=>"This is a great book that has a plot. The characters exist and they do many things", "chapter_count"=>6, "user_id"=>"1", "book"=>{"title"=>"Second Book", "author"=>"Jane Doe"}}
+Can't verify CSRF token authenticity
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mBook Load (0.3ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."title" = $1 LIMIT 1  [["title", "Second Book"]]
+  [1m[36mSoloReading Load (0.3ms)[0m  [1mSELECT  "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."book_id" = $2 LIMIT 1[0m  [["user_id", 1], ["book_id", 6]]
+Completed 200 OK in 4ms (Views: 0.2ms | ActiveRecord: 0.9ms)
+
+
+Started POST "/login" for ::1 at 2016-06-06 07:56:45 -0500
+Processing by SessionsController#login as HTML
+  Parameters: {"username"=>"bob", "password"=>"[FILTERED]", "session"=>{"username"=>"bob", "password"=>"[FILTERED]"}}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."user_name" = $1 LIMIT 1  [["user_name", "bob"]]
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+Completed 200 OK in 75ms (Views: 0.2ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/users/1/books" for ::1 at 2016-06-06 07:57:23 -0500
+Processing by BooksController#create as HTML
+  Parameters: {"author"=>"Mikael Krogerus", "title"=>"The Test Book", "description"=>"An essential library of tests for self-knowledge and success, from the strategic thinking experts behind the international bestseller The Decision Book. Are you clever? Can you self-motivate? Are you creative? How do you handle money? Can you lead others well? With their trademark style and wit, best-selling authors Mikael Krogerus and Roman Tschäppeler present sixty-four tests spanning intelligence and personality type; creativity and leadership skills; fitness and lifestyle; and knowledge and belief. From what you see in a Rorschach test to comparing your workout against a Navy SEAL’s, from EQ to IQ and Myers-Briggs in between, The Test Book offers a panoply of ways to assess yourself and decide what you need to succeed. As Krogerus and Tschäppeler highlight, you can only know whether you have the right skills, the right job, or the right partner when you know where you stand right now. Small enough to fit in your pocket but packed with insight and good humor, The Test Book delivers a quick, fun way to evaluate your life and happiness.", "image_url"=>"http://books.google.com/books/content?id=lPV1CQAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api", "pageCount"=>208, "publishedDate"=>"2015-10-05", "chapter_count"=>5, "user_id"=>"1", "book"=>{"title"=>"The Test Book", "author"=>"Mikael Krogerus", "image_url"=>"http://books.google.com/books/content?id=lPV1CQAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"}}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mBook Load (0.3ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."title" = $1 LIMIT 1[0m  [["title", "The Test Book"]]
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "books" ("title", "created_at", "updated_at") VALUES ($1, $2, $3) RETURNING "id"[0m  [["title", "The Test Book"], ["created_at", "2016-06-06 12:57:23.359339"], ["updated_at", "2016-06-06 12:57:23.359339"]]
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "solo_readings" ("user_id", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["user_id", 1], ["book_id", 7], ["created_at", "2016-06-06 12:57:23.362841"], ["updated_at", "2016-06-06 12:57:23.362841"]]
+  [1m[36m (63.8ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "chapters" ("number", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["number", 0], ["book_id", 7], ["created_at", "2016-06-06 12:57:23.430981"], ["updated_at", "2016-06-06 12:57:23.430981"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "chapters" ("number", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["number", 1], ["book_id", 7], ["created_at", "2016-06-06 12:57:23.433217"], ["updated_at", "2016-06-06 12:57:23.433217"]]
+  [1m[36m (0.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "chapters" ("number", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["number", 2], ["book_id", 7], ["created_at", "2016-06-06 12:57:23.436825"], ["updated_at", "2016-06-06 12:57:23.436825"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "chapters" ("number", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["number", 3], ["book_id", 7], ["created_at", "2016-06-06 12:57:23.440201"], ["updated_at", "2016-06-06 12:57:23.440201"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "chapters" ("number", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["number", 4], ["book_id", 7], ["created_at", "2016-06-06 12:57:23.443284"], ["updated_at", "2016-06-06 12:57:23.443284"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36mSoloReading Load (0.2ms)[0m  [1mSELECT  "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."book_id" = $2 LIMIT 1[0m  [["user_id", 1], ["book_id", 7]]
+Completed 200 OK in 91ms (Views: 0.1ms | ActiveRecord: 68.7ms)
+
+
+Started POST "/login" for ::1 at 2016-06-06 07:59:24 -0500
+Processing by SessionsController#login as HTML
+  Parameters: {"username"=>"bob", "password"=>"[FILTERED]", "session"=>{"username"=>"bob", "password"=>"[FILTERED]"}}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."user_name" = $1 LIMIT 1  [["user_name", "bob"]]
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+Completed 200 OK in 75ms (Views: 0.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/1/current" for ::1 at 2016-06-06 07:59:24 -0500
+Processing by SoloReadingsController#current_books as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[35mSoloReading Load (0.4ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2  [["user_id", 1], ["current", "t"]]
+Completed 200 OK in 3ms (Views: 0.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/1" for ::1 at 2016-06-06 07:59:26 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"1"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+Completed 200 OK in 2ms (Views: 0.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/1/favorite" for ::1 at 2016-06-06 07:59:27 -0500
+Processing by SoloReadingsController#favorite_books as HTML
+  Parameters: {"user_id"=>"1"}
+  [1m[35mSoloReading Load (0.3ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."favorite" = $2  [["user_id", 1], ["favorite", "t"]]
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mBook Load (0.2ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 5]]
+Completed 200 OK in 5ms (Views: 0.7ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/users/1/books" for ::1 at 2016-06-06 07:59:32 -0500
+Processing by BooksController#create as HTML
+  Parameters: {"book_id"=>1, "author"=>"Jane Doe", "title"=>"Second Book", "description"=>"This is a great book that has a plot. The characters exist and they do many things", "chapter_count"=>8, "user_id"=>"1", "book"=>{"title"=>"Second Book", "author"=>"Jane Doe"}}
+Can't verify CSRF token authenticity
+  [1m[36mUser Load (2.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mBook Load (1.1ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."title" = $1 LIMIT 1  [["title", "Second Book"]]
+  [1m[36mSoloReading Load (0.7ms)[0m  [1mSELECT  "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."book_id" = $2 LIMIT 1[0m  [["user_id", 1], ["book_id", 6]]
+Completed 200 OK in 7ms (Views: 0.3ms | ActiveRecord: 3.9ms)
