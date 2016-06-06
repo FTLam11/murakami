@@ -5,8 +5,8 @@ angular.module('starter.controllers', [])
   $http.get("http://localhost:3000/users/" + userId + "/current")
   .then(function(response){
     var currentBooks = response.data.current_books;
-    Books.add(currentBooks)
-    $scope.books = Books.all();
+    Books.add(currentBooks,"current")
+    $scope.books = Books.all("current");
     console.log('The call to server occurs only after login page')
     if (currentBooks.length === 0) {
       $scope.message = "Go to search and add books."
@@ -23,10 +23,11 @@ angular.module('starter.controllers', [])
   userId = window.localStorage['authToken']
   $http.get("http://localhost:3000/users/" + userId + '/queue')
   .then(function(response){
-    // console.log(response)
-    $scope.books = response.data
+    var queueBooks = response.data.queue_books;
+    Books.add(queueBooks,"queue")
+    $scope.books = queueBooks
     console.log($scope.books)
-    if ($scope.books.queue_books.length === 0){
+    if ($scope.books.length === 0){
       $scope.message = "No Books in Your Queue Yet! Add one!"
     }
   })
@@ -122,8 +123,9 @@ angular.module('starter.controllers', [])
         $scope.book.title = book.volumeInfo.title
         $scope.book.description = book.volumeInfo.description
         $scope.book.image_url = book.volumeInfo.imageLinks.thumbnail
-        $scope.book.pageCount = book.volumeInfo.pageCount
+        $scope.book.page_numbers = book.volumeInfo.pageCount
         $scope.book.publishedDate = book.volumeInfo.publishedDate
+        console.log($scope.book.page_numbers)
         })
       }
 
@@ -172,7 +174,7 @@ angular.module('starter.controllers', [])
     window.localStorage['authToken'] = response.data.token
     if (response.data.book === "dont"){
   }else {
-    Books.addOne(response.data.book)
+    Books.addOne(response.data.book,"current")
   }
   })
 
@@ -198,47 +200,21 @@ angular.module('starter.controllers', [])
 
   $scope.queue = function() {
     $scope.data = {};
-
-    var myPopup = $ionicPopup.show({
-      template: '<input type="text" ng-model="data.chapters">',
-      title: 'Enter number of chapters',
-      subTitle: 'This is for Queue',
-      scope: $scope,
-      buttons: [
-        { text: 'Cancel' },
-        {
-          text: '<b>Save</b>',
-          type: 'button-positive',
-          onTap: function(e) {
-            if (!$scope.data.chapters) {
-              //don't allow the user to close unless he enters wifi password
-              e.preventDefault();
-            } else {
-              $scope.sendBookReq($scope.data.chapters, $scope)
-            }
-          }
-        }
-      ]
-    })
-  }
-
-  $scope.sendBookReq = function(chapter_number, $scope) {
     var bookData = $scope.book
-    bookData.chapter_count = parseInt(chapter_number)
     var userId = window.localStorage['authToken']
     var jsonData = JSON.stringify(bookData)
+    console.log(jsonData)
+    $http({
+      method: 'POST',
+      url: 'http://localhost:3000/users/'+userId+'/add_to_queue',
+      dataType: "json",
+      data: jsonData
+    }).then(function(response){
+      console.log(response.data.book)
+      Books.addOne(response.data.book, "queue")
+      window.localStorage['authToken'] = response.data.token
 
-  $http({
-    method: 'POST',
-    url: 'http://localhost:3000/users/'+userId+'/books',
-    dataType: "json",
-    data: jsonData
-  }).then(function(response){
-    window.localStorage['authToken'] = response.data.token
-  })
-    $location.path('/books/5/chapters/1')
-    console.log(window.localStorage['authToken'])
-    console.log("+++++++++++++++++++++++++")
+    })
   }
 
 })
