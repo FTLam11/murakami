@@ -14,13 +14,13 @@ Rails.application.routes.draw do
   get '/users/:user_id/queue', to: 'solo_readings#queue_books'
   get '/users/:user_id/history', to: 'solo_readings#history_books'
 
-  put '/users/:user_id/add_to_current', to: 'books#add_to_current'
-  put '/users/:user_id/add_to_favorites', to: 'books#add_to_favorites'
+  post '/users/:user_id/add_to_current', to: 'books#add_to_current'
+  post '/users/:user_id/add_to_favorites', to: 'books#add_to_favorites'
   post '/users/:user_id/add_to_queue', to: 'books#add_to_queue'
-  put '/users/:user_id/books/:book_id/mark_complete', to: 'books#mark_complete'
+  post '/users/:user_id/books/:book_id/mark_complete', to: 'books#mark_complete'
 
   resources :books, only: [] do
-    resources :chapters , only: [:show]
+    resources :chapters , only: [:show, :index]
     resources :reviews , only: [:index, :create, :show]
   end
 

@@ -45,9 +45,17 @@ class BooksController < ApplicationController
   end
 
   def mark_complete
-    find_reading
-    @reading.current = false
+    user_id = params["user_id"].to_i
+    user = User.find(user_id)
+    book_id = params["book_id"].to_i
+
+    @reading = SoloReading.find_by(user_id: user_id, book_id: book_id)
+
     @reading.complete = true
+    @reading.current = false
+    @reading.save
+
+    render json: {test: 3}
   end
 
   def show
