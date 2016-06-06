@@ -11,9 +11,8 @@ class Book < ActiveRecord::Base
 
   def self.add_book(params, user)
     book = Book.find_by(title: params['book']['title'])
-
     if book == nil
-      new_book = user.books.create(title: params['book']['title'], description: params['book']['description'], author: params['book']['author'], image_url: params['book']['image_url'], page_numbers: params['book']['pageCount'], date_published: params['book']['publishedDate'])
+      new_book = user.books.create(title: params['book']['title'], description: params['book']['description'], author: params['book']['author'], image_url: params['book']['image_url'], page_numbers: params['book']['page_numbers'], date_published: params['book']['publishedDate'])
       create_chapters(new_book, params[:chapter_count])
       @reading = SoloReading.find_by(user_id:user.id, book_id:new_book.id)
     else
@@ -37,7 +36,7 @@ class Book < ActiveRecord::Base
     book = Book.find_by(title: params['book']['title'])
 
     if book == nil
-      new_book = user.books.create(title: params['book']['title'], description: params['book']['description'], author: params['book']['author'], image_url: params['book']['image_url'], page_numbers: params['book']['pageCount'], date_published: params['book']['publishedDate'])
+      new_book = user.books.create(title: params['book']['title'], description: params['book']['description'], author: params['book']['author'], image_url: params['book']['image_url'], page_numbers: params['book']['page_numbers'], date_published: params['book']['publishedDate'])
       @reading = SoloReading.find_by(user_id:user.id, book_id:new_book.id)
     else
       @reading = SoloReading.find_by(user_id:user.id, book_id:book.id)

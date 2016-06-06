@@ -5,7 +5,7 @@
     </div>
     <div class="book-details">
     <h2 class="questrial" style="margin-bottom: -15px"> {{book.title}} </h2>
-      <h4 class="questrial author"> by {{book.author}} // {{book.pageCount}} Pages </h4>
+      <h4 class="questrial author"> by {{book.author}} // {{book.page_numbers}} Pages </h4>
     </div>
     <div class="book-description">
       <p> {{book.description}} </p>
@@ -13,7 +13,7 @@
     <div class="hide-overflow">
     </div>
  <div class="book-buttons">
-    <button class="book-button" ng-click=" start()"> Start </button>
+    <button class="book-button" ng-click=" start()" ng-hide="start-hide"> Start </button>
     <button class="book-button" ng-click=" queue()"> Queue </button>
     <button class="book-button"> Favorite </button>
     <a href = "#/tab/books/{{id}}/reviews"><button class="book-button"> Review </button></a>
