@@ -127,7 +127,7 @@ angular.module('starter.controllers', [])
     $scope.data = {};
 
     var myPopup = $ionicPopup.show({
-      template: '<input type="text" ng-model="data.wifi">',
+      template: '<input type="text" ng-model="data.chapters">',
       title: 'Enter number of chapters',
       subTitle: 'This is for Current',
       scope: $scope,
@@ -137,11 +137,11 @@ angular.module('starter.controllers', [])
           text: '<b>Save</b>',
           type: 'button-positive',
           onTap: function(e) {
-            if (!$scope.data.wifi) {
+            if (!$scope.data.chapters) {
               //don't allow the user to close unless he enters wifi password
               e.preventDefault();
             } else {
-              $scope.BookReq($scope.data.wifi, $scope)
+              $scope.BookReq($scope.data.chapters, $scope)
             }
           }
         }
@@ -162,6 +162,8 @@ angular.module('starter.controllers', [])
   }).then(function(response){
     window.localStorage['authToken'] = response.data.token
   })
+
+
     $location.path('/tab/dash')
   }
 
@@ -169,7 +171,7 @@ angular.module('starter.controllers', [])
     $scope.data = {};
 
     var myPopup = $ionicPopup.show({
-      template: '<input type="text" ng-model="data.wifi">',
+      template: '<input type="text" ng-model="data.chapters">',
       title: 'Enter number of chapters',
       subTitle: 'This is for Queue',
       scope: $scope,
@@ -179,11 +181,11 @@ angular.module('starter.controllers', [])
           text: '<b>Save</b>',
           type: 'button-positive',
           onTap: function(e) {
-            if (!$scope.data.wifi) {
+            if (!$scope.data.chapters) {
               //don't allow the user to close unless he enters wifi password
               e.preventDefault();
             } else {
-              $scope.sendBookReq($scope.data.wifi, $scope)
+              $scope.sendBookReq($scope.data.chapters, $scope)
             }
           }
         }
