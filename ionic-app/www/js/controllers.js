@@ -81,10 +81,19 @@ angular.module('starter.controllers', [])
 
 })
 
-.controller('ChapterCtrl', function($scope, $http, $stateParams, Books) {
-  $scope.book = Books.get($stateParams.bookId)
-  // $scope.chapter = Chapters.where(book_id: $stateParams.bookId, id: $stateParams.bookId)
-  // $scope.reactions = chapter.reactions
+.controller('ChapterCtrl', function($scope, $http, $stateParams, Books ,$location) {
+  $http.get("http://localhost:3000/chapters/" + $stateParams.chapterId + "/reactions")
+  .then(function(response){
+    $scope.reactions = response.data.reactions
+    if ($scope.reactions === null){
+      $scope.message = "There are no reactions! React!"
+    }
+  })
+
+  $scope.nextChapter = function() {
+    $stateParams.chapterId
+    $location.path("/books/" + 5 + "/chapters/" + 2)
+  }
 })
 
 .controller('BookDetailCtrl', function($scope, $http, $stateParams, Books, $location, $ionicPopup){
@@ -192,6 +201,7 @@ angular.module('starter.controllers', [])
       ]
     })
   }
+
   $scope.sendBookReq = function(chapter_number, $scope) {
     var bookData = $scope.book
     bookData.chapter_count = parseInt(chapter_number)
@@ -206,7 +216,9 @@ angular.module('starter.controllers', [])
   }).then(function(response){
     window.localStorage['authToken'] = response.data.token
   })
-    $location.path('/tab/dash')
+    $location.path('/books/5/chapters/1')
+    console.log(window.localStorage['authToken'])
+    console.log("+++++++++++++++++++++++++")
   }
 
 })

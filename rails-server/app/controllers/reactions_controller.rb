@@ -4,6 +4,11 @@ class ReactionsController < ApplicationController
     reaction = current_user.reactions.create(reaction_params)
   end
 
+  def index
+    reactions = Reaction.all.select {|reaction| reaction.chapter_id == 1}
+    render json: { reactions: reactions }
+  end
+
   def show
     reaction = Reaction.find(params[:id])
     comments = reaction.comments
