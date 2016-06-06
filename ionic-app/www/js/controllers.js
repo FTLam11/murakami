@@ -5,9 +5,9 @@ angular.module('starter.controllers', [])
   $http.get("http://localhost:3000/users/" + userId + "/current")
   .then(function(response){
     var currentBooks = response.data.current_books;
-    $scope.books = currentBooks;
+    Books.add(currentBooks)
+    $scope.books = Books.all();
     console.log('The call to server occurs only after login page')
-    console.log(currentBooks);
     if (currentBooks.length === 0) {
       $scope.message = "Go to search and add books."
     } else {
@@ -170,10 +170,30 @@ angular.module('starter.controllers', [])
     data: jsonData
   }).then(function(response){
     window.localStorage['authToken'] = response.data.token
+    if (response.data.book === "dont"){
+  }else {
+    Books.addOne(response.data.book)
+  }
   })
 
 
+  // $http.get("http://localhost:3000/users/" + userId + "/current")
+  // .then(function(response){
+  //   var currentBooks = response.data.current_books;
+  //   $scope.books = currentBooks;
+  //   console.log('The call to server occurs only after login page')
+  //   console.log(currentBooks);
+  //   if (currentBooks.length === 0) {
+  //     $scope.message = "Go to search and add books."
+  //   } else {
+  //     $scope.message = ""
+  //   }
+  // })
+
+  // window.location.reload(true)
+
     $location.path('/tab/dash')
+
   }
 
   $scope.queue = function() {

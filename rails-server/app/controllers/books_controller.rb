@@ -4,9 +4,13 @@ class BooksController < ApplicationController
   def create
     user = User.find(params["user_id"])
     @reading = Book.add_book(params, user)
-    @reading.current = true
-    @reading.save
-    render json: {token: user.id, book: @reading.book}, status: :ok
+    if @reading.current
+      render json: {token: user.id, book: "dont"}, status: :ok
+    else
+      @reading.current = true
+      @reading.save
+      render json: {token: user.id, book: @reading.book}, status: :ok
+    end
   end
 
   def check_books

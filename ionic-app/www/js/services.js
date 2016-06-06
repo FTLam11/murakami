@@ -3,34 +3,7 @@ angular.module('starter.services', [])
 
 
 .factory('Books', function(){
-  var books = [{
-    id:0,
-    title: "First Book",
-    author: "John Doe",
-    image_url: "img/catcher.jpg",
-    genre: "good",
-    page_numbers: 30,
-    date_published: 1212,
-    description: "This is a great book that has a plot. The characters exist and they do many things"
-  }, {
-    id:1,
-    title: "Second Book",
-    author: "Jane Doe",
-    image_url: "img/enders.jpg",
-    genre: "good",
-    page_numbers: 30,
-    date_published: 1212,
-    description: "This is a great book that has a plot. The characters exist and they do many things"
-  }, {
-    id:2,
-    title: "Third Book",
-    author: "Juniper Doe",
-    image_url: "img/download.jpeg",
-    genre: "good",
-    page_numbers: 30,
-    date_published: 1212,
-    description: "This is a great book that has a plot. The characters exist and they do many things"
-    }];
+  var books = [];
 
   return {
     all: function() {
@@ -46,6 +19,14 @@ angular.module('starter.services', [])
         }
       }
       return null;
+    },
+    add: function(book_array){
+      book_array.forEach(function(book){
+        books.push(book)
+      })
+    },
+    addOne: function(book){
+      books.push(book)
     }
   };
 
