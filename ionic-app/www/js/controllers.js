@@ -26,7 +26,7 @@ angular.module('starter.controllers', [])
     var queueBooks = response.data.queue_books;
     Books.add(queueBooks,"queue")
     $scope.books = queueBooks
-    console.log($scope.books)
+
     if ($scope.books.length === 0){
       $scope.message = "No Books in Your Queue Yet! Add one!"
     }
@@ -38,7 +38,6 @@ angular.module('starter.controllers', [])
   userId = window.localStorage['authToken']
   $http.get('http://localhost:3000/users/' + userId + '/history').then(function(response){
     $scope.books = response.data.history_books
-    console.log($scope.books)
     if ($scope.books === null){
       $scope.message = "No Books in your History Yet! Add some!"
     }
@@ -85,18 +84,54 @@ angular.module('starter.controllers', [])
 .controller('ChapterCtrl', function($scope, $http, $stateParams,$location) {
   $http.get("http://localhost:3000/chapters/" + $stateParams.chapterId + "/reactions")
   .then(function(response){
-    var book_id = ($stateParams.bookId)
-    $scope.reactions = response.data.reactions
-    $scope.users = response.data.users
-    $scope.book = response.data.specific_book
-    $scope.msgs = [];
-    $scope.msg = "";
+    var bookId = ($stateParams.bookId);
+    $scope.reactions = response.data.reactions;
+    $scope.users = response.data.users;
+    $scope.book = response.data.specific_book;
+    $scope.reactionText = "";
+    var chapterStart = 0;
+    var chapterEnd = 0;
 
 
     if ($scope.reactions === null){
       $scope.message = "There are no reactions! React!"
     }
   })
+
+  $http.get("http://localhost:3000/books/" + $stateParams.bookId + '/chapters')
+    .then(function(response){
+      $scope.chapterStart = response.data.first_chapter.id
+      $scope.chapterEnd = response.data.last_chapter.id
+      chapterId = parseInt($stateParams.chapterId)
+      if (chapterId === $scope.chapterStart) {
+        $scope.firstChapter = true
+        $scope.lastChapter = false
+        $scope.lastChapterButton = true
+      }else if(chapterId === $scope.chapterEnd) {
+        $scope.firstChapter = false
+        $scope.lastChapter = true
+        $scope.lastChapterButton = false
+      }else{
+        $scope.firstChapter = false
+        $scope.lastChapter = false
+        $scope.lastChapterButton = true
+      }
+    })
+
+    $scope.markComplete = function() {
+      var params = {queue: false, current: false, complete: true}
+      var jsonData = JSON.stringify(params);
+
+      $http({
+        method: 'POST',
+        url: 'http://localhost:3000/users/' + window.localStorage['authToken'] + '/books/' + $stateParams.bookId + '/mark_complete',
+        dataType: "json",
+        data: jsonData
+      }).then(function(response){
+        $location.path('/tab/dash');
+      })
+    }
+
 
   $scope.nextChapter = function() {
     bookId = $stateParams.bookId
@@ -111,7 +146,7 @@ angular.module('starter.controllers', [])
   }
 
    $scope.submitReaction = function(){
-      var userReaction = {content: $scope.msg, user:id = window.localStorage['authToken'], chapter_id: $stateParams.chapterId};
+      var userReaction = {content: $scope.reactionText, user:id = window.localStorage['authToken'], chapter_id: $stateParams.chapterId};
 
       var jsonData = JSON.stringify(userReaction);
 
@@ -121,21 +156,25 @@ angular.module('starter.controllers', [])
         dataType: "json",
         data: jsonData
       }).then(function(response){
-        console.log(response)
-        console.log("+++++++++++++++++++++++++++++++++++++++++++++++++++++++++++")
+         location.reload();
+         // COME BACK AND AJAX NEW RESPONSE
       })
 
     }
-
-
-
 })
 
 .controller('BookDetailCtrl', function($scope, $http, $stateParams, Books, $location, $ionicPopup){
   userId = window.localStorage['authToken']
 
-  console.log($scope)
-
+  $scope.viewChapter = function() {
+    $http.get("http://localhost:3000/books/" + $stateParams.bookId + '/chapters')
+    .then(function(response){
+      var chapterStart = response.data.first_chapter.id
+      var chapterEnd = response.data.last_chapter.id
+      var bookId = $stateParams.bookId
+      $location.path("/tab/books/" + bookId + "/chapters/" + chapterStart)
+    })
+  }
 
   if (/^\d+$/.test($stateParams.bookId)) {
 
@@ -188,12 +227,14 @@ angular.module('starter.controllers', [])
               e.preventDefault();
             } else {
               $scope.BookReq($scope.data.chapters, $scope)
+              $scope.viewChapter()
             }
           }
         }
       ]
     })
   }
+
   $scope.BookReq = function(chapter_number, $scope) {
     var bookData = $scope.book
     bookData.chapter_count = parseInt(chapter_number)
@@ -212,7 +253,6 @@ angular.module('starter.controllers', [])
     Books.addOne(response.data.book,"current")
   }
   })
-
 
   // $http.get("http://localhost:3000/users/" + userId + "/current")
   // .then(function(response){
@@ -233,19 +273,21 @@ angular.module('starter.controllers', [])
 
   }
 
+
+
   $scope.queue = function() {
     $scope.data = {};
     var bookData = $scope.book
     var userId = window.localStorage['authToken']
     var jsonData = JSON.stringify(bookData)
-    console.log(jsonData)
+
     $http({
       method: 'POST',
       url: 'http://localhost:3000/users/'+userId+'/add_to_queue',
       dataType: "json",
       data: jsonData
     }).then(function(response){
-      console.log(response.data.book)
+
       Books.addOne(response.data.book, "queue")
       window.localStorage['authToken'] = response.data.token
 
@@ -316,7 +358,7 @@ angular.module('starter.controllers', [])
 
   var userData = $scope.data;
   var jsonData = JSON.stringify(userData);
-  console.log(jsonData)
+
   $http({
     method: 'POST',
     url: 'http://localhost:3000/register',
