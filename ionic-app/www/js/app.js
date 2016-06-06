@@ -60,19 +60,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     }
   })
 
-
-
-  .state('tab.book', {
-    url: '/:bookId/chapters/:chapterId',
-    views: {
-      'tab-book': {
-        templateUrl: 'templates/tab-chapter.html',
-        controller: 'ChapterCtrl'
-      }
-    }
-  })
-
-  .state('tab.search', {
+.state('tab.search', {
     url: '/search',
     views: {
       'tab-search': {
@@ -81,6 +69,18 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       }
     }
   })
+
+
+  .state('tab.chapter', {
+    url: '/books/:bookId/chapters/:chapterId',
+    views: {
+      'tab-search': {
+        templateUrl: 'templates/tab-chapter.html',
+        controller: 'ChapterCtrl'
+      }
+    }
+  })
+
 
   .state('tab.book-detail', {
     url: '/books/:bookId',
