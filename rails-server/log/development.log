@@ -1854,3 +1854,2493 @@ ORDER BY c.conname
   [1m[36mReaction Load (0.5ms)[0m  [1mSELECT "reactions".* FROM "reactions" WHERE "reactions"."user_id" = $1[0m  [["user_id", 1]]
 
 >>>>>>> master
+
+
+Started GET "/users/31" for ::1 at 2016-06-05 21:01:40 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"31"}
+  [1m[35mUser Load (6.8ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 31]]
+Completed 200 OK in 48ms (Views: 0.5ms | ActiveRecord: 16.8ms)
+
+
+Started GET "/users/31/queue" for ::1 at 2016-06-05 21:01:43 -0500
+Processing by SoloReadingsController#queue_books as HTML
+  Parameters: {"user_id"=>"31"}
+  [1m[36mSoloReading Load (0.5ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."queue" = $2[0m  [["user_id", 31], ["queue", "t"]]
+Completed 200 OK in 13ms (Views: 0.2ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/users/31/history" for ::1 at 2016-06-05 21:01:47 -0500
+Processing by SoloReadingsController#history_books as HTML
+  Parameters: {"user_id"=>"31"}
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms)
+
+NameError (undefined local variable or method `user' for #<Class:0x007ffe21eed758>):
+  app/models/solo_reading.rb:70:in `book_lists'
+  app/controllers/solo_readings_controller.rb:28:in `history_books'
+
+
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (12.4ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.7ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.5ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (167.3ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.8ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.7ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (447.8ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (536.4ms)
+
+
+Started GET "/users/31/favorite" for ::1 at 2016-06-05 21:01:50 -0500
+Processing by SoloReadingsController#favorite_books as HTML
+  Parameters: {"user_id"=>"31"}
+  [1m[35mSoloReading Load (0.4ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."favorite" = $2  [["user_id", 31], ["favorite", "t"]]
+Completed 200 OK in 4ms (Views: 0.3ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/books/undefined/reviews" for ::1 at 2016-06-05 21:01:54 -0500
+Processing by ReviewsController#index as HTML
+  Parameters: {"book_id"=>"undefined"}
+  [1m[36mReview Load (0.8ms)[0m  [1mSELECT "reviews".* FROM "reviews" WHERE "reviews"."book_id" = $1[0m  [["book_id", 0]]
+Completed 200 OK in 11ms (Views: 1.8ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/users/31/current" for ::1 at 2016-06-05 21:02:23 -0500
+Processing by SoloReadingsController#current_books as HTML
+  Parameters: {"user_id"=>"31"}
+  [1m[35mSoloReading Load (0.3ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2  [["user_id", 31], ["current", "t"]]
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/31/queue" for ::1 at 2016-06-05 21:02:26 -0500
+Processing by SoloReadingsController#queue_books as HTML
+  Parameters: {"user_id"=>"31"}
+  [1m[36mSoloReading Load (0.4ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."queue" = $2[0m  [["user_id", 31], ["queue", "t"]]
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/31/history" for ::1 at 2016-06-05 21:02:29 -0500
+Processing by SoloReadingsController#history_books as HTML
+  Parameters: {"user_id"=>"31"}
+Completed 500 Internal Server Error in 2ms (ActiveRecord: 0.0ms)
+
+NameError (undefined local variable or method `user' for #<Class:0x007ffe21eed758>):
+  app/models/solo_reading.rb:70:in `book_lists'
+  app/controllers/solo_readings_controller.rb:28:in `history_books'
+
+
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (9.0ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.6ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.0ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (118.2ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (1.0ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.8ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.8ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (78.7ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.9ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.9ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (188.7ms)
+
+
+Started GET "/users/31/favorite" for ::1 at 2016-06-05 21:02:32 -0500
+Processing by SoloReadingsController#favorite_books as HTML
+  Parameters: {"user_id"=>"31"}
+  [1m[35mSoloReading Load (0.4ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."favorite" = $2  [["user_id", 31], ["favorite", "t"]]
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/31/history" for ::1 at 2016-06-05 21:02:38 -0500
+Processing by SoloReadingsController#history_books as HTML
+  Parameters: {"user_id"=>"31"}
+Completed 500 Internal Server Error in 1ms (ActiveRecord: 0.0ms)
+
+NameError (undefined local variable or method `user' for #<Class:0x007ffe21eed758>):
+  app/models/solo_reading.rb:70:in `book_lists'
+  app/controllers/solo_readings_controller.rb:28:in `history_books'
+
+
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (8.4ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.9ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.3ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (114.6ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (1.2ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (1.2ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.6ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (79.4ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.9ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (190.0ms)
+
+
+Started GET "/users/31" for ::1 at 2016-06-05 21:03:16 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"31"}
+  [1m[36mUser Load (1.7ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 31]]
+Completed 200 OK in 7ms (Views: 1.6ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/users/31/history" for ::1 at 2016-06-05 21:03:16 -0500
+Processing by SoloReadingsController#history_books as HTML
+  Parameters: {"user_id"=>"31"}
+Completed 500 Internal Server Error in 4ms (ActiveRecord: 0.0ms)
+
+NameError (undefined local variable or method `user' for #<Class:0x007ffe21eed758>):
+  app/models/solo_reading.rb:70:in `book_lists'
+  app/controllers/solo_readings_controller.rb:28:in `history_books'
+
+
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.2ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.6ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (75.4ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.6ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (67.2ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (174.9ms)
+
+
+Started GET "/users/31/queue" for ::1 at 2016-06-05 21:03:17 -0500
+Processing by SoloReadingsController#queue_books as HTML
+  Parameters: {"user_id"=>"31"}
+  [1m[35mSoloReading Load (0.4ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."queue" = $2  [["user_id", 31], ["queue", "t"]]
+Completed 200 OK in 3ms (Views: 0.1ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/users/31/history" for ::1 at 2016-06-05 21:03:23 -0500
+Processing by SoloReadingsController#history_books as HTML
+  Parameters: {"user_id"=>"31"}
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms)
+
+NameError (undefined local variable or method `user' for #<Class:0x007ffe21eed758>):
+  app/models/solo_reading.rb:70:in `book_lists'
+  app/controllers/solo_readings_controller.rb:28:in `history_books'
+
+
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (3.9ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.0ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (59.7ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (53.0ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (118.4ms)
+
+
+Started GET "/users/31" for ::1 at 2016-06-05 21:03:47 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"31"}
+  [1m[36mUser Load (0.7ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 31]]
+Completed 200 OK in 3ms (Views: 0.3ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/users/31/history" for ::1 at 2016-06-05 21:04:20 -0500
+Processing by SoloReadingsController#history_books as HTML
+  Parameters: {"user_id"=>"31"}
+Completed 500 Internal Server Error in 3ms (ActiveRecord: 0.0ms)
+
+NameError (undefined local variable or method `user' for #<Class:0x007ffe21eed758>):
+  app/models/solo_reading.rb:70:in `book_lists'
+  app/controllers/solo_readings_controller.rb:28:in `history_books'
+
+
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (3.8ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.5ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.7ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (62.5ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (52.8ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (116.1ms)
+
+
+Started GET "/users/31/history" for ::1 at 2016-06-05 21:05:22 -0500
+Processing by SoloReadingsController#history_books as HTML
+  Parameters: {"user_id"=>"31"}
+  [1m[35mSoloReading Load (0.2ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2 AND "solo_readings"."queue" = $3  [["user_id", 31], ["current", "f"], ["queue", "f"]]
+Completed 200 OK in 4ms (Views: 0.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users/31" for ::1 at 2016-06-05 21:05:26 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"31"}
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 31]]
+Completed 200 OK in 21ms (Views: 0.5ms | ActiveRecord: 5.1ms)
+
+
+Started GET "/users/31/history" for ::1 at 2016-06-05 21:05:28 -0500
+Processing by SoloReadingsController#history_books as HTML
+  Parameters: {"user_id"=>"31"}
+  [1m[35mSoloReading Load (1.3ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2 AND "solo_readings"."queue" = $3  [["user_id", 31], ["current", "f"], ["queue", "f"]]
+Completed 200 OK in 4ms (Views: 0.2ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/users/31" for ::1 at 2016-06-05 21:06:12 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"31"}
+  [1m[36mUser Load (1.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 31]]
+Completed 200 OK in 6ms (Views: 0.4ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/users/31/history" for ::1 at 2016-06-05 21:06:15 -0500
+Processing by SoloReadingsController#history_books as HTML
+  Parameters: {"user_id"=>"31"}
+  [1m[35mSoloReading Load (0.5ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2 AND "solo_readings"."queue" = $3  [["user_id", 31], ["current", "f"], ["queue", "f"]]
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users/31" for ::1 at 2016-06-05 21:06:29 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"31"}
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 31]]
+Completed 200 OK in 3ms (Views: 0.4ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/users/31/history" for ::1 at 2016-06-05 21:06:29 -0500
+Processing by SoloReadingsController#history_books as HTML
+  Parameters: {"user_id"=>"31"}
+  [1m[35mSoloReading Load (0.4ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2 AND "solo_readings"."queue" = $3  [["user_id", 31], ["current", "f"], ["queue", "f"]]
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/31/history" for ::1 at 2016-06-05 21:06:29 -0500
+Processing by SoloReadingsController#history_books as HTML
+  Parameters: {"user_id"=>"31"}
+  [1m[36mSoloReading Load (0.8ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2 AND "solo_readings"."queue" = $3[0m  [["user_id", 31], ["current", "f"], ["queue", "f"]]
+Completed 200 OK in 109ms (Views: 0.2ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/users/31/history" for ::1 at 2016-06-05 21:07:14 -0500
+Processing by SoloReadingsController#history_books as HTML
+  Parameters: {"user_id"=>"31"}
+  [1m[35mSoloReading Load (0.9ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2 AND "solo_readings"."queue" = $3  [["user_id", 31], ["current", "f"], ["queue", "f"]]
+Completed 200 OK in 3ms (Views: 0.4ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/users/31" for ::1 at 2016-06-05 21:07:14 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"31"}
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 31]]
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/31/history" for ::1 at 2016-06-05 21:07:14 -0500
+Processing by SoloReadingsController#history_books as HTML
+  Parameters: {"user_id"=>"31"}
+  [1m[35mSoloReading Load (0.4ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2 AND "solo_readings"."queue" = $3  [["user_id", 31], ["current", "f"], ["queue", "f"]]
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/31/history" for ::1 at 2016-06-05 21:07:17 -0500
+Processing by SoloReadingsController#history_books as HTML
+  Parameters: {"user_id"=>"31"}
+  [1m[36mSoloReading Load (0.3ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2 AND "solo_readings"."queue" = $3[0m  [["user_id", 31], ["current", "f"], ["queue", "f"]]
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/31/history" for ::1 at 2016-06-05 21:07:40 -0500
+Processing by SoloReadingsController#history_books as HTML
+  Parameters: {"user_id"=>"31"}
+  [1m[35mSoloReading Load (2.6ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2 AND "solo_readings"."queue" = $3  [["user_id", 31], ["current", "f"], ["queue", "f"]]
+Completed 200 OK in 4ms (Views: 0.2ms | ActiveRecord: 2.6ms)
+
+
+Started GET "/users/31" for ::1 at 2016-06-05 21:07:40 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"31"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 31]]
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/31/history" for ::1 at 2016-06-05 21:07:40 -0500
+Processing by SoloReadingsController#history_books as HTML
+  Parameters: {"user_id"=>"31"}
+  [1m[35mSoloReading Load (0.4ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2 AND "solo_readings"."queue" = $3  [["user_id", 31], ["current", "f"], ["queue", "f"]]
+Completed 200 OK in 3ms (Views: 0.3ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/31/history" for ::1 at 2016-06-05 21:07:42 -0500
+Processing by SoloReadingsController#history_books as HTML
+  Parameters: {"user_id"=>"31"}
+  [1m[36mSoloReading Load (1.0ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2 AND "solo_readings"."queue" = $3[0m  [["user_id", 31], ["current", "f"], ["queue", "f"]]
+Completed 200 OK in 4ms (Views: 0.4ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/users/31/history" for ::1 at 2016-06-05 21:07:42 -0500
+Processing by SoloReadingsController#history_books as HTML
+  Parameters: {"user_id"=>"31"}
+  [1m[35mSoloReading Load (0.3ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2 AND "solo_readings"."queue" = $3  [["user_id", 31], ["current", "f"], ["queue", "f"]]
+Completed 200 OK in 3ms (Views: 0.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/31" for ::1 at 2016-06-05 21:07:42 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"31"}
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 31]]
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/31/history" for ::1 at 2016-06-05 21:07:59 -0500
+Processing by SoloReadingsController#history_books as HTML
+  Parameters: {"user_id"=>"31"}
+  [1m[35mSoloReading Load (0.5ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2 AND "solo_readings"."queue" = $3  [["user_id", 31], ["current", "f"], ["queue", "f"]]
+Completed 200 OK in 4ms (Views: 0.2ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users/31/history" for ::1 at 2016-06-05 21:07:59 -0500
+Processing by SoloReadingsController#history_books as HTML
+  Parameters: {"user_id"=>"31"}
+  [1m[36mSoloReading Load (0.4ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2 AND "solo_readings"."queue" = $3[0m  [["user_id", 31], ["current", "f"], ["queue", "f"]]
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/31" for ::1 at 2016-06-05 21:07:59 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"31"}
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 31]]
+Completed 200 OK in 2ms (Views: 0.7ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/31" for ::1 at 2016-06-05 21:08:23 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"31"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 31]]
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/31/history" for ::1 at 2016-06-05 21:08:23 -0500
+Processing by SoloReadingsController#history_books as HTML
+  Parameters: {"user_id"=>"31"}
+  [1m[35mSoloReading Load (1.0ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2 AND "solo_readings"."queue" = $3  [["user_id", 31], ["current", "f"], ["queue", "f"]]
+Completed 200 OK in 4ms (Views: 0.2ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/users/31/history" for ::1 at 2016-06-05 21:08:23 -0500
+Processing by SoloReadingsController#history_books as HTML
+  Parameters: {"user_id"=>"31"}
+  [1m[36mSoloReading Load (0.3ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2 AND "solo_readings"."queue" = $3[0m  [["user_id", 31], ["current", "f"], ["queue", "f"]]
+Completed 200 OK in 3ms (Views: 0.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/31/history" for ::1 at 2016-06-05 21:08:57 -0500
+Processing by SoloReadingsController#history_books as HTML
+  Parameters: {"user_id"=>"31"}
+  [1m[35mSoloReading Load (0.7ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2 AND "solo_readings"."queue" = $3  [["user_id", 31], ["current", "f"], ["queue", "f"]]
+Completed 200 OK in 4ms (Views: 0.4ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/users/31" for ::1 at 2016-06-05 21:08:57 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"31"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 31]]
+Completed 200 OK in 2ms (Views: 0.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/31/history" for ::1 at 2016-06-05 21:08:57 -0500
+Processing by SoloReadingsController#history_books as HTML
+  Parameters: {"user_id"=>"31"}
+  [1m[35mSoloReading Load (0.4ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2 AND "solo_readings"."queue" = $3  [["user_id", 31], ["current", "f"], ["queue", "f"]]
+Completed 200 OK in 70ms (Views: 0.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/31/history" for ::1 at 2016-06-05 21:09:08 -0500
+Processing by SoloReadingsController#history_books as HTML
+  Parameters: {"user_id"=>"31"}
+  [1m[36mSoloReading Load (0.7ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2 AND "solo_readings"."queue" = $3[0m  [["user_id", 31], ["current", "f"], ["queue", "f"]]
+Completed 200 OK in 3ms (Views: 0.2ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/users/31/history" for ::1 at 2016-06-05 21:09:09 -0500
+Processing by SoloReadingsController#history_books as HTML
+  Parameters: {"user_id"=>"31"}
+  [1m[35mSoloReading Load (0.4ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2 AND "solo_readings"."queue" = $3  [["user_id", 31], ["current", "f"], ["queue", "f"]]
+Completed 200 OK in 3ms (Views: 0.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/31" for ::1 at 2016-06-05 21:09:09 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"31"}
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 31]]
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/31/history" for ::1 at 2016-06-05 21:09:40 -0500
+Processing by SoloReadingsController#history_books as HTML
+  Parameters: {"user_id"=>"31"}
+  [1m[35mSoloReading Load (0.5ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2 AND "solo_readings"."queue" = $3  [["user_id", 31], ["current", "f"], ["queue", "f"]]
+Completed 200 OK in 3ms (Views: 0.4ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users/31" for ::1 at 2016-06-05 21:09:40 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"31"}
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 31]]
+Completed 200 OK in 2ms (Views: 0.3ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users/31/history" for ::1 at 2016-06-05 21:09:40 -0500
+Processing by SoloReadingsController#history_books as HTML
+  Parameters: {"user_id"=>"31"}
+  [1m[35mSoloReading Load (0.3ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2 AND "solo_readings"."queue" = $3  [["user_id", 31], ["current", "f"], ["queue", "f"]]
+Completed 200 OK in 2ms (Views: 0.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/31/history" for ::1 at 2016-06-05 21:09:42 -0500
+Processing by SoloReadingsController#history_books as HTML
+  Parameters: {"user_id"=>"31"}
+  [1m[36mSoloReading Load (0.4ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2 AND "solo_readings"."queue" = $3[0m  [["user_id", 31], ["current", "f"], ["queue", "f"]]
+Completed 200 OK in 2ms (Views: 0.1ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/31/history" for ::1 at 2016-06-05 21:10:06 -0500
+Processing by SoloReadingsController#history_books as HTML
+  Parameters: {"user_id"=>"31"}
+  [1m[35mSoloReading Load (0.4ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2 AND "solo_readings"."queue" = $3  [["user_id", 31], ["current", "f"], ["queue", "f"]]
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/31/history" for ::1 at 2016-06-05 21:10:06 -0500
+Processing by SoloReadingsController#history_books as HTML
+  Parameters: {"user_id"=>"31"}
+  [1m[36mSoloReading Load (0.4ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2 AND "solo_readings"."queue" = $3[0m  [["user_id", 31], ["current", "f"], ["queue", "f"]]
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/31" for ::1 at 2016-06-05 21:10:06 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"31"}
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 31]]
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/31" for ::1 at 2016-06-05 21:10:06 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"31"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 31]]
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/31/queue" for ::1 at 2016-06-05 21:10:09 -0500
+Processing by SoloReadingsController#queue_books as HTML
+  Parameters: {"user_id"=>"31"}
+  [1m[35mSoloReading Load (0.3ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."queue" = $2  [["user_id", 31], ["queue", "t"]]
+Completed 200 OK in 3ms (Views: 0.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/31/favorite" for ::1 at 2016-06-05 21:10:13 -0500
+Processing by SoloReadingsController#favorite_books as HTML
+  Parameters: {"user_id"=>"31"}
+  [1m[36mSoloReading Load (0.4ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."favorite" = $2[0m  [["user_id", 31], ["favorite", "t"]]
+Completed 200 OK in 3ms (Views: 0.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/31/queue" for ::1 at 2016-06-05 21:10:18 -0500
+Processing by SoloReadingsController#queue_books as HTML
+  Parameters: {"user_id"=>"31"}
+  [1m[35mSoloReading Load (0.5ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."queue" = $2  [["user_id", 31], ["queue", "t"]]
+Completed 200 OK in 3ms (Views: 0.2ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users/31" for ::1 at 2016-06-05 21:10:28 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"31"}
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 31]]
+Completed 200 OK in 3ms (Views: 0.4ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/users/31" for ::1 at 2016-06-05 21:10:32 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"31"}
+  [1m[35mUser Load (1.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 31]]
+Completed 200 OK in 3ms (Views: 0.3ms | ActiveRecord: 1.3ms)
+
+
+Started GET "/users/31/queue" for ::1 at 2016-06-05 21:10:33 -0500
+Processing by SoloReadingsController#queue_books as HTML
+  Parameters: {"user_id"=>"31"}
+  [1m[36mSoloReading Load (0.3ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."queue" = $2[0m  [["user_id", 31], ["queue", "t"]]
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/31" for ::1 at 2016-06-05 21:10:53 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"31"}
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 31]]
+Completed 200 OK in 2ms (Views: 0.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/31/history" for ::1 at 2016-06-05 21:10:53 -0500
+Processing by SoloReadingsController#history_books as HTML
+  Parameters: {"user_id"=>"31"}
+  [1m[36mSoloReading Load (0.7ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2 AND "solo_readings"."queue" = $3[0m  [["user_id", 31], ["current", "f"], ["queue", "f"]]
+Completed 200 OK in 4ms (Views: 0.4ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/users/31/history" for ::1 at 2016-06-05 21:10:53 -0500
+Processing by SoloReadingsController#history_books as HTML
+  Parameters: {"user_id"=>"31"}
+  [1m[35mSoloReading Load (0.4ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2 AND "solo_readings"."queue" = $3  [["user_id", 31], ["current", "f"], ["queue", "f"]]
+Completed 200 OK in 3ms (Views: 0.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/31" for ::1 at 2016-06-05 21:11:24 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"31"}
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 31]]
+Completed 200 OK in 2ms (Views: 0.3ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users/31" for ::1 at 2016-06-05 21:12:24 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"31"}
+  [1m[35mUser Load (0.8ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 31]]
+Completed 200 OK in 6ms (Views: 0.4ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/users/31/history" for ::1 at 2016-06-05 21:12:24 -0500
+Processing by SoloReadingsController#history_books as HTML
+  Parameters: {"user_id"=>"31"}
+  [1m[36mSoloReading Load (0.9ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2 AND "solo_readings"."queue" = $3[0m  [["user_id", 31], ["current", "f"], ["queue", "f"]]
+Completed 200 OK in 6ms (Views: 0.3ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/users/31" for ::1 at 2016-06-05 21:12:24 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"31"}
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 31]]
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users/31" for ::1 at 2016-06-05 21:12:26 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"31"}
+  [1m[36mUser Load (3.7ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 31]]
+Completed 200 OK in 7ms (Views: 1.4ms | ActiveRecord: 3.7ms)
+
+
+Started GET "/users/31/history" for ::1 at 2016-06-05 21:12:26 -0500
+Processing by SoloReadingsController#history_books as HTML
+  Parameters: {"user_id"=>"31"}
+  [1m[35mSoloReading Load (0.6ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2 AND "solo_readings"."queue" = $3  [["user_id", 31], ["current", "f"], ["queue", "f"]]
+Completed 200 OK in 3ms (Views: 0.2ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/users/31" for ::1 at 2016-06-05 21:12:26 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"31"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 31]]
+Completed 200 OK in 23ms (Views: 0.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/31" for ::1 at 2016-06-05 21:12:33 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"31"}
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 31]]
+Completed 200 OK in 3ms (Views: 0.5ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users/31/history" for ::1 at 2016-06-05 21:12:33 -0500
+Processing by SoloReadingsController#history_books as HTML
+  Parameters: {"user_id"=>"31"}
+  [1m[36mSoloReading Load (0.4ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2 AND "solo_readings"."queue" = $3[0m  [["user_id", 31], ["current", "f"], ["queue", "f"]]
+Completed 200 OK in 3ms (Views: 0.3ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/31" for ::1 at 2016-06-05 21:12:33 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"31"}
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 31]]
+Completed 200 OK in 3ms (Views: 1.1ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users/31/history" for ::1 at 2016-06-05 21:12:37 -0500
+Processing by SoloReadingsController#history_books as HTML
+  Parameters: {"user_id"=>"31"}
+  [1m[36mSoloReading Load (0.6ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2 AND "solo_readings"."queue" = $3[0m  [["user_id", 31], ["current", "f"], ["queue", "f"]]
+Completed 200 OK in 3ms (Views: 0.2ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/users/31/history" for ::1 at 2016-06-05 21:13:07 -0500
+Processing by SoloReadingsController#history_books as HTML
+  Parameters: {"user_id"=>"31"}
+  [1m[35mSoloReading Load (0.4ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2 AND "solo_readings"."queue" = $3  [["user_id", 31], ["current", "f"], ["queue", "f"]]
+Completed 200 OK in 3ms (Views: 0.3ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/31" for ::1 at 2016-06-05 21:13:07 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"31"}
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 31]]
+Completed 200 OK in 2ms (Views: 0.4ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users/31/history" for ::1 at 2016-06-05 21:13:07 -0500
+Processing by SoloReadingsController#history_books as HTML
+  Parameters: {"user_id"=>"31"}
+  [1m[35mSoloReading Load (0.5ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2 AND "solo_readings"."queue" = $3  [["user_id", 31], ["current", "f"], ["queue", "f"]]
+Completed 200 OK in 3ms (Views: 0.2ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users/31/history" for ::1 at 2016-06-05 21:14:05 -0500
+Processing by SoloReadingsController#history_books as HTML
+  Parameters: {"user_id"=>"31"}
+  [1m[36mSoloReading Load (0.6ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2 AND "solo_readings"."queue" = $3[0m  [["user_id", 31], ["current", "f"], ["queue", "f"]]
+Completed 200 OK in 4ms (Views: 0.3ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/users/31" for ::1 at 2016-06-05 21:14:05 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"31"}
+  [1m[35mUser Load (1.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 31]]
+Completed 200 OK in 4ms (Views: 0.4ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/users/31/history" for ::1 at 2016-06-05 21:14:08 -0500
+Processing by SoloReadingsController#history_books as HTML
+  Parameters: {"user_id"=>"31"}
+  [1m[36mSoloReading Load (0.4ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2 AND "solo_readings"."queue" = $3[0m  [["user_id", 31], ["current", "f"], ["queue", "f"]]
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/31/history" for ::1 at 2016-06-05 21:14:12 -0500
+Processing by SoloReadingsController#history_books as HTML
+  Parameters: {"user_id"=>"31"}
+  [1m[35mSoloReading Load (0.4ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2 AND "solo_readings"."queue" = $3  [["user_id", 31], ["current", "f"], ["queue", "f"]]
+Completed 200 OK in 4ms (Views: 0.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/31" for ::1 at 2016-06-05 21:14:13 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"31"}
+  [1m[36mUser Load (1.8ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 31]]
+Completed 200 OK in 5ms (Views: 0.6ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/users/31/history" for ::1 at 2016-06-05 21:14:28 -0500
+Processing by SoloReadingsController#history_books as HTML
+  Parameters: {"user_id"=>"31"}
+  [1m[35mSoloReading Load (0.3ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2 AND "solo_readings"."queue" = $3  [["user_id", 31], ["current", "f"], ["queue", "f"]]
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/31" for ::1 at 2016-06-05 21:14:29 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"31"}
+  [1m[36mUser Load (1.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 31]]
+Completed 200 OK in 3ms (Views: 0.3ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/users/31/queue" for ::1 at 2016-06-05 21:14:31 -0500
+Processing by SoloReadingsController#queue_books as HTML
+  Parameters: {"user_id"=>"31"}
+  [1m[35mSoloReading Load (1.2ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."queue" = $2  [["user_id", 31], ["queue", "t"]]
+Completed 200 OK in 3ms (Views: 0.3ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/users/31/history" for ::1 at 2016-06-05 21:14:52 -0500
+Processing by SoloReadingsController#history_books as HTML
+  Parameters: {"user_id"=>"31"}
+  [1m[36mSoloReading Load (0.9ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2 AND "solo_readings"."queue" = $3[0m  [["user_id", 31], ["current", "f"], ["queue", "f"]]
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/users/31/history" for ::1 at 2016-06-05 21:14:52 -0500
+Processing by SoloReadingsController#history_books as HTML
+  Parameters: {"user_id"=>"31"}
+  [1m[35mSoloReading Load (0.5ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2 AND "solo_readings"."queue" = $3  [["user_id", 31], ["current", "f"], ["queue", "f"]]
+Completed 200 OK in 3ms (Views: 0.2ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users/31" for ::1 at 2016-06-05 21:14:52 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"31"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 31]]
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/31/history" for ::1 at 2016-06-05 21:14:54 -0500
+Processing by SoloReadingsController#history_books as HTML
+  Parameters: {"user_id"=>"31"}
+  [1m[35mSoloReading Load (0.3ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2 AND "solo_readings"."queue" = $3  [["user_id", 31], ["current", "f"], ["queue", "f"]]
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/31/history" for ::1 at 2016-06-05 21:15:15 -0500
+Processing by SoloReadingsController#history_books as HTML
+  Parameters: {"user_id"=>"31"}
+  [1m[36mSoloReading Load (0.4ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2 AND "solo_readings"."queue" = $3[0m  [["user_id", 31], ["current", "f"], ["queue", "f"]]
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/31" for ::1 at 2016-06-05 21:15:15 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"31"}
+  [1m[35mUser Load (0.7ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 31]]
+Completed 200 OK in 2ms (Views: 0.3ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/users/31/history" for ::1 at 2016-06-05 21:15:15 -0500
+Processing by SoloReadingsController#history_books as HTML
+  Parameters: {"user_id"=>"31"}
+  [1m[36mSoloReading Load (0.3ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2 AND "solo_readings"."queue" = $3[0m  [["user_id", 31], ["current", "f"], ["queue", "f"]]
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/31/history" for ::1 at 2016-06-05 21:15:16 -0500
+Processing by SoloReadingsController#history_books as HTML
+  Parameters: {"user_id"=>"31"}
+  [1m[35mSoloReading Load (0.2ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2 AND "solo_readings"."queue" = $3  [["user_id", 31], ["current", "f"], ["queue", "f"]]
+Completed 200 OK in 1ms (Views: 0.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users/31/history" for ::1 at 2016-06-05 21:15:38 -0500
+Processing by SoloReadingsController#history_books as HTML
+  Parameters: {"user_id"=>"31"}
+  [1m[36mSoloReading Load (0.3ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2 AND "solo_readings"."queue" = $3[0m  [["user_id", 31], ["current", "f"], ["queue", "f"]]
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/31/history" for ::1 at 2016-06-05 21:15:38 -0500
+Processing by SoloReadingsController#history_books as HTML
+  Parameters: {"user_id"=>"31"}
+  [1m[35mSoloReading Load (0.4ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2 AND "solo_readings"."queue" = $3  [["user_id", 31], ["current", "f"], ["queue", "f"]]
+Completed 200 OK in 3ms (Views: 0.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/31" for ::1 at 2016-06-05 21:15:38 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"31"}
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 31]]
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/31" for ::1 at 2016-06-05 21:15:42 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"31"}
+  [1m[35mUser Load (0.8ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 31]]
+Completed 200 OK in 2ms (Views: 0.5ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/users/31/queue" for ::1 at 2016-06-05 21:15:43 -0500
+Processing by SoloReadingsController#queue_books as HTML
+  Parameters: {"user_id"=>"31"}
+  [1m[36mSoloReading Load (0.4ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."queue" = $2[0m  [["user_id", 31], ["queue", "t"]]
+Completed 200 OK in 3ms (Views: 0.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/31" for ::1 at 2016-06-05 21:15:48 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"31"}
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 31]]
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/31/favorite" for ::1 at 2016-06-05 21:15:49 -0500
+Processing by SoloReadingsController#favorite_books as HTML
+  Parameters: {"user_id"=>"31"}
+  [1m[36mSoloReading Load (1.0ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."favorite" = $2[0m  [["user_id", 31], ["favorite", "t"]]
+Completed 200 OK in 3ms (Views: 0.2ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/books/undefined/reviews" for ::1 at 2016-06-05 21:15:51 -0500
+Processing by ReviewsController#index as HTML
+  Parameters: {"book_id"=>"undefined"}
+  [1m[35mReview Load (0.6ms)[0m  SELECT "reviews".* FROM "reviews" WHERE "reviews"."book_id" = $1  [["book_id", 0]]
+Completed 200 OK in 12ms (Views: 2.7ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/users/31" for ::1 at 2016-06-05 21:16:54 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"31"}
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 31]]
+Completed 200 OK in 19ms (Views: 2.1ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/books/undefined/reviews" for ::1 at 2016-06-05 21:16:55 -0500
+Processing by ReviewsController#index as HTML
+  Parameters: {"book_id"=>"undefined"}
+  [1m[35mReview Load (0.9ms)[0m  SELECT "reviews".* FROM "reviews" WHERE "reviews"."book_id" = $1  [["book_id", 0]]
+Completed 200 OK in 9ms (Views: 5.6ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/users/31/history" for ::1 at 2016-06-05 21:16:55 -0500
+Processing by SoloReadingsController#history_books as HTML
+  Parameters: {"user_id"=>"31"}
+  [1m[36mSoloReading Load (0.8ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2 AND "solo_readings"."queue" = $3[0m  [["user_id", 31], ["current", "f"], ["queue", "f"]]
+Completed 200 OK in 6ms (Views: 0.5ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/users/31/history" for ::1 at 2016-06-05 21:17:16 -0500
+Processing by SoloReadingsController#history_books as HTML
+  Parameters: {"user_id"=>"31"}
+  [1m[35mSoloReading Load (4.6ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2 AND "solo_readings"."queue" = $3  [["user_id", 31], ["current", "f"], ["queue", "f"]]
+Completed 200 OK in 7ms (Views: 0.3ms | ActiveRecord: 4.6ms)
+
+
+Started GET "/books/undefined/reviews" for ::1 at 2016-06-05 21:17:16 -0500
+Processing by ReviewsController#index as HTML
+  Parameters: {"book_id"=>"undefined"}
+  [1m[36mReview Load (0.9ms)[0m  [1mSELECT "reviews".* FROM "reviews" WHERE "reviews"."book_id" = $1[0m  [["book_id", 0]]
+Completed 200 OK in 4ms (Views: 2.1ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/users/31" for ::1 at 2016-06-05 21:17:16 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"31"}
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 31]]
+Completed 200 OK in 43ms (Views: 0.3ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users/31" for ::1 at 2016-06-05 21:17:43 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"31"}
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 31]]
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/users/31/queue" for ::1 at 2016-06-05 21:17:44 -0500
+Processing by SoloReadingsController#queue_books as HTML
+  Parameters: {"user_id"=>"31"}
+  [1m[35mSoloReading Load (0.4ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."queue" = $2  [["user_id", 31], ["queue", "t"]]
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/31/current" for ::1 at 2016-06-05 21:17:47 -0500
+Processing by SoloReadingsController#current_books as HTML
+  Parameters: {"user_id"=>"31"}
+  [1m[36mSoloReading Load (0.3ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2[0m  [["user_id", 31], ["current", "t"]]
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/books/undefined/reviews" for ::1 at 2016-06-05 21:18:03 -0500
+Processing by ReviewsController#index as HTML
+  Parameters: {"book_id"=>"undefined"}
+  [1m[35mReview Load (1.0ms)[0m  SELECT "reviews".* FROM "reviews" WHERE "reviews"."book_id" = $1  [["book_id", 0]]
+Completed 200 OK in 3ms (Views: 1.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/users/31" for ::1 at 2016-06-05 21:18:29 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"31"}
+  [1m[36mUser Load (1.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 31]]
+Completed 200 OK in 3ms (Views: 0.3ms | ActiveRecord: 1.1ms)
+
+
+Started GET "/users/31/favorite" for ::1 at 2016-06-05 21:18:34 -0500
+Processing by SoloReadingsController#favorite_books as HTML
+  Parameters: {"user_id"=>"31"}
+  [1m[35mSoloReading Load (0.4ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."favorite" = $2  [["user_id", 31], ["favorite", "t"]]
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/31/queue" for ::1 at 2016-06-05 21:18:37 -0500
+Processing by SoloReadingsController#queue_books as HTML
+  Parameters: {"user_id"=>"31"}
+  [1m[36mSoloReading Load (0.3ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."queue" = $2[0m  [["user_id", 31], ["queue", "t"]]
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/31" for ::1 at 2016-06-05 21:19:52 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"31"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 31]]
+Completed 200 OK in 4ms (Views: 2.6ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/31/queue" for ::1 at 2016-06-05 21:19:54 -0500
+Processing by SoloReadingsController#queue_books as HTML
+  Parameters: {"user_id"=>"31"}
+  [1m[36mSoloReading Load (0.3ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."queue" = $2[0m  [["user_id", 31], ["queue", "t"]]
+Completed 200 OK in 2ms (Views: 0.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/31/current" for ::1 at 2016-06-05 21:19:57 -0500
+Processing by SoloReadingsController#current_books as HTML
+  Parameters: {"user_id"=>"31"}
+  [1m[35mSoloReading Load (0.4ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2  [["user_id", 31], ["current", "t"]]
+Completed 200 OK in 4ms (Views: 0.6ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/31/current" for ::1 at 2016-06-05 21:21:50 -0500
+Processing by SoloReadingsController#current_books as HTML
+  Parameters: {"user_id"=>"31"}
+  [1m[36mSoloReading Load (1.0ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2[0m  [["user_id", 31], ["current", "t"]]
+Completed 200 OK in 22ms (Views: 2.0ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/users/31" for ::1 at 2016-06-05 21:21:50 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"31"}
+  [1m[35mUser Load (0.7ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 31]]
+Completed 200 OK in 6ms (Views: 0.3ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/users/31/history" for ::1 at 2016-06-05 21:21:50 -0500
+Processing by SoloReadingsController#history_books as HTML
+  Parameters: {"user_id"=>"31"}
+  [1m[36mSoloReading Load (1.0ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2 AND "solo_readings"."queue" = $3[0m  [["user_id", 31], ["current", "f"], ["queue", "f"]]
+Completed 200 OK in 4ms (Views: 0.2ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/users/31/current" for ::1 at 2016-06-05 21:22:13 -0500
+Processing by SoloReadingsController#current_books as HTML
+  Parameters: {"user_id"=>"31"}
+  [1m[35mSoloReading Load (0.9ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2  [["user_id", 31], ["current", "t"]]
+Completed 200 OK in 3ms (Views: 0.2ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/users/31/history" for ::1 at 2016-06-05 21:22:13 -0500
+Processing by SoloReadingsController#history_books as HTML
+  Parameters: {"user_id"=>"31"}
+  [1m[36mSoloReading Load (1.2ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2 AND "solo_readings"."queue" = $3[0m  [["user_id", 31], ["current", "f"], ["queue", "f"]]
+Completed 200 OK in 4ms (Views: 0.4ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/users/31" for ::1 at 2016-06-05 21:22:13 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"31"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 31]]
+Completed 200 OK in 2ms (Views: 0.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/31/current" for ::1 at 2016-06-05 21:22:56 -0500
+Processing by SoloReadingsController#current_books as HTML
+  Parameters: {"user_id"=>"31"}
+  [1m[36mSoloReading Load (0.4ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2[0m  [["user_id", 31], ["current", "t"]]
+Completed 200 OK in 3ms (Views: 0.3ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/31/history" for ::1 at 2016-06-05 21:22:56 -0500
+Processing by SoloReadingsController#history_books as HTML
+  Parameters: {"user_id"=>"31"}
+  [1m[35mSoloReading Load (0.4ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2 AND "solo_readings"."queue" = $3  [["user_id", 31], ["current", "f"], ["queue", "f"]]
+Completed 200 OK in 3ms (Views: 0.3ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/31" for ::1 at 2016-06-05 21:22:56 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"31"}
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 31]]
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users/31/current" for ::1 at 2016-06-05 21:23:04 -0500
+Processing by SoloReadingsController#current_books as HTML
+  Parameters: {"user_id"=>"31"}
+  [1m[35mSoloReading Load (0.4ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2  [["user_id", 31], ["current", "t"]]
+Completed 200 OK in 3ms (Views: 0.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/31/history" for ::1 at 2016-06-05 21:23:04 -0500
+Processing by SoloReadingsController#history_books as HTML
+  Parameters: {"user_id"=>"31"}
+  [1m[36mSoloReading Load (0.5ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2 AND "solo_readings"."queue" = $3[0m  [["user_id", 31], ["current", "f"], ["queue", "f"]]
+Completed 200 OK in 3ms (Views: 0.2ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users/31" for ::1 at 2016-06-05 21:23:04 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"31"}
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 31]]
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/31" for ::1 at 2016-06-05 21:23:13 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"31"}
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 31]]
+Completed 200 OK in 2ms (Views: 0.3ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/31/current" for ::1 at 2016-06-05 21:23:16 -0500
+Processing by SoloReadingsController#current_books as HTML
+  Parameters: {"user_id"=>"31"}
+  [1m[35mSoloReading Load (0.3ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2  [["user_id", 31], ["current", "t"]]
+Completed 200 OK in 3ms (Views: 0.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/31/queue" for ::1 at 2016-06-05 21:23:18 -0500
+Processing by SoloReadingsController#queue_books as HTML
+  Parameters: {"user_id"=>"31"}
+  [1m[36mSoloReading Load (1.6ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."queue" = $2[0m  [["user_id", 31], ["queue", "t"]]
+Completed 200 OK in 5ms (Views: 0.2ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/users/31" for ::1 at 2016-06-05 21:23:26 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"31"}
+  [1m[35mUser Load (0.9ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 31]]
+Completed 200 OK in 4ms (Views: 0.2ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/users/31/favorite" for ::1 at 2016-06-05 21:23:27 -0500
+Processing by SoloReadingsController#favorite_books as HTML
+  Parameters: {"user_id"=>"31"}
+  [1m[36mSoloReading Load (0.3ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."favorite" = $2[0m  [["user_id", 31], ["favorite", "t"]]
+Completed 200 OK in 5ms (Views: 0.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/books/undefined/reviews" for ::1 at 2016-06-05 21:23:34 -0500
+Processing by ReviewsController#index as HTML
+  Parameters: {"book_id"=>"undefined"}
+  [1m[35mReview Load (0.3ms)[0m  SELECT "reviews".* FROM "reviews" WHERE "reviews"."book_id" = $1  [["book_id", 0]]
+Completed 200 OK in 3ms (Views: 1.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/31/queue" for ::1 at 2016-06-05 21:24:00 -0500
+Processing by SoloReadingsController#queue_books as HTML
+  Parameters: {"user_id"=>"31"}
+  [1m[36mSoloReading Load (0.7ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."queue" = $2[0m  [["user_id", 31], ["queue", "t"]]
+Completed 200 OK in 4ms (Views: 0.2ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/users/31/favorite" for ::1 at 2016-06-05 21:24:04 -0500
+Processing by SoloReadingsController#favorite_books as HTML
+  Parameters: {"user_id"=>"31"}
+  [1m[35mSoloReading Load (0.5ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."favorite" = $2  [["user_id", 31], ["favorite", "t"]]
+Completed 200 OK in 3ms (Views: 0.2ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/books/undefined/reviews" for ::1 at 2016-06-05 21:24:12 -0500
+Processing by ReviewsController#index as HTML
+  Parameters: {"book_id"=>"undefined"}
+  [1m[36mReview Load (0.5ms)[0m  [1mSELECT "reviews".* FROM "reviews" WHERE "reviews"."book_id" = $1[0m  [["book_id", 0]]
+Completed 200 OK in 3ms (Views: 1.2ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/books/undefined/reviews" for ::1 at 2016-06-05 21:24:31 -0500
+Processing by ReviewsController#index as HTML
+  Parameters: {"book_id"=>"undefined"}
+  [1m[35mReview Load (0.4ms)[0m  SELECT "reviews".* FROM "reviews" WHERE "reviews"."book_id" = $1  [["book_id", 0]]
+Completed 200 OK in 3ms (Views: 1.1ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/31/current" for ::1 at 2016-06-05 21:24:32 -0500
+Processing by SoloReadingsController#current_books as HTML
+  Parameters: {"user_id"=>"31"}
+  [1m[36mSoloReading Load (0.5ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2[0m  [["user_id", 31], ["current", "t"]]
+Completed 200 OK in 4ms (Views: 0.3ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users/31" for ::1 at 2016-06-05 21:24:32 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"31"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 31]]
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/books/undefined/reviews" for ::1 at 2016-06-05 21:24:35 -0500
+Processing by ReviewsController#index as HTML
+  Parameters: {"book_id"=>"undefined"}
+  [1m[36mReview Load (0.4ms)[0m  [1mSELECT "reviews".* FROM "reviews" WHERE "reviews"."book_id" = $1[0m  [["book_id", 0]]
+Completed 200 OK in 3ms (Views: 1.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/31/current" for ::1 at 2016-06-05 21:24:35 -0500
+Processing by SoloReadingsController#current_books as HTML
+  Parameters: {"user_id"=>"31"}
+  [1m[35mSoloReading Load (0.4ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2  [["user_id", 31], ["current", "t"]]
+Completed 200 OK in 3ms (Views: 0.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/31" for ::1 at 2016-06-05 21:24:35 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"31"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 31]]
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/books/undefined/reviews" for ::1 at 2016-06-05 21:25:01 -0500
+Processing by ReviewsController#index as HTML
+  Parameters: {"book_id"=>"undefined"}
+  [1m[35mReview Load (0.4ms)[0m  SELECT "reviews".* FROM "reviews" WHERE "reviews"."book_id" = $1  [["book_id", 0]]
+Completed 200 OK in 3ms (Views: 2.1ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/31/current" for ::1 at 2016-06-05 21:25:01 -0500
+Processing by SoloReadingsController#current_books as HTML
+  Parameters: {"user_id"=>"31"}
+  [1m[36mSoloReading Load (0.4ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2[0m  [["user_id", 31], ["current", "t"]]
+Completed 200 OK in 3ms (Views: 0.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/31" for ::1 at 2016-06-05 21:25:01 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"31"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 31]]
+Completed 200 OK in 1ms (Views: 0.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/books/undefined/reviews" for ::1 at 2016-06-05 21:26:49 -0500
+Processing by ReviewsController#index as HTML
+  Parameters: {"book_id"=>"undefined"}
+  [1m[36mReview Load (0.7ms)[0m  [1mSELECT "reviews".* FROM "reviews" WHERE "reviews"."book_id" = $1[0m  [["book_id", 0]]
+Completed 200 OK in 4ms (Views: 2.2ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/users/31/current" for ::1 at 2016-06-05 21:26:49 -0500
+Processing by SoloReadingsController#current_books as HTML
+  Parameters: {"user_id"=>"31"}
+  [1m[35mSoloReading Load (0.4ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2  [["user_id", 31], ["current", "t"]]
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/31" for ::1 at 2016-06-05 21:26:49 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"31"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 31]]
+Completed 200 OK in 1ms (Views: 0.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users/31" for ::1 at 2016-06-05 21:27:39 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"31"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 31]]
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/books/undefined/reviews" for ::1 at 2016-06-05 21:27:39 -0500
+Processing by ReviewsController#index as HTML
+  Parameters: {"book_id"=>"undefined"}
+  [1m[36mReview Load (0.3ms)[0m  [1mSELECT "reviews".* FROM "reviews" WHERE "reviews"."book_id" = $1[0m  [["book_id", 0]]
+Completed 200 OK in 2ms (Views: 1.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/31/current" for ::1 at 2016-06-05 21:27:39 -0500
+Processing by SoloReadingsController#current_books as HTML
+  Parameters: {"user_id"=>"31"}
+  [1m[35mSoloReading Load (0.3ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2  [["user_id", 31], ["current", "t"]]
+Completed 200 OK in 2ms (Views: 0.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/31" for ::1 at 2016-06-05 21:30:06 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"31"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 31]]
+Completed 200 OK in 1ms (Views: 0.1ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/books/undefined/reviews" for ::1 at 2016-06-05 21:30:07 -0500
+Processing by ReviewsController#index as HTML
+  Parameters: {"book_id"=>"undefined"}
+  [1m[35mReview Load (0.4ms)[0m  SELECT "reviews".* FROM "reviews" WHERE "reviews"."book_id" = $1  [["book_id", 0]]
+Completed 200 OK in 3ms (Views: 1.4ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/31/current" for ::1 at 2016-06-05 21:30:07 -0500
+Processing by SoloReadingsController#current_books as HTML
+  Parameters: {"user_id"=>"31"}
+  [1m[36mSoloReading Load (0.3ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2[0m  [["user_id", 31], ["current", "t"]]
+Completed 200 OK in 2ms (Views: 0.3ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/books/undefined/reviews" for ::1 at 2016-06-05 21:30:24 -0500
+Processing by ReviewsController#index as HTML
+  Parameters: {"book_id"=>"undefined"}
+  [1m[35mReview Load (3.2ms)[0m  SELECT "reviews".* FROM "reviews" WHERE "reviews"."book_id" = $1  [["book_id", 0]]
+Completed 200 OK in 6ms (Views: 1.8ms | ActiveRecord: 3.2ms)
+
+
+Started GET "/users/31/current" for ::1 at 2016-06-05 21:30:24 -0500
+Processing by SoloReadingsController#current_books as HTML
+  Parameters: {"user_id"=>"31"}
+  [1m[36mSoloReading Load (0.3ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2[0m  [["user_id", 31], ["current", "t"]]
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/31" for ::1 at 2016-06-05 21:30:24 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"31"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 31]]
+Completed 200 OK in 1ms (Views: 0.3ms | ActiveRecord: 0.2ms)
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT "users".* FROM "users"[0m
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1
+  [1m[36mReview Load (0.4ms)[0m  [1mSELECT "reviews".* FROM "reviews" WHERE "reviews"."user_id" = $1[0m  [["user_id", 1]]
+
+
+Started GET "/books/undefined/reviews" for ::1 at 2016-06-05 21:51:33 -0500
+Processing by ReviewsController#index as HTML
+  Parameters: {"book_id"=>"undefined"}
+  [1m[36mReview Load (0.3ms)[0m  [1mSELECT "reviews".* FROM "reviews" WHERE "reviews"."book_id" = $1[0m  [["book_id", 0]]
+Completed 200 OK in 9ms (Views: 1.0ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/31/current" for ::1 at 2016-06-05 21:51:34 -0500
+Processing by SoloReadingsController#current_books as HTML
+  Parameters: {"user_id"=>"31"}
+  [1m[35mSoloReading Load (0.3ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2  [["user_id", 31], ["current", "t"]]
+Completed 200 OK in 18ms (Views: 0.6ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/users/31" for ::1 at 2016-06-05 21:51:34 -0500
+
+SyntaxError (/Users/eealexander2/Desktop/final-project/murakami/rails-server/app/controllers/users_controller.rb:9: syntax error, unexpected tSTRING_DEND, expecting keyword_end
+/Users/eealexander2/Desktop/final-project/murakami/rails-server/app/controllers/users_controller.rb:11: syntax error, unexpected tSTRING_DEND, expecting '}'
+/Users/eealexander2/Desktop/final-project/murakami/rails-server/app/controllers/users_controller.rb:17: syntax error, unexpected tSTRING_DEND, expecting '}'
+/Users/eealexander2/Desktop/final-project/murakami/rails-server/app/controllers/users_controller.rb:23: syntax error, unexpected tSTRING_DEND, expecting '}'
+    render json: {reviews: reviews} 
+                                   ^
+/Users/eealexander2/Desktop/final-project/murakami/rails-server/app/controllers/users_controller.rb:32: syntax error, unexpected end-of-input, expecting keyword_end):
+  app/controllers/users_controller.rb:9: syntax error, unexpected tSTRING_DEND, expecting keyword_end
+  app/controllers/users_controller.rb:11: syntax error, unexpected tSTRING_DEND, expecting '}'
+  app/controllers/users_controller.rb:17: syntax error, unexpected tSTRING_DEND, expecting '}'
+  app/controllers/users_controller.rb:23: syntax error, unexpected tSTRING_DEND, expecting '}'
+  app/controllers/users_controller.rb:32: syntax error, unexpected end-of-input, expecting keyword_end
+
+
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.5ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.6ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.4ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (80.3ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (60.9ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (135.9ms)
+
+
+Started GET "/books/undefined/reviews" for ::1 at 2016-06-05 21:51:37 -0500
+Processing by ReviewsController#index as HTML
+  Parameters: {"book_id"=>"undefined"}
+  [1m[36mReview Load (0.3ms)[0m  [1mSELECT "reviews".* FROM "reviews" WHERE "reviews"."book_id" = $1[0m  [["book_id", 0]]
+Completed 200 OK in 2ms (Views: 0.9ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/31/current" for ::1 at 2016-06-05 21:52:06 -0500
+Processing by SoloReadingsController#current_books as HTML
+  Parameters: {"user_id"=>"31"}
+  [1m[35mSoloReading Load (0.7ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2  [["user_id", 31], ["current", "t"]]
+Completed 200 OK in 3ms (Views: 0.2ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/books/undefined/reviews" for ::1 at 2016-06-05 21:52:06 -0500
+Processing by ReviewsController#index as HTML
+  Parameters: {"book_id"=>"undefined"}
+  [1m[36mReview Load (0.4ms)[0m  [1mSELECT "reviews".* FROM "reviews" WHERE "reviews"."book_id" = $1[0m  [["book_id", 0]]
+Completed 200 OK in 3ms (Views: 1.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/31" for ::1 at 2016-06-05 21:52:06 -0500
+
+SyntaxError (/Users/eealexander2/Desktop/final-project/murakami/rails-server/app/controllers/users_controller.rb:9: syntax error, unexpected tSTRING_DEND, expecting keyword_end
+/Users/eealexander2/Desktop/final-project/murakami/rails-server/app/controllers/users_controller.rb:11: syntax error, unexpected tSTRING_DEND, expecting '}'
+/Users/eealexander2/Desktop/final-project/murakami/rails-server/app/controllers/users_controller.rb:17: syntax error, unexpected tSTRING_DEND, expecting '}'
+/Users/eealexander2/Desktop/final-project/murakami/rails-server/app/controllers/users_controller.rb:23: syntax error, unexpected tSTRING_DEND, expecting '}'
+    render json: {reviews: reviews} 
+                                   ^
+/Users/eealexander2/Desktop/final-project/murakami/rails-server/app/controllers/users_controller.rb:32: syntax error, unexpected end-of-input, expecting keyword_end):
+  app/controllers/users_controller.rb:9: syntax error, unexpected tSTRING_DEND, expecting keyword_end
+  app/controllers/users_controller.rb:11: syntax error, unexpected tSTRING_DEND, expecting '}'
+  app/controllers/users_controller.rb:17: syntax error, unexpected tSTRING_DEND, expecting '}'
+  app/controllers/users_controller.rb:23: syntax error, unexpected tSTRING_DEND, expecting '}'
+  app/controllers/users_controller.rb:32: syntax error, unexpected end-of-input, expecting keyword_end
+
+
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.4ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.8ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (61.6ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.6ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (56.7ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (128.9ms)
+
+
+Started GET "/books/undefined/reviews" for ::1 at 2016-06-05 21:52:08 -0500
+Processing by ReviewsController#index as HTML
+  Parameters: {"book_id"=>"undefined"}
+  [1m[35mReview Load (0.8ms)[0m  SELECT "reviews".* FROM "reviews" WHERE "reviews"."book_id" = $1  [["book_id", 0]]
+Completed 200 OK in 18ms (Views: 8.0ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/users/31" for ::1 at 2016-06-05 21:52:20 -0500
+
+SyntaxError (/Users/eealexander2/Desktop/final-project/murakami/rails-server/app/controllers/users_controller.rb:9: syntax error, unexpected tSTRING_DEND, expecting keyword_end
+/Users/eealexander2/Desktop/final-project/murakami/rails-server/app/controllers/users_controller.rb:11: syntax error, unexpected tSTRING_DEND, expecting '}'
+/Users/eealexander2/Desktop/final-project/murakami/rails-server/app/controllers/users_controller.rb:17: syntax error, unexpected tSTRING_DEND, expecting '}'
+/Users/eealexander2/Desktop/final-project/murakami/rails-server/app/controllers/users_controller.rb:23: syntax error, unexpected tSTRING_DEND, expecting '}'
+    render json: {reviews: reviews} 
+                                   ^
+/Users/eealexander2/Desktop/final-project/murakami/rails-server/app/controllers/users_controller.rb:32: syntax error, unexpected end-of-input, expecting keyword_end):
+  app/controllers/users_controller.rb:9: syntax error, unexpected tSTRING_DEND, expecting keyword_end
+  app/controllers/users_controller.rb:11: syntax error, unexpected tSTRING_DEND, expecting '}'
+  app/controllers/users_controller.rb:17: syntax error, unexpected tSTRING_DEND, expecting '}'
+  app/controllers/users_controller.rb:23: syntax error, unexpected tSTRING_DEND, expecting '}'
+  app/controllers/users_controller.rb:32: syntax error, unexpected end-of-input, expecting keyword_end
+
+
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (10.7ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (4.6ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.2ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (97.7ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.6ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (73.5ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.6ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (159.8ms)
+
+
+Started GET "/users/31/history" for ::1 at 2016-06-05 21:52:23 -0500
+Processing by SoloReadingsController#history_books as HTML
+  Parameters: {"user_id"=>"31"}
+  [1m[36mSoloReading Load (1.7ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2 AND "solo_readings"."queue" = $3[0m  [["user_id", 31], ["current", "f"], ["queue", "f"]]
+Completed 200 OK in 5ms (Views: 0.4ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/users/31" for ::1 at 2016-06-05 21:52:28 -0500
+
+SyntaxError (/Users/eealexander2/Desktop/final-project/murakami/rails-server/app/controllers/users_controller.rb:9: syntax error, unexpected tSTRING_DEND, expecting keyword_end
+/Users/eealexander2/Desktop/final-project/murakami/rails-server/app/controllers/users_controller.rb:11: syntax error, unexpected tSTRING_DEND, expecting '}'
+/Users/eealexander2/Desktop/final-project/murakami/rails-server/app/controllers/users_controller.rb:17: syntax error, unexpected tSTRING_DEND, expecting '}'
+/Users/eealexander2/Desktop/final-project/murakami/rails-server/app/controllers/users_controller.rb:23: syntax error, unexpected tSTRING_DEND, expecting '}'
+    render json: {reviews: reviews} 
+                                   ^
+/Users/eealexander2/Desktop/final-project/murakami/rails-server/app/controllers/users_controller.rb:32: syntax error, unexpected end-of-input, expecting keyword_end):
+  app/controllers/users_controller.rb:9: syntax error, unexpected tSTRING_DEND, expecting keyword_end
+  app/controllers/users_controller.rb:11: syntax error, unexpected tSTRING_DEND, expecting '}'
+  app/controllers/users_controller.rb:17: syntax error, unexpected tSTRING_DEND, expecting '}'
+  app/controllers/users_controller.rb:23: syntax error, unexpected tSTRING_DEND, expecting '}'
+  app/controllers/users_controller.rb:32: syntax error, unexpected end-of-input, expecting keyword_end
+
+
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (7.2ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.1ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (89.2ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (1.4ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (2.6ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (79.5ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.5ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (180.1ms)
+
+
+Started GET "/users/31/queue" for ::1 at 2016-06-05 21:52:33 -0500
+Processing by SoloReadingsController#queue_books as HTML
+  Parameters: {"user_id"=>"31"}
+  [1m[35mSoloReading Load (0.7ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."queue" = $2  [["user_id", 31], ["queue", "t"]]
+Completed 200 OK in 3ms (Views: 0.2ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/users/31" for ::1 at 2016-06-05 21:53:32 -0500
+
+SyntaxError (/Users/eealexander2/Desktop/final-project/murakami/rails-server/app/controllers/users_controller.rb:9: syntax error, unexpected tSTRING_DEND, expecting keyword_end
+/Users/eealexander2/Desktop/final-project/murakami/rails-server/app/controllers/users_controller.rb:11: syntax error, unexpected tSTRING_DEND, expecting '}'
+/Users/eealexander2/Desktop/final-project/murakami/rails-server/app/controllers/users_controller.rb:17: syntax error, unexpected tSTRING_DEND, expecting '}'
+/Users/eealexander2/Desktop/final-project/murakami/rails-server/app/controllers/users_controller.rb:23: syntax error, unexpected tSTRING_DEND, expecting '}'
+    render json: {reviews: reviews} 
+                                   ^
+/Users/eealexander2/Desktop/final-project/murakami/rails-server/app/controllers/users_controller.rb:32: syntax error, unexpected end-of-input, expecting keyword_end):
+  app/controllers/users_controller.rb:9: syntax error, unexpected tSTRING_DEND, expecting keyword_end
+  app/controllers/users_controller.rb:11: syntax error, unexpected tSTRING_DEND, expecting '}'
+  app/controllers/users_controller.rb:17: syntax error, unexpected tSTRING_DEND, expecting '}'
+  app/controllers/users_controller.rb:23: syntax error, unexpected tSTRING_DEND, expecting '}'
+  app/controllers/users_controller.rb:32: syntax error, unexpected end-of-input, expecting keyword_end
+
+
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.5ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.2ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (88.2ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (1.3ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.7ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (69.5ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (151.6ms)
+
+
+Started GET "/users/31/current" for ::1 at 2016-06-05 21:53:32 -0500
+Processing by SoloReadingsController#current_books as HTML
+  Parameters: {"user_id"=>"31"}
+  [1m[36mSoloReading Load (0.4ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2[0m  [["user_id", 31], ["current", "t"]]
+Completed 200 OK in 2ms (Views: 0.1ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/31/queue" for ::1 at 2016-06-05 21:53:32 -0500
+Processing by SoloReadingsController#queue_books as HTML
+  Parameters: {"user_id"=>"31"}
+  [1m[35mSoloReading Load (0.8ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."queue" = $2  [["user_id", 31], ["queue", "t"]]
+Completed 200 OK in 3ms (Views: 0.2ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/users/31/current" for ::1 at 2016-06-05 21:53:42 -0500
+Processing by SoloReadingsController#current_books as HTML
+  Parameters: {"user_id"=>"31"}
+  [1m[36mSoloReading Load (0.3ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2[0m  [["user_id", 31], ["current", "t"]]
+Completed 200 OK in 2ms (Views: 0.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/31" for ::1 at 2016-06-05 21:53:43 -0500
+
+SyntaxError (/Users/eealexander2/Desktop/final-project/murakami/rails-server/app/controllers/users_controller.rb:9: syntax error, unexpected tSTRING_DEND, expecting keyword_end
+/Users/eealexander2/Desktop/final-project/murakami/rails-server/app/controllers/users_controller.rb:11: syntax error, unexpected tSTRING_DEND, expecting '}'
+/Users/eealexander2/Desktop/final-project/murakami/rails-server/app/controllers/users_controller.rb:17: syntax error, unexpected tSTRING_DEND, expecting '}'
+/Users/eealexander2/Desktop/final-project/murakami/rails-server/app/controllers/users_controller.rb:23: syntax error, unexpected tSTRING_DEND, expecting '}'
+    render json: {reviews: reviews} 
+                                   ^
+/Users/eealexander2/Desktop/final-project/murakami/rails-server/app/controllers/users_controller.rb:32: syntax error, unexpected end-of-input, expecting keyword_end):
+  app/controllers/users_controller.rb:9: syntax error, unexpected tSTRING_DEND, expecting keyword_end
+  app/controllers/users_controller.rb:11: syntax error, unexpected tSTRING_DEND, expecting '}'
+  app/controllers/users_controller.rb:17: syntax error, unexpected tSTRING_DEND, expecting '}'
+  app/controllers/users_controller.rb:23: syntax error, unexpected tSTRING_DEND, expecting '}'
+  app/controllers/users_controller.rb:32: syntax error, unexpected end-of-input, expecting keyword_end
+
+
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (3.6ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.9ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (68.1ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (53.0ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (120.9ms)
+
+
+Started GET "/users/31" for ::1 at 2016-06-05 21:54:23 -0500
+
+SyntaxError (/Users/eealexander2/Desktop/final-project/murakami/rails-server/app/controllers/users_controller.rb:9: syntax error, unexpected tSTRING_DEND, expecting keyword_end
+/Users/eealexander2/Desktop/final-project/murakami/rails-server/app/controllers/users_controller.rb:11: syntax error, unexpected tSTRING_DEND, expecting '}'
+/Users/eealexander2/Desktop/final-project/murakami/rails-server/app/controllers/users_controller.rb:17: syntax error, unexpected tSTRING_DEND, expecting '}'
+/Users/eealexander2/Desktop/final-project/murakami/rails-server/app/controllers/users_controller.rb:23: syntax error, unexpected tSTRING_DEND, expecting '}'
+    render json: {reviews: reviews} 
+                                   ^
+/Users/eealexander2/Desktop/final-project/murakami/rails-server/app/controllers/users_controller.rb:32: syntax error, unexpected end-of-input, expecting keyword_end):
+  app/controllers/users_controller.rb:9: syntax error, unexpected tSTRING_DEND, expecting keyword_end
+  app/controllers/users_controller.rb:11: syntax error, unexpected tSTRING_DEND, expecting '}'
+  app/controllers/users_controller.rb:17: syntax error, unexpected tSTRING_DEND, expecting '}'
+  app/controllers/users_controller.rb:23: syntax error, unexpected tSTRING_DEND, expecting '}'
+  app/controllers/users_controller.rb:32: syntax error, unexpected end-of-input, expecting keyword_end
+
+
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.3ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.2ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (85.0ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.6ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (57.1ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (132.9ms)
+
+
+Started GET "/users/31/queue" for ::1 at 2016-06-05 21:54:23 -0500
+Processing by SoloReadingsController#queue_books as HTML
+  Parameters: {"user_id"=>"31"}
+  [1m[35mSoloReading Load (2.0ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."queue" = $2  [["user_id", 31], ["queue", "t"]]
+Completed 200 OK in 4ms (Views: 0.1ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/users/31" for ::1 at 2016-06-05 21:54:23 -0500
+
+SyntaxError (/Users/eealexander2/Desktop/final-project/murakami/rails-server/app/controllers/users_controller.rb:9: syntax error, unexpected tSTRING_DEND, expecting keyword_end
+/Users/eealexander2/Desktop/final-project/murakami/rails-server/app/controllers/users_controller.rb:11: syntax error, unexpected tSTRING_DEND, expecting '}'
+/Users/eealexander2/Desktop/final-project/murakami/rails-server/app/controllers/users_controller.rb:17: syntax error, unexpected tSTRING_DEND, expecting '}'
+/Users/eealexander2/Desktop/final-project/murakami/rails-server/app/controllers/users_controller.rb:23: syntax error, unexpected tSTRING_DEND, expecting '}'
+    render json: {reviews: reviews} 
+                                   ^
+/Users/eealexander2/Desktop/final-project/murakami/rails-server/app/controllers/users_controller.rb:32: syntax error, unexpected end-of-input, expecting keyword_end):
+  app/controllers/users_controller.rb:9: syntax error, unexpected tSTRING_DEND, expecting keyword_end
+  app/controllers/users_controller.rb:11: syntax error, unexpected tSTRING_DEND, expecting '}'
+  app/controllers/users_controller.rb:17: syntax error, unexpected tSTRING_DEND, expecting '}'
+  app/controllers/users_controller.rb:23: syntax error, unexpected tSTRING_DEND, expecting '}'
+  app/controllers/users_controller.rb:32: syntax error, unexpected end-of-input, expecting keyword_end
+
+
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (3.0ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (6.0ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (61.8ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (52.3ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (115.7ms)
+
+
+Started GET "/users/31" for ::1 at 2016-06-05 21:54:51 -0500
+
+SyntaxError (/Users/eealexander2/Desktop/final-project/murakami/rails-server/app/controllers/users_controller.rb:9: syntax error, unexpected tSTRING_DEND, expecting keyword_end
+/Users/eealexander2/Desktop/final-project/murakami/rails-server/app/controllers/users_controller.rb:11: syntax error, unexpected tSTRING_DEND, expecting '}'
+/Users/eealexander2/Desktop/final-project/murakami/rails-server/app/controllers/users_controller.rb:17: syntax error, unexpected tSTRING_DEND, expecting '}'
+/Users/eealexander2/Desktop/final-project/murakami/rails-server/app/controllers/users_controller.rb:23: syntax error, unexpected tSTRING_DEND, expecting '}'
+    render json: {reviews: reviews} 
+                                   ^
+/Users/eealexander2/Desktop/final-project/murakami/rails-server/app/controllers/users_controller.rb:32: syntax error, unexpected end-of-input, expecting keyword_end):
+  app/controllers/users_controller.rb:9: syntax error, unexpected tSTRING_DEND, expecting keyword_end
+  app/controllers/users_controller.rb:11: syntax error, unexpected tSTRING_DEND, expecting '}'
+  app/controllers/users_controller.rb:17: syntax error, unexpected tSTRING_DEND, expecting '}'
+  app/controllers/users_controller.rb:23: syntax error, unexpected tSTRING_DEND, expecting '}'
+  app/controllers/users_controller.rb:32: syntax error, unexpected end-of-input, expecting keyword_end
+
+
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (3.8ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.2ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.3ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (72.7ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.6ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (65.2ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (131.0ms)
+
+
+Started GET "/users/31/queue" for ::1 at 2016-06-05 21:54:51 -0500
+Processing by SoloReadingsController#queue_books as HTML
+  Parameters: {"user_id"=>"31"}
+  [1m[36mSoloReading Load (2.5ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."queue" = $2[0m  [["user_id", 31], ["queue", "t"]]
+Completed 200 OK in 4ms (Views: 0.3ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/users/31" for ::1 at 2016-06-05 21:54:51 -0500
+
+SyntaxError (/Users/eealexander2/Desktop/final-project/murakami/rails-server/app/controllers/users_controller.rb:9: syntax error, unexpected tSTRING_DEND, expecting keyword_end
+/Users/eealexander2/Desktop/final-project/murakami/rails-server/app/controllers/users_controller.rb:11: syntax error, unexpected tSTRING_DEND, expecting '}'
+/Users/eealexander2/Desktop/final-project/murakami/rails-server/app/controllers/users_controller.rb:17: syntax error, unexpected tSTRING_DEND, expecting '}'
+/Users/eealexander2/Desktop/final-project/murakami/rails-server/app/controllers/users_controller.rb:23: syntax error, unexpected tSTRING_DEND, expecting '}'
+    render json: {reviews: reviews} 
+                                   ^
+/Users/eealexander2/Desktop/final-project/murakami/rails-server/app/controllers/users_controller.rb:32: syntax error, unexpected end-of-input, expecting keyword_end):
+  app/controllers/users_controller.rb:9: syntax error, unexpected tSTRING_DEND, expecting keyword_end
+  app/controllers/users_controller.rb:11: syntax error, unexpected tSTRING_DEND, expecting '}'
+  app/controllers/users_controller.rb:17: syntax error, unexpected tSTRING_DEND, expecting '}'
+  app/controllers/users_controller.rb:23: syntax error, unexpected tSTRING_DEND, expecting '}'
+  app/controllers/users_controller.rb:32: syntax error, unexpected end-of-input, expecting keyword_end
+
+
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.3ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.9ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (61.5ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.6ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (60.9ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (128.1ms)
+
+
+Started GET "/users/31" for ::1 at 2016-06-05 21:54:55 -0500
+
+SyntaxError (/Users/eealexander2/Desktop/final-project/murakami/rails-server/app/controllers/users_controller.rb:9: syntax error, unexpected tSTRING_DEND, expecting keyword_end
+/Users/eealexander2/Desktop/final-project/murakami/rails-server/app/controllers/users_controller.rb:11: syntax error, unexpected tSTRING_DEND, expecting '}'
+/Users/eealexander2/Desktop/final-project/murakami/rails-server/app/controllers/users_controller.rb:17: syntax error, unexpected tSTRING_DEND, expecting '}'
+/Users/eealexander2/Desktop/final-project/murakami/rails-server/app/controllers/users_controller.rb:23: syntax error, unexpected tSTRING_DEND, expecting '}'
+    render json: {reviews: reviews} 
+                                   ^
+/Users/eealexander2/Desktop/final-project/murakami/rails-server/app/controllers/users_controller.rb:32: syntax error, unexpected end-of-input, expecting keyword_end):
+  app/controllers/users_controller.rb:9: syntax error, unexpected tSTRING_DEND, expecting keyword_end
+  app/controllers/users_controller.rb:11: syntax error, unexpected tSTRING_DEND, expecting '}'
+  app/controllers/users_controller.rb:17: syntax error, unexpected tSTRING_DEND, expecting '}'
+  app/controllers/users_controller.rb:23: syntax error, unexpected tSTRING_DEND, expecting '}'
+  app/controllers/users_controller.rb:32: syntax error, unexpected end-of-input, expecting keyword_end
+
+
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.2ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.6ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (87.7ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (57.1ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (138.0ms)
+
+
+Started GET "/users/31/queue" for ::1 at 2016-06-05 21:54:56 -0500
+Processing by SoloReadingsController#queue_books as HTML
+  Parameters: {"user_id"=>"31"}
+  [1m[35mSoloReading Load (2.3ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."queue" = $2  [["user_id", 31], ["queue", "t"]]
+Completed 200 OK in 4ms (Views: 0.2ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/users/31" for ::1 at 2016-06-05 21:54:56 -0500
+
+SyntaxError (/Users/eealexander2/Desktop/final-project/murakami/rails-server/app/controllers/users_controller.rb:9: syntax error, unexpected tSTRING_DEND, expecting keyword_end
+/Users/eealexander2/Desktop/final-project/murakami/rails-server/app/controllers/users_controller.rb:11: syntax error, unexpected tSTRING_DEND, expecting '}'
+/Users/eealexander2/Desktop/final-project/murakami/rails-server/app/controllers/users_controller.rb:17: syntax error, unexpected tSTRING_DEND, expecting '}'
+/Users/eealexander2/Desktop/final-project/murakami/rails-server/app/controllers/users_controller.rb:23: syntax error, unexpected tSTRING_DEND, expecting '}'
+    render json: {reviews: reviews} 
+                                   ^
+/Users/eealexander2/Desktop/final-project/murakami/rails-server/app/controllers/users_controller.rb:32: syntax error, unexpected end-of-input, expecting keyword_end):
+  app/controllers/users_controller.rb:9: syntax error, unexpected tSTRING_DEND, expecting keyword_end
+  app/controllers/users_controller.rb:11: syntax error, unexpected tSTRING_DEND, expecting '}'
+  app/controllers/users_controller.rb:17: syntax error, unexpected tSTRING_DEND, expecting '}'
+  app/controllers/users_controller.rb:23: syntax error, unexpected tSTRING_DEND, expecting '}'
+  app/controllers/users_controller.rb:32: syntax error, unexpected end-of-input, expecting keyword_end
+
+
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (3.4ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.6ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (74.1ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (61.5ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (129.9ms)
+
+
+Started GET "/users/31/queue" for ::1 at 2016-06-05 21:56:42 -0500
+Processing by SoloReadingsController#queue_books as HTML
+  Parameters: {"user_id"=>"31"}
+  [1m[36mSoloReading Load (0.4ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."queue" = $2[0m  [["user_id", 31], ["queue", "t"]]
+Completed 200 OK in 3ms (Views: 0.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/31" for ::1 at 2016-06-05 21:56:42 -0500
+
+SyntaxError (/Users/eealexander2/Desktop/final-project/murakami/rails-server/app/controllers/users_controller.rb:9: syntax error, unexpected tSTRING_DEND, expecting keyword_end
+/Users/eealexander2/Desktop/final-project/murakami/rails-server/app/controllers/users_controller.rb:11: syntax error, unexpected tSTRING_DEND, expecting '}'
+/Users/eealexander2/Desktop/final-project/murakami/rails-server/app/controllers/users_controller.rb:17: syntax error, unexpected tSTRING_DEND, expecting '}'
+/Users/eealexander2/Desktop/final-project/murakami/rails-server/app/controllers/users_controller.rb:23: syntax error, unexpected tSTRING_DEND, expecting '}'
+    render json: {reviews: reviews} 
+                                   ^
+/Users/eealexander2/Desktop/final-project/murakami/rails-server/app/controllers/users_controller.rb:32: syntax error, unexpected end-of-input, expecting keyword_end):
+  app/controllers/users_controller.rb:9: syntax error, unexpected tSTRING_DEND, expecting keyword_end
+  app/controllers/users_controller.rb:11: syntax error, unexpected tSTRING_DEND, expecting '}'
+  app/controllers/users_controller.rb:17: syntax error, unexpected tSTRING_DEND, expecting '}'
+  app/controllers/users_controller.rb:23: syntax error, unexpected tSTRING_DEND, expecting '}'
+  app/controllers/users_controller.rb:32: syntax error, unexpected end-of-input, expecting keyword_end
+
+
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.8ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.5ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (71.8ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.7ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (64.5ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.8ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (142.4ms)
+
+
+Started GET "/users/31/queue" for ::1 at 2016-06-05 21:56:52 -0500
+Processing by SoloReadingsController#queue_books as HTML
+  Parameters: {"user_id"=>"31"}
+  [1m[35mSoloReading Load (0.3ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."queue" = $2  [["user_id", 31], ["queue", "t"]]
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/31" for ::1 at 2016-06-05 21:56:52 -0500
+
+SyntaxError (/Users/eealexander2/Desktop/final-project/murakami/rails-server/app/controllers/users_controller.rb:9: syntax error, unexpected tSTRING_DEND, expecting keyword_end
+/Users/eealexander2/Desktop/final-project/murakami/rails-server/app/controllers/users_controller.rb:11: syntax error, unexpected tSTRING_DEND, expecting '}'
+/Users/eealexander2/Desktop/final-project/murakami/rails-server/app/controllers/users_controller.rb:17: syntax error, unexpected tSTRING_DEND, expecting '}'
+/Users/eealexander2/Desktop/final-project/murakami/rails-server/app/controllers/users_controller.rb:23: syntax error, unexpected tSTRING_DEND, expecting '}'
+    render json: {reviews: reviews} 
+                                   ^
+/Users/eealexander2/Desktop/final-project/murakami/rails-server/app/controllers/users_controller.rb:32: syntax error, unexpected end-of-input, expecting keyword_end):
+  app/controllers/users_controller.rb:9: syntax error, unexpected tSTRING_DEND, expecting keyword_end
+  app/controllers/users_controller.rb:11: syntax error, unexpected tSTRING_DEND, expecting '}'
+  app/controllers/users_controller.rb:17: syntax error, unexpected tSTRING_DEND, expecting '}'
+  app/controllers/users_controller.rb:23: syntax error, unexpected tSTRING_DEND, expecting '}'
+  app/controllers/users_controller.rb:32: syntax error, unexpected end-of-input, expecting keyword_end
+
+
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.2ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.1ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.4ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (86.2ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (55.9ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (130.0ms)
+
+
+Started GET "/users/31/queue" for ::1 at 2016-06-05 21:57:06 -0500
+Processing by SoloReadingsController#queue_books as HTML
+  Parameters: {"user_id"=>"31"}
+  [1m[36mSoloReading Load (0.4ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."queue" = $2[0m  [["user_id", 31], ["queue", "t"]]
+Completed 200 OK in 3ms (Views: 0.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/31" for ::1 at 2016-06-05 21:57:06 -0500
+
+SyntaxError (/Users/eealexander2/Desktop/final-project/murakami/rails-server/app/controllers/users_controller.rb:9: syntax error, unexpected tSTRING_DEND, expecting keyword_end
+/Users/eealexander2/Desktop/final-project/murakami/rails-server/app/controllers/users_controller.rb:11: syntax error, unexpected tSTRING_DEND, expecting '}'
+/Users/eealexander2/Desktop/final-project/murakami/rails-server/app/controllers/users_controller.rb:17: syntax error, unexpected tSTRING_DEND, expecting '}'
+/Users/eealexander2/Desktop/final-project/murakami/rails-server/app/controllers/users_controller.rb:23: syntax error, unexpected tSTRING_DEND, expecting '}'
+    render json: {reviews: reviews} 
+                                   ^
+/Users/eealexander2/Desktop/final-project/murakami/rails-server/app/controllers/users_controller.rb:32: syntax error, unexpected end-of-input, expecting keyword_end):
+  app/controllers/users_controller.rb:9: syntax error, unexpected tSTRING_DEND, expecting keyword_end
+  app/controllers/users_controller.rb:11: syntax error, unexpected tSTRING_DEND, expecting '}'
+  app/controllers/users_controller.rb:17: syntax error, unexpected tSTRING_DEND, expecting '}'
+  app/controllers/users_controller.rb:23: syntax error, unexpected tSTRING_DEND, expecting '}'
+  app/controllers/users_controller.rb:32: syntax error, unexpected end-of-input, expecting keyword_end
+
+
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (6.6ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.7ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.4ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (114.6ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.8ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.6ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (138.7ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.6ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (234.2ms)
+
+
+Started GET "/users/31" for ::1 at 2016-06-05 21:57:15 -0500
+
+SyntaxError (/Users/eealexander2/Desktop/final-project/murakami/rails-server/app/controllers/users_controller.rb:9: syntax error, unexpected tSTRING_DEND, expecting keyword_end
+/Users/eealexander2/Desktop/final-project/murakami/rails-server/app/controllers/users_controller.rb:11: syntax error, unexpected tSTRING_DEND, expecting '}'
+/Users/eealexander2/Desktop/final-project/murakami/rails-server/app/controllers/users_controller.rb:17: syntax error, unexpected tSTRING_DEND, expecting '}'
+/Users/eealexander2/Desktop/final-project/murakami/rails-server/app/controllers/users_controller.rb:23: syntax error, unexpected tSTRING_DEND, expecting '}'
+    render json: {reviews: reviews} 
+                                   ^
+/Users/eealexander2/Desktop/final-project/murakami/rails-server/app/controllers/users_controller.rb:32: syntax error, unexpected end-of-input, expecting keyword_end):
+  app/controllers/users_controller.rb:9: syntax error, unexpected tSTRING_DEND, expecting keyword_end
+  app/controllers/users_controller.rb:11: syntax error, unexpected tSTRING_DEND, expecting '}'
+  app/controllers/users_controller.rb:17: syntax error, unexpected tSTRING_DEND, expecting '}'
+  app/controllers/users_controller.rb:23: syntax error, unexpected tSTRING_DEND, expecting '}'
+  app/controllers/users_controller.rb:32: syntax error, unexpected end-of-input, expecting keyword_end
+
+
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (3.4ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.7ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (58.0ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (47.6ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (108.7ms)
+
+
+Started GET "/users/31/reviews" for ::1 at 2016-06-05 21:57:17 -0500
+
+SyntaxError (/Users/eealexander2/Desktop/final-project/murakami/rails-server/app/controllers/users_controller.rb:9: syntax error, unexpected tSTRING_DEND, expecting keyword_end
+/Users/eealexander2/Desktop/final-project/murakami/rails-server/app/controllers/users_controller.rb:11: syntax error, unexpected tSTRING_DEND, expecting '}'
+/Users/eealexander2/Desktop/final-project/murakami/rails-server/app/controllers/users_controller.rb:17: syntax error, unexpected tSTRING_DEND, expecting '}'
+/Users/eealexander2/Desktop/final-project/murakami/rails-server/app/controllers/users_controller.rb:23: syntax error, unexpected tSTRING_DEND, expecting '}'
+    render json: {reviews: reviews} 
+                                   ^
+/Users/eealexander2/Desktop/final-project/murakami/rails-server/app/controllers/users_controller.rb:32: syntax error, unexpected end-of-input, expecting keyword_end):
+  app/controllers/users_controller.rb:9: syntax error, unexpected tSTRING_DEND, expecting keyword_end
+  app/controllers/users_controller.rb:11: syntax error, unexpected tSTRING_DEND, expecting '}'
+  app/controllers/users_controller.rb:17: syntax error, unexpected tSTRING_DEND, expecting '}'
+  app/controllers/users_controller.rb:23: syntax error, unexpected tSTRING_DEND, expecting '}'
+  app/controllers/users_controller.rb:32: syntax error, unexpected end-of-input, expecting keyword_end
+
+
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.0ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.6ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.2ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (77.0ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.7ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (1.2ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (66.1ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (147.3ms)
+
+
+Started GET "/users/31/reviews" for ::1 at 2016-06-05 21:57:31 -0500
+
+SyntaxError (/Users/eealexander2/Desktop/final-project/murakami/rails-server/app/controllers/users_controller.rb:9: syntax error, unexpected tSTRING_DEND, expecting keyword_end
+/Users/eealexander2/Desktop/final-project/murakami/rails-server/app/controllers/users_controller.rb:11: syntax error, unexpected tSTRING_DEND, expecting '}'
+/Users/eealexander2/Desktop/final-project/murakami/rails-server/app/controllers/users_controller.rb:17: syntax error, unexpected tSTRING_DEND, expecting '}'
+/Users/eealexander2/Desktop/final-project/murakami/rails-server/app/controllers/users_controller.rb:23: syntax error, unexpected tSTRING_DEND, expecting '}'
+    render json: {reviews: reviews} 
+                                   ^
+/Users/eealexander2/Desktop/final-project/murakami/rails-server/app/controllers/users_controller.rb:32: syntax error, unexpected end-of-input, expecting keyword_end):
+  app/controllers/users_controller.rb:9: syntax error, unexpected tSTRING_DEND, expecting keyword_end
+  app/controllers/users_controller.rb:11: syntax error, unexpected tSTRING_DEND, expecting '}'
+  app/controllers/users_controller.rb:17: syntax error, unexpected tSTRING_DEND, expecting '}'
+  app/controllers/users_controller.rb:23: syntax error, unexpected tSTRING_DEND, expecting '}'
+  app/controllers/users_controller.rb:32: syntax error, unexpected end-of-input, expecting keyword_end
+
+
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (3.1ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.4ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (81.3ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.5ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (60.7ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.8ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (144.3ms)
+
+
+Started GET "/users/31/current" for ::1 at 2016-06-05 21:58:20 -0500
+Processing by SoloReadingsController#current_books as HTML
+  Parameters: {"user_id"=>"31"}
+  [1m[35mSoloReading Load (0.4ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2  [["user_id", 31], ["current", "t"]]
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/31/reviews" for ::1 at 2016-06-05 21:58:23 -0500
+
+SyntaxError (/Users/eealexander2/Desktop/final-project/murakami/rails-server/app/controllers/users_controller.rb:9: syntax error, unexpected tSTRING_DEND, expecting keyword_end
+/Users/eealexander2/Desktop/final-project/murakami/rails-server/app/controllers/users_controller.rb:11: syntax error, unexpected tSTRING_DEND, expecting '}'
+/Users/eealexander2/Desktop/final-project/murakami/rails-server/app/controllers/users_controller.rb:17: syntax error, unexpected tSTRING_DEND, expecting '}'
+/Users/eealexander2/Desktop/final-project/murakami/rails-server/app/controllers/users_controller.rb:23: syntax error, unexpected tSTRING_DEND, expecting '}'
+    render json: {reviews: reviews} 
+                                   ^
+/Users/eealexander2/Desktop/final-project/murakami/rails-server/app/controllers/users_controller.rb:32: syntax error, unexpected end-of-input, expecting keyword_end):
+  app/controllers/users_controller.rb:9: syntax error, unexpected tSTRING_DEND, expecting keyword_end
+  app/controllers/users_controller.rb:11: syntax error, unexpected tSTRING_DEND, expecting '}'
+  app/controllers/users_controller.rb:17: syntax error, unexpected tSTRING_DEND, expecting '}'
+  app/controllers/users_controller.rb:23: syntax error, unexpected tSTRING_DEND, expecting '}'
+  app/controllers/users_controller.rb:32: syntax error, unexpected end-of-input, expecting keyword_end
+
+
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (11.0ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.5ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (87.3ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (1.0ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.7ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (1.3ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (65.0ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (144.8ms)
+
+
+Started GET "/users/31" for ::1 at 2016-06-05 22:01:57 -0500
+
+SyntaxError (/Users/eealexander2/Desktop/final-project/murakami/rails-server/app/controllers/users_controller.rb:9: syntax error, unexpected tSTRING_DEND, expecting keyword_end
+/Users/eealexander2/Desktop/final-project/murakami/rails-server/app/controllers/users_controller.rb:11: syntax error, unexpected tSTRING_DEND, expecting '}'
+/Users/eealexander2/Desktop/final-project/murakami/rails-server/app/controllers/users_controller.rb:17: syntax error, unexpected tSTRING_DEND, expecting '}'
+/Users/eealexander2/Desktop/final-project/murakami/rails-server/app/controllers/users_controller.rb:23: syntax error, unexpected tSTRING_DEND, expecting '}'
+    render json: {reviews: reviews} 
+                                   ^
+/Users/eealexander2/Desktop/final-project/murakami/rails-server/app/controllers/users_controller.rb:32: syntax error, unexpected end-of-input, expecting keyword_end):
+  app/controllers/users_controller.rb:9: syntax error, unexpected tSTRING_DEND, expecting keyword_end
+  app/controllers/users_controller.rb:11: syntax error, unexpected tSTRING_DEND, expecting '}'
+  app/controllers/users_controller.rb:17: syntax error, unexpected tSTRING_DEND, expecting '}'
+  app/controllers/users_controller.rb:23: syntax error, unexpected tSTRING_DEND, expecting '}'
+  app/controllers/users_controller.rb:32: syntax error, unexpected end-of-input, expecting keyword_end
+
+
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (11.2ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.8ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (141.6ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (1.0ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (82.3ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (199.0ms)
+
+
+Started GET "/users/31" for ::1 at 2016-06-05 22:02:01 -0500
+
+SyntaxError (/Users/eealexander2/Desktop/final-project/murakami/rails-server/app/controllers/users_controller.rb:9: syntax error, unexpected tSTRING_DEND, expecting keyword_end
+/Users/eealexander2/Desktop/final-project/murakami/rails-server/app/controllers/users_controller.rb:11: syntax error, unexpected tSTRING_DEND, expecting '}'
+/Users/eealexander2/Desktop/final-project/murakami/rails-server/app/controllers/users_controller.rb:17: syntax error, unexpected tSTRING_DEND, expecting '}'
+/Users/eealexander2/Desktop/final-project/murakami/rails-server/app/controllers/users_controller.rb:23: syntax error, unexpected tSTRING_DEND, expecting '}'
+    render json: {reviews: reviews} 
+                                   ^
+/Users/eealexander2/Desktop/final-project/murakami/rails-server/app/controllers/users_controller.rb:32: syntax error, unexpected end-of-input, expecting keyword_end):
+  app/controllers/users_controller.rb:9: syntax error, unexpected tSTRING_DEND, expecting keyword_end
+  app/controllers/users_controller.rb:11: syntax error, unexpected tSTRING_DEND, expecting '}'
+  app/controllers/users_controller.rb:17: syntax error, unexpected tSTRING_DEND, expecting '}'
+  app/controllers/users_controller.rb:23: syntax error, unexpected tSTRING_DEND, expecting '}'
+  app/controllers/users_controller.rb:32: syntax error, unexpected end-of-input, expecting keyword_end
+
+
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.8ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.4ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (146.5ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (1.0ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.8ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (106.1ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.9ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (225.7ms)
+
+
+Started GET "/users/31/history" for ::1 at 2016-06-05 22:02:03 -0500
+Processing by SoloReadingsController#history_books as HTML
+  Parameters: {"user_id"=>"31"}
+  [1m[36mSoloReading Load (1.0ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2 AND "solo_readings"."queue" = $3[0m  [["user_id", 31], ["current", "f"], ["queue", "f"]]
+Completed 200 OK in 4ms (Views: 0.2ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/users/31/reviews" for ::1 at 2016-06-05 22:02:08 -0500
+
+SyntaxError (/Users/eealexander2/Desktop/final-project/murakami/rails-server/app/controllers/users_controller.rb:9: syntax error, unexpected tSTRING_DEND, expecting keyword_end
+/Users/eealexander2/Desktop/final-project/murakami/rails-server/app/controllers/users_controller.rb:11: syntax error, unexpected tSTRING_DEND, expecting '}'
+/Users/eealexander2/Desktop/final-project/murakami/rails-server/app/controllers/users_controller.rb:17: syntax error, unexpected tSTRING_DEND, expecting '}'
+/Users/eealexander2/Desktop/final-project/murakami/rails-server/app/controllers/users_controller.rb:23: syntax error, unexpected tSTRING_DEND, expecting '}'
+    render json: {reviews: reviews} 
+                                   ^
+/Users/eealexander2/Desktop/final-project/murakami/rails-server/app/controllers/users_controller.rb:32: syntax error, unexpected end-of-input, expecting keyword_end):
+  app/controllers/users_controller.rb:9: syntax error, unexpected tSTRING_DEND, expecting keyword_end
+  app/controllers/users_controller.rb:11: syntax error, unexpected tSTRING_DEND, expecting '}'
+  app/controllers/users_controller.rb:17: syntax error, unexpected tSTRING_DEND, expecting '}'
+  app/controllers/users_controller.rb:23: syntax error, unexpected tSTRING_DEND, expecting '}'
+  app/controllers/users_controller.rb:32: syntax error, unexpected end-of-input, expecting keyword_end
+
+
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (13.1ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.1ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.9ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (121.9ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.7ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (92.2ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.7ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (1.5ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (205.4ms)
+
+
+Started GET "/users/31/reviews" for ::1 at 2016-06-05 22:03:32 -0500
+
+SyntaxError (/Users/eealexander2/Desktop/final-project/murakami/rails-server/app/controllers/users_controller.rb:9: syntax error, unexpected tSTRING_DEND, expecting keyword_end
+/Users/eealexander2/Desktop/final-project/murakami/rails-server/app/controllers/users_controller.rb:11: syntax error, unexpected tSTRING_DEND, expecting '}'
+/Users/eealexander2/Desktop/final-project/murakami/rails-server/app/controllers/users_controller.rb:17: syntax error, unexpected tSTRING_DEND, expecting '}'
+/Users/eealexander2/Desktop/final-project/murakami/rails-server/app/controllers/users_controller.rb:24: syntax error, unexpected tSTRING_DEND, expecting '}'
+    render json: {reviews: reviews} 
+                                   ^
+/Users/eealexander2/Desktop/final-project/murakami/rails-server/app/controllers/users_controller.rb:33: syntax error, unexpected end-of-input, expecting keyword_end):
+  app/controllers/users_controller.rb:9: syntax error, unexpected tSTRING_DEND, expecting keyword_end
+  app/controllers/users_controller.rb:11: syntax error, unexpected tSTRING_DEND, expecting '}'
+  app/controllers/users_controller.rb:17: syntax error, unexpected tSTRING_DEND, expecting '}'
+  app/controllers/users_controller.rb:24: syntax error, unexpected tSTRING_DEND, expecting '}'
+  app/controllers/users_controller.rb:33: syntax error, unexpected end-of-input, expecting keyword_end
+
+
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (6.0ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.1ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (2.2ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (64.6ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.6ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (54.0ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (1.3ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (123.3ms)
+
+
+Started GET "/users/31/reviews" for ::1 at 2016-06-05 22:04:10 -0500
+Processing by UsersController#reviews as HTML
+  Parameters: {"user_id"=>"31"}
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", nil]]
+Completed 404 Not Found in 11ms (ActiveRecord: 0.4ms)
+
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=):
+  app/controllers/users_controller.rb:21:in `reviews'
+
+
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.9ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.8ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (69.9ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (55.1ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (122.1ms)
+
+
+Started GET "/users/31" for ::1 at 2016-06-05 22:04:32 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"31"}
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 31]]
+Completed 200 OK in 9ms (Views: 0.3ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/31/history" for ::1 at 2016-06-05 22:04:33 -0500
+Processing by SoloReadingsController#history_books as HTML
+  Parameters: {"user_id"=>"31"}
+  [1m[35mSoloReading Load (0.3ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2 AND "solo_readings"."queue" = $3  [["user_id", 31], ["current", "f"], ["queue", "f"]]
+Completed 200 OK in 36ms (Views: 0.3ms | ActiveRecord: 11.4ms)
+
+
+Started POST "/register" for ::1 at 2016-06-05 22:04:56 -0500
+Processing by UsersController#create as HTML
+  Parameters: {"email"=>"iamsoamazing@amazing.com", "username"=>"amazinghuman", "password"=>"[FILTERED]", "user"=>{"email"=>"iamsoamazing@amazing.com"}}
+Can't verify CSRF token authenticity
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mUser Exists (0.4ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'iamsoamazing@amazing.com' LIMIT 1
+  [1m[36mSQL (6.5ms)[0m  [1mINSERT INTO "users" ("email", "user_name", "password_digest", "image_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["email", "iamsoamazing@amazing.com"], ["user_name", "amazinghuman"], ["password_digest", "$2a$10$MUIYyZOfq3bud0evLDLsv.Sa/qGDYk.Db/kCEQ.me5Pg71FSc4KeG"], ["image_url", "image_url"], ["created_at", "2016-06-06 03:04:56.707822"], ["updated_at", "2016-06-06 03:04:56.707822"]]
+  [1m[35m (12.2ms)[0m  COMMIT
+Completed 200 OK in 106ms (Views: 0.2ms | ActiveRecord: 23.9ms)
+
+
+Started POST "/login" for ::1 at 2016-06-05 22:05:17 -0500
+Processing by SessionsController#login as HTML
+  Parameters: {"username"=>"amazinghuman", "password"=>"[FILTERED]", "session"=>{"username"=>"amazinghuman", "password"=>"[FILTERED]"}}
+Can't verify CSRF token authenticity
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."user_name" = $1 LIMIT 1[0m  [["user_name", "amazinghuman"]]
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 32]]
+Completed 200 OK in 68ms (Views: 0.2ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/users/32/current" for ::1 at 2016-06-05 22:05:17 -0500
+Processing by SoloReadingsController#current_books as HTML
+  Parameters: {"user_id"=>"32"}
+  [1m[36mSoloReading Load (2.1ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2[0m  [["user_id", 32], ["current", "t"]]
+Completed 200 OK in 8ms (Views: 3.1ms | ActiveRecord: 2.1ms)
+
+
+Started GET "/users/32/current" for ::1 at 2016-06-05 22:07:50 -0500
+Processing by SoloReadingsController#current_books as HTML
+  Parameters: {"user_id"=>"32"}
+  [1m[35mSoloReading Load (0.3ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2  [["user_id", 32], ["current", "t"]]
+Completed 200 OK in 2ms (Views: 0.1ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/32/reviews" for ::1 at 2016-06-05 22:08:15 -0500
+Processing by UsersController#reviews as HTML
+  Parameters: {"user_id"=>"32"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", nil]]
+Completed 404 Not Found in 2ms (ActiveRecord: 0.2ms)
+
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=):
+  app/controllers/users_controller.rb:21:in `reviews'
+
+
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.0ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.9ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.4ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (62.7ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.6ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (54.4ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.6ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (123.8ms)
+
+
+Started GET "/users/32/reviews" for ::1 at 2016-06-05 22:08:22 -0500
+Processing by UsersController#reviews as HTML
+  Parameters: {"user_id"=>"32"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", nil]]
+Completed 404 Not Found in 1ms (ActiveRecord: 0.2ms)
+
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=):
+  app/controllers/users_controller.rb:21:in `reviews'
+
+
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.3ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.9ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (61.9ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.3ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (49.4ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (108.8ms)
+
+
+Started GET "/users/32/reviews" for ::1 at 2016-06-05 22:11:32 -0500
+Processing by UsersController#reviews as HTML
+  Parameters: {"user_id"=>"32"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", nil]]
+Completed 404 Not Found in 1ms (ActiveRecord: 0.2ms)
+
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=):
+  app/controllers/users_controller.rb:21:in `reviews'
+
+
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (9.7ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.3ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.7ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (70.4ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (56.1ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.4ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (125.3ms)
+
+
+Started GET "/users/32/reviews" for ::1 at 2016-06-05 22:12:06 -0500
+Processing by UsersController#reviews as HTML
+  Parameters: {"user_id"=>"32"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", nil]]
+Completed 404 Not Found in 2ms (ActiveRecord: 0.2ms)
+
+ActiveRecord::RecordNotFound (Couldn't find User with 'id'=):
+  app/controllers/users_controller.rb:21:in `reviews'
+
+
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (4.7ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (1.9ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (0.8ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (61.0ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.4ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.2ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (49.5ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.2ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/eealexander2/.rbenv/versions/2.2.5/lib/ruby/gems/2.2.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (111.1ms)
+
+
+Started GET "/users/32/reviews" for ::1 at 2016-06-05 22:12:30 -0500
+Processing by UsersController#reviews as HTML
+  Parameters: {"user_id"=>"32"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 32]]
+  [1m[35mReview Load (0.3ms)[0m  SELECT "reviews".* FROM "reviews" WHERE "reviews"."user_id" = $1  [["user_id", 32]]
+Completed 200 OK in 31ms (Views: 0.3ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/users/32/reviews" for ::1 at 2016-06-05 22:12:36 -0500
+Processing by UsersController#reviews as HTML
+  Parameters: {"user_id"=>"32"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 32]]
+  [1m[35mReview Load (0.3ms)[0m  SELECT "reviews".* FROM "reviews" WHERE "reviews"."user_id" = $1  [["user_id", 32]]
+Completed 200 OK in 5ms (Views: 0.3ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/users/32/reviews" for ::1 at 2016-06-05 22:16:17 -0500
+Processing by UsersController#reviews as HTML
+  Parameters: {"user_id"=>"32"}
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 32]]
+  [1m[35mReview Load (0.6ms)[0m  SELECT "reviews".* FROM "reviews" WHERE "reviews"."user_id" = $1  [["user_id", 32]]
+Completed 200 OK in 10ms (Views: 0.4ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/users/32/reviews" for ::1 at 2016-06-05 22:16:17 -0500
+Processing by UsersController#reviews as HTML
+  Parameters: {"user_id"=>"32"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 32]]
+  [1m[35mReview Load (0.4ms)[0m  SELECT "reviews".* FROM "reviews" WHERE "reviews"."user_id" = $1  [["user_id", 32]]
+Completed 200 OK in 5ms (Views: 0.2ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/users/32" for ::1 at 2016-06-05 22:16:17 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"32"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 32]]
+Completed 200 OK in 3ms (Views: 0.5ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/32/reviews" for ::1 at 2016-06-05 22:16:23 -0500
+Processing by UsersController#reviews as HTML
+  Parameters: {"user_id"=>"32"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 32]]
+  [1m[36mReview Load (0.3ms)[0m  [1mSELECT "reviews".* FROM "reviews" WHERE "reviews"."user_id" = $1[0m  [["user_id", 32]]
+Completed 200 OK in 3ms (Views: 0.2ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/users/32/reviews" for ::1 at 2016-06-05 22:17:03 -0500
+Processing by UsersController#reviews as HTML
+  Parameters: {"user_id"=>"32"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 32]]
+  [1m[36mReview Load (0.3ms)[0m  [1mSELECT "reviews".* FROM "reviews" WHERE "reviews"."user_id" = $1[0m  [["user_id", 32]]
+Completed 200 OK in 4ms (Views: 0.2ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/users/32" for ::1 at 2016-06-05 22:17:03 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"32"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 32]]
+Completed 200 OK in 1ms (Views: 0.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users/32/reviews" for ::1 at 2016-06-05 22:17:03 -0500
+Processing by UsersController#reviews as HTML
+  Parameters: {"user_id"=>"32"}
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 32]]
+  [1m[35mReview Load (0.4ms)[0m  SELECT "reviews".* FROM "reviews" WHERE "reviews"."user_id" = $1  [["user_id", 32]]
+Completed 200 OK in 5ms (Views: 0.3ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/users/32/reviews" for ::1 at 2016-06-05 22:17:15 -0500
+Processing by UsersController#reviews as HTML
+  Parameters: {"user_id"=>"32"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 32]]
+  [1m[35mReview Load (0.3ms)[0m  SELECT "reviews".* FROM "reviews" WHERE "reviews"."user_id" = $1  [["user_id", 32]]
+Completed 200 OK in 3ms (Views: 0.3ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/users/32/reviews" for ::1 at 2016-06-05 22:17:15 -0500
+Processing by UsersController#reviews as HTML
+  Parameters: {"user_id"=>"32"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 32]]
+  [1m[35mReview Load (0.4ms)[0m  SELECT "reviews".* FROM "reviews" WHERE "reviews"."user_id" = $1  [["user_id", 32]]
+Completed 200 OK in 4ms (Views: 0.4ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/users/32" for ::1 at 2016-06-05 22:17:15 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"32"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 32]]
+Completed 200 OK in 1ms (Views: 0.4ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users/32/reviews" for ::1 at 2016-06-05 22:17:27 -0500
+Processing by UsersController#reviews as HTML
+  Parameters: {"user_id"=>"32"}
+  [1m[35mUser Load (0.6ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 32]]
+  [1m[36mReview Load (0.3ms)[0m  [1mSELECT "reviews".* FROM "reviews" WHERE "reviews"."user_id" = $1[0m  [["user_id", 32]]
+Completed 200 OK in 4ms (Views: 0.2ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/users/32/reviews" for ::1 at 2016-06-05 22:17:27 -0500
+Processing by UsersController#reviews as HTML
+  Parameters: {"user_id"=>"32"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 32]]
+  [1m[36mReview Load (0.3ms)[0m  [1mSELECT "reviews".* FROM "reviews" WHERE "reviews"."user_id" = $1[0m  [["user_id", 32]]
+Completed 200 OK in 3ms (Views: 0.2ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/users/32" for ::1 at 2016-06-05 22:17:27 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"32"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 32]]
+Completed 200 OK in 2ms (Views: 0.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/32" for ::1 at 2016-06-05 22:17:51 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"32"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 32]]
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/32/reviews" for ::1 at 2016-06-05 22:17:51 -0500
+Processing by UsersController#reviews as HTML
+  Parameters: {"user_id"=>"32"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 32]]
+  [1m[36mReview Load (0.3ms)[0m  [1mSELECT "reviews".* FROM "reviews" WHERE "reviews"."user_id" = $1[0m  [["user_id", 32]]
+Completed 200 OK in 3ms (Views: 0.3ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/users/32/reviews" for ::1 at 2016-06-05 22:17:51 -0500
+Processing by UsersController#reviews as HTML
+  Parameters: {"user_id"=>"32"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 32]]
+  [1m[36mReview Load (0.3ms)[0m  [1mSELECT "reviews".* FROM "reviews" WHERE "reviews"."user_id" = $1[0m  [["user_id", 32]]
+Completed 200 OK in 5ms (Views: 0.2ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/users/32/reviews" for ::1 at 2016-06-05 22:17:54 -0500
+Processing by UsersController#reviews as HTML
+  Parameters: {"user_id"=>"32"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 32]]
+  [1m[36mReview Load (0.2ms)[0m  [1mSELECT "reviews".* FROM "reviews" WHERE "reviews"."user_id" = $1[0m  [["user_id", 32]]
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users/32/reviews" for ::1 at 2016-06-05 22:19:13 -0500
+Processing by UsersController#reviews as HTML
+  Parameters: {"user_id"=>"32"}
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 32]]
+  [1m[36mReview Load (0.4ms)[0m  [1mSELECT "reviews".* FROM "reviews" WHERE "reviews"."user_id" = $1[0m  [["user_id", 32]]
+Completed 200 OK in 4ms (Views: 0.2ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/users/32/reviews" for ::1 at 2016-06-05 22:19:13 -0500
+Processing by UsersController#reviews as HTML
+  Parameters: {"user_id"=>"32"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 32]]
+  [1m[36mReview Load (0.3ms)[0m  [1mSELECT "reviews".* FROM "reviews" WHERE "reviews"."user_id" = $1[0m  [["user_id", 32]]
+Completed 200 OK in 3ms (Views: 0.3ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/users/32" for ::1 at 2016-06-05 22:19:13 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"32"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 32]]
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/32/reviews" for ::1 at 2016-06-05 22:19:32 -0500
+Processing by UsersController#reviews as HTML
+  Parameters: {"user_id"=>"32"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 32]]
+  [1m[35mReview Load (0.3ms)[0m  SELECT "reviews".* FROM "reviews" WHERE "reviews"."user_id" = $1  [["user_id", 32]]
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users/32/reviews" for ::1 at 2016-06-05 22:20:24 -0500
+Processing by UsersController#reviews as HTML
+  Parameters: {"user_id"=>"32"}
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 32]]
+  [1m[35mReview Load (0.2ms)[0m  SELECT "reviews".* FROM "reviews" WHERE "reviews"."user_id" = $1  [["user_id", 32]]
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/32/reviews" for ::1 at 2016-06-05 22:20:50 -0500
+Processing by UsersController#reviews as HTML
+  Parameters: {"user_id"=>"32"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 32]]
+  [1m[35mReview Load (0.2ms)[0m  SELECT "reviews".* FROM "reviews" WHERE "reviews"."user_id" = $1  [["user_id", 32]]
+Completed 200 OK in 4ms (Views: 0.2ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/users/32/reviews" for ::1 at 2016-06-05 22:23:14 -0500
+Processing by UsersController#reviews as HTML
+  Parameters: {"user_id"=>"32"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 32]]
+  [1m[35mReview Load (0.2ms)[0m  SELECT "reviews".* FROM "reviews" WHERE "reviews"."user_id" = $1  [["user_id", 32]]
+Completed 200 OK in 3ms (Views: 0.2ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users/32/reviews" for ::1 at 2016-06-05 22:25:13 -0500
+Processing by UsersController#reviews as HTML
+  Parameters: {"user_id"=>"32"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 32]]
+  [1m[35mReview Load (0.3ms)[0m  SELECT "reviews".* FROM "reviews" WHERE "reviews"."user_id" = $1  [["user_id", 32]]
+Completed 200 OK in 3ms (Views: 0.3ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/users/32/reviews" for ::1 at 2016-06-05 22:25:13 -0500
+Processing by UsersController#reviews as HTML
+  Parameters: {"user_id"=>"32"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 32]]
+  [1m[35mReview Load (0.3ms)[0m  SELECT "reviews".* FROM "reviews" WHERE "reviews"."user_id" = $1  [["user_id", 32]]
+Completed 200 OK in 4ms (Views: 0.2ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users/32" for ::1 at 2016-06-05 22:25:14 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"32"}
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 32]]
+Completed 200 OK in 2ms (Views: 0.5ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/users/32" for ::1 at 2016-06-05 22:25:36 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"32"}
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 32]]
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/32/reviews" for ::1 at 2016-06-05 22:25:36 -0500
+Processing by UsersController#reviews as HTML
+  Parameters: {"user_id"=>"32"}
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 32]]
+  [1m[35mReview Load (0.3ms)[0m  SELECT "reviews".* FROM "reviews" WHERE "reviews"."user_id" = $1  [["user_id", 32]]
+Completed 200 OK in 5ms (Views: 0.3ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/users/32/reviews" for ::1 at 2016-06-05 22:25:36 -0500
+Processing by UsersController#reviews as HTML
+  Parameters: {"user_id"=>"32"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 32]]
+  [1m[35mReview Load (0.3ms)[0m  SELECT "reviews".* FROM "reviews" WHERE "reviews"."user_id" = $1  [["user_id", 32]]
+Completed 200 OK in 4ms (Views: 0.4ms | ActiveRecord: 0.5ms)
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT "users".* FROM "users"[0m
+
+
+Started GET "/users/32" for ::1 at 2016-06-05 22:26:36 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"32"}
+  [1m[36mUser Load (0.4ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 32]]
+Completed 200 OK in 2ms (Views: 0.4ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/32/reviews" for ::1 at 2016-06-05 22:26:36 -0500
+Processing by UsersController#reviews as HTML
+  Parameters: {"user_id"=>"32"}
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 32]]
+  [1m[36mReview Load (0.3ms)[0m  [1mSELECT "reviews".* FROM "reviews" WHERE "reviews"."user_id" = $1[0m  [["user_id", 32]]
+Completed 200 OK in 7ms (Views: 0.5ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/users/32/reviews" for ::1 at 2016-06-05 22:26:36 -0500
+Processing by UsersController#reviews as HTML
+  Parameters: {"user_id"=>"32"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 32]]
+  [1m[36mReview Load (0.3ms)[0m  [1mSELECT "reviews".* FROM "reviews" WHERE "reviews"."user_id" = $1[0m  [["user_id", 32]]
+Completed 200 OK in 4ms (Views: 0.6ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/users/32/reviews" for ::1 at 2016-06-05 22:26:48 -0500
+Processing by UsersController#reviews as HTML
+  Parameters: {"user_id"=>"32"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 32]]
+  [1m[36mReview Load (0.3ms)[0m  [1mSELECT "reviews".* FROM "reviews" WHERE "reviews"."user_id" = $1[0m  [["user_id", 32]]
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.5ms)

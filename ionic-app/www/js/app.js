@@ -113,16 +113,15 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 })
 
 
-.state('tab.tab-review', {
-  url: '/reviews', 
+.state('tab.user-review', {
+  url: '/user-review', 
   views: {
     'tab-account':{
-      templateUrl: 'templates/tab-review.html', 
-      controller: 'ReviewCtrl'
+      templateUrl: 'templates/user-review.html', 
+      controller: 'UserReviewCtrl'
     }
   }
-})
-
+}) 
 
 
 .state('tab.history', {
