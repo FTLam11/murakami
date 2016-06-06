@@ -2,6 +2,8 @@ Rails.application.routes.draw do
 
   root "users#index"
 
+  get '/users/:user_id/reviews', to: "users#reviews"
+
   resources :users, only: [:show] do
     resources :books, only: [:create, :show]
   end
