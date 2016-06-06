@@ -12,7 +12,7 @@
 
       <div class="item item-text-wrap">
         <form name="reaction" ng-submit="submitReaction()">
-          <textarea type="text" placeholder="Reaction" ng-model="$parent.msg"></textarea>
+          <textarea type="text" placeholder="Reaction" ng-model="$parent.reactionText"></textarea>
           <input type='submit' name='submit'>
         </form>
       </div>
@@ -20,8 +20,9 @@
       <br><br><br><br><br><br><br><br><br><br><br><br><br>
 
       <div class='nav-container'>
-        <button ng-click="backChapter()">Back</button>
-        <button ng-click="nextChapter()">Next</button>
+        <button ng-click="backChapter()" ng-hide="firstChapter">Back</button>
+        <button ng-click="nextChapter()" ng-hide="lastChapter">Next</button>
+        <button ng-click="markComplete()" ng-hide="lastChapterButton">MARK COMPLETE</button>
       </div>
 
     </div>
