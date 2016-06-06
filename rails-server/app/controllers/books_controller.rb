@@ -2,10 +2,11 @@ class BooksController < ApplicationController
   include ApplicationHelper
 
   def create
-    p params[:user_id]
-    current_user = User.find(params[:user_id])
-    Book.add_book(params, current_user)
+    p params
+    user = User.find(params["user_id"])
+    @reading = Book.add_book(params, user)
     @reading.queue = true
+    render json: {token: user.id}, status: :ok
   end
 
   def add_to_current

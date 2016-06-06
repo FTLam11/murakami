@@ -1,20 +1,20 @@
-<ion-view view-title="{{title}}">
+<ion-view view-title="{{book.title}}">
   <ion-content class="padding">
   <div class="book-detail-cover">
-    <img ng-src="{{image}}" class="book-cover">
+    <img ng-src="{{book.image_url}}" class="book-cover">
     </div>
     <div class="book-details">
-    <h2 class="questrial" style="margin-bottom: -15px"> {{title}} </h2>
-      <h4 class="questrial author"> by {{author}} // {{pageCount}} Pages </h4>
+    <h2 class="questrial" style="margin-bottom: -15px"> {{book.title}} </h2>
+      <h4 class="questrial author"> by {{book.author}} // {{book.pageCount}} Pages </h4>
     </div>
     <div class="book-description">
-      <p> {{description}} </p>
+      <p> {{book.description}} </p>
     </div>
     <div class="hide-overflow">
     </div>
  <div class="book-buttons">
-    <a href = "#/tab/books/{{id}}/chapters/1"><button class="book-button"> Start </button></a>
-    <button class="book-button" ng-click="createBook()"> Queue </button>
+    <button class="book-button" ng-click=" start()"> Start </button>
+    <button class="book-button" ng-click=" queue()"> Queue </button>
     <button class="book-button"> Favorite </button>
     <button class="book-button"> Review </button>
 </div>

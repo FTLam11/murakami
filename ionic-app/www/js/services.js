@@ -7,19 +7,28 @@ angular.module('starter.services', [])
     id:0,
     title: "First Book",
     author: "John Doe",
-    image: "img/catcher.jpg",
+    image_url: "img/catcher.jpg",
+    genre: "good",
+    page_numbers: 30,
+    date_published: 1212,
     description: "This is a great book that has a plot. The characters exist and they do many things"
   }, {
     id:1,
     title: "Second Book",
     author: "Jane Doe",
-    image: "img/enders.jpg",
+    image_url: "img/enders.jpg",
+    genre: "good",
+    page_numbers: 30,
+    date_published: 1212,
     description: "This is a great book that has a plot. The characters exist and they do many things"
   }, {
     id:2,
     title: "Third Book",
     author: "Juniper Doe",
-    image: "img/download.jpeg",
+    image_url: "img/download.jpeg",
+    genre: "good",
+    page_numbers: 30,
+    date_published: 1212,
     description: "This is a great book that has a plot. The characters exist and they do many things"
     }];
 

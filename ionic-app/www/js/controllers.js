@@ -39,22 +39,23 @@ angular.module('starter.controllers', [])
 
   if (Books.get($stateParams.bookId) !=null) {
     var book = Books.get($stateParams.bookId);
-    $scope.book_id = book.id
-    $scope.author = book.author
-    $scope.title = book.title
-    $scope.image = book.image
-    $scope.description = book.description
+    $scope.book.book_id = book.id
+    $scope.book.author = book.author
+    $scope.book.title = book.title
+    $scope.book.image_url = book.image
+    $scope.book.description = book.description
 
   }else{
     $http.get('https://www.googleapis.com/books/v1/volumes?q=' + $stateParams.bookId)
     .then(function(response){
       var book = response.data.items[0]
-      $scope.author = book.volumeInfo.authors[0]
-      $scope.title = book.volumeInfo.title
-      $scope.description = book.volumeInfo.description
-      $scope.image = book.volumeInfo.imageLinks.thumbnail
-      $scope.pageCount = book.volumeInfo.pageCount
-      $scope.publishedDate = book.volumeInfo.publishedDate
+      $scope.book = {}
+      $scope.book.author = book.volumeInfo.authors[0]
+      $scope.book.title = book.volumeInfo.title
+      $scope.book.description = book.volumeInfo.description
+      $scope.book.image_url = book.volumeInfo.imageLinks.thumbnail
+      $scope.book.pageCount = book.volumeInfo.pageCount
+      $scope.book.publishedDate = book.volumeInfo.publishedDate
     })
   }
 
@@ -63,12 +64,7 @@ angular.module('starter.controllers', [])
     $location.path( path );
   }
 
-  $scope.createBook = function() {
-    chapter_number = $scope.showPopup()
-   $scope.sendBookReq(chapter_number)
-  }
-
-  $scope.showPopup = function() {
+  $scope.start = function() {
     $scope.data = {};
 
     var myPopup = $ionicPopup.show({
@@ -86,17 +82,58 @@ angular.module('starter.controllers', [])
               //don't allow the user to close unless he enters wifi password
               e.preventDefault();
             } else {
-              return $scope.data.wifi;
+              $scope.BookReq($scope.data.wifi, $scope)
             }
           }
         }
       ]
     })
   }
+  $scope.BookReq = function(chapter_number, $scope) {
+    var bookData = $scope.book
+    bookData.chapter_count = parseInt(chapter_number)
+    var userId = window.localStorage['authToken']
+    var jsonData = JSON.stringify(bookData)
 
-  $scope.sendBookReq = function(chapter_number) {
-    var bookData = book
-    console.log(bookData)
+  $http({
+    method: 'POST',
+    url: 'http://localhost:3000/users/'+userId+'/books',
+    dataType: "json",
+    data: jsonData
+  }).then(function(response){
+    window.localStorage['authToken'] = response.data.token
+  })
+    $location.path('/tab/dash')
+  }
+
+  $scope.queue = function() {
+    $scope.data = {};
+
+    var myPopup = $ionicPopup.show({
+      template: '<input type="text" ng-model="data.wifi">',
+      title: 'Enter number of chapters',
+      subTitle: 'YYEEeeeeeeee',
+      scope: $scope,
+      buttons: [
+        { text: 'Cancel' },
+        {
+          text: '<b>Save</b>',
+          type: 'button-positive',
+          onTap: function(e) {
+            if (!$scope.data.wifi) {
+              //don't allow the user to close unless he enters wifi password
+              e.preventDefault();
+            } else {
+              $scope.sendBookReq($scope.data.wifi, $scope)
+            }
+          }
+        }
+      ]
+    })
+  }
+  $scope.sendBookReq = function(chapter_number, $scope) {
+    var bookData = $scope.book
+    bookData.chapter_count = parseInt(chapter_number)
     var userId = window.localStorage['authToken']
     var jsonData = JSON.stringify(bookData)
 

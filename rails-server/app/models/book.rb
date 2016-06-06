@@ -7,22 +7,25 @@ class Book < ActiveRecord::Base
   has_many :groups, through: :group_readings
   has_many :readers, through: :solo_readings, foreign_key: :user_id
 
-  validates :name, :author, :genre, :image_url, :page_numbers, :date_published, presence: true
+  # validates :title, :author, :genre, :image_url, :page_numbers, :date_published, presence: true
 
-  def self.add_book(params,current_user)
+  def self.add_book(params,user)
 
-    book = Book.find_by(params.require(:book).permit(:title, :author))
+    book = Book.find_by(title: params['book']['title'])
 
     if book == nil
-      new_book = current_user.books.create(params[book])
+      new_book = user.books.create(title: params['book']['title'])
       params[:chapter_count].times do |num|
         new_book.chapters.create(number: num)
       end
-      find_reading
+      @reading = SoloReading.find_by(user_id:user.id, book_id:new_book.id)
     else
-      if find_reading == nil
-        current_user.books << book
+      @reading = SoloReading.find_by(user_id:user.id, book_id:book.id)
+      if @reading == nil
+        user.books << book
+        @reading = SoloReading.last
       end
+      @reading
     end
   end
 
@@ -32,7 +35,8 @@ class Book < ActiveRecord::Base
 
   private
 
-
-
+  def book_params
+    params.require(:book).print(:title, :author, :genre, :image_url, :page_numbers, :date_published)
+  end
 
 end
