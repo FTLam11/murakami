@@ -85,7 +85,6 @@ angular.module('starter.controllers', [])
 .controller('ChapterCtrl', function($scope, $http, $stateParams,$location) {
   $http.get("http://localhost:3000/chapters/" + $stateParams.chapterId + "/reactions")
   .then(function(response){
-    console.log(response)
     var book_id = ($stateParams.bookId)
     $scope.reactions = response.data.reactions
     $scope.users = response.data.users
@@ -118,8 +117,10 @@ angular.module('starter.controllers', [])
 .controller('BookDetailCtrl', function($scope, $http, $stateParams, Books, $location, $ionicPopup){
   userId = window.localStorage['authToken']
 
-  if (/^\d+$/.test($stateParams.bookId)) {
+  console.log($scope)
 
+
+  if (/^\d+$/.test($stateParams.bookId)) {
 
   $http.get('http://localhost:3000/check_books/' + $stateParams.bookId)
   .then(function(response){
@@ -143,7 +144,6 @@ angular.module('starter.controllers', [])
         $scope.book.image_url = book.volumeInfo.imageLinks.thumbnail
         $scope.book.page_numbers = book.volumeInfo.pageCount
         $scope.book.publishedDate = book.volumeInfo.publishedDate
-        console.log($scope.book.page_numbers)
         })
       }
 

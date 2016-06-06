@@ -82,7 +82,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
   })
 
 
-  .state('tab.book-detail', {
+  .state('tab.book-detail1', {
     url: '/books/:bookId',
     views: {
       'tab-search': {
@@ -91,6 +91,27 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       }
     }
   })
+
+  .state('tab.book-detail2', {
+    url: '/account/books/:bookId',
+    views: {
+      'tab-account': {
+        templateUrl: 'templates/book-detail.html',
+        controller: 'BookDetailCtrl'
+      }
+    }
+  })
+
+  .state('tab.book-detail3', {
+    url: '/dash/books/:bookId',
+    views: {
+      'tab-dash': {
+        templateUrl: 'templates/book-detail.html',
+        controller: 'BookDetailCtrl'
+      }
+    }
+  })
+
   .state('tab.reviews',{
     url: '/books/:bookId/reviews',
     views: {
@@ -159,6 +180,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
   });
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/login');
+  // $urlRouterProvider.otherwise('/login');
 
 });
