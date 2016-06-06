@@ -3,49 +3,62 @@ angular.module('starter.services', [])
 
 
 .factory('Books', function(){
-  var books = [{
-    id:0,
-    title: "First Book",
-    author: "John Doe",
-    image_url: "img/catcher.jpg",
-    genre: "good",
-    page_numbers: 30,
-    date_published: 1212,
-    description: "This is a great book that has a plot. The characters exist and they do many things"
-  }, {
-    id:1,
-    title: "Second Book",
-    author: "Jane Doe",
-    image_url: "img/enders.jpg",
-    genre: "good",
-    page_numbers: 30,
-    date_published: 1212,
-    description: "This is a great book that has a plot. The characters exist and they do many things"
-  }, {
-    id:2,
-    title: "Third Book",
-    author: "Juniper Doe",
-    image_url: "img/download.jpeg",
-    genre: "good",
-    page_numbers: 30,
-    date_published: 1212,
-    description: "This is a great book that has a plot. The characters exist and they do many things"
-    }];
+  var currentBooks = [];
+  var queueBooks = [];
+  var favoriteBooks = [];
+  var historyBooks = [];
+
+
 
   return {
-    all: function() {
+    all: function(type) {
+      if (type === "current"){
+      var books = currentBooks
+      } else if (type === "queue") {
+        var books = queueBooks
+      } else if (type === "favorite") {
+        var books = favoriteBooks
+      } else if (type === "history") {
+        var books = historyBooks
+      }
       return books;
     },
     remove: function(book) {
-      books.splice(books.indexOf(book), 1);
+      currentBooks.splice(books.indexOf(book), 1);
     },
     get: function(bookId) {
-      for (var i = 0; i < books.length; i++) {
+      for (var i = 0; i < currentBooks.length; i++) {
         if (books[i].id === parseInt(bookId)) {
-          return books[i];
+          return currentBooks[i];
         }
       }
       return null;
+    },
+    add: function(book_array, type){
+      if (type === "current"){
+      var books = currentBooks
+      } else if (type === "queue") {
+        var books = queueBooks
+      } else if (type === "favorite") {
+        var books = favoriteBooks
+      } else if (type === "history") {
+        var books = historyBooks
+      }
+      book_array.forEach(function(book){
+        books.push(book)
+      })
+    },
+    addOne: function(book, type){
+      if (type === "current"){
+      var books = currentBooks
+      } else if (type === "queue") {
+        var books = queueBooks
+      } else if (type === "favorite") {
+        var books = favoriteBooks
+      } else if (type === "history") {
+        var books = historyBooks
+      }
+      books.push(book)
     }
   };
 

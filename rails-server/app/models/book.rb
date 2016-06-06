@@ -14,9 +14,7 @@ class Book < ActiveRecord::Base
 
     if book == nil
       new_book = user.books.create(title: params['book']['title'], description: params['book']['description'], author: params['book']['author'], image_url: params['book']['image_url'], page_numbers: params['book']['pageCount'], date_published: params['book']['publishedDate'])
-      params[:chapter_count].times do |num|
-        new_book.chapters.create(number: num)
-      end
+      create_chapters(new_book, params[:chapter_count])
       @reading = SoloReading.find_by(user_id:user.id, book_id:new_book.id)
     else
       @reading = SoloReading.find_by(user_id:user.id, book_id:book.id)
@@ -29,23 +27,36 @@ class Book < ActiveRecord::Base
     end
   end
 
-  def self.add_book_by_id(book_id, user_id)
-    book = Book.find(book_id)
-
-    if book == nil
-      return "fail"
-    else
-      return "success"
+  def self.create_chapters(book, nums)
+    nums.times do |num|
+      book.chapters.create(number: num)
     end
   end
 
-  def find_reading
+  def self.add_book_by_id(params, user)
+    book = Book.find_by(title: params['book']['title'])
+
+    if book == nil
+      new_book = user.books.create(title: params['book']['title'], description: params['book']['description'], author: params['book']['author'], image_url: params['book']['image_url'], page_numbers: params['book']['pageCount'], date_published: params['book']['publishedDate'])
+      @reading = SoloReading.find_by(user_id:user.id, book_id:new_book.id)
+    else
+      @reading = SoloReading.find_by(user_id:user.id, book_id:book.id)
+      if @reading == nil
+        user.books << book
+        @reading = SoloReading.last
+      end
+
+      @reading
+    end
+  end
+
+  def self.find_reading
     @reading = SoloReading.find_by(user_id:current_user.id, book_id:book.id)
   end
 
   private
 
-  def book_params
+  def self.book_params
     params.require(:book).print(:title, :author, :genre, :image_url, :page_numbers, :date_published)
   end
 
