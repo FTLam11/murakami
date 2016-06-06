@@ -24,7 +24,7 @@ Rails.application.routes.draw do
   end
 
   resources :chapters, only: [] do
-    resources :reactions , only: [:create, :show]
+    resources :reactions , only: [:create, :show, :index]
   end
 
   resources :reactions, only: [] do
