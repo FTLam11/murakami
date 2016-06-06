@@ -102,22 +102,47 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
    }) 
 
 
-  .state('reader-queue', {
-    url : '/queue', 
-    templateUrl: 'templates/reader-queue.html',
+  .state('tab.reader-queue', {
+    url : '/queue',
+    views:{
+    'tab-account':{ 
+    templateUrl: 'templates/tab-reader-queue.html',
     controller: 'QueueCtrl'
-  })
+    }  
+  }
+})
 
-  .state('history', {
-    url: '/history', 
-    temlateUrl: 'templates/history.html',
-    controller: 'HistoryCtrl'
-  })
 
-  .state('favorites', {
+.state('tab.tab-review', {
+  url: '/reviews', 
+  views: {
+    'tab-account':{
+      templateUrl: 'templates/tab-review.html', 
+      controller: 'ReviewCtrl'
+    }
+  }
+})
+
+
+
+.state('tab.history', {
+  url: '/history', 
+  views: {
+    'tab-account': {
+      templateUrl: 'templates/history.html',
+      controller: 'HistoryCtrl'
+    }
+  }
+})
+
+  .state('tab.favorite', {
       url: '/favorites', 
-      templateUrl: 'templates/favorite.html', 
-      controller: 'FavoriteCtrl'
+      views:{
+        'tab-account':{
+          templateUrl: 'templates/favorite.html', 
+          controller: 'FavoriteCtrl'
+        }
+     }
   })
 
   .state('login', {

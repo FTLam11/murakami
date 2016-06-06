@@ -21,7 +21,10 @@ angular.module('starter.controllers', [])
   userId = window.localStorage['authToken']
   $http.get("http://localhost:3000/users/" + userId + '/queue')
   .then(function(response){
-    console.log(response);
+    $scope.books = response.data.queue_books
+    if ($scope.books === null){
+      $scope.message = "No Books in Your Queue Yet! Add one!"
+    } 
   })
 })
 
@@ -37,7 +40,10 @@ angular.module('starter.controllers', [])
 .controller('FavoriteCtrl', function($scope, $http){
   userId = window.localStorage['authToken']
   $http.get('http://localhost:3000/users/' + userId + '/favorite').then(function(response){
-    console.log(response);
+    $scope.books = response.data.favorite_books
+    if ($scope.books === null){
+      $scope.message = "No Books in your Favorites Yet! Add one!"
+    } 
   })
 
 })
@@ -263,7 +269,6 @@ angular.module('starter.controllers', [])
   .then(function(response){
 
     var reviews = response.data.reviews;
-    $scope.books = currentBooks;
     if (reviews.length === 0) {
       $scope.message = "No reviews so far. Add one!"
     } else {
