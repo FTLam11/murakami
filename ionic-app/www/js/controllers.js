@@ -21,7 +21,7 @@ angular.module('starter.controllers', [])
   userId = window.localStorage['authToken']
   $http.get("http://localhost:3000/users/" + userId + '/queue')
   .then(function(response){
-    $scope.books = response.data.queue_books
+    $scope.books = response.data
     if ($scope.books === null){
       $scope.message = "No Books in Your Queue Yet! Add one!"
     }
@@ -32,9 +32,24 @@ angular.module('starter.controllers', [])
 .controller('HistoryCtrl', function($scope, $http){
   userId = window.localStorage['authToken']
   $http.get('http://localhost:3000/users/' + userId + '/history').then(function(response){
+    $scope.books = response.data.history_books
+    console.log($scope.books)
+    if ($scope.books === null){
+      $scope.message = "No Books in your History Yet! Add some!"
+    }
   })
 })
 
+
+.controller('UserReviewCtrl', function($scope, $http){
+  userId = window.localStorage['authToken']
+  $http.get('http://localhost:3000/users/' + userId + '/reviews').then(function(response){
+    $scope.reviews = response.data.reviews
+    if ($scope.reviews.length < 0){
+      $scope.message = "No user reviews. Add some!"
+    }
+  })
+})
 
 .controller('FavoriteCtrl', function($scope, $http){
   userId = window.localStorage['authToken']
