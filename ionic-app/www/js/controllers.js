@@ -4,13 +4,43 @@ angular.module('starter.controllers', [])
   userId = window.localStorage['authToken']
   $http.get("http://localhost:3000/users/" + userId + "/current")
   .then(function(response){
+    var currentBooks = response.data.current_books;
+    $scope.books = currentBooks;
+    if (currentBooks.length === 0) {
+      $scope.message = "Go to search and add books."
+    } else {
+      $scope.message = ""
+    }
   })
-  $scope.books = Books.all();
   $scope.remove = function(book) {
     Books.remove(book);
   };
 })
 
+.controller('QueueCtrl', function($scope, $http, Books){
+  userId = window.localStorage['authToken']
+  $http.get("http://localhost:3000/users/" + userId + '/queue')
+  .then(function(response){
+    console.log(response);
+  })
+})
+
+
+.controller('HistoryCtrl', function($scope, $http){
+  userId = window.localStorage['authToken']
+  $http.get('http://localhost:3000/users/' + userId + '/history').then(function(response){
+    console.log(response);
+  })
+})
+
+
+.controller('FavoriteCtrl', function($scope, $http){
+  userId = window.localStorage['authToken']
+  $http.get('http://localhost:3000/users/' + userId + '/favorite').then(function(response){
+    console.log(response);
+  })
+
+})
 
 .controller('AccountCtrl', function($scope, $http) {
   $scope.settings = {
@@ -24,7 +54,6 @@ angular.module('starter.controllers', [])
       url: 'http://localhost:3000/users/' + data,
     }).then(function(response){
       $scope.user = response
-      console.log(response)
     })
 
 })
@@ -227,3 +256,21 @@ angular.module('starter.controllers', [])
   }
   })
 
+.controller('ReviewCtrl', function($scope, $http, $stateParams){
+  bookId = $stateParams.bookId
+  userId = window.localStorage['authToken']
+  $http.get("http://localhost:3000/books/" + bookId + "/reviews")
+  .then(function(response){
+
+    var reviews = response.data.reviews;
+    $scope.books = currentBooks;
+    if (reviews.length === 0) {
+      $scope.message = "No reviews so far. Add one!"
+    } else {
+      $scope.message = ""
+    }
+  })
+  // $scope.remove = function(book) {
+  //   Books.remove(book);
+  // };
+})
