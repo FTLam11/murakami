@@ -43,6 +43,7 @@ class SoloReading < ActiveRecord::Base
     return popular_books
   end
 
+
   def filter_readings
     current_books = SoloReading.where(current: true)
 

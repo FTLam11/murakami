@@ -1,5 +1,5 @@
 30.times do
-  Book.create(name: Faker::Book.title,  author: Faker::Book.author, genre: Faker::Book.genre, image_url: Faker::Internet.url, page_numbers: Faker::Number.number(3), date_published: 1945)
+  Book.create(title: Faker::Book.title,  author: Faker::Book.author, genre: Faker::Book.genre, image_url: Faker::Internet.url, page_numbers: Faker::Number.number(3), date_published: 1945)
 end
 
 30.times do
