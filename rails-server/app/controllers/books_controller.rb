@@ -54,7 +54,7 @@ class BooksController < ApplicationController
     @reading.current = false
     @reading.save
 
-    render json: {test: 3}
+    render json: {token: user.id, book: @reading.book}, status: :ok
   end
 
   def show

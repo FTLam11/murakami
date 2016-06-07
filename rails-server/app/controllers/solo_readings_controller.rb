@@ -3,7 +3,7 @@ class SoloReadingsController < ApplicationController
 
   def recommended_books
     rec_criteria = SoloReading.recommendations(params[:user_id])
-    rec_books = SoloReading.retrieve_rec_books(rec_criteria)
+    rec_books = SoloReading.retrieve_rec_books(rec_criteria,params[:user_id])
     render json: { recommendations: rec_books }
   end
 
