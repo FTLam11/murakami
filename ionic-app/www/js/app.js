@@ -129,7 +129,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     url: '/books/:bookId/reviews',
     views: {
       'tab-search': {
-        templateUrl: 'templates/tab-review.html',
+        templateUrl: 'templates/tab-user-review.html',
         controller: 'ReviewCtrl'
       }
     }
@@ -151,7 +151,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
   url: '/user-review',
   views: {
     'tab-account':{
-      templateUrl: 'templates/user-review.html',
+      templateUrl: 'templates/tab-user-review.html',
       controller: 'UserReviewCtrl'
     }
   }

@@ -199,9 +199,8 @@ angular.module('starter.controllers', [])
         dataType: "json",
         data: jsonData
       }).then(function(response){
-         $scope.reactions.push(response.data)
-         // location.reload();
-         // COME BACK AND AJAX NEW RESPONSE
+        $scope.reactions.push(response.data)
+        $scope.reactionText = "";
       })
 
     }

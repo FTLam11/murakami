@@ -174,3 +174,7 @@ ion-tabs.tabs-color-active-positive .tab-item {
 width: 100%;
 padding: 10px;
 }
+
+.reactions {
+  font-size: 20px !important;
+}
