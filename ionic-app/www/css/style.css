@@ -169,3 +169,8 @@ ion-tabs.tabs-color-active-positive .tab-item {
 .tab-nav.tabs {
   background-color: #A8C8E8;
 }
+
+.reaction-textarea{
+width: 100%;
+padding: 10px;
+}
