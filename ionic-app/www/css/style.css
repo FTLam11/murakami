@@ -113,14 +113,14 @@ margin: 0em 1em 1em 1em;
 
 .book-detail-cover {
   text-align: center;
-  background-color: #E6E6E6;
+  background-color: #FF7666;
   padding: 2em 0em 2em 0em;
   margin: -10px -10px 0px -10px;
 }
 
 .book-details {
   background-color: rgb(255, 195, 195);
-  margin: 0px -10px 15px -10px;
+  margin: 0px -10px 0px -10px;
   padding-left: 10px;
   padding-bottom: 5px;
 }
@@ -155,5 +155,17 @@ margin: 0em 1em 1em 1em;
 }
 
 .bar.bar-stable {
-  background-color: salmon;
+  background-color: #A8C8E8;
+}
+
+ion-tabs.tabs-color-active-positive .tab-item.tab-item-active, ion-tabs.tabs-color-active-positive .tab-item.active, ion-tabs.tabs-color-active-positive .tab-item.activated {
+    color: #636363;
+}
+
+ion-tabs.tabs-color-active-positive .tab-item {
+    color: #4704BD;
+}
+
+.tab-nav.tabs {
+  background-color: #A8C8E8;
 }
