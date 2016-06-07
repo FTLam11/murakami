@@ -8,7 +8,8 @@
       <h4 class="questrial author"> by {{book.author}} // {{book.page_numbers}} Pages </h4>
     </div>
  <div class="button-bar">
-    <button class="button" ng-click=" start()" ng-hide="start-button"> Start </button>
+    <button class="button" ng-click=" viewChapter()" ng-hide="readButton"> Read </button>
+    <button class="button" ng-click=" start()" ng-hide="startButton"> Start </button>
     <button class="button" ng-click=" queue()"> Queue </button>
     <button class="button"> Favorite </button>
     <a href = "#/tab/books/{{id}}/reviews"><button class="button"> Review </button></a>
