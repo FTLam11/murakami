@@ -27,8 +27,8 @@ angular.module('starter.services', [])
       books = control(type)
       return books;
     },
-    remove: function(book) {
-      currentBooks.splice(books.indexOf(book), 1);
+    removeCurrent: function(book) {
+      currentBooks.splice(currentBooks.indexOf(book), 1);
     },
     get: function(bookId) {
       for (var i = 0; i < currentBooks.length; i++) {
@@ -61,6 +61,9 @@ angular.module('starter.services', [])
         }
       }, matchBook)
       return matchBook
+    },
+    replaceCurrent: function(book_array){
+      currentBooks = book_array
     }
   };
 

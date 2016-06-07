@@ -18,8 +18,10 @@ class SoloReading < ActiveRecord::Base
     return rec_criteria.each {|criterion,array| array.uniq!}
   end
 
-  def self.retrieve_rec_books(criteria)
+  def self.retrieve_rec_books(criteria, user_id)
     rec_books = []
+    user_books = User.find(user_id).books
+
 
     Book.all.each do |book|
       criteria[:author].each do |author|
@@ -30,7 +32,7 @@ class SoloReading < ActiveRecord::Base
       end
     end
 
-    return rec_books
+    return rec_books - user_books
   end
 
   def trending_now

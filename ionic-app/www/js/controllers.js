@@ -1,19 +1,24 @@
 angular.module('starter.controllers', [])
 
 .controller('DashCtrl', function($scope, $http, Books) {
-  userId = window.localStorage['authToken']
+
+  userId = window.localStorage['authToken'];
   $http.get("https://tranquil-tundra-32569.herokuapp.com/users/" + userId + "/current")
   .then(function(response){
     var currentBooks = response.data.current_books;
-    Books.add(currentBooks,"current")
+    // Books.add(currentBooks, "current")
+    Books.replaceCurrent(currentBooks)
     $scope.books = Books.all("current");
+  // console.log($scope.books)
+    books = $scope.books
     console.log('The call to server occurs only after login page')
-    if (currentBooks.length === 0) {
+    if ($scope.books.length === 0) {
       $scope.message = "Go to search and add books."
     } else {
       $scope.message = ""
     }
   })
+
   $scope.remove = function(book) {
     Books.remove(book);
   };
@@ -66,7 +71,8 @@ angular.module('starter.controllers', [])
 
 })
 
-.controller('AccountCtrl', function($scope, $http) {
+.controller('AccountCtrl', function($scope, $http, Books) {
+
   $scope.settings = {
     enableFriends: true
   };
@@ -81,7 +87,7 @@ angular.module('starter.controllers', [])
 
 })
 
-.controller('ChapterCtrl', function($scope, $http, $stateParams,$location) {
+.controller('ChapterCtrl', function($scope, $http, $stateParams,$location, Books) {
   $http.get("https://tranquil-tundra-32569.herokuapp.com/chapters/" + $stateParams.chapterId + "/reactions")
   .then(function(response){
     var bookId = ($stateParams.bookId);
@@ -128,6 +134,7 @@ angular.module('starter.controllers', [])
         dataType: "json",
         data: jsonData
       }).then(function(response){
+        Books.removeCurrent(response.data.book)
         $location.path('/tab/dash');
       })
     }
@@ -261,22 +268,6 @@ angular.module('starter.controllers', [])
     Books.addOne(response.data.book,"current")
   }
   })
-
-  // $http.get("https://tranquil-tundra-32569.herokuapp.com/users/" + userId + "/current")
-  // .then(function(response){
-  //   var currentBooks = response.data.current_books;
-  //   $scope.books = currentBooks;
-  //   console.log('The call to server occurs only after login page')
-  //   console.log(currentBooks);
-  //   if (currentBooks.length === 0) {
-  //     $scope.message = "Go to search and add books."
-  //   } else {
-  //     $scope.message = ""
-  //   }
-  // })
-
-  // window.location.reload(true)
-
     $location.path('/tab/dash')
 
   }
@@ -305,9 +296,10 @@ angular.module('starter.controllers', [])
 })
 
 .controller('SearchCtrl', function($scope, $http,Books){
+
   $scope.data = {};
 
-  $scope.books = Books.all();
+  $scope.books = Books.all("current");
   $scope.remove = function(book) {
     Books.remove(book);
   };
