@@ -297,9 +297,17 @@ angular.module('starter.controllers', [])
 
 .controller('SearchCtrl', function($scope, $http,Books){
 
+  var userId = window.localStorage['authToken']
   $scope.data = {};
 
-  $scope.books = Books.all("current");
+  $http({
+    method: 'GET',
+    url: 'https://tranquil-tundra-32569.herokuapp.com/users/'+userId+'/recommended',
+  }).then(function(response){
+    console.log(response)
+    $scope.books = response.data.recommendations
+  })
+
   $scope.remove = function(book) {
     Books.remove(book);
   };
