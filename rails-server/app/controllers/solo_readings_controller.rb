@@ -9,6 +9,8 @@ class SoloReadingsController < ApplicationController
 
   def current_books
     current_books = SoloReading.book_lists(params[:user_id], "current")
+    first_chatper = current_books.each do |book|
+      << book.chapters.first
     p current_books
     render json: { current_books: current_books }
   end

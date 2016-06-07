@@ -62,8 +62,12 @@ angular.module('starter.services', [])
       }, matchBook)
       return matchBook
     },
+
     replaceCurrent: function(book_array){
       currentBooks = book_array
+
+    clearCurrent: function(){
+      currentBooks = []
     }
   };
 
