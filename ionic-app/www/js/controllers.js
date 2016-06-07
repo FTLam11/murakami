@@ -96,8 +96,12 @@ angular.module('starter.controllers', [])
 
 .controller('FavoriteCtrl', function($scope, $http){
   userId = window.localStorage['authToken']
-  $http.get('https://tranquil-tundra-32569.herokuapp.com/users/' + userId + '/favorite').then(function(response){
-    $scope.books = response.data.favorite_books
+
+  $http.get('https://tranquil-tundra-32569.herokuapp.com/users/' + userId + '/favorite')
+  .then(function(response){
+    console.log(response)
+    $scope.books = response.data.favorite_books;
+    console.log($scope.books)
     if ($scope.books === null){
       $scope.message = "No Books in your Favorites Yet! Add one!"
     }
@@ -340,7 +344,6 @@ angular.module('starter.controllers', [])
   }
 
   $scope.favorite = function() {
-    console.log("favorite")
     $scope.data = {};
     var bookData = $scope.book
     var userId = window.localStorage['authToken']
@@ -352,13 +355,15 @@ angular.module('starter.controllers', [])
       dataType: "json",
       data: jsonData
     }).then(function(response){
-      console.log(response)
-
       Books.addOne(response.data.book, "favorite")
       window.localStorage['authToken'] = response.data.token
 
     })
 
+  }
+
+  $scope.review = function() {
+    console.log('review')
   }
 
 })

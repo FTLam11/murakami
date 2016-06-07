@@ -23,6 +23,10 @@ angular.module('starter.services', [])
 
 
   return {
+    currentBooks: currentBooks,
+    queueBooks: queueBooks,
+    favoriteBooks: favoriteBooks,
+    historyBooks: historyBooks,
     all: function(type) {
       books = control(type)
       return books;
