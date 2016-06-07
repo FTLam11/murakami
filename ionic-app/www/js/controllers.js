@@ -1,22 +1,36 @@
 angular.module('starter.controllers', [])
 
-.controller('DashCtrl', function($scope, $http, Books) {
+.controller('DashCtrl', function($scope, $http, Books, $location) {
   userId = window.localStorage['authToken']
   $http.get("https://tranquil-tundra-32569.herokuapp.com/users/" + userId + "/current")
   .then(function(response){
     var currentBooks = response.data.current_books;
     Books.add(currentBooks,"current")
     $scope.books = Books.all("current");
+    console.log($scope.books)
     console.log('The call to server occurs only after login page')
     if (currentBooks.length === 0) {
       $scope.message = "Go to search and add books."
     } else {
       $scope.message = ""
     }
+    Books.clearCurrent()
   })
   $scope.remove = function(book) {
     Books.remove(book);
   };
+
+
+  $scope.viewChapter = function(bookId) {
+    $http.get("https://tranquil-tundra-32569.herokuapp.com/books/" + bookId + '/chapters')
+    .then(function(response){
+      console.log($location)
+      var chapterStart = response.data.first_chapter.id
+      var chapterEnd = response.data.last_chapter.id
+      $location.path("/tab/books/" + bookId + "/chapters/" + chapterStart)
+    })
+  }
+
 })
 
 .controller('QueueCtrl', function($scope, $http, Books){
@@ -31,6 +45,33 @@ angular.module('starter.controllers', [])
       $scope.message = "No Books in Your Queue Yet! Add one!"
     }
   })
+})
+
+.controller('CurrentBookCtrl', function($scope, $http, Books, $location){
+  userId = window.localStorage['authToken']
+
+  $http.get("https://tranquil-tundra-32569.herokuapp.com/users/" + userId + "/current")
+  .then(function(response){
+    var currentBooks = response.data.current_books;
+    Books.add(currentBooks,"current")
+    $scope.books = Books.all("current");
+    console.log($scope.books)
+    console.log('The call to server occurs only after login page')
+    if (currentBooks.length === 0) {
+      $scope.message = "Go to search and add books."
+    } else {
+      $scope.message = ""
+    }
+    Books.clearCurrent()
+  })
+  $scope.remove = function(book) {
+    Books.remove(book);
+  };
+
+  $scope.viewDetails = function(bookId){
+    $location.path("/tab/books/" + bookId)
+  }
+
 })
 
 
@@ -118,6 +159,7 @@ angular.module('starter.controllers', [])
       }
     })
 
+
     $scope.markComplete = function() {
       var params = {queue: false, current: false, complete: true}
       var jsonData = JSON.stringify(params);
@@ -166,16 +208,6 @@ angular.module('starter.controllers', [])
 .controller('BookDetailCtrl', function($scope, $http, $stateParams, Books, $location, $ionicPopup){
   userId = window.localStorage['authToken']
 
-  $scope.viewChapter = function() {
-    $http.get("https://tranquil-tundra-32569.herokuapp.com/books/" + $stateParams.bookId + '/chapters')
-    .then(function(response){
-      var chapterStart = response.data.first_chapter.id
-      var chapterEnd = response.data.last_chapter.id
-      var bookId = $stateParams.bookId
-      $location.path("/tab/books/" + bookId + "/chapters/" + chapterStart)
-    })
-  }
-
   if (/^\d+$/.test($stateParams.bookId)) {
     $http.get('https://tranquil-tundra-32569.herokuapp.com/check_books/' + $stateParams.bookId)
     .then(function(response){
@@ -200,15 +232,51 @@ angular.module('starter.controllers', [])
     $scope.book.page_numbers = book.volumeInfo.pageCount
     $scope.book.publishedDate = book.volumeInfo.publishedDate
 
-    $scope.data = {}
-    if (Books.checkBook($scope.book,"current") === true){
-      $scope.data.hide = true
-    } else {
-      $scope.data.hide = false
-    }
+    // $scope.data = {}
+    // if (Books.checkBook($scope.book,"current") === true){
+    //   $scope.data.hide = true
+    // } else {
+    //   $scope.data.hide = false
+    // }
 
     })
   }
+
+
+   $http.get("https://tranquil-tundra-32569.herokuapp.com/users/" + userId  + '/current')
+    .then(function(response){
+      console.log(response)
+       var items = response.data.current_books
+       var isCurrent = false
+      items.forEach(function(book){
+        console.log(parseInt(book.id))
+        console.log($stateParams.bookId)
+        if(book.id === parseInt($stateParams.bookId)){
+          console.log("Current")
+          isCurrent = true
+        }
+      })
+      if (isCurrent){
+        console.log('CURRENT')
+        $scope.readButton = false
+        $scope.startButton = true
+      }else{
+        console.log("NOT CURRENT")
+        $scope.readButton = true
+        $scope.startButton = false
+      }
+    })
+
+  $scope.viewChapter = function() {
+    $http.get("https://tranquil-tundra-32569.herokuapp.com/books/" + $stateParams.bookId + '/chapters')
+    .then(function(response){
+      var chapterStart = response.data.first_chapter.id
+      var chapterEnd = response.data.last_chapter.id
+      var bookId = $stateParams.bookId
+      $location.path("/tab/books/" + bookId + "/chapters/" + chapterStart)
+    })
+  }
+
 
 
   $scope.go = function ( path ){
@@ -221,7 +289,6 @@ angular.module('starter.controllers', [])
     var myPopup = $ionicPopup.show({
       template: '<input type="text" ng-model="data.chapters">',
       title: 'Enter number of chapters',
-      subTitle: 'This is for Current',
       scope: $scope,
       buttons: [
         { text: 'Cancel' },
@@ -234,7 +301,6 @@ angular.module('starter.controllers', [])
               e.preventDefault();
             } else {
               $scope.BookReq($scope.data.chapters, $scope)
-              $scope.viewChapter()
             }
           }
         }
@@ -260,6 +326,7 @@ angular.module('starter.controllers', [])
     Books.remove(response.data.book,"queue")
     Books.addOne(response.data.book,"current")
   }
+  $location.path("/tab/dash")
   })
 
   // $http.get("https://tranquil-tundra-32569.herokuapp.com/users/" + userId + "/current")
