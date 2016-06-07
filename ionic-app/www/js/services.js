@@ -65,7 +65,7 @@ angular.module('starter.services', [])
 
     replaceCurrent: function(book_array){
       currentBooks = book_array
-
+    },
     clearCurrent: function(){
       currentBooks = []
     }
