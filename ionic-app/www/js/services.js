@@ -61,6 +61,9 @@ angular.module('starter.services', [])
         }
       }, matchBook)
       return matchBook
+    },
+    clearCurrent: function(){
+      currentBooks = []
     }
   };
 

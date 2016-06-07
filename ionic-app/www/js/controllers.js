@@ -14,6 +14,7 @@ angular.module('starter.controllers', [])
     } else {
       $scope.message = ""
     }
+    Books.clearCurrent()
   })
   $scope.remove = function(book) {
     Books.remove(book);
@@ -44,6 +45,33 @@ angular.module('starter.controllers', [])
       $scope.message = "No Books in Your Queue Yet! Add one!"
     }
   })
+})
+
+.controller('CurrentBookCtrl', function($scope, $http, Books, $location){
+  userId = window.localStorage['authToken']
+
+  $http.get("https://tranquil-tundra-32569.herokuapp.com/users/" + userId + "/current")
+  .then(function(response){
+    var currentBooks = response.data.current_books;
+    Books.add(currentBooks,"current")
+    $scope.books = Books.all("current");
+    console.log($scope.books)
+    console.log('The call to server occurs only after login page')
+    if (currentBooks.length === 0) {
+      $scope.message = "Go to search and add books."
+    } else {
+      $scope.message = ""
+    }
+    Books.clearCurrent()
+  })
+  $scope.remove = function(book) {
+    Books.remove(book);
+  };
+
+  $scope.viewDetails = function(bookId){
+    $location.path("/tab/books/" + bookId)
+  }
+
 })
 
 
@@ -261,7 +289,6 @@ angular.module('starter.controllers', [])
     var myPopup = $ionicPopup.show({
       template: '<input type="text" ng-model="data.chapters">',
       title: 'Enter number of chapters',
-      subTitle: 'This is for Current',
       scope: $scope,
       buttons: [
         { text: 'Cancel' },
@@ -274,7 +301,6 @@ angular.module('starter.controllers', [])
               e.preventDefault();
             } else {
               $scope.BookReq($scope.data.chapters, $scope)
-              $scope.viewChapter()
             }
           }
         }
@@ -300,6 +326,7 @@ angular.module('starter.controllers', [])
     Books.remove(response.data.book,"queue")
     Books.addOne(response.data.book,"current")
   }
+  $location.path("/tab/dash")
   })
 
   // $http.get("https://tranquil-tundra-32569.herokuapp.com/users/" + userId + "/current")
