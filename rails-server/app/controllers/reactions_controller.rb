@@ -2,8 +2,7 @@ class ReactionsController < ApplicationController
 
   def create
     reaction = Reaction.create(content: params["content"], chapter_id: params["chapter_id"], user_id: params["user"])
-    p reaction
-    render json: { reaction: reaction }
+    render json: { reaction: reaction.content, user: reaction.user.user_name }
   end
 
   def index

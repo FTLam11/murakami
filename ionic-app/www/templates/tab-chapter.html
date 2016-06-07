@@ -1,18 +1,19 @@
 <ion-view view-title="{{title}}">
   <ion-content class="padding">
-    <h2> {{data.book.title}} </h2>
+    <h2> {{book.title}} </h2>
 
 
-    <div class="card">
-      <div class="item item-text-wrap" ng-repeat="reaction in reactions">
-      {{reaction.content}}
+      <div class="card" ng-repeat="reaction in reactions">
+    <div class="item item-text-wrap">
+        {{reaction.reaction}} -- {{reaction.user}}
       </div>
+    </div> 
 
 
-      <div class="item item-text-wrap">
-        <form name="reaction" ng-submit="submitReaction()">
-          <textarea type="text" placeholder="Reaction" ng-model="$parent.reactionText"></textarea>
-          <input type='submit' name='submit'>
+      <div class="card">
+        <form name="reaction">
+          <textarea class="reaction-textarea" type="text" placeholder="React here!" ng-model="$parent.reactionText"></textarea>
+          <button type='submit' ng-click="submitReaction()">Submit</button>
         </form>
       </div>
 
@@ -23,6 +24,5 @@
         <button ng-click="markComplete()" ng-hide="lastChapterButton">MARK COMPLETE!!!!!!</button>
       </div>
 
-    </div>
   </ion-content>
 </ion-view>

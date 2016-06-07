@@ -24,7 +24,6 @@ angular.module('starter.controllers', [])
   $scope.viewChapter = function(bookId) {
     $http.get("https://tranquil-tundra-32569.herokuapp.com/books/" + bookId + '/chapters')
     .then(function(response){
-      console.log($location)
       var chapterStart = response.data.first_chapter.id
       var chapterEnd = response.data.last_chapter.id
       $location.path("/tab/books/" + bookId + "/chapters/" + chapterStart)
@@ -99,9 +98,7 @@ angular.module('starter.controllers', [])
 
   $http.get('https://tranquil-tundra-32569.herokuapp.com/users/' + userId + '/favorite')
   .then(function(response){
-    console.log(response)
-    $scope.books = response.data.favorite_books;
-    console.log($scope.books)
+
     if ($scope.books === null){
       $scope.message = "No Books in your Favorites Yet! Add one!"
     }
@@ -131,7 +128,6 @@ angular.module('starter.controllers', [])
     var bookId = ($stateParams.bookId);
     console.log(response)
     $scope.reactions = response.data.reactions;
-    $scope.users = response.data.users;
     $scope.book = response.data.specific_book;
     $scope.reactionText = "";
     var chapterStart = 0;
@@ -203,7 +199,8 @@ angular.module('starter.controllers', [])
         dataType: "json",
         data: jsonData
       }).then(function(response){
-         location.reload();
+         $scope.reactions.push(response.data)
+         // location.reload();
          // COME BACK AND AJAX NEW RESPONSE
       })
 
@@ -246,7 +243,6 @@ angular.module('starter.controllers', [])
        var isCurrent = false
       items.forEach(function(book){
         if(book.id === parseInt($stateParams.bookId)){
-          console.log("Current")
           isCurrent = true
         }
       })
@@ -355,6 +351,7 @@ angular.module('starter.controllers', [])
       dataType: "json",
       data: jsonData
     }).then(function(response){
+
       Books.addOne(response.data.book, "favorite")
       window.localStorage['authToken'] = response.data.token
 
