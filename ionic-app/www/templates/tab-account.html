@@ -6,22 +6,16 @@
 
 <h2 class = "profile-name">{{user.data.username}}</h2>
 
-  <ion-list>
-    <a href = "/#/tab/books"><ion-item class = "user-item">Current Books</a></ion-item>
-  </ion-list>
+   <button ng-click = "sendToCurrent()"class = "button button-full">Current Books</button>
 
-  <ion-list>
-    <ion-item class = "user-item"><a href = "/#/tab/queue" style = "text-decoration:none">Queue</a></ion-item>
-  </ion-list>
+  <button ng-click = "sendToQueue()" class = "button button-full" >Queue</button>
 
-  <ion-list>
-    <ion-item class = "user-item"><a href = "/#/tab/history" style = "text-decoration:none" >History</a></ion-item>
-  </ion-list>
+   <button ng-click = "sendToHistory()" class = "button button-full" >History</button>
 
-  <ion-list>
-    <ion-item class = "user-item"><a href = "/#/tab/favorites" style = "text-decoration:none">Favorites</a></ion-item>
-  </ion-list>
-    <ion-item class = "user-item"><a href = '/#/tab/user-review' style = "text-decoration:none"> Reviews</a></ion-item>
+  <button ng-click = "sendToFavorites()"class = "button button-full" >Favorites</button>
+
+  <button ng-click = "sendToReviews()" class = "button button-full" > Reviews</button>
+
   </ion-content>
 </ion-view>
 

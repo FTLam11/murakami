@@ -106,11 +106,31 @@ angular.module('starter.controllers', [])
 
 })
 
-.controller('AccountCtrl', function($scope, $http, Books) {
+.controller('AccountCtrl', function($scope, $http, Books, $location) {
 
   $scope.settings = {
     enableFriends: true
   };
+
+  $scope.sendToCurrent = function(){
+    $location.path("/tab/books")
+  }
+
+   $scope.sendToQueue = function(){
+    $location.path("/tab/queue")
+  }
+
+   $scope.sendToHistory = function(){
+    $location.path("/tab/history")
+  }
+
+   $scope.sendToFavorites = function(){
+    $location.path("/tab/favorites")
+  }
+
+   $scope.sendToReviews = function(){
+    $location.path("/tab/user-review")
+  }
 
     var data =  window.localStorage['authToken']
     $http({

@@ -1,4 +1,8 @@
 /* Empty. Add your own CSS if you like */
+button {
+  webkit-appearance: none;
+}
+
 .profile-list-item {
   width: 100%;
   text-align: left;
