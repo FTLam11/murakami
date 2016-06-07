@@ -70,7 +70,7 @@ class SoloReading < ActiveRecord::Base
     @books = []
 
     if type == "history"
-      readings = SoloReading.where(user_id: user_id, current: false, queue: false)
+      readings = SoloReading.where(user_id: user_id, complete: true)
     else
       readings = SoloReading.where(user_id: user_id, "#{type}" => true)
     end
