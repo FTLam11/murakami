@@ -31,8 +31,10 @@ class BooksController < ApplicationController
   end
 
   def add_to_favorites
-    add_book(params, user)
+    user = User.find(params["user_id"])
+    @reading = Book.add_book_by_id(params, user)
     @reading.favorite = true
+    render json: {token: user.id, book: @reading.book}, status: :ok
   end
 
   def add_to_queue
