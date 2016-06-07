@@ -26,7 +26,6 @@ angular.module('starter.controllers', [])
     var queueBooks = response.data.queue_books;
     Books.add(queueBooks,"queue")
     $scope.books = queueBooks
-    console.log($scope.books)
     if ($scope.books.length === 0){
       $scope.message = "No Books in Your Queue Yet! Add one!"
     }
@@ -134,13 +133,10 @@ angular.module('starter.controllers', [])
 .controller('BookDetailCtrl', function($scope, $http, $stateParams, Books, $location, $ionicPopup){
   userId = window.localStorage['authToken']
 
-  console.log($scope)
-
 
   if (/^\d+$/.test($stateParams.bookId)) {
-
-  $http.get('http://localhost:3000/check_books/' + $stateParams.bookId)
-  .then(function(response){
+    $http.get('http://localhost:3000/check_books/' + $stateParams.bookId)
+    .then(function(response){
     var book = response.data.book
     $scope.book = {}
     $scope.book.book_id = book.id
@@ -150,19 +146,27 @@ angular.module('starter.controllers', [])
     $scope.book.description = book.description
     $scope.book.page_numbers = book.page_numbers
     })
+  } else {
+    $http.get('https://www.googleapis.com/books/v1/volumes?q=' + $stateParams.bookId)
+    .then(function(response){
+    var book = response.data.items[0]
+    $scope.book = {}
+    $scope.book.author = book.volumeInfo.authors[0]
+    $scope.book.title = book.volumeInfo.title
+    $scope.book.description = book.volumeInfo.description
+    $scope.book.image_url = book.volumeInfo.imageLinks.thumbnail
+    $scope.book.page_numbers = book.volumeInfo.pageCount
+    $scope.book.publishedDate = book.volumeInfo.publishedDate
+
+    $scope.data = {}
+    if (Books.checkBook($scope.book,"current") === true){
+      $scope.data.hide = true
     } else {
-      $http.get('https://www.googleapis.com/books/v1/volumes?q=' + $stateParams.bookId)
-      .then(function(response){
-        var book = response.data.items[0]
-        $scope.book = {}
-        $scope.book.author = book.volumeInfo.authors[0]
-        $scope.book.title = book.volumeInfo.title
-        $scope.book.description = book.volumeInfo.description
-        $scope.book.image_url = book.volumeInfo.imageLinks.thumbnail
-        $scope.book.page_numbers = book.volumeInfo.pageCount
-        $scope.book.publishedDate = book.volumeInfo.publishedDate
-        })
-      }
+      $scope.data.hide = false
+    }
+
+    })
+  }
 
 
   $scope.go = function ( path ){
@@ -209,6 +213,7 @@ angular.module('starter.controllers', [])
     window.localStorage['authToken'] = response.data.token
     if (response.data.book === "dont"){
   }else {
+    Books.remove(response.data.book,"queue")
     Books.addOne(response.data.book,"current")
   }
   })
@@ -245,7 +250,6 @@ angular.module('starter.controllers', [])
       dataType: "json",
       data: jsonData
     }).then(function(response){
-      console.log(response.data.book)
       Books.addOne(response.data.book, "queue")
       window.localStorage['authToken'] = response.data.token
 
@@ -309,26 +313,36 @@ angular.module('starter.controllers', [])
 
 })
 
-.controller('RegisterCtrl', function($scope, $location, $http){
+.controller('RegisterCtrl', function($state, $ionicPopup, $scope, $location, $http){
   $scope.data = {};
 
   $scope.register = function(){
 
-  var userData = $scope.data;
-  var jsonData = JSON.stringify(userData);
-  console.log(jsonData)
-  $http({
-    method: 'POST',
-    url: 'http://localhost:3000/register',
-    dataType: "json",
-    data: jsonData
-  }).then(function(response){
-    window.localStorage['authToken'] = response.data.token
-    $location.path('#/login')
-  })
+    var userData = $scope.data;
+    var jsonData = JSON.stringify(userData);
 
+    $http({
+      method: 'POST',
+      url: 'http://localhost:3000/register',
+      dataType: "json",
+      data: jsonData
+    })
+
+    .then(function(response){
+      var errorMessages = response.data.error_messages
+      window.localStorage['authToken'] = response.data.token
+
+      if (errorMessages.length > 0){
+        var alertPopup = $ionicPopup.alert({
+          title: "Registration Failed",
+          template: errorMessages[0]
+        })
+      } else {
+        $state.go('tab.dash')
+      }
+    })
   }
-  })
+})
 
 .controller('ReviewCtrl', function($scope, $http, $stateParams){
   bookId = $stateParams.bookId
