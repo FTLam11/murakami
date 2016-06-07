@@ -8,6 +8,7 @@ class BooksController < ApplicationController
       render json: {token: user.id, book: "dont"}, status: :ok
     else
       @reading.current = true
+      @reading.queue = false
       @reading.save
       render json: {token: user.id, book: @reading.book}, status: :ok
     end
@@ -20,15 +21,13 @@ class BooksController < ApplicationController
   end
 
   def add_to_current
-    # puts "==============================="
-    # p params
     # user = User.find(params["user_id"])
-    # @reading = Book.add_book_by_id(params["book_id"], params["user_id"])
+    # @reading = Book.add_book_by_id(params, user)
     # @reading.current = true
     # @reading.queue = false
     # @reading.complete = false
     # @reading.save
-    render json: {token: user.id}, status: :ok
+    # render json: {token: user.id}, status: :ok
   end
 
   def add_to_favorites

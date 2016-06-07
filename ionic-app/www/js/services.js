@@ -8,19 +8,23 @@ angular.module('starter.services', [])
   var favoriteBooks = [];
   var historyBooks = [];
 
+  var control = function(type) {
+    if (type === "current"){
+      return currentBooks
+      } else if (type === "queue") {
+        return queueBooks
+      } else if (type === "favorite") {
+        return favoriteBooks
+      } else if (type === "history") {
+        return historyBooks
+      }
+  }
+
 
 
   return {
     all: function(type) {
-      if (type === "current"){
-      var books = currentBooks
-      } else if (type === "queue") {
-        var books = queueBooks
-      } else if (type === "favorite") {
-        var books = favoriteBooks
-      } else if (type === "history") {
-        var books = historyBooks
-      }
+      books = control(type)
       return books;
     },
     remove: function(book) {
@@ -35,30 +39,28 @@ angular.module('starter.services', [])
       return null;
     },
     add: function(book_array, type){
-      if (type === "current"){
-      var books = currentBooks
-      } else if (type === "queue") {
-        var books = queueBooks
-      } else if (type === "favorite") {
-        var books = favoriteBooks
-      } else if (type === "history") {
-        var books = historyBooks
-      }
+      books = control(type)
       book_array.forEach(function(book){
         books.push(book)
       })
     },
     addOne: function(book, type){
-      if (type === "current"){
-      var books = currentBooks
-      } else if (type === "queue") {
-        var books = queueBooks
-      } else if (type === "favorite") {
-        var books = favoriteBooks
-      } else if (type === "history") {
-        var books = historyBooks
-      }
+      books = control(type)
       books.push(book)
+    },
+    remove: function(matchBook, type){
+      books = control(type)
+      var index = books.indexOf(matchBook)
+      books.splice(index, 1)
+    },
+    checkBook: function(matchBook, type){
+      books = control(type)
+      books.forEach(function(book){
+        if ((book.id === matchBook.book_id) === true){
+          matchBook = true
+        }
+      }, matchBook)
+      return matchBook
     }
   };
 
