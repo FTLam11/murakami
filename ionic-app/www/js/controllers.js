@@ -8,13 +8,13 @@ angular.module('starter.controllers', [])
     // Books.add(currentBooks, "current")
     Books.replaceCurrent(currentBooks)
     $scope.books = Books.all("current");
-    books = $scope.books
+    console.log($scope.books)
     if ($scope.books.length === 0) {
       $scope.message = "Go to search and add books."
     } else {
       $scope.message = ""
     }
-    Books.clearCurrent()
+    // Books.clearCurrent()
   })
 
   $scope.remove = function(book) {
@@ -54,16 +54,14 @@ angular.module('starter.controllers', [])
   $http.get("https://tranquil-tundra-32569.herokuapp.com/users/" + userId + "/current")
   .then(function(response){
     var currentBooks = response.data.current_books;
-    Books.add(currentBooks,"current")
+    Books.replaceCurrent(currentBooks)
     $scope.books = Books.all("current");
-    console.log($scope.books)
-    console.log('The call to server occurs only after login page')
     if (currentBooks.length === 0) {
       $scope.message = "Go to search and add books."
     } else {
       $scope.message = ""
     }
-    Books.clearCurrent()
+    // Books.clearCurrent()
   })
   $scope.remove = function(book) {
     Books.remove(book);
@@ -325,15 +323,13 @@ angular.module('starter.controllers', [])
   }).then(function(response){
     window.localStorage['authToken'] = response.data.token
     if (response.data.book === "dont"){
-  }else {
-    Books.remove(response.data.book,"queue")
-    Books.addOne(response.data.book,"current")
-  }
-  $location.path("/tab/dash")
+    }else {
+      Books.remove(response.data.book,"queue")
+      Books.addOne(response.data.book,"current")
+    }
+    $location.path("/tab/dash")
   })
-    $location.path('/tab/dash')
-
-  }
+}
 
 
 
@@ -367,7 +363,6 @@ angular.module('starter.controllers', [])
     method: 'GET',
     url: 'https://tranquil-tundra-32569.herokuapp.com/users/'+userId+'/recommended',
   }).then(function(response){
-    console.log(response)
     $scope.books = response.data.recommendations
   })
 
