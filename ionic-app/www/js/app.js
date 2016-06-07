@@ -84,6 +84,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
 
   .state('tab.chapter', {
+    cache: false,
     url: '/books/:bookId/chapters/:chapterId',
     views: {
       'tab-dash': {

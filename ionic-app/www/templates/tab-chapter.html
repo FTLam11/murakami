@@ -5,10 +5,9 @@
 
     <div class="card">
       <div class="item item-text-wrap" ng-repeat="reaction in reactions">
-      {{reaction.content}} <br> -- Username<br>
+      {{reaction.content}}
       </div>
 
-      <br><br><br><br><br><br>
 
       <div class="item item-text-wrap">
         <form name="reaction" ng-submit="submitReaction()">
@@ -17,12 +16,11 @@
         </form>
       </div>
 
-      <br><br><br><br><br><br><br><br><br><br><br><br><br>
 
       <div class='nav-container'>
-        <button ng-click="backChapter()" ng-hide="firstChapter">Back</button>
-        <button ng-click="nextChapter()" ng-hide="lastChapter">Next</button>
-        <button ng-click="markComplete()" ng-hide="lastChapterButton">MARK COMPLETE</button>
+        <button ng-click="backChapter()" ng-hide="firstChapter" class="button icon-left ion-chevron-left button-clear button-dark">Back</button>
+        <button ng-click="nextChapter()" ng-hide="lastChapter" class="button icon-right ion-chevron-right button-clear button-dark">Next</button>
+        <button ng-click="markComplete()" ng-hide="lastChapterButton">MARK COMPLETE!!!!!!</button>
       </div>
 
     </div>
