@@ -232,37 +232,24 @@ angular.module('starter.controllers', [])
     $scope.book.image_url = book.volumeInfo.imageLinks.thumbnail
     $scope.book.page_numbers = book.volumeInfo.pageCount
     $scope.book.publishedDate = book.volumeInfo.publishedDate
-
-    // $scope.data = {}
-    // if (Books.checkBook($scope.book,"current") === true){
-    //   $scope.data.hide = true
-    // } else {
-    //   $scope.data.hide = false
-    // }
-
     })
   }
 
 
    $http.get("https://tranquil-tundra-32569.herokuapp.com/users/" + userId  + '/current')
     .then(function(response){
-      console.log(response)
        var items = response.data.current_books
        var isCurrent = false
       items.forEach(function(book){
-        console.log(parseInt(book.id))
-        console.log($stateParams.bookId)
         if(book.id === parseInt($stateParams.bookId)){
           console.log("Current")
           isCurrent = true
         }
       })
       if (isCurrent){
-        console.log('CURRENT')
         $scope.readButton = false
         $scope.startButton = true
       }else{
-        console.log("NOT CURRENT")
         $scope.readButton = true
         $scope.startButton = false
       }
@@ -350,6 +337,28 @@ angular.module('starter.controllers', [])
       window.localStorage['authToken'] = response.data.token
 
     })
+  }
+
+  $scope.favorite = function() {
+    console.log("favorite")
+    $scope.data = {};
+    var bookData = $scope.book
+    var userId = window.localStorage['authToken']
+    var jsonData = JSON.stringify(bookData)
+
+    $http({
+      method: 'POST',
+      url: 'https://tranquil-tundra-32569.herokuapp.com/users/'+userId+'/add_to_favorites',
+      dataType: "json",
+      data: jsonData
+    }).then(function(response){
+      console.log(response)
+
+      Books.addOne(response.data.book, "favorite")
+      window.localStorage['authToken'] = response.data.token
+
+    })
+
   }
 
 })
