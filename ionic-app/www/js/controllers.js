@@ -8,7 +8,6 @@ angular.module('starter.controllers', [])
     // Books.add(currentBooks, "current")
     Books.replaceCurrent(currentBooks)
     $scope.books = Books.all("current");
-    console.log($scope.books)
     if ($scope.books.length === 0) {
       $scope.message = "Go to search and add books."
     } else {
@@ -126,6 +125,7 @@ angular.module('starter.controllers', [])
   $http.get("https://tranquil-tundra-32569.herokuapp.com/chapters/" + $stateParams.chapterId + "/reactions")
   .then(function(response){
     var bookId = ($stateParams.bookId);
+    console.log(response)
     $scope.reactions = response.data.reactions;
     $scope.users = response.data.users;
     $scope.book = response.data.specific_book;
@@ -134,7 +134,7 @@ angular.module('starter.controllers', [])
     var chapterEnd = 0;
 
 
-    if ($scope.reactions === null){
+    if ($scope.reactions.length === 0){
       $scope.message = "There are no reactions! React!"
     }
   })

@@ -5,3 +5,6 @@ Started GET "/" for ::1 at 2016-06-07 12:28:49 -0500
 Processing by UsersController#index as HTML
   Rendered users/index.html.erb within layouts/application (6.5ms)
 Completed 200 OK in 66ms (Views: 47.6ms | ActiveRecord: 0.0ms)
+  [1m[36mReaction Load (0.8ms)[0m  [1mSELECT  "reactions".* FROM "reactions"  ORDER BY "reactions"."id" DESC LIMIT 1[0m
+  [1m[35mUser Load (0.7ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36mReaction Load (1.1ms)[0m  [1mSELECT  "reactions".* FROM "reactions"  ORDER BY "reactions"."id" DESC LIMIT 1[0m

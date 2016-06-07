@@ -23,14 +23,15 @@ class ReactionsController < ApplicationController
     users = User.all
     reactions.each do |reaction|
       if reaction.chapter_id == chapter_int
-        current_reactions << reaction
-        current_users << users.find(reaction.user_id)
+        # current_reactions << reaction
+        # current_users << users.find(reaction.user_id)
+        current_reactions << {reaction: reaction.content, user: reaction.user.user_name}
       end
     end
 
 
     # reactions = Reaction.all.select {|reaction| reaction.chapter_id == chapter_id}
-    render json: { reactions: current_reactions, users: current_users, specific_book: specific_book}
+    render json: { reactions: current_reactions, specific_book: specific_book}
   end
 
   def show
