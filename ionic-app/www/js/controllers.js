@@ -99,6 +99,8 @@ angular.module('starter.controllers', [])
   $http.get('https://tranquil-tundra-32569.herokuapp.com/users/' + userId + '/favorite')
   .then(function(response){
 
+    $scope.books = response.data.favorite_books
+
     if ($scope.books === null){
       $scope.message = "No Books in your Favorites Yet! Add one!"
     }
@@ -126,7 +128,6 @@ angular.module('starter.controllers', [])
   $http.get("https://tranquil-tundra-32569.herokuapp.com/chapters/" + $stateParams.chapterId + "/reactions")
   .then(function(response){
     var bookId = ($stateParams.bookId);
-    console.log(response)
     $scope.reactions = response.data.reactions;
     $scope.book = response.data.specific_book;
     $scope.reactionText = "";
@@ -189,7 +190,7 @@ angular.module('starter.controllers', [])
   }
 
    $scope.submitReaction = function(){
-      var userReaction = {content: $scope.reactionText, user:id = window.localStorage['authToken'], chapter_id: $stateParams.chapterId};
+      var userReaction = {content: $scope.reactionText, user_id: window.localStorage['authToken'], chapter_id: $stateParams.chapterId};
 
       var jsonData = JSON.stringify(userReaction);
 
@@ -221,6 +222,7 @@ angular.module('starter.controllers', [])
     $scope.book.image_url = book.image_url
     $scope.book.description = book.description
     $scope.book.page_numbers = book.page_numbers
+    $scope.reviewButton = false
     })
   } else {
     $http.get('https://www.googleapis.com/books/v1/volumes?q=' + $stateParams.bookId)
@@ -233,6 +235,7 @@ angular.module('starter.controllers', [])
     $scope.book.image_url = book.volumeInfo.imageLinks.thumbnail
     $scope.book.page_numbers = book.volumeInfo.pageCount
     $scope.book.publishedDate = book.volumeInfo.publishedDate
+    $scope.reviewButton = true
     })
   }
 
@@ -254,6 +257,8 @@ angular.module('starter.controllers', [])
         $scope.startButton = false
       }
     })
+
+
 
   $scope.viewChapter = function() {
     $http.get("https://tranquil-tundra-32569.herokuapp.com/books/" + $stateParams.bookId + '/chapters')
@@ -360,7 +365,7 @@ angular.module('starter.controllers', [])
   }
 
   $scope.review = function() {
-    console.log('review')
+    $location.path("/tab/books/" + $stateParams.bookId + "/reviews")
   }
 
 })
@@ -459,7 +464,7 @@ angular.module('starter.controllers', [])
   }
 })
 
-.controller('ReviewCtrl', function($scope, $http, $stateParams){
+.controller('BookReviewCtrl', function($scope, $http, $stateParams){
   bookId = $stateParams.bookId
   userId = window.localStorage['authToken']
   $http.get("https://tranquil-tundra-32569.herokuapp.com/books/" + bookId + "/reviews")
@@ -472,7 +477,43 @@ angular.module('starter.controllers', [])
       $scope.message = ""
     }
   })
-  // $scope.remove = function(book) {
-  //   Books.remove(book);
-  // };
+
+  $scope.displayMessege = function() {
+    console.log("this is good")
+  }
+
+
+  $scope.submitReview = function() {
+    console.log($scope.reviewText)
+    var newReview = {content: $scope.reviewText, user_id: window.localStorage['authToken'], book_id:$stateParams.bookId, rating: $scope.rating};
+
+      var jsonData = JSON.stringify(newReview);
+
+
+
+
+
+
+
+
+      $http({
+        method: 'POST',
+        url: 'https://tranquil-tundra-32569.herokuapp.com/books/' + $stateParams.bookId + '/reviews',
+        dataType: "json",
+        data: jsonData
+      }).then(function(response){
+        console.log(response)
+        if (response.message !== null) {
+          $scope.displayMessege()
+        } else {
+        $scope.reviews = response.data.review;
+         $scope.reactions.push(response.data)
+
+        }
+
+
+         // location.reload();
+         // COME BACK AND AJAX NEW RESPONSE
+      })
+  }
 })
