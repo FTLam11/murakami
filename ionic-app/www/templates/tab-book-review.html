@@ -7,6 +7,21 @@
      <ion-item>review.author</ion-item>
      <ion-item>review.content</ion-item>
     </ion-item>
+
+      <div class="card">
+        <form name="review">
+          <textarea class="review-textarea" type="text" placeholder="Review Here!" ng-model="$parent.reviewText"></textarea>
+          <button type='submit' ng-click="submitReview()">Submit</button>
+        </form>
+
+        <div class="item range">
+          <i class="icon ion-thumbsdown"></i>
+          <input type="range" name="rating" ng-model="$parent.rating" min="0", max="10">
+          <i class="icon ion-thumbsup"></i>
+          <p>Rating : {{$parent.rating}}</p>
+        </div>
+      </div>
+
     </ion-list>
   </ion-content>
 </ion-view>

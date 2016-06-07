@@ -7,12 +7,11 @@ class SoloReading < ActiveRecord::Base
   validates :user_id, :book_id, presence: true
 
   def self.recommendations(user_id)
-    rec_criteria = {author: [], genre: []}
+    rec_criteria = {author: []}
     user_books = User.find(user_id).books
 
     user_books.each do |book|
       rec_criteria[:author] << book.author
-      rec_criteria[:genre] << book.genre
     end
 
     return rec_criteria.each {|criterion,array| array.uniq!}
@@ -27,9 +26,9 @@ class SoloReading < ActiveRecord::Base
       criteria[:author].each do |author|
         rec_books << book if book.author == author
       end
-      criteria[:genre].each do |genre|
-        rec_books << book if book.genre == genre && !rec_books.include?(book)
-      end
+      # criteria[:genre].each do |genre|
+      #   rec_books << book if book.genre == genre && !rec_books.include?(book)
+      # end
     end
 
     return rec_books - user_books
