@@ -8,7 +8,7 @@ angular.module('starter.controllers', [])
     Books.replaceCurrent(currentBooks)
     $scope.books = Books.all("current");
     if ($scope.books.length === 0) {
-      $scope.message = "Go to search and add books."
+      $scope.message = "Go to search and add some books!"
     } else {
       $scope.message = ""
     }
@@ -52,7 +52,7 @@ angular.module('starter.controllers', [])
     Books.replaceCurrent(currentBooks)
     $scope.books = Books.all("current");
     if (currentBooks.length === 0) {
-      $scope.message = "Go to search and add books."
+      $scope.message = "Go to search and add some books!"
     } else {
       $scope.message = ""
     }
@@ -388,18 +388,15 @@ angular.module('starter.controllers', [])
   var userId = window.localStorage['authToken']
   $scope.data = {};
 
-  $http({
-    method: 'GET',
-    url: 'http://localhost:3000/users/' + userId + '/recommended',
-  }).then(function(response){
-    $scope.books = response.data.recommendations
+  $http.get('http://localhost:3000/users/' + userId + '/recommended').then(function(response){
+    var author = response.data.recommendations
+    console.log(author)
+    $http.get('https://www.googleapis.com/books/v1/volumes?q=+ inauthor:' + author).then(function(response){
+      $scope.books = response.data.items
+    })
   })
 
-  $http({
-    method: 'GET',
-    url: 'http://localhost:3000/trending'
-  })
-
+  $http.get('http://localhost:3000/trending')
   .then(function(response) {
     $scope.popular_books = response.data.popular_books
     $scope.favorite_books = response.data.favorite_books
