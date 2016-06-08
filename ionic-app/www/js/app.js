@@ -165,6 +165,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     }
   })
 
+.state('tab.comments', {
+  url: '/chapters/:chapterId/reactions/:reactionId',
+  views: {
+    'tab-dash': {
+      templateUrl: 'templates/tab-comments.html',
+      controller: 'ReactionCtrl'
+    }
+  }
+})
+
   .state('tab.favorite', {
       url: '/favorites',
       views:{
@@ -190,6 +200,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
   });
 
   // if none of the above states are matched, use this as the fallback
+
   $urlRouterProvider.otherwise('/#');
+
 
 });

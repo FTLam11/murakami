@@ -204,7 +204,6 @@ angular.module('starter.controllers', [])
 
  $scope.submitReaction = function(){
     var userReaction = {content: $scope.reactionText, user_id: window.localStorage['authToken'], chapter_id: $stateParams.chapterId};
-
     var jsonData = JSON.stringify(userReaction);
 
     $http({
@@ -217,6 +216,14 @@ angular.module('starter.controllers', [])
       $scope.reactionText = "";
     })
   }
+
+  $scope.seeComments = function(reaction_id){
+    console.log(reaction_id)
+    chapterId = $stateParams.chapterId
+    reactionId = reaction_id
+    $location.path("tab/chapters/" + chapterId + "/reactions/" + reactionId)
+  }
+
 })
 
 .controller('BookDetailCtrl', function($scope, $http, $stateParams, Books, $location, $ionicPopup){
@@ -460,6 +467,39 @@ angular.module('starter.controllers', [])
     })
   }
 })
+
+.controller ('ReactionCtrl', function($scope, $http, $stateParams){
+  $scope.commentText = ""
+
+  $http.get("https://tranquil-tundra-32569.herokuapp.com/reactions/" + $stateParams.reactionId + "/comments")
+  .then(function(response){
+    $scope.comments = response.data.comments
+    $scope.reaction = response.data.reaction
+    $scope.username = response.data.username
+
+  })
+
+  $scope.submitComment= function(){
+      var userComment = {content: $scope.commentText, user_id: window.localStorage['authToken'], reaction_id: $stateParams.reactionId};
+
+      var jsonData = JSON.stringify(userComment);
+
+      $http({
+        method: 'POST',
+        url: 'https://tranquil-tundra-32569.herokuapp.com/reactions/'+ $stateParams.reactionId +'/comments',
+        dataType: "json",
+        data: jsonData
+      }).then(function(response){
+        $scope.comments.push(response.data)
+        $scope.commentText = "";
+      })
+
+    }
+
+})
+
+
+
 
 .controller('BookReviewCtrl', function($scope, $http, $stateParams, $location){
   bookId = $stateParams.bookId

@@ -1,0 +1,25 @@
+<ion-view view-title="{{title}}">
+  <ion-content class="padding">
+    <h2> {{reaction.content}} </h2>
+{{username}}
+
+      <div class="card" ng-repeat="comment in comments">
+    <div class="item item-text-wrap">
+        <p class="reactions">{{comment.comment.content}}</p> <br> {{comment.username}}
+      </div>
+    </div> 
+
+
+      <div class="card">
+        <form name="comment">
+          <textarea class="reaction-textarea" type="text" placeholder="Comment here!" ng-model="$parent.commentText"></textarea>
+          <button type='submit' ng-click="submitComment()">Submit</button>
+        </form>
+      </div>
+
+
+
+
+  </ion-content>
+</ion-view>
+
