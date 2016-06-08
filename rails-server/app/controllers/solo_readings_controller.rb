@@ -32,8 +32,9 @@ class SoloReadingsController < ApplicationController
   end
 
   def trending_books
-    trending_books = SoloReading.trending_now
-    render json: { trending_books: trending_books }
+    popular_books = SoloReading.trending_now("current")
+    favorite_books = SoloReading.trending_now("favorite")
+    render json: { popular_books: popular_books, favorite_books: favorite_books }
   end
 
 end
