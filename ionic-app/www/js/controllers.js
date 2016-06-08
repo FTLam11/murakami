@@ -217,6 +217,8 @@ angular.module('starter.controllers', [])
     })
   }
 
+
+
   $scope.seeComments = function(reaction_id){
     console.log(reaction_id)
     chapterId = $stateParams.chapterId
@@ -277,24 +279,35 @@ angular.module('starter.controllers', [])
   })
 
 
- $http.get("http://localhost:3000/users/" + userId  + '/favorite')
-  .then(function(response){
-    console.log(response)
-     var favorites = response.data.favorite_books
-     var isFavorite = false
-    favorites.forEach(function(book){
-      if(book.id === parseInt($stateParams.bookId)){
-        isFavorite = true
-      }
+
+  $scope.isFavorite = function() {
+    $http.get("http://localhost:3000/users/" + userId  + '/favorite')
+    .then(function(response){
+      console.log(response)
+       var favorites = response.data.favorite_books
+       var result = false
+      favorites.forEach(function(book){
+        if(book.id === parseInt($stateParams.bookId)){
+          console.log(book.id)
+          console.log($stateParams.bookId)
+          result = true
+        }
+      })
+      console.log(result)
+      return (result ? true : false)
     })
-    if (isFavorite){
+  }
+    if ($scope.isFavorite() === true){
+      console.log("FAV")
+
       $('#favoriteIcon').removeClass("favoriteIconInactive")
       $('#favoriteIcon').addClass("favoriteIconActive")
     }else{
+      console.log("NOFAV")
       $('#favoriteIcon').removeClass("favoriteIconActive")
       $('#favoriteIcon').addClass("favoriteIconInactive")
     }
-  })
+
 
 
   $scope.viewChapter = function() {
@@ -310,30 +323,31 @@ angular.module('starter.controllers', [])
   $scope.favoriteAction = function(){
     var button = document.getElementById("favoriteButton");
     var icon = document.getElementById("favoriteIcon");
-
-
-
-
     move(icon)
     .ease('in-out')
     .set("color", "red")
     .duration('0.5s')
     .end();
-
     move(button)
     .ease('in-out')
     .scale(1.3)
     .set("background-color", "#FF7666")
     .duration('0.5s')
     .end();
-
     setTimeout(function(){
+    if ($scope.isFavorite()){
       move(icon)
       .ease('in-out')
-      .set("color", "#white")
+      .set("color", "white")
       .duration('0.5s')
       .end();
-
+    }else{
+      move(icon)
+      .ease('in-out')
+      .set("color", "red")
+      .duration('0.5s')
+      .end();
+    }
       move(button)
       .ease('in-out')
       .scale(.9)
@@ -436,6 +450,8 @@ angular.module('starter.controllers', [])
   $scope.review = function() {
     $location.path("/tab/books/" + $stateParams.bookId + "/reviews")
   }
+
+
 })
 
 .controller('SearchCtrl', function($scope, $http,Books){
