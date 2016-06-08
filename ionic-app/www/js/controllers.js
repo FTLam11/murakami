@@ -277,6 +277,25 @@ angular.module('starter.controllers', [])
   })
 
 
+ $http.get("http://localhost:3000/users/" + userId  + '/favorite')
+  .then(function(response){
+    console.log(response)
+     var favorites = response.data.favorite_books
+     var isFavorite = false
+    favorites.forEach(function(book){
+      if(book.id === parseInt($stateParams.bookId)){
+        isFavorite = true
+      }
+    })
+    if (isFavorite){
+      $('#favoriteIcon').removeClass("favoriteIconInactive")
+      $('#favoriteIcon').addClass("favoriteIconActive")
+    }else{
+      $('#favoriteIcon').removeClass("favoriteIconActive")
+      $('#favoriteIcon').addClass("favoriteIconInactive")
+    }
+  })
+
 
   $scope.viewChapter = function() {
     $http.get("http://localhost:3000/books/" + $stateParams.bookId + '/chapters')
@@ -291,6 +310,9 @@ angular.module('starter.controllers', [])
   $scope.favoriteAction = function(){
     var button = document.getElementById("favoriteButton");
     var icon = document.getElementById("favoriteIcon");
+
+
+
 
     move(icon)
     .ease('in-out')
@@ -318,10 +340,7 @@ angular.module('starter.controllers', [])
       .set("background-color", "#FFC3C3")
       .duration('0.5s')
       .end();
-
     }, 700)
-
-
   };
 
 

@@ -134,8 +134,12 @@ margin: 0em 1em 1em 1em;
   background-color: #FFC3C3;
 }
 
-#favoriteIcon{
-  color: #FF7666;
+.favoriteIconActive{
+  color: red;
+}
+
+.favoriteIconInactive{
+  color: white;
 }
 
 
