@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   get '/users/:user_id/favorite', to: 'solo_readings#favorite_books'
   get '/users/:user_id/queue', to: 'solo_readings#queue_books'
   get '/users/:user_id/history', to: 'solo_readings#history_books'
+  get '/trending', to: 'solo_readings#trending_books'
 
   post '/users/:user_id/add_to_current', to: 'books#add_to_current'
   post '/users/:user_id/add_to_favorites', to: 'books#add_to_favorites'

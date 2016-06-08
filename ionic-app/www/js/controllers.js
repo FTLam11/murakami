@@ -397,7 +397,12 @@ angular.module('starter.controllers', [])
 
   $http({
     method: 'GET',
-    url: ''
+    url: 'http://localhost:3000/trending'
+  })
+
+  .then(function(response) {
+    $scope.popular_books = response.data.popular_books
+    $scope.favorite_books = response.data.favorite_books
   })
 
   $scope.remove = function(book) {
