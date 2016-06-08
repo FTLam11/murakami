@@ -1,3 +1,15 @@
+<ion-side-menus enable-menu-with-back-views="true">
+  <ion-side-menu-content>
+    <ion-nav-bar class="bar-stable">
+      <ion-nav-back-button class="button-icon button-clear">
+      </ion-nav-back-button>
+
+      <ion-nav-buttons side="left">
+        <button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+        </button>
+      </ion-nav-buttons>
+    </ion-nav-bar>
+
 <!--
 Create tabs with an icon and label, using the tabs-positive style.
 Each tab's child <ion-nav-view> directive will have its own
@@ -22,3 +34,8 @@ navigation history that also transitions its views in and out.
 
 
 </ion-tabs>
+</ion-side-menu-content>
+
+<ion-side-menu side="left">
+<div ng-include src="leftSide.src"></div>
+</ion-side-menus>
