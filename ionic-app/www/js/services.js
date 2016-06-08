@@ -1,7 +1,5 @@
 angular.module('starter.services', [])
 
-
-
 .factory('Books', function(){
   var currentBooks = [];
   var queueBooks = [];
@@ -76,4 +74,20 @@ angular.module('starter.services', [])
     }
   };
 
+})
+
+.factory('SideMenuSwitcher', function ($rootScope) {
+// var items = [];
+
+// items.clear = function(){
+//   items = []
+//   return items;
+// }
+
+  return {
+    leftSide: {src: 'templates/menu.html'},
+    items: [],
+    bookId: 1,
+
+  };
 })
