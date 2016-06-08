@@ -33,7 +33,11 @@ class BooksController < ApplicationController
   def add_to_favorites
     user = User.find(params["user_id"])
     @reading = Book.add_book_by_id(params, user)
-    @reading.favorite = true
+    if @reading.favorite == true
+      @reading.favorite = false
+    else
+      @reading.favorite = true
+    end
     @reading.save
     render json: {token: user.id, book: @reading.book}, status: :ok
   end
