@@ -29,7 +29,7 @@ Rails.application.routes.draw do
   end
 
   resources :reactions, only: [] do
-    resources :comments , only: [:create]
+    resources :comments , only: [:create, :index]
   end
 
   post '/register', to: 'users#create'
