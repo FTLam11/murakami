@@ -1,28 +1,27 @@
 <ion-view view-title="{{book.title}}">
   <ion-content class="padding">
-  <div class="book-detail-cover">
-    <img ng-src="{{book.image_url}}" class="book-cover">
+    <div class="book-detail-cover">
+      <img ng-src="{{book.image_url}}" class="book-cover">
+      <button id="favoriteButton" class="button block" ng-click="favoriteAction(); favorite()">
+        <i id="favoriteIcon" class="icon ion-heart"> </i>
+        </button>
     </div>
     <div class="book-details">
-    <h2 class="questrial" style="margin-bottom: -15px"> {{book.title}} </h2>
+      <h2 class="questrial" style="margin-bottom: -15px"> {{book.title}} </h2>
       <h4 class="questrial author"> by {{book.author}} // {{book.page_numbers}} Pages </h4>
+
     </div>
- <div class="button-bar">
-    <button class="button" ng-click=" viewChapter()" ng-hide="readButton"> Read </button>
-    <button class="button" ng-click=" start()" ng-hide="startButton"> Add </button>
-    <button class="button" ng-click=" queue()"> Queue </button>
-    <button class="button" ng-click=" favorite()"> Favorite </button>
-    <button class="button" ng-click="review()" ng-hide="reviewButton"> Review </button></a>
-</div>
+    <div class="button-bar">
+      <button class="button icon ion-ios-book" ng-click=" viewChapter()" ng-hide="readButton"> Read </button>
+      <button class="button icon ion-plus-circled" ng-click=" start()" ng-hide="startButton"> Add </button>
+      <button class="button icon ion-ios-list" ng-click=" queue()"> Queue </button>
+
+      <button class="button icon ion-compose" ng-click="review()" ng-hide="reviewButton"> Review </button></a>
+    </div>
     <div class="book-description">
       <p> {{book.description}} </p>
     </div>
     <div class="hide-overflow">
     </div>
-
-
-
-
-
   </ion-content>
 </ion-view>
