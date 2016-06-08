@@ -4,7 +4,7 @@
 
 
       <div class="card" ng-repeat="reaction in reactions">
-    <div class="item item-text-wrap">
+    <div class="item item-text-wrap" ng-click="seeComments(reaction.reaction_id)">
         <p class="reactions">{{reaction.reaction}}</p> <br> {{reaction.user}}
       </div>
     </div> 
