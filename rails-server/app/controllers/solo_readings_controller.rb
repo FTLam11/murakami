@@ -2,9 +2,8 @@ class SoloReadingsController < ApplicationController
   include ApplicationHelper
 
   def recommended_books
-    rec_criteria = SoloReading.recommendations(params[:user_id])
-    rec_books = SoloReading.retrieve_rec_books(rec_criteria,params[:user_id])
-    render json: { recommendations: rec_books }
+    rec_criteria = SoloReading.recommendations(params[:user_id])[:author].sample
+    render json: { recommendations: rec_criteria }
   end
 
   def current_books

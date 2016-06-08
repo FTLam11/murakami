@@ -8,9 +8,8 @@ class SoloReading < ActiveRecord::Base
 
   def self.recommendations(user_id)
     rec_criteria = {author: []}
-    user_books = User.find(user_id).books
 
-    user_books.each do |book|
+    User.find(user_id).books.each do |book|
       rec_criteria[:author] << book.author
     end
 
