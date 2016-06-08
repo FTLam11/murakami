@@ -130,11 +130,22 @@ button {
 }
 
 .book-details {
-  background-color: rgb(255, 195, 195);
+  background-color: #FFC3C3;
   margin: 0px -10px 0px -10px;
   padding-left: 10px;
   padding-bottom: 5px;
 }
+
+#favoriteButton{
+  float: right;
+  background-color: #FFC3C3;
+}
+
+#favoriteIcon{
+  color: #FF7666;
+}
+
+
 
 .author {
   color: #3E3E3E;
