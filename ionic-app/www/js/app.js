@@ -14,7 +14,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     if (window.cordova && window.cordova.plugins && window.cordova.plugins.Keyboard) {
       cordova.plugins.Keyboard.hideKeyboardAccessoryBar(true);
       cordova.plugins.Keyboard.disableScroll(true);
-
     }
     if (window.StatusBar) {
       // org.apache.cordova.statusbar required
@@ -24,15 +23,13 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 })
 
 .config(function($stateProvider, $urlRouterProvider) {
-
   // Ionic uses AngularUI Router which uses the concept of states
   // Learn more here: https://github.com/angular-ui/ui-router
   // Set up the various states which the app can be in.
   // Each state's controller can be found in controllers.js
   $stateProvider
-
   // setup an abstract state for the tabs directive
-    .state('tab', {
+  .state('tab', {
     url: '/tab',
     abstract: true,
     templateUrl: 'templates/tabs.html'
@@ -61,7 +58,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     }
   })
 
-.state('tab.search', {
+  .state('tab.search', {
     url: '/search',
     views: {
       'tab-search': {
@@ -131,8 +128,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       'tab-search': {
         templateUrl: 'templates/tab-book-review.html',
         controller: 'BookReviewCtrl'
+        }
       }
-    }
    })
 
 
@@ -142,31 +139,31 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     'tab-account':{
     templateUrl: 'templates/tab-reader-queue.html',
     controller: 'QueueCtrl'
+      }
     }
-  }
-})
+  })
 
 
-.state('tab.user-review', {
-  url: '/user-review',
-  views: {
-    'tab-account':{
-      templateUrl: 'templates/tab-user-review.html',
-      controller: 'UserReviewCtrl'
+  .state('tab.user-review', {
+    url: '/user-review',
+    views: {
+      'tab-account':{
+        templateUrl: 'templates/tab-user-review.html',
+        controller: 'UserReviewCtrl'
+      }
     }
-  }
-})
+  })
 
 
-.state('tab.history', {
-  url: '/history',
-  views: {
-    'tab-account': {
-      templateUrl: 'templates/history.html',
-      controller: 'HistoryCtrl'
+  .state('tab.history', {
+    url: '/history',
+    views: {
+      'tab-account': {
+        templateUrl: 'templates/history.html',
+        controller: 'HistoryCtrl'
+      }
     }
-  }
-})
+  })
 
   .state('tab.favorite', {
       url: '/favorites',
@@ -193,6 +190,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
   });
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/');
+  $urlRouterProvider.otherwise('/#');
 
 });
