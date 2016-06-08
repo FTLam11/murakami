@@ -16,7 +16,7 @@ angular.module('starter.controllers', [])
     Books.replaceCurrent(currentBooks)
     $scope.books = Books.all("current");
     if ($scope.books.length === 0) {
-      $scope.message = "Go to search and add books."
+      $scope.message = "Go to search and add some books!"
     } else {
       $scope.message = ""
     }
@@ -27,8 +27,6 @@ angular.module('starter.controllers', [])
   };
 
   $scope.viewChapter = function(bookId) {
-
-
     $http.get("https://tranquil-tundra-32569.herokuapp.com/books/" + bookId + '/chapters')
     .then(function(response){
       var chapterStart = response.data.first_chapter.id
@@ -62,7 +60,7 @@ angular.module('starter.controllers', [])
     Books.replaceCurrent(currentBooks)
     $scope.books = Books.all("current");
     if (currentBooks.length === 0) {
-      $scope.message = "Go to search and add books."
+      $scope.message = "Go to search and add some books!"
     } else {
       $scope.message = ""
     }
@@ -129,10 +127,6 @@ angular.module('starter.controllers', [])
 })
 
 .controller('ChapterCtrl', function(SideMenuSwitcher,$scope, $http, $stateParams,$location, Books) {
-  console.log("chapter")
-  $scope.leftSide.src = 'templates/chapter-menu.html';
-
-
   $http.get("https://tranquil-tundra-32569.herokuapp.com/chapters/" + $stateParams.chapterId + "/reactions")
   .then(function(response){
     var bookId = ($stateParams.bookId);
@@ -229,6 +223,8 @@ angular.module('starter.controllers', [])
     })
   }
 
+
+
   $scope.seeComments = function(reaction_id){
     chapterId = $stateParams.chapterId
     reactionId = reaction_id
@@ -289,9 +285,30 @@ angular.module('starter.controllers', [])
 
 
 
+  $scope.isFavorite = function() {
+    $http.get("https://tranquil-tundra-32569.herokuapp.com/users/" + userId  + '/favorite')
+    .then(function(response){
+       var favorites = response.data.favorite_books
+       var result = false
+      favorites.forEach(function(book){
+        if(book.id === parseInt($stateParams.bookId)){
+          result = true
+        }
+      })
+      return (result ? true : false)
+    })
+  }
+    if ($scope.isFavorite() === true){
+      $('#favoriteIcon').removeClass("favoriteIconInactive")
+      $('#favoriteIcon').addClass("favoriteIconActive")
+    }else{
+      $('#favoriteIcon').removeClass("favoriteIconActive")
+      $('#favoriteIcon').addClass("favoriteIconInactive")
+    }
+
+
+
   $scope.viewChapter = function() {
-
-
     $http.get("https://tranquil-tundra-32569.herokuapp.com/books/" + $stateParams.bookId + '/chapters')
     .then(function(response){
       var chapterStart = response.data.first_chapter.id
@@ -304,37 +321,38 @@ angular.module('starter.controllers', [])
   $scope.favoriteAction = function(){
     var button = document.getElementById("favoriteButton");
     var icon = document.getElementById("favoriteIcon");
-
     move(icon)
     .ease('in-out')
     .set("color", "red")
     .duration('0.5s')
     .end();
-
     move(button)
     .ease('in-out')
     .scale(1.3)
     .set("background-color", "#FF7666")
     .duration('0.5s')
     .end();
-
     setTimeout(function(){
+    if ($scope.isFavorite()){
       move(icon)
       .ease('in-out')
-      .set("color", "#white")
+      .set("color", "white")
       .duration('0.5s')
       .end();
-
+    }else{
+      move(icon)
+      .ease('in-out')
+      .set("color", "red")
+      .duration('0.5s')
+      .end();
+    }
       move(button)
       .ease('in-out')
       .scale(.9)
       .set("background-color", "#FFC3C3")
       .duration('0.5s')
       .end();
-
     }, 700)
-
-
   };
 
 
@@ -346,25 +364,31 @@ angular.module('starter.controllers', [])
   $scope.start = function() {
     $scope.data = {};
 
-    var myPopup = $ionicPopup.show({
-      template: '<input type="text" ng-model="data.chapters">',
-      title: 'Enter number of chapters (greater than 0)',
-      scope: $scope,
-      buttons: [
-        { text: 'Cancel' },
-        {
-          text: '<b>Save</b>',
-          type: 'button-positive',
-          onTap: function(e) {
-            if (!$scope.data.chapters || $scope.data.chapters < 1) {
-              e.preventDefault();
-            } else {
-              $scope.BookReq($scope.data.chapters, $scope)
+    if (/^\d+$/.test($stateParams.bookId)) {
+      $scope.BookReq($scope.data.chapters, $scope)
+    }
+    else{
+        var myPopup = $ionicPopup.show({
+        template: '<input type="text" ng-model="data.chapters">',
+        title: 'Enter number of chapters (greater than 0)',
+        scope: $scope,
+        buttons: [
+          { text: 'Cancel' },
+          {
+            text: '<b>Save</b>',
+            type: 'button-positive',
+            onTap: function(e) {
+              if (!$scope.data.chapters || $scope.data.chapters < 1) {
+                e.preventDefault();
+              } else {
+                $scope.BookReq($scope.data.chapters, $scope)
+              }
             }
           }
-        }
-      ]
-    })
+        ]
+      })
+
+    }
   }
 
   $scope.BookReq = function(chapter_number, $scope) {
@@ -430,6 +454,8 @@ angular.module('starter.controllers', [])
   $scope.review = function() {
     $location.path("/tab/books/" + $stateParams.bookId + "/reviews")
   }
+
+
 })
 
 .controller('SearchCtrl', function($scope, $http,Books){
@@ -437,11 +463,17 @@ $scope.leftSide.src = 'templates/menu.html';
   var userId = window.localStorage['authToken']
   $scope.data = {};
 
-  $http({
-    method: 'GET',
-    url: 'https://tranquil-tundra-32569.herokuapp.com/users/' + userId + '/recommended',
-  }).then(function(response){
-    $scope.books = response.data.recommendations
+  $http.get('https://tranquil-tundra-32569.herokuapp.com/users/' + userId + '/recommended').then(function(response){
+    var author = response.data.recommendations
+    $http.get('https://www.googleapis.com/books/v1/volumes?q=+ inauthor:' + author).then(function(response){
+      $scope.books = response.data.items
+    })
+  })
+
+  $http.get('https://tranquil-tundra-32569.herokuapp.com/trending')
+  .then(function(response) {
+    $scope.popular_books = response.data.popular_books
+    $scope.favorite_books = response.data.favorite_books
   })
 
   $scope.remove = function(book) {
@@ -519,14 +551,6 @@ $scope.leftSide.src = 'templates/menu.html';
 
 .controller ('ReactionCtrl', function($scope, $http, $stateParams){
   $scope.commentText = ""
-
-
-  function ContentController($scope, $ionicSideMenuDelegate) {
-    $scope.toggleLeft = function() {
-      $ionicSideMenuDelegate.toggleLeft();
-    };
-  }
-
   $http.get("https://tranquil-tundra-32569.herokuapp.com/reactions/" + $stateParams.reactionId + "/comments")
   .then(function(response){
     $scope.comments = response.data.comments
@@ -562,7 +586,6 @@ $scope.leftSide.src = 'templates/menu.html';
   userId = window.localStorage['authToken']
   $http.get("https://tranquil-tundra-32569.herokuapp.com/books/" + bookId + "/reviews")
   .then(function(response){
-    console.log(response)
     $scope.reviews = response.data.reviews;
     if ($scope.reviews.length === 0) {
       $scope.message = "No reviews so far. Add one!"
@@ -585,7 +608,6 @@ $scope.leftSide.src = 'templates/menu.html';
         dataType: "json",
         data: jsonData
       }).then(function(response){
-        console.log(response.data)
         $scope.reviews.push(response.data.book_reviews)
         $location.path('/tab/dash')
       })

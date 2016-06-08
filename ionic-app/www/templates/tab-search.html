@@ -7,15 +7,33 @@
     <ion-list>
       <ion-item class="col-50 book-cover" ng-repeat="book in resultsArray">
         <a href="#/tab/books/{{book.id}}">
-        <img src= "{{book.volumeInfo.imageLinks.thumbnail}}" class="book-image"></a>
+          <img src= "{{book.volumeInfo.imageLinks.thumbnail}}" class="book-image">
+        </a>
       </ion-item>
     </ion-list>
-    <h3 class="questrial">Recommended Books</h3>
-    <ion-list>
-      <ion-item class="col-50 book-cover" ng-repeat="book in books">         <a href="#/tab/books/{{book.id}}">
-
-        <img src= "{{book.image_url}}" class="book-image"></a>
-      </ion-item>
-    </ion-list>
+      <h3 class="questrial">Recommended Books</h3>
+      <ion-list>
+        <ion-item class="col-50 book-cover" ng-repeat="book in books">
+          <a href="#/tab/books/{{book.id}}">
+            <img src= "{{book.volumeInfo.imageLinks.thumbnail}}" class="book-image">
+          </a>
+        </ion-item>
+      </ion-list><br>
+      <h3 class="questrial">Trending Books</h3>
+        <ion-list>
+          <ion-item class="col-50 book-cover" ng-repeat="book in popular_books">
+            <a href="#/tab/books/{{book.id}}">
+              <img src= "{{book.image_url}}" class="book-image">
+            </a>
+          </ion-item>
+        </ion-list><br>
+      <h3 class="questrial">The People's Choice</h3>
+        <ion-list>
+        <ion-item class="col-50 book-cover" ng-repeat="book in favorite_books">
+          <a href="#/tab/books/{{book.id}}">
+            <img src= "{{book.image_url}}" class="book-image">
+          </a>
+        </ion-item>
+      </ion-list>
   </ion-content>
 </ion-view>

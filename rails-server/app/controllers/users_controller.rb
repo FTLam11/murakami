@@ -1,5 +1,12 @@
 class UsersController < ApplicationController
   def index
+    users = Users.all
+    render json: { users: users }
+  end
+
+  def search
+    user = User.find_by(user_name: params["username"])
+    render json: { user: user, message: "No user was found." }
   end
 
   def create

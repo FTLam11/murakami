@@ -20,7 +20,7 @@ class ReactionsController < ApplicationController
     users = User.all
     reactions.each do |reaction|
       if reaction.chapter_id == chapter_int
-        current_reactions << {reaction: reaction.content, reaction_id: reaction.id,  user: reaction.user.user_name}
+        current_reactions << {reaction: reaction.content, reaction_id: reaction.id,  username: reaction.user.user_name, userAvatar: reaction.user.image_url}
       end
     end
 

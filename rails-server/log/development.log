@@ -1,0 +1,1598 @@
+  [1m[36mSoloReading Load (0.6ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."current" = $1[0m  [["current", "t"]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(4) FROM "solo_readings" WHERE "solo_readings"."current" = $1  [["current", "t"]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(1) FROM "solo_readings" WHERE "solo_readings"."current" = $1[0m  [["current", "t"]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(7) FROM "solo_readings" WHERE "solo_readings"."current" = $1  [["current", "t"]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(5) FROM "solo_readings" WHERE "solo_readings"."current" = $1[0m  [["current", "t"]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(6) FROM "solo_readings" WHERE "solo_readings"."current" = $1  [["current", "t"]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(14) FROM "solo_readings" WHERE "solo_readings"."current" = $1[0m  [["current", "t"]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(16) FROM "solo_readings" WHERE "solo_readings"."current" = $1  [["current", "t"]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(17) FROM "solo_readings" WHERE "solo_readings"."current" = $1[0m  [["current", "t"]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(19) FROM "solo_readings" WHERE "solo_readings"."current" = $1  [["current", "t"]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(20) FROM "solo_readings" WHERE "solo_readings"."current" = $1[0m  [["current", "t"]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(24) FROM "solo_readings" WHERE "solo_readings"."current" = $1  [["current", "t"]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(26) FROM "solo_readings" WHERE "solo_readings"."current" = $1[0m  [["current", "t"]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(27) FROM "solo_readings" WHERE "solo_readings"."current" = $1  [["current", "t"]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(6) FROM "solo_readings" WHERE "solo_readings"."current" = $1[0m  [["current", "t"]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(28) FROM "solo_readings" WHERE "solo_readings"."current" = $1  [["current", "t"]]
+  [1m[36mBook Load (0.4ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mBook Load (0.4ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mBook Load (0.2ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mBook Load (0.2ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mBook Load (0.2ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mBook Load (0.2ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mBook Load (0.2ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mBook Load (0.2ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36mSoloReading Load (2.0ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."current" = $1[0m  [["current", "t"]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(4) FROM "solo_readings" WHERE "solo_readings"."current" = $1  [["current", "t"]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(1) FROM "solo_readings" WHERE "solo_readings"."current" = $1[0m  [["current", "t"]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(7) FROM "solo_readings" WHERE "solo_readings"."current" = $1  [["current", "t"]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(5) FROM "solo_readings" WHERE "solo_readings"."current" = $1[0m  [["current", "t"]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(6) FROM "solo_readings" WHERE "solo_readings"."current" = $1  [["current", "t"]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(14) FROM "solo_readings" WHERE "solo_readings"."current" = $1[0m  [["current", "t"]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(16) FROM "solo_readings" WHERE "solo_readings"."current" = $1  [["current", "t"]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(17) FROM "solo_readings" WHERE "solo_readings"."current" = $1[0m  [["current", "t"]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(19) FROM "solo_readings" WHERE "solo_readings"."current" = $1  [["current", "t"]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(20) FROM "solo_readings" WHERE "solo_readings"."current" = $1[0m  [["current", "t"]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(24) FROM "solo_readings" WHERE "solo_readings"."current" = $1  [["current", "t"]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(26) FROM "solo_readings" WHERE "solo_readings"."current" = $1[0m  [["current", "t"]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(27) FROM "solo_readings" WHERE "solo_readings"."current" = $1  [["current", "t"]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(6) FROM "solo_readings" WHERE "solo_readings"."current" = $1[0m  [["current", "t"]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(28) FROM "solo_readings" WHERE "solo_readings"."current" = $1  [["current", "t"]]
+  [1m[36mBook Load (1.0ms)[0m  [1mSELECT  "books".* FROM "books"  ORDER BY "books"."id" ASC LIMIT 1[0m
+  [1m[35mBook Load (0.3ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36mSoloReading Load (2.0ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."current" = $1[0m  [["current", "t"]]
+  [1m[35mBook Load (0.4ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mSoloReading Load (0.2ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."book_id" = $1[0m  [["book_id", 1]]
+  [1m[35mSoloReading Load (1.2ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."current" = $1  [["current", "t"]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(4) FROM "solo_readings" WHERE "solo_readings"."current" = $1[0m  [["current", "t"]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(1) FROM "solo_readings" WHERE "solo_readings"."current" = $1  [["current", "t"]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(7) FROM "solo_readings" WHERE "solo_readings"."current" = $1[0m  [["current", "t"]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(5) FROM "solo_readings" WHERE "solo_readings"."current" = $1  [["current", "t"]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(6) FROM "solo_readings" WHERE "solo_readings"."current" = $1[0m  [["current", "t"]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(14) FROM "solo_readings" WHERE "solo_readings"."current" = $1  [["current", "t"]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(16) FROM "solo_readings" WHERE "solo_readings"."current" = $1[0m  [["current", "t"]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(17) FROM "solo_readings" WHERE "solo_readings"."current" = $1  [["current", "t"]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(19) FROM "solo_readings" WHERE "solo_readings"."current" = $1[0m  [["current", "t"]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(20) FROM "solo_readings" WHERE "solo_readings"."current" = $1  [["current", "t"]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(24) FROM "solo_readings" WHERE "solo_readings"."current" = $1[0m  [["current", "t"]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(26) FROM "solo_readings" WHERE "solo_readings"."current" = $1  [["current", "t"]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(27) FROM "solo_readings" WHERE "solo_readings"."current" = $1[0m  [["current", "t"]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(6) FROM "solo_readings" WHERE "solo_readings"."current" = $1  [["current", "t"]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(28) FROM "solo_readings" WHERE "solo_readings"."current" = $1[0m  [["current", "t"]]
+  [1m[35mSoloReading Load (0.7ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."current" = $1  [["current", "t"]]
+  [1m[36m (2.1ms)[0m  [1mSELECT COUNT(4) FROM "solo_readings" WHERE "solo_readings"."current" = $1[0m  [["current", "t"]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(1) FROM "solo_readings" WHERE "solo_readings"."current" = $1  [["current", "t"]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(7) FROM "solo_readings" WHERE "solo_readings"."current" = $1[0m  [["current", "t"]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(5) FROM "solo_readings" WHERE "solo_readings"."current" = $1  [["current", "t"]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(6) FROM "solo_readings" WHERE "solo_readings"."current" = $1[0m  [["current", "t"]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(14) FROM "solo_readings" WHERE "solo_readings"."current" = $1  [["current", "t"]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(16) FROM "solo_readings" WHERE "solo_readings"."current" = $1[0m  [["current", "t"]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(17) FROM "solo_readings" WHERE "solo_readings"."current" = $1  [["current", "t"]]
+  [1m[36m (0.7ms)[0m  [1mSELECT COUNT(19) FROM "solo_readings" WHERE "solo_readings"."current" = $1[0m  [["current", "t"]]
+  [1m[35m (0.5ms)[0m  SELECT COUNT(20) FROM "solo_readings" WHERE "solo_readings"."current" = $1  [["current", "t"]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(24) FROM "solo_readings" WHERE "solo_readings"."current" = $1[0m  [["current", "t"]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(26) FROM "solo_readings" WHERE "solo_readings"."current" = $1  [["current", "t"]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(27) FROM "solo_readings" WHERE "solo_readings"."current" = $1[0m  [["current", "t"]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(6) FROM "solo_readings" WHERE "solo_readings"."current" = $1  [["current", "t"]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(28) FROM "solo_readings" WHERE "solo_readings"."current" = $1[0m  [["current", "t"]]
+  [1m[35mSoloReading Load (1.5ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."current" = $1  [["current", "t"]]
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(4) FROM "solo_readings" WHERE "solo_readings"."current" = $1[0m  [["current", "t"]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(1) FROM "solo_readings" WHERE "solo_readings"."current" = $1  [["current", "t"]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(7) FROM "solo_readings" WHERE "solo_readings"."current" = $1[0m  [["current", "t"]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(5) FROM "solo_readings" WHERE "solo_readings"."current" = $1  [["current", "t"]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(6) FROM "solo_readings" WHERE "solo_readings"."current" = $1[0m  [["current", "t"]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(14) FROM "solo_readings" WHERE "solo_readings"."current" = $1  [["current", "t"]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(16) FROM "solo_readings" WHERE "solo_readings"."current" = $1[0m  [["current", "t"]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(17) FROM "solo_readings" WHERE "solo_readings"."current" = $1  [["current", "t"]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(19) FROM "solo_readings" WHERE "solo_readings"."current" = $1[0m  [["current", "t"]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(20) FROM "solo_readings" WHERE "solo_readings"."current" = $1  [["current", "t"]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(24) FROM "solo_readings" WHERE "solo_readings"."current" = $1[0m  [["current", "t"]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(26) FROM "solo_readings" WHERE "solo_readings"."current" = $1  [["current", "t"]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(27) FROM "solo_readings" WHERE "solo_readings"."current" = $1[0m  [["current", "t"]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(6) FROM "solo_readings" WHERE "solo_readings"."current" = $1  [["current", "t"]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(28) FROM "solo_readings" WHERE "solo_readings"."current" = $1[0m  [["current", "t"]]
+  [1m[35mSoloReading Load (2.0ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."current" = $1  [["current", "t"]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(4) FROM "solo_readings" WHERE "solo_readings"."current" = $1[0m  [["current", "t"]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(1) FROM "solo_readings" WHERE "solo_readings"."current" = $1  [["current", "t"]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(7) FROM "solo_readings" WHERE "solo_readings"."current" = $1[0m  [["current", "t"]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(5) FROM "solo_readings" WHERE "solo_readings"."current" = $1  [["current", "t"]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(6) FROM "solo_readings" WHERE "solo_readings"."current" = $1[0m  [["current", "t"]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(14) FROM "solo_readings" WHERE "solo_readings"."current" = $1  [["current", "t"]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(16) FROM "solo_readings" WHERE "solo_readings"."current" = $1[0m  [["current", "t"]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(17) FROM "solo_readings" WHERE "solo_readings"."current" = $1  [["current", "t"]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(19) FROM "solo_readings" WHERE "solo_readings"."current" = $1[0m  [["current", "t"]]
+  [1m[35m (0.2ms)[0m  SELECT COUNT(20) FROM "solo_readings" WHERE "solo_readings"."current" = $1  [["current", "t"]]
+  [1m[36m (0.2ms)[0m  [1mSELECT COUNT(24) FROM "solo_readings" WHERE "solo_readings"."current" = $1[0m  [["current", "t"]]
+  [1m[35m (0.7ms)[0m  SELECT COUNT(26) FROM "solo_readings" WHERE "solo_readings"."current" = $1  [["current", "t"]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(27) FROM "solo_readings" WHERE "solo_readings"."current" = $1[0m  [["current", "t"]]
+  [1m[35m (0.3ms)[0m  SELECT COUNT(6) FROM "solo_readings" WHERE "solo_readings"."current" = $1  [["current", "t"]]
+  [1m[36m (0.5ms)[0m  [1mSELECT COUNT(28) FROM "solo_readings" WHERE "solo_readings"."current" = $1[0m  [["current", "t"]]
+  [1m[35mBook Load (0.2ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mBook Load (0.2ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mBook Load (0.2ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mBook Load (0.2ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mBook Load (0.2ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mBook Load (0.2ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mBook Load (0.1ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mBook Load (0.2ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 1]]
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mSoloReading Load (0.8ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."current" = $1  [["current", "t"]]
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "solo_readings" ("user_id", "book_id", "current", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["user_id", 10], ["book_id", 28], ["current", "t"], ["created_at", "2016-06-08 13:57:13.024897"], ["updated_at", "2016-06-08 13:57:13.024897"]]
+  [1m[36m (1.6ms)[0m  [1mCOMMIT[0m
+  [1m[35mSoloReading Load (2.0ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."current" = $1  [["current", "t"]]
+  [1m[36mSoloReading Load (0.9ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."current" = $1[0m  [["current", "t"]]
+  [1m[35mSoloReading Load (31.3ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."type" = 't'
+  [1m[36mSoloReading Load (1.0ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."current" = $1[0m  [["current", "t"]]
+  [1m[35mSoloReading Load (1.7ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."favorite" = $1  [["favorite", "t"]]
+  [1m[36mSoloReading Load (0.4ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."complete" = $1[0m  [["complete", "t"]]
+  [1m[35mSoloReading Load (1.9ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."queue" = $1  [["queue", "t"]]
+  [1m[36mSoloReading Load (0.4ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."current" = $1[0m  [["current", "t"]]
+  [1m[35mSoloReading Load (0.8ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."current" = $1  [["current", "t"]]
+  [1m[36mSoloReading Load (2.0ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."current" = $1[0m  [["current", "t"]]
+  [1m[35mSoloReading Load (1.5ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."current" = $1  [["current", "t"]]
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 6]]
+  [1m[35mBook Load (0.2ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 28]]
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."user_name" = $1 LIMIT 1[0m  [["user_name", "tester"]]
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."user_name" = $1 LIMIT 1  [["user_name", "tester"]]
+  [1m[36mBook Load (0.6ms)[0m  [1mSELECT "books".* FROM "books" INNER JOIN "solo_readings" ON "books"."id" = "solo_readings"."book_id" WHERE "solo_readings"."user_id" = $1[0m  [["user_id", 10]]
+
+
+Started POST "/login" for ::1 at 2016-06-08 15:45:59 -0500
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+Processing by SessionsController#login as HTML
+  Parameters: {"username"=>"jack", "password"=>"[FILTERED]", "session"=>{"username"=>"jack", "password"=>"[FILTERED]"}}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."user_name" = $1 LIMIT 1  [["user_name", "jack"]]
+Completed 200 OK in 151ms (Views: 0.3ms | ActiveRecord: 4.0ms)
+
+
+Started GET "/users/5/current" for ::1 at 2016-06-08 15:46:00 -0500
+Processing by SoloReadingsController#current_books as HTML
+  Parameters: {"user_id"=>"5"}
+  [1m[36mSoloReading Load (0.7ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2[0m  [["user_id", 5], ["current", "t"]]
+  [1m[35mBook Load (0.4ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 17]]
+  [1m[36mBook Load (0.3ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 19]]
+Completed 200 OK in 172ms (Views: 1.7ms | ActiveRecord: 5.4ms)
+
+
+Started GET "/books/19/chapters" for ::1 at 2016-06-08 15:46:01 -0500
+Processing by ChaptersController#index as HTML
+  Parameters: {"book_id"=>"19"}
+  [1m[35mBook Load (0.4ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 19]]
+  [1m[36mChapter Load (0.3ms)[0m  [1mSELECT  "chapters".* FROM "chapters" WHERE "chapters"."book_id" = $1  ORDER BY "chapters"."id" ASC LIMIT 1[0m  [["book_id", 19]]
+  [1m[35mChapter Load (0.4ms)[0m  SELECT  "chapters".* FROM "chapters" WHERE "chapters"."book_id" = $1  ORDER BY "chapters"."id" DESC LIMIT 1  [["book_id", 19]]
+Completed 200 OK in 52ms (Views: 1.2ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/chapters/67/reactions" for ::1 at 2016-06-08 15:46:02 -0500
+Processing by ReactionsController#index as HTML
+  Parameters: {"chapter_id"=>"67"}
+  [1m[36mChapter Load (0.4ms)[0m  [1mSELECT  "chapters".* FROM "chapters" WHERE "chapters"."id" = $1 LIMIT 1[0m  [["id", 67]]
+  [1m[35mBook Load (0.4ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 19]]
+  [1m[36mReaction Load (1.3ms)[0m  [1mSELECT "reactions".* FROM "reactions"[0m
+Completed 200 OK in 87ms (Views: 1.2ms | ActiveRecord: 4.7ms)
+
+
+Started GET "/books/19/chapters" for ::1 at 2016-06-08 15:46:02 -0500
+Processing by ChaptersController#index as HTML
+  Parameters: {"book_id"=>"19"}
+  [1m[35mBook Load (0.9ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 19]]
+  [1m[36mChapter Load (0.4ms)[0m  [1mSELECT  "chapters".* FROM "chapters" WHERE "chapters"."book_id" = $1  ORDER BY "chapters"."id" ASC LIMIT 1[0m  [["book_id", 19]]
+  [1m[35mChapter Load (0.4ms)[0m  SELECT  "chapters".* FROM "chapters" WHERE "chapters"."book_id" = $1  ORDER BY "chapters"."id" DESC LIMIT 1  [["book_id", 19]]
+Completed 200 OK in 8ms (Views: 0.8ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/users/5/recommended" for ::1 at 2016-06-08 15:46:03 -0500
+Processing by SoloReadingsController#recommended_books as HTML
+  Parameters: {"user_id"=>"5"}
+  [1m[36mUser Load (4.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mBook Load (0.6ms)[0m  SELECT "books".* FROM "books" INNER JOIN "solo_readings" ON "books"."id" = "solo_readings"."book_id" WHERE "solo_readings"."user_id" = $1  [["user_id", 5]]
+Completed 200 OK in 32ms (Views: 0.3ms | ActiveRecord: 4.6ms)
+
+
+Started GET "/trending" for ::1 at 2016-06-08 15:46:03 -0500
+Processing by SoloReadingsController#trending_books as HTML
+  [1m[36mSoloReading Load (3.8ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."current" = $1[0m  [["current", "t"]]
+  [1m[35mBook Load (2.5ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 6]]
+  [1m[36mBook Load (2.5ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 28]]
+  [1m[35mSoloReading Load (2.4ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."favorite" = $1  [["favorite", "t"]]
+  [1m[36mBook Load (2.0ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 5]]
+Completed 200 OK in 28ms (Views: 2.4ms | ActiveRecord: 13.2ms)
+
+
+Started GET "/users/5/current" for ::1 at 2016-06-08 15:46:08 -0500
+Processing by SoloReadingsController#current_books as HTML
+  Parameters: {"user_id"=>"5"}
+  [1m[35mSoloReading Load (1.3ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2  [["user_id", 5], ["current", "t"]]
+  [1m[36mBook Load (2.0ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 17]]
+  [1m[35mBook Load (0.4ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 19]]
+Completed 200 OK in 10ms (Views: 1.3ms | ActiveRecord: 3.7ms)
+
+
+Started GET "/users/5/favorite" for ::1 at 2016-06-08 15:46:08 -0500
+Processing by SoloReadingsController#favorite_books as HTML
+  Parameters: {"user_id"=>"5"}
+  [1m[36mSoloReading Load (2.1ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."favorite" = $2[0m  [["user_id", 5], ["favorite", "t"]]
+Completed 200 OK in 8ms (Views: 0.2ms | ActiveRecord: 2.1ms)
+
+
+Started POST "/users/5/books" for ::1 at 2016-06-08 15:46:10 -0500
+Processing by BooksController#create as HTML
+  Parameters: {"author"=>"Jacek Fisiak", "title"=>"Historical Linguistics and Philology", "image_url"=>"http://books.google.com/books/content?id=gV9iAAAAMAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api", "page_numbers"=>401, "publishedDate"=>"1990", "chapter_count"=>nil, "user_id"=>"5", "book"=>{"title"=>"Historical Linguistics and Philology", "author"=>"Jacek Fisiak", "image_url"=>"http://books.google.com/books/content?id=gV9iAAAAMAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api", "page_numbers"=>401}}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."title" = $1 LIMIT 1[0m  [["title", "Historical Linguistics and Philology"]]
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "books" ("title", "author", "image_url", "page_numbers", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "Historical Linguistics and Philology"], ["author", "Jacek Fisiak"], ["image_url", "http://books.google.com/books/content?id=gV9iAAAAMAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api"], ["page_numbers", 401], ["created_at", "2016-06-08 20:46:10.281380"], ["updated_at", "2016-06-08 20:46:10.281380"]]
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "solo_readings" ("user_id", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["user_id", 5], ["book_id", 35], ["created_at", "2016-06-08 20:46:10.285009"], ["updated_at", "2016-06-08 20:46:10.285009"]]
+  [1m[36m (15.5ms)[0m  [1mCOMMIT[0m
+Completed 500 Internal Server Error in 70ms (ActiveRecord: 16.9ms)
+
+NoMethodError (undefined method `times' for nil:NilClass):
+  app/models/book.rb:30:in `create_chapters'
+  app/models/book.rb:16:in `add_book'
+  app/controllers/books_controller.rb:6:in `create'
+
+
+  Rendered /Users/apprentice/.rbenv/versions/2.0.0-p647/lib/ruby/gems/2.0.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (6.6ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.0.0-p647/lib/ruby/gems/2.0.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (2.3ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.0.0-p647/lib/ruby/gems/2.0.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.0ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.0.0-p647/lib/ruby/gems/2.0.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (38.4ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.0.0-p647/lib/ruby/gems/2.0.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.5ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.0.0-p647/lib/ruby/gems/2.0.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.0.0-p647/lib/ruby/gems/2.0.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.0.0-p647/lib/ruby/gems/2.0.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.0.0-p647/lib/ruby/gems/2.0.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (668.8ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.0.0-p647/lib/ruby/gems/2.0.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.0.0-p647/lib/ruby/gems/2.0.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.5ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.0.0-p647/lib/ruby/gems/2.0.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (746.5ms)
+
+
+Started POST "/users/5/books" for ::1 at 2016-06-08 15:46:15 -0500
+Processing by BooksController#create as HTML
+  Parameters: {"author"=>"Jacek Fisiak", "title"=>"Historical Linguistics and Philology", "image_url"=>"http://books.google.com/books/content?id=gV9iAAAAMAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api", "page_numbers"=>401, "publishedDate"=>"1990", "chapter_count"=>nil, "user_id"=>"5", "book"=>{"title"=>"Historical Linguistics and Philology", "author"=>"Jacek Fisiak", "image_url"=>"http://books.google.com/books/content?id=gV9iAAAAMAAJ&printsec=frontcover&img=1&zoom=1&source=gbs_api", "page_numbers"=>401}}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."title" = $1 LIMIT 1[0m  [["title", "Historical Linguistics and Philology"]]
+  [1m[35mSoloReading Load (0.2ms)[0m  SELECT  "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."book_id" = $2 LIMIT 1  [["user_id", 5], ["book_id", 35]]
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE "solo_readings" SET "current" = $1, "updated_at" = $2 WHERE "solo_readings"."id" = $3  [["current", "t"], ["updated_at", "2016-06-08 20:46:15.385189"], ["id", 38]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35mBook Load (0.2ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 35]]
+Completed 200 OK in 9ms (Views: 0.6ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/users/5/current" for ::1 at 2016-06-08 15:46:15 -0500
+Processing by SoloReadingsController#current_books as HTML
+  Parameters: {"user_id"=>"5"}
+  [1m[36mSoloReading Load (0.4ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2[0m  [["user_id", 5], ["current", "t"]]
+  [1m[35mBook Load (0.3ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 35]]
+  [1m[36mBook Load (0.5ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 17]]
+  [1m[35mBook Load (1.0ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 19]]
+Completed 200 OK in 15ms (Views: 3.6ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/users/5/current" for ::1 at 2016-06-08 15:46:25 -0500
+Processing by SoloReadingsController#current_books as HTML
+  Parameters: {"user_id"=>"5"}
+  [1m[36mSoloReading Load (0.4ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2[0m  [["user_id", 5], ["current", "t"]]
+  [1m[35mBook Load (0.3ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 35]]
+  [1m[36mBook Load (0.3ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 17]]
+  [1m[35mBook Load (2.2ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 19]]
+Completed 200 OK in 10ms (Views: 1.9ms | ActiveRecord: 3.1ms)
+
+
+Started GET "/users/5/favorite" for ::1 at 2016-06-08 15:46:25 -0500
+Processing by SoloReadingsController#favorite_books as HTML
+  Parameters: {"user_id"=>"5"}
+  [1m[36mSoloReading Load (0.4ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."favorite" = $2[0m  [["user_id", 5], ["favorite", "t"]]
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.4ms)
+
+
+Started POST "/users/5/books" for ::1 at 2016-06-08 15:46:26 -0500
+Processing by BooksController#create as HTML
+  Parameters: {"author"=>"Walter Henry Medhurst", "title"=>"A Dictionary of the Hok-Këèn Dialect of the Chinese Language", "image_url"=>"http://books.google.com/books/content?id=lf9GAAAAcAAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api", "page_numbers"=>860, "publishedDate"=>"1832", "chapter_count"=>nil, "user_id"=>"5", "book"=>{"title"=>"A Dictionary of the Hok-Këèn Dialect of the Chinese Language", "author"=>"Walter Henry Medhurst", "image_url"=>"http://books.google.com/books/content?id=lf9GAAAAcAAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api", "page_numbers"=>860}}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mBook Load (0.6ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."title" = $1 LIMIT 1[0m  [["title", "A Dictionary of the Hok-Këèn Dialect of the Chinese Language"]]
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "books" ("title", "author", "image_url", "page_numbers", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["title", "A Dictionary of the Hok-Këèn Dialect of the Chinese Language"], ["author", "Walter Henry Medhurst"], ["image_url", "http://books.google.com/books/content?id=lf9GAAAAcAAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"], ["page_numbers", 860], ["created_at", "2016-06-08 20:46:26.785962"], ["updated_at", "2016-06-08 20:46:26.785962"]]
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "solo_readings" ("user_id", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["user_id", 5], ["book_id", 36], ["created_at", "2016-06-08 20:46:26.788424"], ["updated_at", "2016-06-08 20:46:26.788424"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+Completed 500 Internal Server Error in 9ms (ActiveRecord: 2.0ms)
+
+NoMethodError (undefined method `times' for nil:NilClass):
+  app/models/book.rb:30:in `create_chapters'
+  app/models/book.rb:16:in `add_book'
+  app/controllers/books_controller.rb:6:in `create'
+
+
+  Rendered /Users/apprentice/.rbenv/versions/2.0.0-p647/lib/ruby/gems/2.0.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_source.erb (5.7ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.0.0-p647/lib/ruby/gems/2.0.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_trace.html.erb (3.4ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.0.0-p647/lib/ruby/gems/2.0.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/_request_and_response.html.erb (1.1ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.0.0-p647/lib/ruby/gems/2.0.0/gems/actionpack-4.2.5/lib/action_dispatch/middleware/templates/rescues/diagnostics.html.erb within rescues/layout (25.4ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.0.0-p647/lib/ruby/gems/2.0.0/gems/web-console-2.3.0/lib/web_console/templates/_markup.html.erb (0.7ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.0.0-p647/lib/ruby/gems/2.0.0/gems/web-console-2.3.0/lib/web_console/templates/_inner_console_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.0.0-p647/lib/ruby/gems/2.0.0/gems/web-console-2.3.0/lib/web_console/templates/_prompt_box_markup.html.erb within layouts/inlined_string (0.4ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.0.0-p647/lib/ruby/gems/2.0.0/gems/web-console-2.3.0/lib/web_console/templates/style.css.erb within layouts/inlined_string (0.3ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.0.0-p647/lib/ruby/gems/2.0.0/gems/web-console-2.3.0/lib/web_console/templates/console.js.erb within layouts/javascript (18.4ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.0.0-p647/lib/ruby/gems/2.0.0/gems/web-console-2.3.0/lib/web_console/templates/main.js.erb within layouts/javascript (0.3ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.0.0-p647/lib/ruby/gems/2.0.0/gems/web-console-2.3.0/lib/web_console/templates/error_page.js.erb within layouts/javascript (0.6ms)
+  Rendered /Users/apprentice/.rbenv/versions/2.0.0-p647/lib/ruby/gems/2.0.0/gems/web-console-2.3.0/lib/web_console/templates/index.html.erb (40.5ms)
+
+
+Started POST "/users/5/books" for ::1 at 2016-06-08 15:46:29 -0500
+Processing by BooksController#create as HTML
+  Parameters: {"author"=>"Walter Henry Medhurst", "title"=>"A Dictionary of the Hok-Këèn Dialect of the Chinese Language", "image_url"=>"http://books.google.com/books/content?id=lf9GAAAAcAAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api", "page_numbers"=>860, "publishedDate"=>"1832", "chapter_count"=>nil, "user_id"=>"5", "book"=>{"title"=>"A Dictionary of the Hok-Këèn Dialect of the Chinese Language", "author"=>"Walter Henry Medhurst", "image_url"=>"http://books.google.com/books/content?id=lf9GAAAAcAAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api", "page_numbers"=>860}}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."title" = $1 LIMIT 1[0m  [["title", "A Dictionary of the Hok-Këèn Dialect of the Chinese Language"]]
+  [1m[35mSoloReading Load (0.2ms)[0m  SELECT  "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."book_id" = $2 LIMIT 1  [["user_id", 5], ["book_id", 36]]
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE "solo_readings" SET "current" = $1, "updated_at" = $2 WHERE "solo_readings"."id" = $3  [["current", "t"], ["updated_at", "2016-06-08 20:46:29.492274"], ["id", 39]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35mBook Load (0.2ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 36]]
+Completed 200 OK in 7ms (Views: 0.6ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/users/5/current" for ::1 at 2016-06-08 15:46:29 -0500
+Processing by SoloReadingsController#current_books as HTML
+  Parameters: {"user_id"=>"5"}
+  [1m[36mSoloReading Load (1.7ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2[0m  [["user_id", 5], ["current", "t"]]
+  [1m[35mBook Load (0.9ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 35]]
+  [1m[36mBook Load (1.5ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 36]]
+  [1m[35mBook Load (1.6ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 17]]
+  [1m[36mBook Load (0.8ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 19]]
+Completed 200 OK in 15ms (Views: 2.4ms | ActiveRecord: 6.6ms)
+
+
+Started POST "/users/5/books" for ::1 at 2016-06-08 15:48:27 -0500
+Processing by BooksController#create as HTML
+  Parameters: {"author"=>"Walter Henry Medhurst", "title"=>"A Dictionary of the Hok-Këèn Dialect of the Chinese Language", "image_url"=>"http://books.google.com/books/content?id=lf9GAAAAcAAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api", "page_numbers"=>860, "publishedDate"=>"1832", "chapter_count"=>nil, "user_id"=>"5", "book"=>{"title"=>"A Dictionary of the Hok-Këèn Dialect of the Chinese Language", "author"=>"Walter Henry Medhurst", "image_url"=>"http://books.google.com/books/content?id=lf9GAAAAcAAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api", "page_numbers"=>860}}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (0.4ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mBook Load (0.4ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."title" = $1 LIMIT 1[0m  [["title", "A Dictionary of the Hok-Këèn Dialect of the Chinese Language"]]
+  [1m[35mSoloReading Load (0.4ms)[0m  SELECT  "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."book_id" = $2 LIMIT 1  [["user_id", 5], ["book_id", 36]]
+Completed 200 OK in 4ms (Views: 0.3ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/users/5/current" for ::1 at 2016-06-08 15:48:27 -0500
+Processing by SoloReadingsController#current_books as HTML
+  Parameters: {"user_id"=>"5"}
+  [1m[36mSoloReading Load (0.4ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2[0m  [["user_id", 5], ["current", "t"]]
+  [1m[35mBook Load (0.3ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 35]]
+  [1m[36mBook Load (0.3ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 36]]
+  [1m[35mBook Load (0.2ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 17]]
+  [1m[36mBook Load (0.3ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 19]]
+Completed 200 OK in 9ms (Views: 2.3ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/users/5/recommended" for ::1 at 2016-06-08 15:49:17 -0500
+Processing by SoloReadingsController#recommended_books as HTML
+  Parameters: {"user_id"=>"5"}
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mBook Load (0.6ms)[0m  [1mSELECT "books".* FROM "books" INNER JOIN "solo_readings" ON "books"."id" = "solo_readings"."book_id" WHERE "solo_readings"."user_id" = $1[0m  [["user_id", 5]]
+Completed 200 OK in 4ms (Views: 0.2ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/trending" for ::1 at 2016-06-08 15:49:17 -0500
+Processing by SoloReadingsController#trending_books as HTML
+  [1m[35mSoloReading Load (0.4ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."current" = $1  [["current", "t"]]
+  [1m[36mBook Load (0.3ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 6]]
+  [1m[35mBook Load (0.2ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 28]]
+  [1m[36mSoloReading Load (0.4ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."favorite" = $1[0m  [["favorite", "t"]]
+  [1m[35mBook Load (0.3ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 5]]
+Completed 200 OK in 9ms (Views: 1.9ms | ActiveRecord: 1.6ms)
+
+
+Started GET "/users/5/recommended" for ::1 at 2016-06-08 15:49:29 -0500
+Processing by SoloReadingsController#recommended_books as HTML
+  Parameters: {"user_id"=>"5"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mBook Load (0.4ms)[0m  SELECT "books".* FROM "books" INNER JOIN "solo_readings" ON "books"."id" = "solo_readings"."book_id" WHERE "solo_readings"."user_id" = $1  [["user_id", 5]]
+Completed 200 OK in 3ms (Views: 0.1ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/trending" for ::1 at 2016-06-08 15:49:29 -0500
+Processing by SoloReadingsController#trending_books as HTML
+  [1m[36mSoloReading Load (0.4ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."current" = $1[0m  [["current", "t"]]
+  [1m[35mBook Load (0.3ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 6]]
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 28]]
+  [1m[35mSoloReading Load (0.3ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."favorite" = $1  [["favorite", "t"]]
+  [1m[36mBook Load (0.3ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 5]]
+Completed 200 OK in 9ms (Views: 1.7ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/users/5/current" for ::1 at 2016-06-08 15:49:38 -0500
+Processing by SoloReadingsController#current_books as HTML
+  Parameters: {"user_id"=>"5"}
+  [1m[35mSoloReading Load (1.7ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2  [["user_id", 5], ["current", "t"]]
+  [1m[36mBook Load (0.3ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 35]]
+  [1m[35mBook Load (0.3ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 36]]
+  [1m[36mBook Load (0.4ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 17]]
+  [1m[35mBook Load (0.3ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 19]]
+Completed 200 OK in 11ms (Views: 2.3ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/users/5/favorite" for ::1 at 2016-06-08 15:49:38 -0500
+Processing by SoloReadingsController#favorite_books as HTML
+  Parameters: {"user_id"=>"5"}
+  [1m[36mSoloReading Load (0.5ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."favorite" = $2[0m  [["user_id", 5], ["favorite", "t"]]
+Completed 200 OK in 3ms (Views: 0.2ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users/5/favorite" for ::1 at 2016-06-08 15:50:43 -0500
+Processing by SoloReadingsController#favorite_books as HTML
+  Parameters: {"user_id"=>"5"}
+  [1m[35mSoloReading Load (0.5ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."favorite" = $2  [["user_id", 5], ["favorite", "t"]]
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users/5/current" for ::1 at 2016-06-08 15:50:43 -0500
+Processing by SoloReadingsController#current_books as HTML
+  Parameters: {"user_id"=>"5"}
+  [1m[36mSoloReading Load (0.4ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2[0m  [["user_id", 5], ["current", "t"]]
+  [1m[35mBook Load (0.3ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 35]]
+  [1m[36mBook Load (0.6ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 36]]
+  [1m[35mBook Load (0.2ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 17]]
+  [1m[36mBook Load (0.5ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 19]]
+Completed 200 OK in 9ms (Views: 1.4ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/users/5/current" for ::1 at 2016-06-08 15:50:49 -0500
+Processing by SoloReadingsController#current_books as HTML
+  Parameters: {"user_id"=>"5"}
+  [1m[35mSoloReading Load (0.3ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2  [["user_id", 5], ["current", "t"]]
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 35]]
+  [1m[35mBook Load (0.3ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 36]]
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 17]]
+  [1m[35mBook Load (0.2ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 19]]
+Completed 200 OK in 8ms (Views: 2.1ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/users/5/favorite" for ::1 at 2016-06-08 15:50:49 -0500
+Processing by SoloReadingsController#favorite_books as HTML
+  Parameters: {"user_id"=>"5"}
+  [1m[36mSoloReading Load (0.3ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."favorite" = $2[0m  [["user_id", 5], ["favorite", "t"]]
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/5/current" for ::1 at 2016-06-08 15:51:19 -0500
+Processing by SoloReadingsController#current_books as HTML
+  Parameters: {"user_id"=>"5"}
+  [1m[35mSoloReading Load (2.9ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2  [["user_id", 5], ["current", "t"]]
+  [1m[36mBook Load (1.1ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 35]]
+  [1m[35mBook Load (2.3ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 36]]
+  [1m[36mBook Load (1.1ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 17]]
+  [1m[35mBook Load (2.2ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 19]]
+Completed 200 OK in 19ms (Views: 2.3ms | ActiveRecord: 9.6ms)
+
+
+Started GET "/users/5/favorite" for ::1 at 2016-06-08 15:51:19 -0500
+Processing by SoloReadingsController#favorite_books as HTML
+  Parameters: {"user_id"=>"5"}
+  [1m[36mSoloReading Load (2.3ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."favorite" = $2[0m  [["user_id", 5], ["favorite", "t"]]
+Completed 200 OK in 4ms (Views: 0.2ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/check_books/2" for ::1 at 2016-06-08 15:51:32 -0500
+Processing by BooksController#check_books as HTML
+  Parameters: {"book_id"=>"2"}
+  [1m[35mBook Load (0.3ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 2]]
+Completed 200 OK in 3ms (Views: 0.7ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/5/favorite" for ::1 at 2016-06-08 15:51:32 -0500
+Processing by SoloReadingsController#favorite_books as HTML
+  Parameters: {"user_id"=>"5"}
+  [1m[36mSoloReading Load (0.5ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."favorite" = $2[0m  [["user_id", 5], ["favorite", "t"]]
+Completed 200 OK in 5ms (Views: 0.3ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/users/5/current" for ::1 at 2016-06-08 15:51:32 -0500
+Processing by SoloReadingsController#current_books as HTML
+  Parameters: {"user_id"=>"5"}
+  [1m[35mSoloReading Load (0.3ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2  [["user_id", 5], ["current", "t"]]
+  [1m[36mBook Load (0.3ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 35]]
+  [1m[35mBook Load (0.3ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 36]]
+  [1m[36mBook Load (0.3ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 17]]
+  [1m[35mBook Load (0.3ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 19]]
+Completed 200 OK in 10ms (Views: 2.5ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/check_books/2" for ::1 at 2016-06-08 15:52:12 -0500
+Processing by BooksController#check_books as HTML
+  Parameters: {"book_id"=>"2"}
+  [1m[36mBook Load (0.3ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 2]]
+Completed 200 OK in 2ms (Views: 0.9ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/5/current" for ::1 at 2016-06-08 15:52:12 -0500
+Processing by SoloReadingsController#current_books as HTML
+  Parameters: {"user_id"=>"5"}
+  [1m[35mSoloReading Load (0.4ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2  [["user_id", 5], ["current", "t"]]
+  [1m[36mBook Load (0.3ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 35]]
+  [1m[35mBook Load (0.3ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 36]]
+  [1m[36mBook Load (1.3ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 17]]
+  [1m[35mBook Load (0.3ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 19]]
+Completed 200 OK in 11ms (Views: 2.5ms | ActiveRecord: 2.5ms)
+
+
+Started GET "/users/5/favorite" for ::1 at 2016-06-08 15:52:12 -0500
+Processing by SoloReadingsController#favorite_books as HTML
+  Parameters: {"user_id"=>"5"}
+  [1m[36mSoloReading Load (0.3ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."favorite" = $2[0m  [["user_id", 5], ["favorite", "t"]]
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/users/5/books" for ::1 at 2016-06-08 15:52:15 -0500
+Processing by BooksController#create as HTML
+  Parameters: {"book_id"=>2, "author"=>"Mrs. Jerad Borer", "title"=>"Mother Night", "image_url"=>"http://cartwright.biz/torrey.harris", "description"=>nil, "page_numbers"=>961, "chapter_count"=>nil, "user_id"=>"5", "book"=>{"title"=>"Mother Night", "author"=>"Mrs. Jerad Borer", "image_url"=>"http://cartwright.biz/torrey.harris", "description"=>nil, "page_numbers"=>961}}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mBook Load (0.3ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."title" = $1 LIMIT 1[0m  [["title", "Mother Night"]]
+  [1m[35mSoloReading Load (0.4ms)[0m  SELECT  "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."book_id" = $2 LIMIT 1  [["user_id", 5], ["book_id", 2]]
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "solo_readings" ("user_id", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["user_id", 5], ["book_id", 2], ["created_at", "2016-06-08 20:52:15.732084"], ["updated_at", "2016-06-08 20:52:15.732084"]]
+  [1m[36m (0.6ms)[0m  [1mCOMMIT[0m
+  [1m[35mSoloReading Load (0.4ms)[0m  SELECT  "solo_readings".* FROM "solo_readings"  ORDER BY "solo_readings"."id" DESC LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE "solo_readings" SET "current" = $1, "updated_at" = $2 WHERE "solo_readings"."id" = $3  [["current", "t"], ["updated_at", "2016-06-08 20:52:15.736141"], ["id", 40]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35mBook Load (0.2ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 2]]
+Completed 200 OK in 14ms (Views: 0.6ms | ActiveRecord: 3.3ms)
+
+
+Started GET "/users/5/current" for ::1 at 2016-06-08 15:52:15 -0500
+Processing by SoloReadingsController#current_books as HTML
+  Parameters: {"user_id"=>"5"}
+  [1m[36mSoloReading Load (0.7ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2[0m  [["user_id", 5], ["current", "t"]]
+  [1m[35mBook Load (2.6ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 35]]
+  [1m[36mBook Load (1.9ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 36]]
+  [1m[35mBook Load (0.4ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 17]]
+  [1m[36mBook Load (0.3ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mBook Load (0.4ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 19]]
+Completed 200 OK in 16ms (Views: 2.9ms | ActiveRecord: 6.2ms)
+
+
+Started GET "/users/5/recommended" for ::1 at 2016-06-08 15:52:27 -0500
+Processing by SoloReadingsController#recommended_books as HTML
+  Parameters: {"user_id"=>"5"}
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mBook Load (4.0ms)[0m  SELECT "books".* FROM "books" INNER JOIN "solo_readings" ON "books"."id" = "solo_readings"."book_id" WHERE "solo_readings"."user_id" = $1  [["user_id", 5]]
+Completed 200 OK in 8ms (Views: 0.2ms | ActiveRecord: 4.6ms)
+
+
+Started GET "/trending" for ::1 at 2016-06-08 15:52:27 -0500
+Processing by SoloReadingsController#trending_books as HTML
+  [1m[36mSoloReading Load (2.7ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."current" = $1[0m  [["current", "t"]]
+  [1m[35mBook Load (1.2ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 6]]
+  [1m[36mBook Load (1.6ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 28]]
+  [1m[35mSoloReading Load (2.5ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."favorite" = $1  [["favorite", "t"]]
+  [1m[36mBook Load (1.4ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 5]]
+Completed 200 OK in 85ms (Views: 70.0ms | ActiveRecord: 9.3ms)
+
+
+Started GET "/users/5/recommended" for ::1 at 2016-06-08 15:52:33 -0500
+Processing by SoloReadingsController#recommended_books as HTML
+  Parameters: {"user_id"=>"5"}
+  [1m[35mUser Load (0.8ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mBook Load (0.7ms)[0m  [1mSELECT "books".* FROM "books" INNER JOIN "solo_readings" ON "books"."id" = "solo_readings"."book_id" WHERE "solo_readings"."user_id" = $1[0m  [["user_id", 5]]
+Completed 200 OK in 6ms (Views: 0.3ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/trending" for ::1 at 2016-06-08 15:52:33 -0500
+Processing by SoloReadingsController#trending_books as HTML
+  [1m[35mSoloReading Load (0.4ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."current" = $1  [["current", "t"]]
+  [1m[36mBook Load (0.3ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 6]]
+  [1m[35mBook Load (0.3ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 28]]
+  [1m[36mSoloReading Load (0.4ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."favorite" = $1[0m  [["favorite", "t"]]
+  [1m[35mBook Load (0.3ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 5]]
+Completed 200 OK in 10ms (Views: 2.1ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/users/5/current" for ::1 at 2016-06-08 15:52:39 -0500
+Processing by SoloReadingsController#current_books as HTML
+  Parameters: {"user_id"=>"5"}
+  [1m[36mSoloReading Load (2.4ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2[0m  [["user_id", 5], ["current", "t"]]
+  [1m[35mBook Load (1.6ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 35]]
+  [1m[36mBook Load (0.5ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 36]]
+  [1m[35mBook Load (1.1ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 17]]
+  [1m[36mBook Load (0.3ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mBook Load (0.3ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 19]]
+Completed 200 OK in 17ms (Views: 2.8ms | ActiveRecord: 6.2ms)
+
+
+Started GET "/users/5/favorite" for ::1 at 2016-06-08 15:52:39 -0500
+Processing by SoloReadingsController#favorite_books as HTML
+  Parameters: {"user_id"=>"5"}
+  [1m[36mSoloReading Load (0.3ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."favorite" = $2[0m  [["user_id", 5], ["favorite", "t"]]
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.3ms)
+
+
+Started POST "/users/5/books" for ::1 at 2016-06-08 15:52:44 -0500
+Processing by BooksController#create as HTML
+  Parameters: {"author"=>"Amy Krouse Rosenthal", "title"=>"The OK Book", "description"=>"In this clever and literal play on words, OK is turned on its side, upside down, and right side up to show that being OK can really be quite great. Whether OK personifies an OK skipper, an OK climber, an OK lightning bug catcher, or an OK whatever there is to experience, ok is an OK place to be. And being OK just may lead to the discovery of what makes one great. With spare yet comforting illustrations and text, Amy Krouse Rosenthal and Tom Lichtenheld celebrate the real skills and talents children possess, encouraging and empowering them to discover their own individual strengths and personalities. All ages", "image_url"=>"http://books.google.com/books/content?id=RZQLdlTQa_kC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api", "page_numbers"=>40, "chapter_count"=>6, "user_id"=>"5", "book"=>{"title"=>"The OK Book", "author"=>"Amy Krouse Rosenthal", "image_url"=>"http://books.google.com/books/content?id=RZQLdlTQa_kC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api", "description"=>"In this clever and literal play on words, OK is turned on its side, upside down, and right side up to show that being OK can really be quite great. Whether OK personifies an OK skipper, an OK climber, an OK lightning bug catcher, or an OK whatever there is to experience, ok is an OK place to be. And being OK just may lead to the discovery of what makes one great. With spare yet comforting illustrations and text, Amy Krouse Rosenthal and Tom Lichtenheld celebrate the real skills and talents children possess, encouraging and empowering them to discover their own individual strengths and personalities. All ages", "page_numbers"=>40}}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (0.5ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mBook Load (0.3ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."title" = $1 LIMIT 1[0m  [["title", "The OK Book"]]
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "books" ("title", "description", "author", "image_url", "page_numbers", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "The OK Book"], ["description", "In this clever and literal play on words, OK is turned on its side, upside down, and right side up to show that being OK can really be quite great. Whether OK personifies an OK skipper, an OK climber, an OK lightning bug catcher, or an OK whatever there is to experience, ok is an OK place to be. And being OK just may lead to the discovery of what makes one great. With spare yet comforting illustrations and text, Amy Krouse Rosenthal and Tom Lichtenheld celebrate the real skills and talents children possess, encouraging and empowering them to discover their own individual strengths and personalities. All ages"], ["author", "Amy Krouse Rosenthal"], ["image_url", "http://books.google.com/books/content?id=RZQLdlTQa_kC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api"], ["page_numbers", 40], ["created_at", "2016-06-08 20:52:44.231718"], ["updated_at", "2016-06-08 20:52:44.231718"]]
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "solo_readings" ("user_id", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["user_id", 5], ["book_id", 37], ["created_at", "2016-06-08 20:52:44.235655"], ["updated_at", "2016-06-08 20:52:44.235655"]]
+  [1m[36m (14.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "chapters" ("number", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["number", 0], ["book_id", 37], ["created_at", "2016-06-08 20:52:44.254773"], ["updated_at", "2016-06-08 20:52:44.254773"]]
+  [1m[35m (33.7ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "chapters" ("number", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["number", 1], ["book_id", 37], ["created_at", "2016-06-08 20:52:44.291862"], ["updated_at", "2016-06-08 20:52:44.291862"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "chapters" ("number", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["number", 2], ["book_id", 37], ["created_at", "2016-06-08 20:52:44.294607"], ["updated_at", "2016-06-08 20:52:44.294607"]]
+  [1m[35m (0.3ms)[0m  COMMIT
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "chapters" ("number", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["number", 3], ["book_id", 37], ["created_at", "2016-06-08 20:52:44.297255"], ["updated_at", "2016-06-08 20:52:44.297255"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "chapters" ("number", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["number", 4], ["book_id", 37], ["created_at", "2016-06-08 20:52:44.299768"], ["updated_at", "2016-06-08 20:52:44.299768"]]
+  [1m[35m (0.6ms)[0m  COMMIT
+  [1m[36m (0.4ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "chapters" ("number", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["number", 5], ["book_id", 37], ["created_at", "2016-06-08 20:52:44.303704"], ["updated_at", "2016-06-08 20:52:44.303704"]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35mSoloReading Load (0.2ms)[0m  SELECT  "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."book_id" = $2 LIMIT 1  [["user_id", 5], ["book_id", 37]]
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  UPDATE "solo_readings" SET "current" = $1, "updated_at" = $2 WHERE "solo_readings"."id" = $3  [["current", "t"], ["updated_at", "2016-06-08 20:52:44.306969"], ["id", 41]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35mBook Load (0.2ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 37]]
+Completed 200 OK in 84ms (Views: 0.6ms | ActiveRecord: 55.2ms)
+
+
+Started GET "/users/5/current" for ::1 at 2016-06-08 15:52:44 -0500
+Processing by SoloReadingsController#current_books as HTML
+  Parameters: {"user_id"=>"5"}
+  [1m[36mSoloReading Load (1.1ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2[0m  [["user_id", 5], ["current", "t"]]
+  [1m[35mBook Load (0.6ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 35]]
+  [1m[36mBook Load (1.4ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 36]]
+  [1m[35mBook Load (0.3ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 17]]
+  [1m[36mBook Load (0.4ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mBook Load (0.9ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 19]]
+  [1m[36mBook Load (0.4ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 37]]
+Completed 200 OK in 18ms (Views: 3.4ms | ActiveRecord: 5.1ms)
+
+
+Started GET "/books/37/chapters" for ::1 at 2016-06-08 15:52:45 -0500
+Processing by ChaptersController#index as HTML
+  Parameters: {"book_id"=>"37"}
+  [1m[35mBook Load (0.2ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 37]]
+  [1m[36mChapter Load (0.3ms)[0m  [1mSELECT  "chapters".* FROM "chapters" WHERE "chapters"."book_id" = $1  ORDER BY "chapters"."id" ASC LIMIT 1[0m  [["book_id", 37]]
+  [1m[35mChapter Load (0.2ms)[0m  SELECT  "chapters".* FROM "chapters" WHERE "chapters"."book_id" = $1  ORDER BY "chapters"."id" DESC LIMIT 1  [["book_id", 37]]
+Completed 200 OK in 4ms (Views: 0.7ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/chapters/97/reactions" for ::1 at 2016-06-08 15:52:45 -0500
+Processing by ReactionsController#index as HTML
+  Parameters: {"chapter_id"=>"97"}
+  [1m[36mChapter Load (2.7ms)[0m  [1mSELECT  "chapters".* FROM "chapters" WHERE "chapters"."id" = $1 LIMIT 1[0m  [["id", 97]]
+  [1m[35mBook Load (0.5ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 37]]
+  [1m[36mReaction Load (0.4ms)[0m  [1mSELECT "reactions".* FROM "reactions"[0m
+Completed 200 OK in 9ms (Views: 0.6ms | ActiveRecord: 3.6ms)
+
+
+Started GET "/books/37/chapters" for ::1 at 2016-06-08 15:52:45 -0500
+Processing by ChaptersController#index as HTML
+  Parameters: {"book_id"=>"37"}
+  [1m[35mBook Load (0.3ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 37]]
+  [1m[36mChapter Load (0.4ms)[0m  [1mSELECT  "chapters".* FROM "chapters" WHERE "chapters"."book_id" = $1  ORDER BY "chapters"."id" ASC LIMIT 1[0m  [["book_id", 37]]
+  [1m[35mChapter Load (0.4ms)[0m  SELECT  "chapters".* FROM "chapters" WHERE "chapters"."book_id" = $1  ORDER BY "chapters"."id" DESC LIMIT 1  [["book_id", 37]]
+Completed 200 OK in 6ms (Views: 0.7ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/chapters/98/reactions" for ::1 at 2016-06-08 15:52:47 -0500
+Processing by ReactionsController#index as HTML
+  Parameters: {"chapter_id"=>"98"}
+  [1m[36mChapter Load (2.3ms)[0m  [1mSELECT  "chapters".* FROM "chapters" WHERE "chapters"."id" = $1 LIMIT 1[0m  [["id", 98]]
+  [1m[35mBook Load (0.7ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 37]]
+  [1m[36mReaction Load (0.8ms)[0m  [1mSELECT "reactions".* FROM "reactions"[0m
+Completed 200 OK in 9ms (Views: 1.0ms | ActiveRecord: 3.8ms)
+
+
+Started GET "/books/37/chapters" for ::1 at 2016-06-08 15:52:47 -0500
+Processing by ChaptersController#index as HTML
+  Parameters: {"book_id"=>"37"}
+  [1m[35mBook Load (1.2ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 37]]
+  [1m[36mChapter Load (0.4ms)[0m  [1mSELECT  "chapters".* FROM "chapters" WHERE "chapters"."book_id" = $1  ORDER BY "chapters"."id" ASC LIMIT 1[0m  [["book_id", 37]]
+  [1m[35mChapter Load (0.7ms)[0m  SELECT  "chapters".* FROM "chapters" WHERE "chapters"."book_id" = $1  ORDER BY "chapters"."id" DESC LIMIT 1  [["book_id", 37]]
+Completed 200 OK in 8ms (Views: 1.3ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/chapters/99/reactions" for ::1 at 2016-06-08 15:52:48 -0500
+Processing by ReactionsController#index as HTML
+  Parameters: {"chapter_id"=>"99"}
+  [1m[36mChapter Load (0.8ms)[0m  [1mSELECT  "chapters".* FROM "chapters" WHERE "chapters"."id" = $1 LIMIT 1[0m  [["id", 99]]
+  [1m[35mBook Load (0.2ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 37]]
+  [1m[36mReaction Load (0.5ms)[0m  [1mSELECT "reactions".* FROM "reactions"[0m
+Completed 200 OK in 5ms (Views: 0.6ms | ActiveRecord: 1.5ms)
+
+
+Started GET "/books/37/chapters" for ::1 at 2016-06-08 15:52:48 -0500
+Processing by ChaptersController#index as HTML
+  Parameters: {"book_id"=>"37"}
+  [1m[35mBook Load (1.0ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 37]]
+  [1m[36mChapter Load (0.3ms)[0m  [1mSELECT  "chapters".* FROM "chapters" WHERE "chapters"."book_id" = $1  ORDER BY "chapters"."id" ASC LIMIT 1[0m  [["book_id", 37]]
+  [1m[35mChapter Load (1.6ms)[0m  SELECT  "chapters".* FROM "chapters" WHERE "chapters"."book_id" = $1  ORDER BY "chapters"."id" DESC LIMIT 1  [["book_id", 37]]
+Completed 200 OK in 8ms (Views: 1.1ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/books/37/chapters" for ::1 at 2016-06-08 15:52:49 -0500
+Processing by ChaptersController#index as HTML
+  Parameters: {"book_id"=>"37"}
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 37]]
+  [1m[35mChapter Load (0.2ms)[0m  SELECT  "chapters".* FROM "chapters" WHERE "chapters"."book_id" = $1  ORDER BY "chapters"."id" ASC LIMIT 1  [["book_id", 37]]
+  [1m[36mChapter Load (0.2ms)[0m  [1mSELECT  "chapters".* FROM "chapters" WHERE "chapters"."book_id" = $1  ORDER BY "chapters"."id" DESC LIMIT 1[0m  [["book_id", 37]]
+Completed 200 OK in 4ms (Views: 0.7ms | ActiveRecord: 0.5ms)
+
+
+Started GET "/chapters/100/reactions" for ::1 at 2016-06-08 15:52:49 -0500
+Processing by ReactionsController#index as HTML
+  Parameters: {"chapter_id"=>"100"}
+  [1m[35mChapter Load (0.4ms)[0m  SELECT  "chapters".* FROM "chapters" WHERE "chapters"."id" = $1 LIMIT 1  [["id", 100]]
+  [1m[36mBook Load (0.3ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 37]]
+  [1m[35mReaction Load (0.5ms)[0m  SELECT "reactions".* FROM "reactions"
+Completed 200 OK in 6ms (Views: 1.0ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/chapters/101/reactions" for ::1 at 2016-06-08 15:52:50 -0500
+Processing by ReactionsController#index as HTML
+  Parameters: {"chapter_id"=>"101"}
+  [1m[36mChapter Load (0.4ms)[0m  [1mSELECT  "chapters".* FROM "chapters" WHERE "chapters"."id" = $1 LIMIT 1[0m  [["id", 101]]
+  [1m[35mBook Load (0.2ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 37]]
+  [1m[36mReaction Load (0.4ms)[0m  [1mSELECT "reactions".* FROM "reactions"[0m
+Completed 200 OK in 5ms (Views: 0.8ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/books/37/chapters" for ::1 at 2016-06-08 15:52:50 -0500
+Processing by ChaptersController#index as HTML
+  Parameters: {"book_id"=>"37"}
+  [1m[35mBook Load (2.3ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 37]]
+  [1m[36mChapter Load (2.2ms)[0m  [1mSELECT  "chapters".* FROM "chapters" WHERE "chapters"."book_id" = $1  ORDER BY "chapters"."id" ASC LIMIT 1[0m  [["book_id", 37]]
+  [1m[35mChapter Load (0.4ms)[0m  SELECT  "chapters".* FROM "chapters" WHERE "chapters"."book_id" = $1  ORDER BY "chapters"."id" DESC LIMIT 1  [["book_id", 37]]
+Completed 200 OK in 10ms (Views: 0.9ms | ActiveRecord: 4.9ms)
+
+
+Started GET "/chapters/102/reactions" for ::1 at 2016-06-08 15:52:51 -0500
+Processing by ReactionsController#index as HTML
+  Parameters: {"chapter_id"=>"102"}
+  [1m[36mChapter Load (0.3ms)[0m  [1mSELECT  "chapters".* FROM "chapters" WHERE "chapters"."id" = $1 LIMIT 1[0m  [["id", 102]]
+  [1m[35mBook Load (0.3ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 37]]
+  [1m[36mReaction Load (0.3ms)[0m  [1mSELECT "reactions".* FROM "reactions"[0m
+Completed 200 OK in 4ms (Views: 0.6ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/books/37/chapters" for ::1 at 2016-06-08 15:52:51 -0500
+Processing by ChaptersController#index as HTML
+  Parameters: {"book_id"=>"37"}
+  [1m[35mBook Load (0.3ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 37]]
+  [1m[36mChapter Load (0.3ms)[0m  [1mSELECT  "chapters".* FROM "chapters" WHERE "chapters"."book_id" = $1  ORDER BY "chapters"."id" ASC LIMIT 1[0m  [["book_id", 37]]
+  [1m[35mChapter Load (0.3ms)[0m  SELECT  "chapters".* FROM "chapters" WHERE "chapters"."book_id" = $1  ORDER BY "chapters"."id" DESC LIMIT 1  [["book_id", 37]]
+Completed 200 OK in 5ms (Views: 0.7ms | ActiveRecord: 0.8ms)
+
+
+Started POST "/users/5/books/37/mark_complete" for ::1 at 2016-06-08 15:52:52 -0500
+Processing by BooksController#mark_complete as HTML
+  Parameters: {"queue"=>false, "current"=>false, "complete"=>true, "user_id"=>"5", "book_id"=>"37", "book"=>{}}
+Can't verify CSRF token authenticity
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mSoloReading Load (0.4ms)[0m  SELECT  "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."book_id" = $2 LIMIT 1  [["user_id", 5], ["book_id", 37]]
+  [1m[36m (0.4ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  UPDATE "solo_readings" SET "complete" = $1, "current" = $2, "updated_at" = $3 WHERE "solo_readings"."id" = $4  [["complete", "t"], ["current", "f"], ["updated_at", "2016-06-08 20:52:52.318204"], ["id", 41]]
+  [1m[36m (0.3ms)[0m  [1mCOMMIT[0m
+  [1m[35mBook Load (0.2ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 37]]
+Completed 200 OK in 8ms (Views: 0.6ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/books/37/reviews" for ::1 at 2016-06-08 15:52:52 -0500
+Processing by ReviewsController#index as HTML
+  Parameters: {"book_id"=>"37"}
+  [1m[36mReview Load (0.6ms)[0m  [1mSELECT "reviews".* FROM "reviews" WHERE "reviews"."book_id" = $1[0m  [["book_id", 37]]
+Completed 200 OK in 25ms (Views: 0.4ms | ActiveRecord: 1.8ms)
+
+
+Started POST "/books/37/reviews" for ::1 at 2016-06-08 15:52:57 -0500
+Processing by ReviewsController#create as HTML
+  Parameters: {"content"=>"yo", "user_id"=>"5", "book_id"=>"37", "rating"=>"1", "review"=>{"user_id"=>"5", "book_id"=>"37", "content"=>"yo", "rating"=>"1"}}
+Can't verify CSRF token authenticity
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "reviews" ("content", "user_id", "rating", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["content", "yo"], ["user_id", 5], ["rating", 1], ["book_id", 37], ["created_at", "2016-06-08 20:52:57.421285"], ["updated_at", "2016-06-08 20:52:57.421285"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+Completed 200 OK in 16ms (Views: 0.5ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/users/5/current" for ::1 at 2016-06-08 15:52:57 -0500
+Processing by SoloReadingsController#current_books as HTML
+  Parameters: {"user_id"=>"5"}
+  [1m[35mSoloReading Load (0.5ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2  [["user_id", 5], ["current", "t"]]
+  [1m[36mBook Load (0.4ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 35]]
+  [1m[35mBook Load (0.3ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 36]]
+  [1m[36mBook Load (0.3ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 17]]
+  [1m[35mBook Load (0.2ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 19]]
+Completed 200 OK in 12ms (Views: 1.7ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/users/5" for ::1 at 2016-06-08 15:52:58 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+Completed 200 OK in 3ms (Views: 0.4ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/5/history" for ::1 at 2016-06-08 15:52:59 -0500
+Processing by SoloReadingsController#history_books as HTML
+  Parameters: {"user_id"=>"5"}
+  [1m[36mSoloReading Load (0.3ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."complete" = $2[0m  [["user_id", 5], ["complete", "t"]]
+  [1m[35mBook Load (0.3ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 18]]
+  [1m[36mBook Load (0.3ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 37]]
+Completed 200 OK in 7ms (Views: 1.2ms | ActiveRecord: 0.8ms)
+
+
+Started GET "/check_books/18" for ::1 at 2016-06-08 15:53:01 -0500
+Processing by BooksController#check_books as HTML
+  Parameters: {"book_id"=>"18"}
+  [1m[35mBook Load (3.7ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 18]]
+Completed 200 OK in 6ms (Views: 0.9ms | ActiveRecord: 3.7ms)
+
+
+Started GET "/users/5/current" for ::1 at 2016-06-08 15:53:01 -0500
+Processing by SoloReadingsController#current_books as HTML
+  Parameters: {"user_id"=>"5"}
+  [1m[36mSoloReading Load (4.0ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2[0m  [["user_id", 5], ["current", "t"]]
+  [1m[35mBook Load (1.6ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 35]]
+  [1m[36mBook Load (0.8ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 36]]
+  [1m[35mBook Load (0.8ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 17]]
+  [1m[36mBook Load (2.3ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mBook Load (1.9ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 19]]
+Completed 200 OK in 22ms (Views: 3.6ms | ActiveRecord: 11.3ms)
+
+
+Started GET "/users/5/favorite" for ::1 at 2016-06-08 15:53:01 -0500
+Processing by SoloReadingsController#favorite_books as HTML
+  Parameters: {"user_id"=>"5"}
+  [1m[36mSoloReading Load (7.6ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."favorite" = $2[0m  [["user_id", 5], ["favorite", "t"]]
+Completed 200 OK in 15ms (Views: 0.3ms | ActiveRecord: 7.6ms)
+
+
+Started GET "/check_books/37" for ::1 at 2016-06-08 15:53:04 -0500
+Processing by BooksController#check_books as HTML
+  Parameters: {"book_id"=>"37"}
+  [1m[35mBook Load (4.7ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 37]]
+Completed 200 OK in 7ms (Views: 0.9ms | ActiveRecord: 4.7ms)
+
+
+Started GET "/users/5/current" for ::1 at 2016-06-08 15:53:04 -0500
+Processing by SoloReadingsController#current_books as HTML
+  Parameters: {"user_id"=>"5"}
+  [1m[36mSoloReading Load (3.1ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2[0m  [["user_id", 5], ["current", "t"]]
+  [1m[35mBook Load (5.7ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 35]]
+  [1m[36mBook Load (1.4ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 36]]
+  [1m[35mBook Load (1.2ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 17]]
+  [1m[36mBook Load (2.0ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mBook Load (1.2ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 19]]
+Completed 200 OK in 25ms (Views: 2.6ms | ActiveRecord: 14.6ms)
+
+
+Started GET "/users/5/favorite" for ::1 at 2016-06-08 15:53:04 -0500
+Processing by SoloReadingsController#favorite_books as HTML
+  Parameters: {"user_id"=>"5"}
+  [1m[36mSoloReading Load (1.9ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."favorite" = $2[0m  [["user_id", 5], ["favorite", "t"]]
+Completed 200 OK in 4ms (Views: 0.2ms | ActiveRecord: 1.9ms)
+
+
+Started POST "/users/5/books" for ::1 at 2016-06-08 15:53:05 -0500
+Processing by BooksController#create as HTML
+  Parameters: {"book_id"=>37, "author"=>"Amy Krouse Rosenthal", "title"=>"The OK Book", "image_url"=>"http://books.google.com/books/content?id=RZQLdlTQa_kC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api", "description"=>"In this clever and literal play on words, OK is turned on its side, upside down, and right side up to show that being OK can really be quite great. Whether OK personifies an OK skipper, an OK climber, an OK lightning bug catcher, or an OK whatever there is to experience, ok is an OK place to be. And being OK just may lead to the discovery of what makes one great. With spare yet comforting illustrations and text, Amy Krouse Rosenthal and Tom Lichtenheld celebrate the real skills and talents children possess, encouraging and empowering them to discover their own individual strengths and personalities. All ages", "page_numbers"=>40, "chapter_count"=>nil, "user_id"=>"5", "book"=>{"title"=>"The OK Book", "author"=>"Amy Krouse Rosenthal", "image_url"=>"http://books.google.com/books/content?id=RZQLdlTQa_kC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api", "description"=>"In this clever and literal play on words, OK is turned on its side, upside down, and right side up to show that being OK can really be quite great. Whether OK personifies an OK skipper, an OK climber, an OK lightning bug catcher, or an OK whatever there is to experience, ok is an OK place to be. And being OK just may lead to the discovery of what makes one great. With spare yet comforting illustrations and text, Amy Krouse Rosenthal and Tom Lichtenheld celebrate the real skills and talents children possess, encouraging and empowering them to discover their own individual strengths and personalities. All ages", "page_numbers"=>40}}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."title" = $1 LIMIT 1[0m  [["title", "The OK Book"]]
+  [1m[35mSoloReading Load (0.2ms)[0m  SELECT  "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."book_id" = $2 LIMIT 1  [["user_id", 5], ["book_id", 37]]
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  UPDATE "solo_readings" SET "current" = $1, "updated_at" = $2 WHERE "solo_readings"."id" = $3  [["current", "t"], ["updated_at", "2016-06-08 20:53:05.447747"], ["id", 41]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35mBook Load (0.2ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 37]]
+Completed 200 OK in 9ms (Views: 0.7ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/users/5/current" for ::1 at 2016-06-08 15:53:05 -0500
+Processing by SoloReadingsController#current_books as HTML
+  Parameters: {"user_id"=>"5"}
+  [1m[36mSoloReading Load (0.9ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2[0m  [["user_id", 5], ["current", "t"]]
+  [1m[35mBook Load (1.5ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 35]]
+  [1m[36mBook Load (0.7ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 36]]
+  [1m[35mBook Load (3.5ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 17]]
+  [1m[36mBook Load (0.9ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mBook Load (1.9ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 19]]
+  [1m[36mBook Load (1.5ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 37]]
+Completed 200 OK in 23ms (Views: 3.5ms | ActiveRecord: 11.0ms)
+
+
+Started GET "/check_books/37" for ::1 at 2016-06-08 15:54:52 -0500
+Processing by BooksController#check_books as HTML
+  Parameters: {"book_id"=>"37"}
+  [1m[35mBook Load (2.3ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 37]]
+Completed 200 OK in 5ms (Views: 0.9ms | ActiveRecord: 2.3ms)
+
+
+Started GET "/users/5/current" for ::1 at 2016-06-08 15:54:52 -0500
+Processing by SoloReadingsController#current_books as HTML
+  Parameters: {"user_id"=>"5"}
+  [1m[36mSoloReading Load (0.3ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2[0m  [["user_id", 5], ["current", "t"]]
+  [1m[35mBook Load (0.3ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 35]]
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 36]]
+  [1m[35mBook Load (0.2ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 17]]
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mBook Load (0.3ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 19]]
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 37]]
+Completed 200 OK in 12ms (Views: 3.3ms | ActiveRecord: 1.8ms)
+
+
+Started GET "/users/5/favorite" for ::1 at 2016-06-08 15:54:52 -0500
+Processing by SoloReadingsController#favorite_books as HTML
+  Parameters: {"user_id"=>"5"}
+  [1m[35mSoloReading Load (0.3ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."favorite" = $2  [["user_id", 5], ["favorite", "t"]]
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/check_books/37" for ::1 at 2016-06-08 15:54:58 -0500
+Processing by BooksController#check_books as HTML
+  Parameters: {"book_id"=>"37"}
+  [1m[36mBook Load (0.3ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 37]]
+Completed 200 OK in 2ms (Views: 0.9ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/5/current" for ::1 at 2016-06-08 15:54:58 -0500
+Processing by SoloReadingsController#current_books as HTML
+  Parameters: {"user_id"=>"5"}
+  [1m[35mSoloReading Load (0.3ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2  [["user_id", 5], ["current", "t"]]
+  [1m[36mBook Load (0.3ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 35]]
+  [1m[35mBook Load (0.4ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 36]]
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 17]]
+  [1m[35mBook Load (0.2ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 19]]
+  [1m[35mBook Load (0.2ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 37]]
+Completed 200 OK in 12ms (Views: 3.3ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/users/5/favorite" for ::1 at 2016-06-08 15:54:58 -0500
+Processing by SoloReadingsController#favorite_books as HTML
+  Parameters: {"user_id"=>"5"}
+  [1m[36mSoloReading Load (0.2ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."favorite" = $2[0m  [["user_id", 5], ["favorite", "t"]]
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/check_books/37" for ::1 at 2016-06-08 15:55:02 -0500
+Processing by BooksController#check_books as HTML
+  Parameters: {"book_id"=>"37"}
+  [1m[35mBook Load (2.9ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 37]]
+Completed 200 OK in 5ms (Views: 0.9ms | ActiveRecord: 2.9ms)
+
+
+Started GET "/users/5/current" for ::1 at 2016-06-08 15:55:02 -0500
+Processing by SoloReadingsController#current_books as HTML
+  Parameters: {"user_id"=>"5"}
+  [1m[36mSoloReading Load (0.4ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2[0m  [["user_id", 5], ["current", "t"]]
+  [1m[35mBook Load (0.4ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 35]]
+  [1m[36mBook Load (1.0ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 36]]
+  [1m[35mBook Load (0.3ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 17]]
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mBook Load (0.2ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 19]]
+  [1m[36mBook Load (0.3ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 37]]
+Completed 200 OK in 16ms (Views: 3.7ms | ActiveRecord: 2.8ms)
+
+
+Started GET "/users/5/favorite" for ::1 at 2016-06-08 15:55:02 -0500
+Processing by SoloReadingsController#favorite_books as HTML
+  Parameters: {"user_id"=>"5"}
+  [1m[35mSoloReading Load (0.3ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."favorite" = $2  [["user_id", 5], ["favorite", "t"]]
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/check_books/37" for ::1 at 2016-06-08 15:55:06 -0500
+Processing by BooksController#check_books as HTML
+  Parameters: {"book_id"=>"37"}
+  [1m[36mBook Load (0.3ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 37]]
+Completed 200 OK in 2ms (Views: 0.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/5/current" for ::1 at 2016-06-08 15:55:06 -0500
+Processing by SoloReadingsController#current_books as HTML
+  Parameters: {"user_id"=>"5"}
+  [1m[35mSoloReading Load (0.3ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2  [["user_id", 5], ["current", "t"]]
+  [1m[36mBook Load (0.3ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 35]]
+  [1m[35mBook Load (0.2ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 36]]
+  [1m[36mBook Load (0.3ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 17]]
+  [1m[35mBook Load (0.2ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36mBook Load (0.6ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 19]]
+  [1m[35mBook Load (0.3ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 37]]
+Completed 200 OK in 13ms (Views: 3.2ms | ActiveRecord: 2.2ms)
+
+
+Started GET "/users/5/favorite" for ::1 at 2016-06-08 15:55:06 -0500
+Processing by SoloReadingsController#favorite_books as HTML
+  Parameters: {"user_id"=>"5"}
+  [1m[36mSoloReading Load (0.3ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."favorite" = $2[0m  [["user_id", 5], ["favorite", "t"]]
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/check_books/37" for ::1 at 2016-06-08 15:55:18 -0500
+Processing by BooksController#check_books as HTML
+  Parameters: {"book_id"=>"37"}
+  [1m[35mBook Load (1.4ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 37]]
+Completed 200 OK in 3ms (Views: 0.8ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/users/5/current" for ::1 at 2016-06-08 15:55:18 -0500
+Processing by SoloReadingsController#current_books as HTML
+  Parameters: {"user_id"=>"5"}
+  [1m[36mSoloReading Load (0.3ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2[0m  [["user_id", 5], ["current", "t"]]
+  [1m[35mBook Load (0.3ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 35]]
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 36]]
+  [1m[35mBook Load (0.2ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 17]]
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mBook Load (0.3ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 19]]
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 37]]
+Completed 200 OK in 11ms (Views: 3.1ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/users/5/favorite" for ::1 at 2016-06-08 15:55:18 -0500
+Processing by SoloReadingsController#favorite_books as HTML
+  Parameters: {"user_id"=>"5"}
+  [1m[35mSoloReading Load (0.2ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."favorite" = $2  [["user_id", 5], ["favorite", "t"]]
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/check_books/37" for ::1 at 2016-06-08 15:55:33 -0500
+Processing by BooksController#check_books as HTML
+  Parameters: {"book_id"=>"37"}
+  [1m[36mBook Load (0.3ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 37]]
+Completed 200 OK in 2ms (Views: 0.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/5/current" for ::1 at 2016-06-08 15:55:33 -0500
+Processing by SoloReadingsController#current_books as HTML
+  Parameters: {"user_id"=>"5"}
+  [1m[35mSoloReading Load (0.2ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2  [["user_id", 5], ["current", "t"]]
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 35]]
+  [1m[35mBook Load (0.2ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 36]]
+  [1m[36mBook Load (0.3ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 17]]
+  [1m[35mBook Load (0.3ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 19]]
+  [1m[35mBook Load (0.3ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 37]]
+Completed 200 OK in 11ms (Views: 3.2ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/users/5/favorite" for ::1 at 2016-06-08 15:55:33 -0500
+Processing by SoloReadingsController#favorite_books as HTML
+  Parameters: {"user_id"=>"5"}
+  [1m[36mSoloReading Load (0.2ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."favorite" = $2[0m  [["user_id", 5], ["favorite", "t"]]
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.2ms)
+
+
+Started POST "/users/5/add_to_favorites" for ::1 at 2016-06-08 15:55:44 -0500
+Processing by BooksController#add_to_favorites as HTML
+  Parameters: {"book_id"=>37, "author"=>"Amy Krouse Rosenthal", "title"=>"The OK Book", "image_url"=>"http://books.google.com/books/content?id=RZQLdlTQa_kC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api", "description"=>"In this clever and literal play on words, OK is turned on its side, upside down, and right side up to show that being OK can really be quite great. Whether OK personifies an OK skipper, an OK climber, an OK lightning bug catcher, or an OK whatever there is to experience, ok is an OK place to be. And being OK just may lead to the discovery of what makes one great. With spare yet comforting illustrations and text, Amy Krouse Rosenthal and Tom Lichtenheld celebrate the real skills and talents children possess, encouraging and empowering them to discover their own individual strengths and personalities. All ages", "page_numbers"=>40, "user_id"=>"5", "book"=>{"title"=>"The OK Book", "author"=>"Amy Krouse Rosenthal", "image_url"=>"http://books.google.com/books/content?id=RZQLdlTQa_kC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api", "description"=>"In this clever and literal play on words, OK is turned on its side, upside down, and right side up to show that being OK can really be quite great. Whether OK personifies an OK skipper, an OK climber, an OK lightning bug catcher, or an OK whatever there is to experience, ok is an OK place to be. And being OK just may lead to the discovery of what makes one great. With spare yet comforting illustrations and text, Amy Krouse Rosenthal and Tom Lichtenheld celebrate the real skills and talents children possess, encouraging and empowering them to discover their own individual strengths and personalities. All ages", "page_numbers"=>40}}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."title" = $1 LIMIT 1[0m  [["title", "The OK Book"]]
+  [1m[35mSoloReading Load (0.2ms)[0m  SELECT  "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."book_id" = $2 LIMIT 1  [["user_id", 5], ["book_id", 37]]
+  [1m[36m (0.5ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE "solo_readings" SET "favorite" = $1, "updated_at" = $2 WHERE "solo_readings"."id" = $3  [["favorite", "t"], ["updated_at", "2016-06-08 20:55:44.637643"], ["id", 41]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35mBook Load (0.2ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 37]]
+Completed 200 OK in 8ms (Views: 0.5ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/users/5/favorite" for ::1 at 2016-06-08 15:55:45 -0500
+Processing by SoloReadingsController#favorite_books as HTML
+  Parameters: {"user_id"=>"5"}
+  [1m[36mSoloReading Load (0.2ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."favorite" = $2[0m  [["user_id", 5], ["favorite", "t"]]
+  [1m[35mBook Load (0.2ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 37]]
+Completed 200 OK in 3ms (Views: 0.5ms | ActiveRecord: 0.4ms)
+
+
+Started GET "/users/5" for ::1 at 2016-06-08 15:55:47 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[36mUser Load (1.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+Completed 200 OK in 3ms (Views: 0.3ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/users/5/favorite" for ::1 at 2016-06-08 15:55:49 -0500
+Processing by SoloReadingsController#favorite_books as HTML
+  Parameters: {"user_id"=>"5"}
+  [1m[35mSoloReading Load (0.3ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."favorite" = $2  [["user_id", 5], ["favorite", "t"]]
+  [1m[36mBook Load (0.3ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 37]]
+Completed 200 OK in 5ms (Views: 1.0ms | ActiveRecord: 0.6ms)
+
+
+Started POST "/users/5/add_to_favorites" for ::1 at 2016-06-08 15:55:53 -0500
+Processing by BooksController#add_to_favorites as HTML
+  Parameters: {"book_id"=>37, "author"=>"Amy Krouse Rosenthal", "title"=>"The OK Book", "image_url"=>"http://books.google.com/books/content?id=RZQLdlTQa_kC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api", "description"=>"In this clever and literal play on words, OK is turned on its side, upside down, and right side up to show that being OK can really be quite great. Whether OK personifies an OK skipper, an OK climber, an OK lightning bug catcher, or an OK whatever there is to experience, ok is an OK place to be. And being OK just may lead to the discovery of what makes one great. With spare yet comforting illustrations and text, Amy Krouse Rosenthal and Tom Lichtenheld celebrate the real skills and talents children possess, encouraging and empowering them to discover their own individual strengths and personalities. All ages", "page_numbers"=>40, "user_id"=>"5", "book"=>{"title"=>"The OK Book", "author"=>"Amy Krouse Rosenthal", "image_url"=>"http://books.google.com/books/content?id=RZQLdlTQa_kC&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api", "description"=>"In this clever and literal play on words, OK is turned on its side, upside down, and right side up to show that being OK can really be quite great. Whether OK personifies an OK skipper, an OK climber, an OK lightning bug catcher, or an OK whatever there is to experience, ok is an OK place to be. And being OK just may lead to the discovery of what makes one great. With spare yet comforting illustrations and text, Amy Krouse Rosenthal and Tom Lichtenheld celebrate the real skills and talents children possess, encouraging and empowering them to discover their own individual strengths and personalities. All ages", "page_numbers"=>40}}
+Can't verify CSRF token authenticity
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."title" = $1 LIMIT 1[0m  [["title", "The OK Book"]]
+  [1m[35mSoloReading Load (0.2ms)[0m  SELECT  "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."book_id" = $2 LIMIT 1  [["user_id", 5], ["book_id", 37]]
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  UPDATE "solo_readings" SET "favorite" = $1, "updated_at" = $2 WHERE "solo_readings"."id" = $3  [["favorite", "f"], ["updated_at", "2016-06-08 20:55:53.312229"], ["id", 41]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35mBook Load (0.2ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 37]]
+Completed 200 OK in 72ms (Views: 0.7ms | ActiveRecord: 1.7ms)
+
+
+Started GET "/users/5/favorite" for ::1 at 2016-06-08 15:55:54 -0500
+Processing by SoloReadingsController#favorite_books as HTML
+  Parameters: {"user_id"=>"5"}
+  [1m[36mSoloReading Load (0.2ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."favorite" = $2[0m  [["user_id", 5], ["favorite", "t"]]
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users/5/current" for ::1 at 2016-06-08 15:55:56 -0500
+Processing by SoloReadingsController#current_books as HTML
+  Parameters: {"user_id"=>"5"}
+  [1m[35mSoloReading Load (1.0ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2  [["user_id", 5], ["current", "t"]]
+  [1m[36mBook Load (1.3ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 35]]
+  [1m[35mBook Load (0.5ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 36]]
+  [1m[36mBook Load (1.1ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 17]]
+  [1m[35mBook Load (0.4ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36mBook Load (0.3ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 19]]
+  [1m[35mBook Load (0.7ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 37]]
+Completed 200 OK in 17ms (Views: 3.2ms | ActiveRecord: 5.3ms)
+
+
+Started GET "/check_books/37" for ::1 at 2016-06-08 15:56:01 -0500
+Processing by BooksController#check_books as HTML
+  Parameters: {"book_id"=>"37"}
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 37]]
+Completed 200 OK in 2ms (Views: 0.8ms | ActiveRecord: 0.2ms)
+
+
+Started GET "/users/5/current" for ::1 at 2016-06-08 15:56:01 -0500
+Processing by SoloReadingsController#current_books as HTML
+  Parameters: {"user_id"=>"5"}
+  [1m[35mSoloReading Load (0.3ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2  [["user_id", 5], ["current", "t"]]
+  [1m[36mBook Load (0.3ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 35]]
+  [1m[35mBook Load (0.3ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 36]]
+  [1m[36mBook Load (0.3ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 17]]
+  [1m[35mBook Load (0.3ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36mBook Load (0.3ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 19]]
+  [1m[35mBook Load (0.3ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 37]]
+Completed 200 OK in 14ms (Views: 3.4ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/users/5/favorite" for ::1 at 2016-06-08 15:56:01 -0500
+Processing by SoloReadingsController#favorite_books as HTML
+  Parameters: {"user_id"=>"5"}
+  [1m[36mSoloReading Load (0.3ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."favorite" = $2[0m  [["user_id", 5], ["favorite", "t"]]
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/5" for ::1 at 2016-06-08 15:56:02 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+Completed 200 OK in 2ms (Views: 0.2ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/users/5/reviews" for ::1 at 2016-06-08 15:56:03 -0500
+Processing by UsersController#reviews as HTML
+  Parameters: {"user_id"=>"5"}
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mReview Load (3.1ms)[0m  SELECT "reviews".* FROM "reviews" WHERE "reviews"."user_id" = $1  [["user_id", 5]]
+Completed 200 OK in 15ms (Views: 1.8ms | ActiveRecord: 3.3ms)
+
+
+Started GET "/users/5/current" for ::1 at 2016-06-08 15:56:09 -0500
+Processing by SoloReadingsController#current_books as HTML
+  Parameters: {"user_id"=>"5"}
+  [1m[36mSoloReading Load (0.3ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2[0m  [["user_id", 5], ["current", "t"]]
+  [1m[35mBook Load (0.3ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 35]]
+  [1m[36mBook Load (0.3ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 36]]
+  [1m[35mBook Load (0.3ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 17]]
+  [1m[36mBook Load (0.3ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mBook Load (0.3ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 19]]
+  [1m[36mBook Load (0.3ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 37]]
+Completed 200 OK in 14ms (Views: 3.4ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/books/35/chapters" for ::1 at 2016-06-08 15:56:10 -0500
+Processing by ChaptersController#index as HTML
+  Parameters: {"book_id"=>"35"}
+  [1m[35mBook Load (0.2ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 35]]
+  [1m[36mChapter Load (0.2ms)[0m  [1mSELECT  "chapters".* FROM "chapters" WHERE "chapters"."book_id" = $1  ORDER BY "chapters"."id" ASC LIMIT 1[0m  [["book_id", 35]]
+  [1m[35mChapter Load (0.2ms)[0m  SELECT  "chapters".* FROM "chapters" WHERE "chapters"."book_id" = $1  ORDER BY "chapters"."id" DESC LIMIT 1  [["book_id", 35]]
+Completed 200 OK in 3ms (Views: 0.2ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/books/36/chapters" for ::1 at 2016-06-08 15:56:12 -0500
+Processing by ChaptersController#index as HTML
+  Parameters: {"book_id"=>"36"}
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 36]]
+  [1m[35mChapter Load (0.2ms)[0m  SELECT  "chapters".* FROM "chapters" WHERE "chapters"."book_id" = $1  ORDER BY "chapters"."id" ASC LIMIT 1  [["book_id", 36]]
+  [1m[36mChapter Load (0.2ms)[0m  [1mSELECT  "chapters".* FROM "chapters" WHERE "chapters"."book_id" = $1  ORDER BY "chapters"."id" DESC LIMIT 1[0m  [["book_id", 36]]
+Completed 200 OK in 3ms (Views: 0.1ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/books/19/chapters" for ::1 at 2016-06-08 15:56:13 -0500
+Processing by ChaptersController#index as HTML
+  Parameters: {"book_id"=>"19"}
+  [1m[35mBook Load (0.2ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 19]]
+  [1m[36mChapter Load (0.2ms)[0m  [1mSELECT  "chapters".* FROM "chapters" WHERE "chapters"."book_id" = $1  ORDER BY "chapters"."id" ASC LIMIT 1[0m  [["book_id", 19]]
+  [1m[35mChapter Load (0.2ms)[0m  SELECT  "chapters".* FROM "chapters" WHERE "chapters"."book_id" = $1  ORDER BY "chapters"."id" DESC LIMIT 1  [["book_id", 19]]
+Completed 200 OK in 4ms (Views: 0.6ms | ActiveRecord: 0.6ms)
+
+
+Started GET "/chapters/67/reactions" for ::1 at 2016-06-08 15:56:13 -0500
+Processing by ReactionsController#index as HTML
+  Parameters: {"chapter_id"=>"67"}
+  [1m[36mChapter Load (0.9ms)[0m  [1mSELECT  "chapters".* FROM "chapters" WHERE "chapters"."id" = $1 LIMIT 1[0m  [["id", 67]]
+  [1m[35mBook Load (1.6ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 19]]
+  [1m[36mReaction Load (0.5ms)[0m  [1mSELECT "reactions".* FROM "reactions"[0m
+Completed 200 OK in 8ms (Views: 1.0ms | ActiveRecord: 3.0ms)
+
+
+Started GET "/books/19/chapters" for ::1 at 2016-06-08 15:56:13 -0500
+Processing by ChaptersController#index as HTML
+  Parameters: {"book_id"=>"19"}
+  [1m[35mBook Load (0.9ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 19]]
+  [1m[36mChapter Load (1.1ms)[0m  [1mSELECT  "chapters".* FROM "chapters" WHERE "chapters"."book_id" = $1  ORDER BY "chapters"."id" ASC LIMIT 1[0m  [["book_id", 19]]
+  [1m[35mChapter Load (0.3ms)[0m  SELECT  "chapters".* FROM "chapters" WHERE "chapters"."book_id" = $1  ORDER BY "chapters"."id" DESC LIMIT 1  [["book_id", 19]]
+Completed 200 OK in 7ms (Views: 0.8ms | ActiveRecord: 2.3ms)
+
+
+Started POST "/chapters/67/reactions" for ::1 at 2016-06-08 15:56:21 -0500
+Processing by ReactionsController#create as HTML
+  Parameters: {"content"=>"tel l me more", "user_id"=>"5", "chapter_id"=>"67", "reaction"=>{"chapter_id"=>"67", "content"=>"tel l me more", "user_id"=>"5"}}
+Can't verify CSRF token authenticity
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "reactions" ("content", "chapter_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["content", "tel l me more"], ["chapter_id", 67], ["user_id", 5], ["created_at", "2016-06-08 20:56:21.551286"], ["updated_at", "2016-06-08 20:56:21.551286"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+Completed 200 OK in 7ms (Views: 0.2ms | ActiveRecord: 1.1ms)
+
+
+Started POST "/chapters/67/reactions" for ::1 at 2016-06-08 15:56:30 -0500
+Processing by ReactionsController#create as HTML
+  Parameters: {"content"=>"how are you?", "user_id"=>"5", "chapter_id"=>"67", "reaction"=>{"chapter_id"=>"67", "content"=>"how are you?", "user_id"=>"5"}}
+Can't verify CSRF token authenticity
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "reactions" ("content", "chapter_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["content", "how are you?"], ["chapter_id", 67], ["user_id", 5], ["created_at", "2016-06-08 20:56:30.929429"], ["updated_at", "2016-06-08 20:56:30.929429"]]
+  [1m[36m (0.4ms)[0m  [1mCOMMIT[0m
+  [1m[35mUser Load (0.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+Completed 200 OK in 4ms (Views: 0.2ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/reactions/38/comments" for ::1 at 2016-06-08 15:56:32 -0500
+Processing by CommentsController#index as HTML
+  Parameters: {"reaction_id"=>"38"}
+  [1m[36mReaction Load (0.3ms)[0m  [1mSELECT  "reactions".* FROM "reactions" WHERE "reactions"."id" = $1 LIMIT 1[0m  [["id", 38]]
+  [1m[35mComment Load (0.5ms)[0m  SELECT "comments".* FROM "comments" WHERE "comments"."reaction_id" = $1  [["reaction_id", 38]]
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+Completed 200 OK in 44ms (Views: 0.9ms | ActiveRecord: 15.0ms)
+
+
+Started POST "/reactions/38/comments" for ::1 at 2016-06-08 15:56:39 -0500
+Processing by CommentsController#create as HTML
+  Parameters: {"content"=>"this is a nice response", "user_id"=>"5", "reaction_id"=>"38", "comment"=>{"reaction_id"=>"38", "content"=>"this is a nice response", "user_id"=>"5"}}
+Can't verify CSRF token authenticity
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (43.0ms)[0m  [1mINSERT INTO "comments" ("content", "reaction_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["content", "this is a nice response"], ["reaction_id", 38], ["user_id", 5], ["created_at", "2016-06-08 20:56:39.562483"], ["updated_at", "2016-06-08 20:56:39.562483"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+Completed 200 OK in 55ms (Views: 0.5ms | ActiveRecord: 44.4ms)
+
+
+Started POST "/reactions/38/comments" for ::1 at 2016-06-08 15:56:44 -0500
+Processing by CommentsController#create as HTML
+  Parameters: {"content"=>"i'm into it", "user_id"=>"5", "reaction_id"=>"38", "comment"=>{"reaction_id"=>"38", "content"=>"i'm into it", "user_id"=>"5"}}
+Can't verify CSRF token authenticity
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "comments" ("content", "reaction_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["content", "i'm into it"], ["reaction_id", 38], ["user_id", 5], ["created_at", "2016-06-08 20:56:44.933725"], ["updated_at", "2016-06-08 20:56:44.933725"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+Completed 200 OK in 5ms (Views: 0.3ms | ActiveRecord: 1.1ms)
+
+
+Started POST "/reactions/38/comments" for ::1 at 2016-06-08 15:56:54 -0500
+Processing by CommentsController#create as HTML
+  Parameters: {"content"=>"like in a weird way", "user_id"=>"5", "reaction_id"=>"38", "comment"=>{"reaction_id"=>"38", "content"=>"like in a weird way", "user_id"=>"5"}}
+Can't verify CSRF token authenticity
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "comments" ("content", "reaction_id", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["content", "like in a weird way"], ["reaction_id", 38], ["user_id", 5], ["created_at", "2016-06-08 20:56:54.582592"], ["updated_at", "2016-06-08 20:56:54.582592"]]
+  [1m[35m (0.4ms)[0m  COMMIT
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+Completed 200 OK in 5ms (Views: 0.4ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/chapters/67/reactions" for ::1 at 2016-06-08 15:56:56 -0500
+Processing by ReactionsController#index as HTML
+  Parameters: {"chapter_id"=>"67"}
+  [1m[35mChapter Load (0.8ms)[0m  SELECT  "chapters".* FROM "chapters" WHERE "chapters"."id" = $1 LIMIT 1  [["id", 67]]
+  [1m[36mBook Load (1.9ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 19]]
+  [1m[35mReaction Load (0.6ms)[0m  SELECT "reactions".* FROM "reactions"
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+Completed 200 OK in 12ms (Views: 1.1ms | ActiveRecord: 3.7ms)
+
+
+Started GET "/books/19/chapters" for ::1 at 2016-06-08 15:56:57 -0500
+Processing by ChaptersController#index as HTML
+  Parameters: {"book_id"=>"19"}
+  [1m[36mBook Load (0.3ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 19]]
+  [1m[35mChapter Load (0.3ms)[0m  SELECT  "chapters".* FROM "chapters" WHERE "chapters"."book_id" = $1  ORDER BY "chapters"."id" ASC LIMIT 1  [["book_id", 19]]
+  [1m[36mChapter Load (0.3ms)[0m  [1mSELECT  "chapters".* FROM "chapters" WHERE "chapters"."book_id" = $1  ORDER BY "chapters"."id" DESC LIMIT 1[0m  [["book_id", 19]]
+Completed 200 OK in 6ms (Views: 1.1ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/users/5/current" for ::1 at 2016-06-08 15:57:01 -0500
+Processing by SoloReadingsController#current_books as HTML
+  Parameters: {"user_id"=>"5"}
+  [1m[35mSoloReading Load (5.2ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2  [["user_id", 5], ["current", "t"]]
+  [1m[36mBook Load (1.4ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 35]]
+  [1m[35mBook Load (0.3ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 36]]
+  [1m[36mBook Load (0.4ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 17]]
+  [1m[35mBook Load (1.4ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36mBook Load (3.5ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 19]]
+  [1m[35mBook Load (0.8ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 37]]
+Completed 200 OK in 33ms (Views: 10.8ms | ActiveRecord: 13.0ms)
+
+
+Started GET "/books/37/chapters" for ::1 at 2016-06-08 15:57:07 -0500
+Processing by ChaptersController#index as HTML
+  Parameters: {"book_id"=>"37"}
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 37]]
+  [1m[35mChapter Load (0.2ms)[0m  SELECT  "chapters".* FROM "chapters" WHERE "chapters"."book_id" = $1  ORDER BY "chapters"."id" ASC LIMIT 1  [["book_id", 37]]
+  [1m[36mChapter Load (0.3ms)[0m  [1mSELECT  "chapters".* FROM "chapters" WHERE "chapters"."book_id" = $1  ORDER BY "chapters"."id" DESC LIMIT 1[0m  [["book_id", 37]]
+Completed 200 OK in 5ms (Views: 0.9ms | ActiveRecord: 0.7ms)
+
+
+Started GET "/chapters/97/reactions" for ::1 at 2016-06-08 15:57:07 -0500
+Processing by ReactionsController#index as HTML
+  Parameters: {"chapter_id"=>"97"}
+  [1m[35mChapter Load (0.4ms)[0m  SELECT  "chapters".* FROM "chapters" WHERE "chapters"."id" = $1 LIMIT 1  [["id", 97]]
+  [1m[36mBook Load (0.3ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 37]]
+  [1m[35mReaction Load (0.6ms)[0m  SELECT "reactions".* FROM "reactions"
+Completed 200 OK in 6ms (Views: 1.1ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/books/37/chapters" for ::1 at 2016-06-08 15:57:07 -0500
+Processing by ChaptersController#index as HTML
+  Parameters: {"book_id"=>"37"}
+  [1m[36mBook Load (1.0ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 37]]
+  [1m[35mChapter Load (0.8ms)[0m  SELECT  "chapters".* FROM "chapters" WHERE "chapters"."book_id" = $1  ORDER BY "chapters"."id" ASC LIMIT 1  [["book_id", 37]]
+  [1m[36mChapter Load (0.3ms)[0m  [1mSELECT  "chapters".* FROM "chapters" WHERE "chapters"."book_id" = $1  ORDER BY "chapters"."id" DESC LIMIT 1[0m  [["book_id", 37]]
+Completed 200 OK in 8ms (Views: 1.1ms | ActiveRecord: 2.0ms)
+
+
+Started GET "/users/5/current" for ::1 at 2016-06-08 15:57:10 -0500
+Processing by SoloReadingsController#current_books as HTML
+  Parameters: {"user_id"=>"5"}
+  [1m[35mSoloReading Load (5.9ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2  [["user_id", 5], ["current", "t"]]
+  [1m[36mBook Load (9.4ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 35]]
+  [1m[35mBook Load (3.2ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 36]]
+  [1m[36mBook Load (2.3ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 17]]
+  [1m[35mBook Load (0.8ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36mBook Load (1.7ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 19]]
+  [1m[35mBook Load (0.9ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 37]]
+Completed 200 OK in 115ms (Views: 81.8ms | ActiveRecord: 24.2ms)
+
+
+Started GET "/users/5/current" for ::1 at 2016-06-08 16:01:59 -0500
+Processing by SoloReadingsController#current_books as HTML
+  Parameters: {"user_id"=>"5"}
+  [1m[36mSoloReading Load (0.3ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2[0m  [["user_id", 5], ["current", "t"]]
+  [1m[35mBook Load (0.3ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 35]]
+  [1m[36mBook Load (0.5ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 36]]
+  [1m[35mBook Load (0.3ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 17]]
+  [1m[36mBook Load (0.7ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 2]]
+  [1m[35mBook Load (0.9ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 19]]
+  [1m[36mBook Load (2.6ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 37]]
+Completed 200 OK in 19ms (Views: 5.0ms | ActiveRecord: 5.5ms)
+
+
+Started GET "/users/5/current" for ::1 at 2016-06-08 16:02:16 -0500
+Processing by SoloReadingsController#current_books as HTML
+  Parameters: {"user_id"=>"5"}
+  [1m[35mSoloReading Load (0.2ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."current" = $2  [["user_id", 5], ["current", "t"]]
+  [1m[36mBook Load (0.3ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 35]]
+  [1m[35mBook Load (0.3ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 36]]
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 17]]
+  [1m[35mBook Load (0.2ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36mBook Load (0.3ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 19]]
+  [1m[35mBook Load (0.3ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 37]]
+Completed 200 OK in 60ms (Views: 4.0ms | ActiveRecord: 6.6ms)
+
+
+Started GET "/books/19/chapters" for ::1 at 2016-06-08 16:02:20 -0500
+Processing by ChaptersController#index as HTML
+  Parameters: {"book_id"=>"19"}
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 19]]
+  [1m[35mChapter Load (0.2ms)[0m  SELECT  "chapters".* FROM "chapters" WHERE "chapters"."book_id" = $1  ORDER BY "chapters"."id" ASC LIMIT 1  [["book_id", 19]]
+  [1m[36mChapter Load (0.3ms)[0m  [1mSELECT  "chapters".* FROM "chapters" WHERE "chapters"."book_id" = $1  ORDER BY "chapters"."id" DESC LIMIT 1[0m  [["book_id", 19]]
+Completed 200 OK in 17ms (Views: 0.8ms | ActiveRecord: 1.9ms)
+
+
+Started GET "/chapters/67/reactions" for ::1 at 2016-06-08 16:02:20 -0500
+Processing by ReactionsController#index as HTML
+  Parameters: {"chapter_id"=>"67"}
+  [1m[35mChapter Load (0.3ms)[0m  SELECT  "chapters".* FROM "chapters" WHERE "chapters"."id" = $1 LIMIT 1  [["id", 67]]
+  [1m[36mBook Load (0.3ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 19]]
+  [1m[35mReaction Load (0.5ms)[0m  SELECT "reactions".* FROM "reactions"
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+Completed 200 OK in 115ms (Views: 0.9ms | ActiveRecord: 4.4ms)
+
+
+Started GET "/books/19/chapters" for ::1 at 2016-06-08 16:02:20 -0500
+Processing by ChaptersController#index as HTML
+  Parameters: {"book_id"=>"19"}
+  [1m[36mBook Load (0.3ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 19]]
+  [1m[35mChapter Load (0.3ms)[0m  SELECT  "chapters".* FROM "chapters" WHERE "chapters"."book_id" = $1  ORDER BY "chapters"."id" ASC LIMIT 1  [["book_id", 19]]
+  [1m[36mChapter Load (0.3ms)[0m  [1mSELECT  "chapters".* FROM "chapters" WHERE "chapters"."book_id" = $1  ORDER BY "chapters"."id" DESC LIMIT 1[0m  [["book_id", 19]]
+Completed 200 OK in 7ms (Views: 1.0ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/chapters/67/reactions" for ::1 at 2016-06-08 16:02:45 -0500
+Processing by ReactionsController#index as HTML
+  Parameters: {"chapter_id"=>"67"}
+  [1m[35mChapter Load (1.0ms)[0m  SELECT  "chapters".* FROM "chapters" WHERE "chapters"."id" = $1 LIMIT 1  [["id", 67]]
+  [1m[36mBook Load (0.4ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 19]]
+  [1m[35mReaction Load (0.9ms)[0m  SELECT "reactions".* FROM "reactions"
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+Completed 200 OK in 105ms (Views: 0.8ms | ActiveRecord: 15.7ms)
+
+
+Started GET "/books/19/chapters" for ::1 at 2016-06-08 16:02:45 -0500
+Processing by ChaptersController#index as HTML
+  Parameters: {"book_id"=>"19"}
+  [1m[36mBook Load (3.1ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 19]]
+  [1m[35mChapter Load (0.4ms)[0m  SELECT  "chapters".* FROM "chapters" WHERE "chapters"."book_id" = $1  ORDER BY "chapters"."id" ASC LIMIT 1  [["book_id", 19]]
+  [1m[36mChapter Load (0.4ms)[0m  [1mSELECT  "chapters".* FROM "chapters" WHERE "chapters"."book_id" = $1  ORDER BY "chapters"."id" DESC LIMIT 1[0m  [["book_id", 19]]
+Completed 200 OK in 15ms (Views: 1.3ms | ActiveRecord: 3.9ms)
+
+
+Started GET "/chapters/67/reactions" for ::1 at 2016-06-08 16:03:11 -0500
+Processing by ReactionsController#index as HTML
+  Parameters: {"chapter_id"=>"67"}
+  [1m[35mChapter Load (0.3ms)[0m  SELECT  "chapters".* FROM "chapters" WHERE "chapters"."id" = $1 LIMIT 1  [["id", 67]]
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 19]]
+  [1m[35mReaction Load (0.6ms)[0m  SELECT "reactions".* FROM "reactions"
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+Completed 200 OK in 99ms (Views: 1.3ms | ActiveRecord: 8.8ms)
+
+
+Started GET "/books/19/chapters" for ::1 at 2016-06-08 16:03:11 -0500
+Processing by ChaptersController#index as HTML
+  Parameters: {"book_id"=>"19"}
+  [1m[36mBook Load (0.3ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 19]]
+  [1m[35mChapter Load (0.3ms)[0m  SELECT  "chapters".* FROM "chapters" WHERE "chapters"."book_id" = $1  ORDER BY "chapters"."id" ASC LIMIT 1  [["book_id", 19]]
+  [1m[36mChapter Load (0.3ms)[0m  [1mSELECT  "chapters".* FROM "chapters" WHERE "chapters"."book_id" = $1  ORDER BY "chapters"."id" DESC LIMIT 1[0m  [["book_id", 19]]
+Completed 200 OK in 11ms (Views: 1.2ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/chapters/67/reactions" for ::1 at 2016-06-08 16:04:02 -0500
+Processing by ReactionsController#index as HTML
+  Parameters: {"chapter_id"=>"67"}
+  [1m[35mChapter Load (0.3ms)[0m  SELECT  "chapters".* FROM "chapters" WHERE "chapters"."id" = $1 LIMIT 1  [["id", 67]]
+  [1m[36mBook Load (0.4ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 19]]
+  [1m[35mReaction Load (0.7ms)[0m  SELECT "reactions".* FROM "reactions"
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+Completed 200 OK in 86ms (Views: 1.4ms | ActiveRecord: 8.4ms)
+
+
+Started GET "/books/19/chapters" for ::1 at 2016-06-08 16:04:03 -0500
+Processing by ChaptersController#index as HTML
+  Parameters: {"book_id"=>"19"}
+  [1m[36mBook Load (0.3ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 19]]
+  [1m[35mChapter Load (0.3ms)[0m  SELECT  "chapters".* FROM "chapters" WHERE "chapters"."book_id" = $1  ORDER BY "chapters"."id" ASC LIMIT 1  [["book_id", 19]]
+  [1m[36mChapter Load (0.3ms)[0m  [1mSELECT  "chapters".* FROM "chapters" WHERE "chapters"."book_id" = $1  ORDER BY "chapters"."id" DESC LIMIT 1[0m  [["book_id", 19]]
+Completed 200 OK in 10ms (Views: 1.2ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/chapters/67/reactions" for ::1 at 2016-06-08 16:05:53 -0500
+Processing by ReactionsController#index as HTML
+  Parameters: {"chapter_id"=>"67"}
+  [1m[35mChapter Load (0.2ms)[0m  SELECT  "chapters".* FROM "chapters" WHERE "chapters"."id" = $1 LIMIT 1  [["id", 67]]
+  [1m[36mBook Load (0.1ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 19]]
+  [1m[35mReaction Load (0.5ms)[0m  SELECT "reactions".* FROM "reactions"
+  [1m[36mUser Load (1.8ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+Completed 200 OK in 157ms (Views: 1.4ms | ActiveRecord: 8.7ms)
+
+
+Started GET "/books/19/chapters" for ::1 at 2016-06-08 16:05:53 -0500
+Processing by ChaptersController#index as HTML
+  Parameters: {"book_id"=>"19"}
+  [1m[36mBook Load (0.3ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 19]]
+  [1m[35mChapter Load (0.3ms)[0m  SELECT  "chapters".* FROM "chapters" WHERE "chapters"."book_id" = $1  ORDER BY "chapters"."id" ASC LIMIT 1  [["book_id", 19]]
+  [1m[36mChapter Load (0.3ms)[0m  [1mSELECT  "chapters".* FROM "chapters" WHERE "chapters"."book_id" = $1  ORDER BY "chapters"."id" DESC LIMIT 1[0m  [["book_id", 19]]
+Completed 200 OK in 11ms (Views: 1.3ms | ActiveRecord: 0.9ms)
+
+
+Started GET "/chapters/67/reactions" for ::1 at 2016-06-08 16:06:04 -0500
+Processing by ReactionsController#index as HTML
+  Parameters: {"chapter_id"=>"67"}
+  [1m[35mChapter Load (0.2ms)[0m  SELECT  "chapters".* FROM "chapters" WHERE "chapters"."id" = $1 LIMIT 1  [["id", 67]]
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 19]]
+  [1m[35mReaction Load (0.5ms)[0m  SELECT "reactions".* FROM "reactions"
+  [1m[36mUser Load (0.2ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+Completed 200 OK in 8ms (Views: 1.2ms | ActiveRecord: 1.2ms)
+
+
+Started GET "/books/19/chapters" for ::1 at 2016-06-08 16:06:04 -0500
+Processing by ChaptersController#index as HTML
+  Parameters: {"book_id"=>"19"}
+  [1m[36mBook Load (0.3ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 19]]
+  [1m[35mChapter Load (0.3ms)[0m  SELECT  "chapters".* FROM "chapters" WHERE "chapters"."book_id" = $1  ORDER BY "chapters"."id" ASC LIMIT 1  [["book_id", 19]]
+  [1m[36mChapter Load (0.4ms)[0m  [1mSELECT  "chapters".* FROM "chapters" WHERE "chapters"."book_id" = $1  ORDER BY "chapters"."id" DESC LIMIT 1[0m  [["book_id", 19]]
+Completed 200 OK in 6ms (Views: 0.9ms | ActiveRecord: 1.0ms)
+
+
+Started GET "/chapters/67/reactions" for ::1 at 2016-06-08 16:45:19 -0500
+Processing by ReactionsController#index as HTML
+  Parameters: {"chapter_id"=>"67"}
+  [1m[35mChapter Load (0.3ms)[0m  SELECT  "chapters".* FROM "chapters" WHERE "chapters"."id" = $1 LIMIT 1  [["id", 67]]
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 19]]
+  [1m[35mReaction Load (0.5ms)[0m  SELECT "reactions".* FROM "reactions"
+  [1m[36mUser Load (0.3ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+  [1m[35mCACHE (0.0ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+Completed 200 OK in 7ms (Views: 1.0ms | ActiveRecord: 1.4ms)
+
+
+Started GET "/books/19/chapters" for ::1 at 2016-06-08 16:45:19 -0500
+Processing by ChaptersController#index as HTML
+  Parameters: {"book_id"=>"19"}
+  [1m[36mBook Load (2.8ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1[0m  [["id", 19]]
+  [1m[35mChapter Load (1.2ms)[0m  SELECT  "chapters".* FROM "chapters" WHERE "chapters"."book_id" = $1  ORDER BY "chapters"."id" ASC LIMIT 1  [["book_id", 19]]
+  [1m[36mChapter Load (0.8ms)[0m  [1mSELECT  "chapters".* FROM "chapters" WHERE "chapters"."book_id" = $1  ORDER BY "chapters"."id" DESC LIMIT 1[0m  [["book_id", 19]]
+Completed 200 OK in 10ms (Views: 1.0ms | ActiveRecord: 4.7ms)
+
+
+Started GET "/users/5" for ::1 at 2016-06-08 16:48:48 -0500
+Processing by UsersController#show as HTML
+  Parameters: {"id"=>"5"}
+  [1m[35mUser Load (0.3ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+Completed 200 OK in 4ms (Views: 0.8ms | ActiveRecord: 0.3ms)
+
+
+Started GET "/chapters/67/reactions" for ::1 at 2016-06-08 17:00:26 -0500
+Processing by ReactionsController#index as HTML
+  Parameters: {"chapter_id"=>"67"}
+  [1m[36mChapter Load (2.0ms)[0m  [1mSELECT  "chapters".* FROM "chapters" WHERE "chapters"."id" = $1 LIMIT 1[0m  [["id", 67]]
+  [1m[35mBook Load (0.8ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 19]]
+  [1m[36mReaction Load (4.4ms)[0m  [1mSELECT "reactions".* FROM "reactions"[0m
+  [1m[35mUser Load (1.2ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 5]]
+  [1m[36mCACHE (0.0ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 5]]
+Completed 200 OK in 18ms (Views: 1.3ms | ActiveRecord: 8.4ms)
+
+
+Started GET "/books/19/chapters" for ::1 at 2016-06-08 17:00:26 -0500
+Processing by ChaptersController#index as HTML
+  Parameters: {"book_id"=>"19"}
+  [1m[35mBook Load (0.4ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 19]]
+  [1m[36mChapter Load (0.3ms)[0m  [1mSELECT  "chapters".* FROM "chapters" WHERE "chapters"."book_id" = $1  ORDER BY "chapters"."id" ASC LIMIT 1[0m  [["book_id", 19]]
+  [1m[35mChapter Load (0.7ms)[0m  SELECT  "chapters".* FROM "chapters" WHERE "chapters"."book_id" = $1  ORDER BY "chapters"."id" DESC LIMIT 1  [["book_id", 19]]
+Completed 200 OK in 7ms (Views: 1.0ms | ActiveRecord: 1.3ms)
