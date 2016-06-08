@@ -13,7 +13,7 @@
       <div class="card">
         <form name="reaction">
           <textarea class="reaction-textarea" type="text" placeholder="React here!" ng-model="$parent.reactionText"></textarea>
-          <button type='submit' ng-click="submitReaction()">Submit</button>
+          <button class="icon ion-paper-airplane" ng-click="submitReaction()"></button>
         </form>
       </div>
 
@@ -21,7 +21,7 @@
       <div class='nav-container'>
         <button ng-click="backChapter()" ng-hide="firstChapter" class="button icon-left ion-chevron-left button-clear button-dark">Back</button>
         <button ng-click="nextChapter()" ng-hide="lastChapter" class="button icon-right ion-chevron-right button-clear button-dark">Next</button>
-        <button class="button icon-right button-clear button-dark" ng-click="markComplete()" ng-hide="lastChapterButton">Mark Complete</button>
+        <button class="button icon-right button-clear button-dark icon ion-ios-checkmark-outline" ng-click="markComplete()" ng-hide="lastChapterButton">Complete Book</button>
       </div>
 
   </ion-content>

@@ -288,6 +288,42 @@ angular.module('starter.controllers', [])
     })
   }
 
+  $scope.favoriteAction = function(){
+    var button = document.getElementById("favoriteButton");
+    var icon = document.getElementById("favoriteIcon");
+
+    move(icon)
+    .ease('in-out')
+    .set("color", "red")
+    .duration('0.5s')
+    .end();
+
+    move(button)
+    .ease('in-out')
+    .scale(1.3)
+    .set("background-color", "#FF7666")
+    .duration('0.5s')
+    .end();
+
+    setTimeout(function(){
+      move(icon)
+      .ease('in-out')
+      .set("color", "#white")
+      .duration('0.5s')
+      .end();
+
+      move(button)
+      .ease('in-out')
+      .scale(.9)
+      .set("background-color", "#FFC3C3")
+      .duration('0.5s')
+      .end();
+
+    }, 700)
+
+
+  };
+
 
 
   $scope.go = function ( path ){
