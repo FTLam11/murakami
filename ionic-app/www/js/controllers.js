@@ -390,7 +390,6 @@ angular.module('starter.controllers', [])
 
   $http.get('http://localhost:3000/users/' + userId + '/recommended').then(function(response){
     var author = response.data.recommendations
-    console.log(author)
     $http.get('https://www.googleapis.com/books/v1/volumes?q=+ inauthor:' + author).then(function(response){
       $scope.books = response.data.items
     })
