@@ -2,9 +2,8 @@ class SoloReadingsController < ApplicationController
   include ApplicationHelper
 
   def recommended_books
-    rec_criteria = SoloReading.recommendations(params[:user_id])
-    rec_books = SoloReading.retrieve_rec_books(rec_criteria,params[:user_id])
-    render json: { recommendations: rec_books }
+    rec_criteria = SoloReading.recommendations(params[:user_id])[:author].sample
+    render json: { recommendations: rec_criteria }
   end
 
   def current_books
@@ -32,8 +31,9 @@ class SoloReadingsController < ApplicationController
   end
 
   def trending_books
-    trending_books = SoloReading.trending_now
-    render json: { trending_books: trending_books }
+    popular_books = SoloReading.trending_now("current")[0..8]
+    favorite_books = SoloReading.trending_now("favorite")[0..8]
+    render json: { popular_books: popular_books, favorite_books: favorite_books }
   end
 
 end

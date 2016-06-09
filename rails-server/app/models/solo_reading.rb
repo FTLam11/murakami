@@ -8,9 +8,8 @@ class SoloReading < ActiveRecord::Base
 
   def self.recommendations(user_id)
     rec_criteria = {author: []}
-    user_books = User.find(user_id).books
 
-    user_books.each do |book|
+    User.find(user_id).books.each do |book|
       rec_criteria[:author] << book.author
     end
 
@@ -34,35 +33,28 @@ class SoloReading < ActiveRecord::Base
     return rec_books - user_books
   end
 
-  def trending_now
+  def self.trending_now(type)
     popular_books = []
 
-    tally(filter_readings).values.sort.each do |reading|
-      popular_books << Book.find(reading)
+    tally_readings(readings_hash(type)).sort_by { |book, readings| readings }.each do |reading|
+      popular_books << Book.find(reading[0])
     end
 
-    return popular_books
+    popular_books
   end
 
-
-  def filter_readings
-    current_books = SoloReading.where(current: true)
-
-    current_books.select { |reading| current_books.count(reading.book_id) > 1 }
+  def self.readings_hash(type)
+    SoloReading.where(type.to_sym => true).group_by { |reading| reading.book_id }.select { |book, readings| readings.length > 1 }
   end
 
-  def tally(readings_arr)
+  def self.tally_readings(readings_hash)
     reading_tally = {}
 
-    readings_arr.each do |reading|
-      if reading_tally[reading.book_id] == nil
-        reading_tally[reading.book_id] = 1
-      else
-        reading_tally[reading.book_id] += 1
-      end
+    readings_hash.each do |book, readings|
+      reading_tally[book] = readings.length
     end
 
-    return reading_tally
+    reading_tally
   end
 
   def self.book_lists(user_id, type)

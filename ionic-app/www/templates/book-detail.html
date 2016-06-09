@@ -5,7 +5,7 @@
     <div class="book-detail-cover">
       <img ng-src="{{book.image_url}}" class="book-cover">
       <button id="favoriteButton" class="button block" ng-click="favoriteAction(); favorite()">
-        <i id="favoriteIcon" class="icon ion-heart"> </i>
+        <i id="favoriteIcon" class="icon ion-ios-heart" ng-hide=favIcon> </i>
         </button>
     </div>
     <div class="book-details">

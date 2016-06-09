@@ -5,10 +5,8 @@ class UsersController < ApplicationController
   end
 
   def search
-    p params
     user = User.find_by(user_name: params[:user_name])
     render json: { user: user, message: "This user could not be found"}
-
   end
 
   def create
