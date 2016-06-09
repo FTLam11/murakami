@@ -97,7 +97,7 @@ button {
 
 }
 
-.header-text {
+.header-text.questrial {
   text-align: center;
   font-size:4em;
   color: white;
@@ -153,13 +153,13 @@ margin: 0em 1em 1em 1em;
 
 .book-detail-cover {
   text-align: center;
-  background-color: #FF7666;
+  background-color: #CCCCCC;
   padding: 2em 0em 2em 0em;
   margin: -10px -10px 0px -10px;
 }
 
 .book-details {
-  background-color: #FFC3C3;
+  background-color: #909090;
   margin: 0px -10px 0px -10px;
   padding-left: 10px;
   padding-bottom: 5px;
@@ -167,7 +167,7 @@ margin: 0em 1em 1em 1em;
 
 #favoriteButton{
   float: right;
-  background-color: #FFC3C3;
+  background-color: #909090;
   position: fixed;
   right: 1em;
   top: 13em;
@@ -184,7 +184,7 @@ margin: 0em 1em 1em 1em;
 
 
 .author {
-  color: #3E3E3E;
+  color: white;
 }
 
 .book-description {
@@ -213,21 +213,21 @@ margin: 0em 1em 1em 1em;
 }*/
 
 .bar.bar-stable {
-  background-color: #DCEFF1;
+  background-color: #0C98A7;
 }
 
 ion-tabs.tabs-color-active-positive .tab-item.tab-item-active, ion-tabs.tabs-color-active-positive .tab-item.active, ion-tabs.tabs-color-active-positive .tab-item.activated {
-  color: #636363;
+  color: seashell;
 }
 
 ion-tabs.tabs-striped.tabs-color-active-positive .tab-item.tab-item-active, ion-tabs.tabs-striped.tabs-color-active-positive .tab-item.active, ion-tabs.tabs-striped.tabs-color-active-positive .tab-item.activated {
 
-  border-color: #6C727F;
-  color: #6C727F;
+  border-color: seashell;
+  color: seashell;
 }
 
 .tab-nav.tabs {
-  background-color: #DCEFF1;
+  background-color: #0C98A7;
 }
 
 .reaction-textarea{
@@ -253,8 +253,8 @@ padding: 10px;
 
 }
 .button.button-block, .button.button-full {
-/*background-color: #E4E4E4;
-*/}
+  background-color: #D6D6D6;
+}
 
 .book-container {
   height: 100%;
@@ -265,3 +265,43 @@ padding: 10px;
   float:right;
 }
 
+.review-textarea{
+  width: 100%;
+  padding: 1em;
+  height: 125px;
+}
+
+.rating{
+  float: right;
+  background-color: #A4A1A9;
+  color: seashell;
+  border-radius: 50%;
+  width: 2em;
+  height: 2em;
+  padding-top: 0.4em;
+  position: absolute;
+  right: 0.5em;
+  top: 0.5em;
+}
+
+.review-content {
+  padding-right: 1.5em;
+  text-align:left;
+}
+
+ion-tabs.tabs-color-active-positive .tab-item {
+    color: seashell;
+}
+
+.bar.bar-stable .title {
+    color: seashell;
+}
+
+.bar-stable .button.button-clear {
+
+  color: seashell;
+}
+
+.questrial.book-detail{
+  color: white;
+}

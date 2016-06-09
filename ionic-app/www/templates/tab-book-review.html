@@ -1,11 +1,16 @@
 <ion-view view-title="Dashboard" class="dash-view">
   <ion-content class="padding">
     <h2 class="questrial">Reviews</h2>
-    <h2 class="questrial">{{message}}</h2>
+    <h4 class="questrial">{{message}}</h4>
 
     <div class="card" ng-repeat="review in reviews">
       <div class="item item-text-wrap">
-         <p style="text-align:left">{{review.review.content}}</p>
+        <div class="rating-container">
+         <div class="rating">
+          {{review.review.rating}}
+         </div>
+         </div>
+         <p class="review-content">{{review.review.content}}</p>
        </div>
        <div style="text-align:left" class="item item-divider">
         {{review.user}}
@@ -15,15 +20,19 @@
       <div class="card">
         <form name="review">
           <textarea class="review-textarea" type="text" placeholder="Review Here!" ng-model="$parent.reviewText"></textarea>
-          <button type='submit' on-touch="submitReview()">Submit</button>
-        </form>
-
         <div class="item range">
           <i class="icon ion-thumbsdown"></i>
           <input type="range" name="rating" ng-model="$parent.rating" min="0", max="10">
           <i class="icon ion-thumbsup"></i>
           <p>Rating : {{$parent.rating}}</p>
         </div>
+          <div class="item item-divider">
+
+          <button class="icon ion-paper-airplane" type='submit' on-touch="submitReview()"></button>
+          </div>
+
+        </form>
+
       </div>
 
     </ion-list>
