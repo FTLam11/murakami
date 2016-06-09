@@ -87,7 +87,7 @@ angular.module('starter.services', [])
   return {
     leftSide: {src: 'templates/menu.html'},
     items: [],
-    bookId: 1,
+    bookId: "",
 
   };
 })
