@@ -5,8 +5,10 @@
         <input type="text" placeholder="Search" ng-model="data.username">
     </form>
     <ion-list>
-      <ion-item class="col-50 book-cover" ng-repeat="user in resultsArray">
-      <!-- PUT STUFF HERE -->
+      <ion-item class="col-50 avatar-bg" ng-repeat="user in resultsArray">
+        <a href="#/tab/users/{{user.id}}">
+          <img src= "img/matt-baker.jpg" class="user-avatar">
+        </a>
       </ion-item>
     </ion-list>
   </ion-content>

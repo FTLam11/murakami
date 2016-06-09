@@ -51,7 +51,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
   })
 
   .state('tab.social', {
-    url: '/social',
+    url: '/users',
     views: {
       'tab-social': {
         templateUrl: 'templates/tab-social.html',
@@ -77,6 +77,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       'tab-search': {
         templateUrl: 'templates/tab-search.html',
         controller: 'SearchCtrl'
+      }
+    }
+  })
+
+  .state('tab.user', {
+    url: '/users/:userId',
+    views: {
+      'tab-social': {
+        templateUrl: 'templates/tab-user.html',
+        controller: 'UserCtrl'
       }
     }
   })
@@ -214,7 +224,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
   // if none of the above states are matched, use this as the fallback
 
-  $urlRouterProvider.otherwise('/#');
+  // $urlRouterProvider.otherwise('/#');
 
 
 });
