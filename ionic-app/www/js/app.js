@@ -136,6 +136,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
   })
 
   .state('tab.reviews',{
+    cache: false,
     url: '/books/:bookId/reviews',
     views: {
       'tab-search': {

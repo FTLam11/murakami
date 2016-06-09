@@ -2,11 +2,16 @@
   <ion-content class="padding">
     <h2 class="questrial">Reviews</h2>
     <h2 class="questrial">{{message}}</h2>
-    <ion-list>
-    <ion-item ng-repeat="review in reviews">
-     <ion-item>{{review.user}}</ion-item>
-     <ion-item>{{review.review.content}}</ion-item>
-    </ion-item>
+
+    <div class="card" ng-repeat="review in reviews">
+      <div class="item item-text-wrap">
+         <p style="text-align:left">{{review.review.content}}</p>
+       </div>
+       <div style="text-align:left" class="item item-divider">
+        {{review.user}}
+      </div>
+    </div>
+
       <div class="card">
         <form name="review">
           <textarea class="review-textarea" type="text" placeholder="Review Here!" ng-model="$parent.reviewText"></textarea>
