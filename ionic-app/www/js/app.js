@@ -81,6 +81,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     }
   })
 
+  .state('tab.book', {
+    url: '/books',
+    views: {
+      'tab-account': {
+        templateUrl: 'templates/tab-book.html',
+        controller: 'CurrentBookCtrl'
+      }
+    }
+  })
+
   .state('tab.user', {
     url: '/users/:userId',
     views: {
@@ -92,15 +102,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
   })
 
 
-  .state('tab.book', {
-    url: '/users/:userId/books',
-    views: {
-      'tab-account': {
-        templateUrl: 'templates/tab-book.html',
-        controller: 'CurrentBookCtrl'
-      }
-    }
-  })
+
 
 
   .state('tab.chapter', {
@@ -156,8 +158,9 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
    })
 
 
+
   .state('tab.reader-queue', {
-    url : '/users/:userId/queue',
+    url : '/queue',
     views:{
     'tab-account':{
     templateUrl: 'templates/tab-reader-queue.html',
@@ -168,7 +171,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
 
   .state('tab.user-review', {
-    url: '/users/:userId/reviews',
+    url: '/user-review',
     cache: false,
     views: {
       'tab-account':{
@@ -180,7 +183,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
 
   .state('tab.history', {
-    url: '/users/:userId/history',
+    url: '/history',
     views: {
       'tab-account': {
         templateUrl: 'templates/history.html',
@@ -189,19 +192,9 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     }
   })
 
-.state('tab.comments', {
-  url: '/chapters/:chapterId/reactions/:reactionId',
-  views: {
-    'tab-dash': {
-      templateUrl: 'templates/tab-comments.html',
-      controller: 'ReactionCtrl'
-    }
-  }
-})
-
   .state('tab.favorite', {
     cache: false,
-      url: '/users/:userId/favorites',
+      url: '/favorites',
       views:{
         'tab-account':{
           templateUrl: 'templates/favorite.html',
@@ -209,6 +202,67 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
         }
      }
   })
+
+  .state('tab.comments', {
+    url: '/chapters/:chapterId/reactions/:reactionId',
+    views: {
+      'tab-dash': {
+        templateUrl: 'templates/tab-comments.html',
+        controller: 'ReactionCtrl'
+      }
+    }
+  })
+
+  .state('tab.userBook', {
+    url: '/users/:userId/books',
+    views: {
+      'tab-social': {
+        templateUrl: 'templates/tab-book2.html',
+        controller: 'CurrentBookCtrl'
+      }
+    }
+  })
+
+  .state('tab.userQueue', {
+    url: '/users/:userId/queue',
+    views: {
+      'tab-social': {
+        templateUrl: 'templates/tab-reader-queue2.html',
+        controller: 'QueueCtrl'
+      }
+    }
+  })
+
+  .state('tab.userHistory', {
+    url: '/users/:userId/history',
+    views: {
+      'tab-social': {
+        templateUrl: 'templates/history.html',
+        controller: 'HistoryCtrl'
+      }
+    }
+  })
+
+  .state('tab.userFavorites', {
+    url: '/users/:userId/favorites',
+    views: {
+      'tab-social': {
+        templateUrl: 'templates/favorite.html',
+        controller: 'FavoriteCtrl'
+      }
+    }
+  })
+
+  .state('tab.userReviews', {
+    url: '/users/:userId/reviews',
+    views: {
+      'tab-social': {
+        templateUrl: 'templates/tab-user-review2.html',
+        controller: 'BookReviewCtrl'
+      }
+    }
+  })
+
 
   .state('login', {
       url: '/',

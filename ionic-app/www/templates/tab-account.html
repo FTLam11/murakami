@@ -6,15 +6,15 @@
 
 <h2 class = "profile-name">{{user.data.username}}</h2>
 
-   <button on-touch = "send('current')"class = "button button-full">Current</button>
+   <button on-touch = "sendToCurrent()"class = "button button-full">Current Books</button>
 
-  <button on-touch = "send('queue')" class = "button button-full" >Queue</button>
+  <button on-touch = "sendToQueue()" class = "button button-full" >Queue</button>
 
-   <button on-touch = "send('history')" class = "button button-full" >History</button>
+   <button on-touch = "sendToHistory()" class = "button button-full" >History</button>
 
-  <button on-touch = "send('favorites')" class = "button button-full" >Favorites</button>
+  <button on-touch = "sendToFavorites()"class = "button button-full" >Favorites</button>
 
-  <button on-touch = "send('user-review')" class = "button button-full" > Reviews</button>
+  <button on-touch = "sendToReviews()" class = "button button-full" > Reviews</button>
 
   </ion-content>
 </ion-view>
