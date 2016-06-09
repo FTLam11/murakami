@@ -18,6 +18,24 @@ button {
   border-radius: 50%;
 }
 
+.user-avatar{
+  width: 100%;
+  text-align: center;
+  border-radius: 50%;
+}
+
+.avatar-bg{
+  border-color: rgba(0, 0, 0, 0);
+  background-color: rgba(0, 0, 0, 0);
+  border-style: none;
+  float: left;
+  display: inline;
+  margin: 0em 1em 1em 1em;
+  width: 39%;
+}
+
+
+
 .profile-pic-container {
   text-align: center;
   padding-top: 7%;
@@ -238,6 +256,8 @@ padding: 10px;
   height: 100%;
 }
 
+
 .ion-paper-airplane{
   float:right;
 }
+

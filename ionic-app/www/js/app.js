@@ -51,7 +51,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
   })
 
   .state('tab.social', {
-    url: '/social',
+    url: '/users',
     views: {
       'tab-social': {
         templateUrl: 'templates/tab-social.html',
@@ -81,7 +81,6 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     }
   })
 
-
   .state('tab.book', {
     url: '/books',
     views: {
@@ -91,6 +90,19 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
       }
     }
   })
+
+  .state('tab.user', {
+    url: '/users/:userId',
+    views: {
+      'tab-social': {
+        templateUrl: 'templates/tab-user.html',
+        controller: 'UserCtrl'
+      }
+    }
+  })
+
+
+
 
 
   .state('tab.chapter', {
@@ -147,6 +159,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
    })
 
 
+
   .state('tab.reader-queue', {
     url : '/queue',
     views:{
@@ -159,8 +172,8 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
 
   .state('tab.user-review', {
-    cache: false,
     url: '/user-review',
+    cache: false,
     views: {
       'tab-account':{
         templateUrl: 'templates/tab-user-review.html',
@@ -180,26 +193,77 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     }
   })
 
-.state('tab.comments', {
-  url: '/chapters/:chapterId/reactions/:reactionId',
-  views: {
-    'tab-dash': {
-      templateUrl: 'templates/tab-comments.html',
-      controller: 'ReactionCtrl'
-    }
-  }
-})
-
   .state('tab.favorite', {
     cache: false,
-    url: '/favorites',
-    views:{
-      'tab-account':{
+      url: '/favorites',
+      views:{
+        'tab-account':{
+          templateUrl: 'templates/favorite.html',
+          controller: 'FavoriteCtrl'
+        }
+     }
+  })
+
+  .state('tab.comments', {
+    url: '/chapters/:chapterId/reactions/:reactionId',
+    views: {
+      'tab-dash': {
+        templateUrl: 'templates/tab-comments.html',
+        controller: 'ReactionCtrl'
+      }
+    }
+  })
+
+  .state('tab.userBook', {
+    url: '/users/:userId/books',
+    views: {
+      'tab-social': {
+        templateUrl: 'templates/tab-book2.html',
+        controller: 'CurrentBookCtrl'
+      }
+    }
+  })
+
+  .state('tab.userQueue', {
+    url: '/users/:userId/queue',
+    views: {
+      'tab-social': {
+        templateUrl: 'templates/tab-reader-queue2.html',
+        controller: 'QueueCtrl'
+      }
+    }
+  })
+
+  .state('tab.userHistory', {
+    url: '/users/:userId/history',
+    views: {
+      'tab-social': {
+        templateUrl: 'templates/history.html',
+        controller: 'HistoryCtrl'
+      }
+    }
+  })
+
+  .state('tab.userFavorites', {
+    url: '/users/:userId/favorites',
+    views: {
+      'tab-social': {
         templateUrl: 'templates/favorite.html',
         controller: 'FavoriteCtrl'
       }
     }
   })
+
+  .state('tab.userReviews', {
+    url: '/users/:userId/reviews',
+    views: {
+      'tab-social': {
+        templateUrl: 'templates/tab-user-review2.html',
+        controller: 'BookReviewCtrl'
+      }
+    }
+  })
+
 
   .state('login', {
       url: '/',
@@ -217,7 +281,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
   // if none of the above states are matched, use this as the fallback
 
-  $urlRouterProvider.otherwise('/#');
+  // $urlRouterProvider.otherwise('/#');
 
 
 });
