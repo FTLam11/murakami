@@ -27,6 +27,7 @@ angular.module('starter.controllers', [])
   };
 
   $scope.viewChapter = function(bookId) {
+
     $http.get("https://tranquil-tundra-32569.herokuapp.com/books/" + bookId + '/chapters')
     .then(function(response){
       var chapterStart = response.data.first_chapter.id
@@ -110,23 +111,69 @@ angular.module('starter.controllers', [])
   })
 })
 
-.controller('AccountCtrl', function($scope, $http, Books, $location) {
-  $scope.leftSide.src = 'templates/menu.html';
-  var data =  window.localStorage['authToken']
 
-  $http({
-    method: 'GET',
-    url: 'https://tranquil-tundra-32569.herokuapp.com/users/' + data,
-  }).then(function(response){
-    $scope.user = response
+.controller('SocialCtrl', function($scope, $http, $ionicPopup, $location) {
+  $http.get('https://tranquil-tundra-32569.herokuapp.com/users')
+  .then(function(response){
+    $scope.resultsArray = response.data.users
   })
 
-  $scope.settings = {
-    enableFriends: true
-  };
+  $scope.showPopup = function() {
+    var alertPopup = $ionicPopup.alert({
+      title: 'Don\'t eat that!',
+      template: 'It might taste good'
+    });
+
+    alertPopup.then(function(res) {
+      console.log('Thank you for not eating my delicious ice cream cone');
+    });
+  }
+
+    $scope.data = {};
+
+  $scope.search = function() {
+    var query = $scope.data.username
+    console.log($scope)
+    $http.get('https://tranquil-tundra-32569.herokuapp.com/users/search?user_name=' + query).then(function(response) {
+      console.log(response)
+      if (response.data.user === null){
+        $scope.showPopup()
+      }else{
+        console.log("hello")
+        userId = response.data.user.id
+        $location.path("/users/" + userId)
+      }
+    })
+  }
+
+
+  // $scope.find = function(){
+  //   var query = .search
+  //   $http.get('https://www.googleapis.com/books/v1/volumes?q=' + query)
+  //   .then(function(response){
+  //     $scope.resultsArray = response.data.items
+  //   })
+  // }
 })
 
+// .controller('AccountCtrl', function($scope, $http, Books, $location) {
+//   $scope.leftSide.src = 'templates/menu.html';
+//   var data =  window.localStorage['authToken']
+
+//   $http({
+//     method: 'GET',
+//     url: 'https://tranquil-tundra-32569.herokuapp.com/users/' + data,
+//   }).then(function(response){
+//     $scope.user = response
+//   })
+
+//   $scope.settings = {
+//     enableFriends: true
+//   };
+// })
+
 .controller('ChapterCtrl', function(SideMenuSwitcher,$scope, $http, $stateParams,$location, Books) {
+  $scope.leftSide.src = 'templates/chapter-menu.html';
   $http.get("https://tranquil-tundra-32569.herokuapp.com/chapters/" + $stateParams.chapterId + "/reactions")
   .then(function(response){
     var bookId = ($stateParams.bookId);
@@ -298,7 +345,6 @@ angular.module('starter.controllers', [])
       $('#favoriteIcon').removeClass("favoriteIconActive")
       $('#favoriteIcon').addClass("favoriteIconInactive")
     }
-
 
 
   $scope.viewChapter = function() {
@@ -474,6 +520,7 @@ $scope.leftSide.src = 'templates/menu.html';
   };
 
   $scope.find = function(){
+
     var query = $scope.data.search
     $http.get('https://www.googleapis.com/books/v1/volumes?q=' + query)
     .then(function(response){
@@ -544,6 +591,13 @@ $scope.leftSide.src = 'templates/menu.html';
 
 .controller ('ReactionCtrl', function($scope, $http, $stateParams){
   $scope.commentText = ""
+
+  function ContentController($scope, $ionicSideMenuDelegate) {
+    $scope.toggleLeft = function() {
+      $ionicSideMenuDelegate.toggleLeft();
+    };
+  }
+
   $http.get("https://tranquil-tundra-32569.herokuapp.com/reactions/" + $stateParams.reactionId + "/comments")
   .then(function(response){
     $scope.comments = response.data.comments
@@ -609,7 +663,6 @@ $scope.leftSide.src = 'templates/menu.html';
 
 
 .controller('TabCtrl', function($window,$scope, $location,SideMenuSwitcher){
-  console.log("tab")
   $scope.send = function(path){
     if (path === "current") {
     $location.path("/tab/books")

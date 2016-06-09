@@ -1,0 +1,13 @@
+<ion-view view-title="Users" class="dash-view">
+  <ion-content class="padding">
+    <h3 class="questrial">Search Users</h3>
+    <form class="item item-input search" ng-submit="search()">
+        <input type="text" placeholder="Search" ng-model="data.username">
+    </form>
+    <ion-list>
+      <ion-item class="col-50 book-cover" ng-repeat="user in resultsArray">
+      <!-- PUT STUFF HERE -->
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>
