@@ -3,6 +3,10 @@ button {
   webkit-appearance: none;
 }
 
+#align {
+  text-align: center;
+}
+
 .profile-list-item {
   width: 100%;
   text-align: left;

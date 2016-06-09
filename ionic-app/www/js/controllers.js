@@ -10,7 +10,7 @@ angular.module('starter.controllers', [])
 
 
   userId = window.localStorage['authToken']
-  $http.get("https://tranquil-tundra-32569.herokuapp.com/users/" + userId + "/current")
+  $http.get("http://localhost:3000/users/" + userId + "/current")
   .then(function(response){
     var currentBooks = response.data.current_books;
     Books.replaceCurrent(currentBooks)
@@ -28,7 +28,7 @@ angular.module('starter.controllers', [])
 
   $scope.viewChapter = function(bookId) {
 
-    $http.get("https://tranquil-tundra-32569.herokuapp.com/books/" + bookId + '/chapters')
+    $http.get("http://localhost:3000/books/" + bookId + '/chapters')
     .then(function(response){
       var chapterStart = response.data.first_chapter.id
       var chapterEnd = response.data.last_chapter.id
@@ -44,7 +44,7 @@ angular.module('starter.controllers', [])
   }else{
     userId = $stateParams.bookId
   }
-  $http.get("https://tranquil-tundra-32569.herokuapp.com/users/" + userId + '/queue')
+  $http.get("http://localhost:3000/users/" + userId + '/queue')
   .then(function(response){
     var queueBooks = response.data.queue_books;
     Books.add(queueBooks,"queue")
@@ -65,7 +65,7 @@ angular.module('starter.controllers', [])
   }
 
 
-  $http.get("https://tranquil-tundra-32569.herokuapp.com/users/" + userId + "/current")
+  $http.get("http://localhost:3000/users/" + userId + "/current")
   .then(function(response){
     var currentBooks = response.data.current_books;
     Books.replaceCurrent(currentBooks)
@@ -95,7 +95,7 @@ angular.module('starter.controllers', [])
     userId = $stateParams.bookId
   }
 
-  $http.get('https://tranquil-tundra-32569.herokuapp.com/users/' + userId + '/history').then(function(response){
+  $http.get('http://localhost:3000/users/' + userId + '/history').then(function(response){
     $scope.books = response.data.history_books
     if ($scope.books === null){
       $scope.message = "No Books in your History Yet! Add some!"
@@ -110,7 +110,7 @@ angular.module('starter.controllers', [])
   }else{
     userId = $stateParams.bookId
   }
-  $http.get('https://tranquil-tundra-32569.herokuapp.com/users/' + userId + '/reviews')
+  $http.get('http://localhost:3000/users/' + userId + '/reviews')
   .then(function(response){
     console.log(response)
     $scope.reviews = response.data.reviews
@@ -127,8 +127,9 @@ angular.module('starter.controllers', [])
     userId = $stateParams.bookId
   }
 
-  $http.get('https://tranquil-tundra-32569.herokuapp.com/users/' + userId + '/favorite')
+  $http.get('http://localhost:3000/users/' + userId + '/favorite')
   .then(function(response){
+    console.log(response)
     $scope.books = response.data.favorite_books
     if ($scope.books === null){
       $scope.message = "No Books in your Favorites Yet! Add one!"
@@ -138,7 +139,7 @@ angular.module('starter.controllers', [])
 
 
 .controller('SocialCtrl', function($scope, $http, $ionicPopup, $location) {
-  $http.get('https://tranquil-tundra-32569.herokuapp.com/users')
+  $http.get('http://localhost:3000/users')
   .then(function(response){
     $scope.resultsArray = response.data.users
     console.log($scope.resultsArray)
@@ -160,7 +161,7 @@ angular.module('starter.controllers', [])
   $scope.search = function() {
     var query = $scope.data.username
     console.log($scope)
-    $http.get('https://tranquil-tundra-32569.herokuapp.com/users/search?user_name=' + query).then(function(response) {
+    $http.get('http://localhost:3000/users/search?user_name=' + query).then(function(response) {
       console.log(response)
       if (response.data.user === null){
         $scope.showPopup()
@@ -189,7 +190,7 @@ angular.module('starter.controllers', [])
 
   $http({
     method: 'GET',
-    url: 'https://tranquil-tundra-32569.herokuapp.com/users/' + data,
+    url: 'http://localhost:3000/users/' + data,
   }).then(function(response){
     $scope.user = response
     var userId = window.localStorage['authToken']
@@ -227,7 +228,7 @@ angular.module('starter.controllers', [])
 
   $http({
     method: 'GET',
-    url: 'https://tranquil-tundra-32569.herokuapp.com/users/' + userId,
+    url: 'http://localhost:3000/users/' + userId,
   }).then(function(response){
     $scope.user = response
     console.log(response)
@@ -263,7 +264,7 @@ angular.module('starter.controllers', [])
 .controller('ChapterCtrl', function(SideMenuSwitcher,$scope, $http, $stateParams,$location, Books) {
 
   $scope.leftSide.src = 'templates/chapter-menu.html';
-  $http.get("https://tranquil-tundra-32569.herokuapp.com/chapters/" + $stateParams.chapterId + "/reactions")
+  $http.get("http://localhost:3000/chapters/" + $stateParams.chapterId + "/reactions")
   .then(function(response){
     var bookId = ($stateParams.bookId);
     $scope.reactions = response.data.reactions;
@@ -278,7 +279,7 @@ angular.module('starter.controllers', [])
     }
   })
 
-  $http.get("https://tranquil-tundra-32569.herokuapp.com/books/" + $stateParams.bookId + '/chapters')
+  $http.get("http://localhost:3000/books/" + $stateParams.bookId + '/chapters')
     .then(function(response){
       // console.log(response)
       $scope.bookId = response.data.first_chapter.book_id
@@ -315,7 +316,7 @@ angular.module('starter.controllers', [])
 
     $http({
       method: 'POST',
-      url: 'https://tranquil-tundra-32569.herokuapp.com/users/' + window.localStorage['authToken'] + '/books/' + $stateParams.bookId + '/mark_complete',
+      url: 'http://localhost:3000/users/' + window.localStorage['authToken'] + '/books/' + $stateParams.bookId + '/mark_complete',
       dataType: "json",
       data: jsonData
     }).then(function(response){
@@ -343,7 +344,7 @@ angular.module('starter.controllers', [])
 
     $http({
       method: 'POST',
-      url: 'https://tranquil-tundra-32569.herokuapp.com/chapters/'+ $stateParams.chapterId +'/reactions',
+      url: 'http://localhost:3000/chapters/'+ $stateParams.chapterId +'/reactions',
       dataType: "json",
       data: jsonData
     }).then(function(response){
@@ -367,7 +368,7 @@ angular.module('starter.controllers', [])
   userId = window.localStorage['authToken']
 
   if (/^\d+$/.test($stateParams.bookId)) {
-    $http.get('https://tranquil-tundra-32569.herokuapp.com/check_books/' + $stateParams.bookId)
+    $http.get('http://localhost:3000/check_books/' + $stateParams.bookId)
     .then(function(response){
     var book = response.data.book
     $scope.book = {}
@@ -395,7 +396,7 @@ angular.module('starter.controllers', [])
   }
 
 
- $http.get("https://tranquil-tundra-32569.herokuapp.com/users/" + userId  + '/current')
+ $http.get("http://localhost:3000/users/" + userId  + '/current')
   .then(function(response){
      var items = response.data.current_books
      var isCurrent = false
@@ -416,7 +417,7 @@ angular.module('starter.controllers', [])
 
 
   $scope.isFavorite = function() {
-    $http.get("https://tranquil-tundra-32569.herokuapp.com/users/" + userId  + '/favorite')
+    $http.get("http://localhost:3000/users/" + userId  + '/favorite')
     .then(function(response){
        var favorites = response.data.favorite_books
        var result = false
@@ -438,7 +439,7 @@ angular.module('starter.controllers', [])
 
 
   $scope.viewChapter = function() {
-    $http.get("https://tranquil-tundra-32569.herokuapp.com/books/" + $stateParams.bookId + '/chapters')
+    $http.get("http://localhost:3000/books/" + $stateParams.bookId + '/chapters')
     .then(function(response){
       var chapterStart = response.data.first_chapter.id
       var chapterEnd = response.data.last_chapter.id
@@ -528,7 +529,7 @@ angular.module('starter.controllers', [])
 
     $http({
       method: 'POST',
-      url: 'https://tranquil-tundra-32569.herokuapp.com/users/'+userId+'/books',
+      url: 'http://localhost:3000/users/'+userId+'/books',
       dataType: "json",
       data: jsonData
     }).then(function(response){
@@ -552,7 +553,7 @@ angular.module('starter.controllers', [])
 
     $http({
       method: 'POST',
-      url: 'https://tranquil-tundra-32569.herokuapp.com/users/'+userId+'/add_to_queue',
+      url: 'http://localhost:3000/users/'+userId+'/add_to_queue',
       dataType: "json",
       data: jsonData})
     .then(function(response){
@@ -569,7 +570,7 @@ angular.module('starter.controllers', [])
 
     $http({
       method: 'POST',
-      url: 'https://tranquil-tundra-32569.herokuapp.com/users/'+userId+'/add_to_favorites',
+      url: 'http://localhost:3000/users/'+userId+'/add_to_favorites',
       dataType: "json",
       data: jsonData
     }).then(function(response){
@@ -592,14 +593,14 @@ $scope.leftSide.src = 'templates/menu.html';
   var userId = window.localStorage['authToken']
   $scope.data = {};
 
-  $http.get('https://tranquil-tundra-32569.herokuapp.com/users/' + userId + '/recommended').then(function(response){
+  $http.get('http://localhost:3000/users/' + userId + '/recommended').then(function(response){
     var author = response.data.recommendations
     $http.get('https://www.googleapis.com/books/v1/volumes?q=+ inauthor:' + author).then(function(response){
       $scope.books = response.data.items
     })
   })
 
-  $http.get('https://tranquil-tundra-32569.herokuapp.com/trending')
+  $http.get('http://localhost:3000/trending')
   .then(function(response) {
     $scope.popular_books = response.data.popular_books
     $scope.favorite_books = response.data.favorite_books
@@ -628,7 +629,7 @@ $scope.leftSide.src = 'templates/menu.html';
     var jsonData = JSON.stringify(userData);
     $http({
       method: 'POST',
-      url: 'https://tranquil-tundra-32569.herokuapp.com/login',
+      url: 'http://localhost:3000/login',
       dataType: "json",
       data: jsonData})
     .success(function(response) {
@@ -660,7 +661,7 @@ $scope.leftSide.src = 'templates/menu.html';
 
     $http({
       method: 'POST',
-      url: 'https://tranquil-tundra-32569.herokuapp.com/register',
+      url: 'http://localhost:3000/register',
       dataType: "json",
       data: jsonData})
     .then(function(response){
@@ -688,7 +689,7 @@ $scope.leftSide.src = 'templates/menu.html';
     };
   }
 
-  $http.get("https://tranquil-tundra-32569.herokuapp.com/reactions/" + $stateParams.reactionId + "/comments")
+  $http.get("http://localhost:3000/reactions/" + $stateParams.reactionId + "/comments")
   .then(function(response){
     $scope.comments = response.data.comments
     $scope.reaction = response.data.reaction
@@ -703,7 +704,7 @@ $scope.leftSide.src = 'templates/menu.html';
 
       $http({
         method: 'POST',
-        url: 'https://tranquil-tundra-32569.herokuapp.com/reactions/'+ $stateParams.reactionId +'/comments',
+        url: 'http://localhost:3000/reactions/'+ $stateParams.reactionId +'/comments',
         dataType: "json",
         data: jsonData
       }).then(function(response){
@@ -721,7 +722,7 @@ $scope.leftSide.src = 'templates/menu.html';
 .controller('BookReviewCtrl', function($scope, $http, $stateParams, $location){
   bookId = $stateParams.bookId
   userId = window.localStorage['authToken']
-  $http.get("https://tranquil-tundra-32569.herokuapp.com/books/" + bookId + "/reviews")
+  $http.get("http://localhost:3000/books/" + bookId + "/reviews")
   .then(function(response){
     // console.log(response)
     $scope.reviews = response.data.reviews;
@@ -743,7 +744,7 @@ $scope.leftSide.src = 'templates/menu.html';
 
       $http({
         method: 'POST',
-        url: 'https://tranquil-tundra-32569.herokuapp.com/books/' + $stateParams.bookId + '/reviews',
+        url: 'http://localhost:3000/books/' + $stateParams.bookId + '/reviews',
         dataType: "json",
         data: jsonData
       }).then(function(response){

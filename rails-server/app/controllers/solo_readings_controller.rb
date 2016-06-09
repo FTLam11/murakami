@@ -15,7 +15,11 @@ class SoloReadingsController < ApplicationController
   end
 
   def favorite_books
+    p params
+    p "----------------------------------------"
     favorite_books = SoloReading.book_lists(params[:user_id], "favorite")
+    p favorite_books
+    p "----------------------------------------"
     render json: { favorite_books: favorite_books }
   end
 
