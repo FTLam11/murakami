@@ -723,9 +723,7 @@ $scope.leftSide.src = 'templates/menu.html';
   userId = window.localStorage['authToken']
   $http.get("https://tranquil-tundra-32569.herokuapp.com/books/" + bookId + "/reviews")
   .then(function(response){
-    // console.log(response)
     $scope.reviews = response.data.reviews;
-    console.log($scope.reviews)
     if ($scope.reviews.length === 0) {
       $scope.message = "No reviews so far. Add one!"
     } else {
@@ -749,8 +747,7 @@ $scope.leftSide.src = 'templates/menu.html';
       }).then(function(response){
         $scope.reviews.push(response.data)
         // $location.path('/tab/books/' + $stateParams.bookId + '/reviews')
-        $scope.reviewText = "";
-
+        $scope.message = ""
       })
   }
 })
