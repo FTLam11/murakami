@@ -93,6 +93,7 @@ angular.module('starter.controllers', [])
   userId = window.localStorage['authToken']
   $http.get('https://tranquil-tundra-32569.herokuapp.com/users/' + userId + '/reviews')
   .then(function(response){
+    console.log(response)
     $scope.reviews = response.data.reviews
     if ($scope.reviews.length < 0){
       $scope.message = "No user reviews. Add some!"
@@ -658,7 +659,8 @@ $scope.leftSide.src = 'templates/menu.html';
         data: jsonData
       }).then(function(response){
         $scope.reviews.push(response.data.book_reviews)
-        $location.path('/tab/dash')
+        $location.path('/tab/books/' + $stateParams.bookId + '/reviews')
+        $scope.reviewText = "";
       })
   }
 })
