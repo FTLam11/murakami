@@ -31,7 +31,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
   // setup an abstract state for the tabs directive
   .state('tab', {
     url: '/tab',
-    // cache: false,
+    cache: false,
     abstract: true,
     templateUrl: 'templates/tabs.html',
     controller: 'TabCtrl'
@@ -60,16 +60,16 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     }
   })
 
-  // .state('tab.account', {
-  //   url: '/account',
-  //   cache: false,
-  //   views: {
-  //     'tab-account': {
-  //       templateUrl: 'templates/tab-account.html',
-  //       controller: 'AccountCtrl'
-  //     }
-  //   }
-  // })
+  .state('tab.account', {
+    url: '/account',
+    cache: false,
+    views: {
+      'tab-account': {
+        templateUrl: 'templates/tab-account.html',
+        controller: 'AccountCtrl'
+      }
+    }
+  })
 
   .state('tab.search', {
     url: '/search',

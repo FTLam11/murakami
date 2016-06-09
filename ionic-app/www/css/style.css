@@ -57,6 +57,7 @@ button {
   float: left;
   display: inline;
   margin: 0em 1em 1em 1em;
+  width: 39%;
 }
 
 .book-details{
@@ -99,7 +100,7 @@ button {
 
 .book-cover {
   padding: 0px;
-  height: 210px;
+  height: 180px;
   overflow: hidden;
 }
 
@@ -177,7 +178,7 @@ button {
 }
 
 .hide-overflow {
-  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0), #FFFFFF);
+  background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0), #FFF5EE);
   width: 100%;
   height: 50px;
   position: relative;
@@ -225,5 +226,9 @@ padding: 10px;
 
 }
 .button.button-block, .button.button-full {
-background-color: #E4E4E4;
+/*background-color: #E4E4E4;
+*/}
+
+.book-container {
+  height: 100%;
 }
