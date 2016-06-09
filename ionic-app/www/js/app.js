@@ -93,7 +93,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
 
   .state('tab.book', {
-    url: '/books',
+    url: '/users/:userId/books',
     views: {
       'tab-account': {
         templateUrl: 'templates/tab-book.html',
@@ -157,7 +157,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
 
   .state('tab.reader-queue', {
-    url : '/queue',
+    url : '/users/:userId/queue',
     views:{
     'tab-account':{
     templateUrl: 'templates/tab-reader-queue.html',
@@ -168,7 +168,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
 
   .state('tab.user-review', {
-    url: '/user-review',
+    url: '/users/:userId/reviews',
     views: {
       'tab-account':{
         templateUrl: 'templates/tab-user-review.html',
@@ -179,7 +179,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
 
   .state('tab.history', {
-    url: '/history',
+    url: '/users/:userId/history',
     views: {
       'tab-account': {
         templateUrl: 'templates/history.html',
@@ -199,7 +199,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 })
 
   .state('tab.favorite', {
-      url: '/favorites',
+      url: '/users/:userId/favorites',
       views:{
         'tab-account':{
           templateUrl: 'templates/favorite.html',

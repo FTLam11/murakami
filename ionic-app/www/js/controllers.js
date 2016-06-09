@@ -167,11 +167,33 @@ angular.module('starter.controllers', [])
     url: 'http://localhost:3000/users/' + data,
   }).then(function(response){
     $scope.user = response
+    userId = window.localStorage['authToken']
   })
 
   $scope.settings = {
     enableFriends: true
   };
+
+   $scope.sendToCurrent = function(){
+
+    $location.path("/tab/users/" + userId + "/books")
+  }
+
+   $scope.sendToQueue = function(){
+    $location.path("/tab/users/" + userId + "/queue")
+  }
+
+   $scope.sendToHistory = function(){
+    $location.path("/tab/users/" + userId + "/history")
+  }
+
+   $scope.sendToFavorites = function(){
+    $location.path("/tab/users/" + userId + "/favorites")
+  }
+
+   $scope.sendToReviews = function(){
+    $location.path("/tab/users/" + userId + "/reviews")
+  }
 })
 
 .controller('UserCtrl', function($scope, $http, Books, $location, $stateParams) {
