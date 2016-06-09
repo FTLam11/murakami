@@ -5,15 +5,25 @@
 
       <div class="card" ng-repeat="comment in comments">
     <div class="item item-text-wrap">
-        <p class="reactions">{{comment.comment.content}}</p> <br> {{comment.username}}
+        <p class="reactions">{{comment.comment.content}}</p>
       </div>
+        <div class="item item-divider">
+          {{comment.username}}
+        </div>
     </div> 
 
 
       <div class="card">
         <form name="comment">
+        <div class="item item-divider">
+        Leave a comment here.
+        </div>
           <textarea class="reaction-textarea" type="text" placeholder="Comment here!" ng-model="$parent.commentText"></textarea>
-          <button type='submit' on-touch="submitComment()">Submit</button>
+          <div class="item item-divider">
+          <button class="icon ion-paper-airplane" 
+          on-touch="submitComment()"></button>
+          </div>
+
         </form>
       </div>
 
