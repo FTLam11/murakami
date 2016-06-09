@@ -3,6 +3,9 @@ Rails.application.routes.draw do
   root "users#index"
   get '/users/search', to: 'users#search'
 
+  get '/users', to: 'users#index'
+  get '/users/search', to: 'users#search'
+
   get '/users/:user_id/reviews', to: "users#reviews"
 
   resources :users, only: [:show] do

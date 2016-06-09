@@ -50,16 +50,26 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     }
   })
 
-  .state('tab.account', {
-    url: '/account',
-    cache: false,
+  .state('tab.social', {
+    url: '/social',
     views: {
-      'tab-account': {
-        templateUrl: 'templates/tab-account.html',
-        controller: 'AccountCtrl'
+      'tab-social': {
+        templateUrl: 'templates/tab-social.html',
+        controller: 'SocialCtrl'
       }
     }
   })
+
+  // .state('tab.account', {
+  //   url: '/account',
+  //   cache: false,
+  //   views: {
+  //     'tab-account': {
+  //       templateUrl: 'templates/tab-account.html',
+  //       controller: 'AccountCtrl'
+  //     }
+  //   }
+  // })
 
   .state('tab.search', {
     url: '/search',
