@@ -38,8 +38,12 @@ angular.module('starter.controllers', [])
 
 })
 
-.controller('QueueCtrl', function($scope, $http, Books){
-  userId = window.localStorage['authToken']
+.controller('QueueCtrl', function($scope, $http, Books, $stateParams){
+  if ($stateParams.userId === null ){
+    userId = window.localStorage['authToken']
+  }else{
+    userId = $stateParams.bookId
+  }
   $http.get("https://tranquil-tundra-32569.herokuapp.com/users/" + userId + '/queue')
   .then(function(response){
     var queueBooks = response.data.queue_books;
@@ -52,8 +56,14 @@ angular.module('starter.controllers', [])
   })
 })
 
-.controller('CurrentBookCtrl', function($scope, $http, Books, $location){
-  userId = window.localStorage['authToken']
+.controller('CurrentBookCtrl', function($scope, $http, Books, $location, $stateParams){
+  console.log($stateParams.userId)
+  if ($stateParams.userId === null ){
+    userId = window.localStorage['authToken']
+  }else{
+    userId = $stateParams.userId
+  }
+
 
   $http.get("https://tranquil-tundra-32569.herokuapp.com/users/" + userId + "/current")
   .then(function(response){
@@ -78,8 +88,13 @@ angular.module('starter.controllers', [])
 })
 
 
-.controller('HistoryCtrl', function($scope, $http){
-  userId = window.localStorage['authToken']
+.controller('HistoryCtrl', function($scope, $http, $stateParams){
+  if ($stateParams.userId === null ){
+    userId = window.localStorage['authToken']
+  }else{
+    userId = $stateParams.bookId
+  }
+
   $http.get('https://tranquil-tundra-32569.herokuapp.com/users/' + userId + '/history').then(function(response){
     $scope.books = response.data.history_books
     if ($scope.books === null){
@@ -89,8 +104,12 @@ angular.module('starter.controllers', [])
 })
 
 
-.controller('UserReviewCtrl', function($scope, $http){
-  userId = window.localStorage['authToken']
+.controller('UserReviewCtrl', function($scope, $http, $stateParams){
+  if ($stateParams.userId === null ){
+    userId = window.localStorage['authToken']
+  }else{
+    userId = $stateParams.bookId
+  }
   $http.get('https://tranquil-tundra-32569.herokuapp.com/users/' + userId + '/reviews')
   .then(function(response){
     console.log(response)
@@ -101,8 +120,13 @@ angular.module('starter.controllers', [])
   })
 })
 
-.controller('FavoriteCtrl', function($scope, $http){
-  userId = window.localStorage['authToken']
+.controller('FavoriteCtrl', function($scope, $http, $stateParams){
+  if ($stateParams.userId === null ){
+    userId = window.localStorage['authToken']
+  }else{
+    userId = $stateParams.bookId
+  }
+
   $http.get('https://tranquil-tundra-32569.herokuapp.com/users/' + userId + '/favorite')
   .then(function(response){
     $scope.books = response.data.favorite_books
@@ -117,6 +141,7 @@ angular.module('starter.controllers', [])
   $http.get('https://tranquil-tundra-32569.herokuapp.com/users')
   .then(function(response){
     $scope.resultsArray = response.data.users
+    console.log($scope.resultsArray)
   })
 
   $scope.showPopup = function() {
@@ -142,7 +167,8 @@ angular.module('starter.controllers', [])
       }else{
         console.log("hello")
         userId = response.data.user.id
-        $location.path("/users/" + userId)
+        console.log(userId)
+        $location.path("/tab/users/" + userId)
       }
     })
   }
@@ -157,20 +183,81 @@ angular.module('starter.controllers', [])
   // }
 })
 
-.controller('AccountCtrl', function($scope, $http, Books, $location) {
+.controller('AccountCtrl', function($scope, $http, Books, $location, $stateParams) {
   $scope.leftSide.src = 'templates/menu.html';
-  var data =  window.localStorage['authToken']
+  var data = window.localStorage['authToken']
 
   $http({
     method: 'GET',
     url: 'https://tranquil-tundra-32569.herokuapp.com/users/' + data,
   }).then(function(response){
     $scope.user = response
+    var userId = window.localStorage['authToken']
   })
 
   $scope.settings = {
     enableFriends: true
   };
+
+   $scope.sendToCurrent = function(){
+    $location.path("/tab/books")
+  }
+
+   $scope.sendToQueue = function(){
+    $location.path("/tab/queue")
+  }
+
+   $scope.sendToHistory = function(){
+    $location.path("/tab/history")
+  }
+
+   $scope.sendToFavorites = function(){
+    $location.path("/tab/favorites")
+  }
+
+   $scope.sendToReviews = function(){
+    $location.path("/tab/user-review")
+  }
+})
+
+.controller('UserCtrl', function($scope, $http, Books, $location, $stateParams) {
+  $scope.leftSide.src = 'templates/menu.html';
+  // console.log($stateParams)
+  var userId = $stateParams.userId
+
+  $http({
+    method: 'GET',
+    url: 'https://tranquil-tundra-32569.herokuapp.com/users/' + userId,
+  }).then(function(response){
+    $scope.user = response
+    console.log(response)
+  })
+
+  $scope.settings = {
+    enableFriends: true
+  };
+
+  $scope.sendToCurrent = function(){
+    $location.path("/tab/users/" + userId + "/books")
+  }
+
+   $scope.sendToQueue = function(){
+    $location.path("/tab/users/" + userId + "/queue")
+  }
+
+   $scope.sendToHistory = function(){
+    $location.path("/tab/users/" + userId + "/history")
+  }
+
+   $scope.sendToFavorites = function(){
+    $location.path("/tab/users/" + userId + "/favorites")
+  }
+
+   $scope.sendToReviews = function(){
+    $location.path("/tab/users/" + userId + "/reviews")
+  }
+
+
 })
 
 .controller('ChapterCtrl', function(SideMenuSwitcher,$scope, $http, $stateParams,$location, Books) {

@@ -1,0 +1,14 @@
+<ion-view view-title="Dashboard" class="dash-view">
+  <ion-content class="padding">
+    <h2 class="questrial">Books</h2>
+    <div>{{message}}</div>
+    <ion-list>
+    <ion-item class="col-50 book-cover" ng-repeat="book in books">
+      <a on-touch="viewDetails(book.id)">
+      <img src= "{{book.image_url}}" class="book-image">
+    </a>
+
+    </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-view>
