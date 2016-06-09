@@ -158,6 +158,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
 
   .state('tab.user-review', {
+    cache: false,
     url: '/user-review',
     views: {
       'tab-account':{
@@ -189,13 +190,14 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 })
 
   .state('tab.favorite', {
-      url: '/favorites',
-      views:{
-        'tab-account':{
-          templateUrl: 'templates/favorite.html',
-          controller: 'FavoriteCtrl'
-        }
-     }
+    cache: false,
+    url: '/favorites',
+    views:{
+      'tab-account':{
+        templateUrl: 'templates/favorite.html',
+        controller: 'FavoriteCtrl'
+      }
+    }
   })
 
   .state('login', {
