@@ -178,7 +178,6 @@ angular.module('starter.controllers', [])
   $http.get("https://tranquil-tundra-32569.herokuapp.com/chapters/" + $stateParams.chapterId + "/reactions")
   .then(function(response){
     var bookId = ($stateParams.bookId);
-    // $scope.bookId = bookId;
     $scope.reactions = response.data.reactions;
     $scope.book = response.data.specific_book;
     $scope.reactionText = "";
@@ -193,11 +192,11 @@ angular.module('starter.controllers', [])
 
   $http.get("https://tranquil-tundra-32569.herokuapp.com/books/" + $stateParams.bookId + '/chapters')
     .then(function(response){
+      // console.log(response)
       $scope.bookId = response.data.first_chapter.book_id
-
       $scope.chapterStart = response.data.first_chapter.id
       $scope.chapterEnd = response.data.last_chapter.id
-
+      $scope.currentChapter = $stateParams.chapterId - $scope.chapterStart + 1
       var chapterCount = $scope.chapterEnd - $scope.chapterStart
       $scope.items.splice(0, $scope.items.length)
 
@@ -260,6 +259,7 @@ angular.module('starter.controllers', [])
       dataType: "json",
       data: jsonData
     }).then(function(response){
+      console.log(response)
       $scope.reactions.push(response.data)
       $scope.reactionText = "";
     })
