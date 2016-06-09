@@ -65,10 +65,21 @@ button {
   text-align: center;
 }
 
+.specific-book-cover{
+  text-align: center;
+  border-style: none;
+  padding: 0px;
+  height: 180px;
+  overflow: hidden;
+}
+
 .book-cover{
   text-align: center;
   box-shadow: 2px 2px 5px gray;
   border-style: none;
+  padding: 0px;
+  height: 180px;
+  overflow: hidden;
 }
 
 .book-cover.item{
@@ -116,12 +127,6 @@ button {
   color: white;
 }
 
-.book-cover {
-  padding: 0px;
-  height: 180px;
-  overflow: hidden;
-}
-
 .item-content {
   padding: 0px;
 }
@@ -135,8 +140,8 @@ button {
 }
 
 .search{
-/*  width: 90%;
-*/}
+margin: 0em 1em 1em 1em;
+}
 
 .sign-in {
   width: 100%;
@@ -180,7 +185,7 @@ button {
 
 .book-description {
   position: relative;
-  height: 150px;
+  /*height: 150px;*/
   overflow: hidden;
 }
 
@@ -195,13 +200,13 @@ button {
   text-align: center;
 }
 
-.hide-overflow {
+/*.hide-overflow {
   background-image: linear-gradient(to bottom, rgba(255, 255, 255, 0), #FFF5EE);
   width: 100%;
   height: 50px;
   position: relative;
   margin-top: -50px;
-}
+}*/
 
 .bar.bar-stable {
   background-color: #DCEFF1;
@@ -250,3 +255,9 @@ padding: 10px;
 .book-container {
   height: 100%;
 }
+
+
+.ion-paper-airplane{
+  float:right;
+}
+

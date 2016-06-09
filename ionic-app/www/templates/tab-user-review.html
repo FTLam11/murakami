@@ -1,12 +1,12 @@
 <ion-view view-title="Reviews">
   <ion-content class="padding">
-    </ion-content>
     <ion-list>
+    <h2>Your Reviews</h2>
     <ion-item ng-repeat="review in reviews">
-    <h2>Your Reviews</h2> 
       <p>
-      	{{review.content}} - {{review.author}}
+        {{review.content}} - {{review.author}}
       </p>
     </ion-item>
-		</ion-list>
+    </ion-list>
+    </ion-content>
   </ion-view>

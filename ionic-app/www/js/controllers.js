@@ -93,6 +93,7 @@ angular.module('starter.controllers', [])
   userId = window.localStorage['authToken']
   $http.get('https://tranquil-tundra-32569.herokuapp.com/users/' + userId + '/reviews')
   .then(function(response){
+    console.log(response)
     $scope.reviews = response.data.reviews
     if ($scope.reviews.length < 0){
       $scope.message = "No user reviews. Add some!"
@@ -214,11 +215,11 @@ angular.module('starter.controllers', [])
 })
 
 .controller('ChapterCtrl', function(SideMenuSwitcher,$scope, $http, $stateParams,$location, Books) {
+
   $scope.leftSide.src = 'templates/chapter-menu.html';
   $http.get("https://tranquil-tundra-32569.herokuapp.com/chapters/" + $stateParams.chapterId + "/reactions")
   .then(function(response){
     var bookId = ($stateParams.bookId);
-    $scope.bookId = bookId;
     $scope.reactions = response.data.reactions;
     $scope.book = response.data.specific_book;
     $scope.reactionText = "";
@@ -233,15 +234,16 @@ angular.module('starter.controllers', [])
 
   $http.get("https://tranquil-tundra-32569.herokuapp.com/books/" + $stateParams.bookId + '/chapters')
     .then(function(response){
+      // console.log(response)
+      $scope.bookId = response.data.first_chapter.book_id
       $scope.chapterStart = response.data.first_chapter.id
       $scope.chapterEnd = response.data.last_chapter.id
-
+      $scope.currentChapter = $stateParams.chapterId - $scope.chapterStart + 1
       var chapterCount = $scope.chapterEnd - $scope.chapterStart
-
       $scope.items.splice(0, $scope.items.length)
 
       for (var i = 0; i < (chapterCount + 1); i++){
-        $scope.items.push({chapterNumber: (i + 1), chapterId: ($scope.chapterStart + i)})
+        $scope.items.push({bookId: $stateParams.bookId, chapterNumber: (i + 1), chapterId: ($scope.chapterStart + i)})
       }
 
       chapterId = parseInt($stateParams.chapterId)
@@ -299,6 +301,7 @@ angular.module('starter.controllers', [])
       dataType: "json",
       data: jsonData
     }).then(function(response){
+      console.log(response)
       $scope.reactions.push(response.data)
       $scope.reactionText = "";
     })
@@ -697,7 +700,8 @@ $scope.leftSide.src = 'templates/menu.html';
         data: jsonData
       }).then(function(response){
         $scope.reviews.push(response.data.book_reviews)
-        $location.path('/tab/dash')
+        $location.path('/tab/books/' + $stateParams.bookId + '/reviews')
+        $scope.reviewText = "";
       })
   }
 })
@@ -715,13 +719,14 @@ $scope.leftSide.src = 'templates/menu.html';
     $location.path("/tab/favorites")
   } else if (path === "user-review") {
     $location.path("/tab/user-review")
-  }else{
-    $location.path("/tab/books/" + bookId + "/chapters/" + path )
   }
   }
-  var bookId = SideMenuSwitcher.bookId
-  $scope.items = []
 
+  $scope.sendChapter = function(bookId, chapterId){
+    $location.path("/tab/books/" + bookId + "/chapters/" + chapterId)
+  }
+
+  $scope.items = []
   $scope.leftSide = SideMenuSwitcher.leftSide;
 
 

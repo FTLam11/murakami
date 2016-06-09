@@ -169,6 +169,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
   .state('tab.user-review', {
     url: '/users/:userId/reviews',
+    cache: false,
     views: {
       'tab-account':{
         templateUrl: 'templates/tab-user-review.html',
@@ -199,6 +200,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 })
 
   .state('tab.favorite', {
+    cache: false,
       url: '/users/:userId/favorites',
       views:{
         'tab-account':{
