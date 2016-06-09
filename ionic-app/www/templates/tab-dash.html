@@ -3,10 +3,10 @@
     <h2 class="questrial">Currently Reading</h2>
     <div>{{message}}</div>
     <ion-list>
-    <ion-item class="col-50 book-cover" ng-repeat="book in books">
-      <a ng-click="viewChapter(book.id)">
+    <ion-item class="col-75 book-cover" ng-repeat="book in books">
+      <div on-touch="viewChapter(book.id)">
         <img src= "{{book.image_url}}" class="book-image">
-      </a>
+      </div>
     </ion-item>
     </ion-list>
   </ion-content>

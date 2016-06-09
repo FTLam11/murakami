@@ -198,15 +198,10 @@ angular.module('starter.controllers', [])
       var chapterCount = $scope.chapterEnd - $scope.chapterStart
 
       $scope.items.splice(0, $scope.items.length)
-      // var items = []
 
       for (var i = 0; i < (chapterCount + 1); i++){
         $scope.items.push({chapterNumber: (i + 1), chapterId: ($scope.chapterStart + i)})
       }
-
-
-      // $scope.items = items
-
 
       chapterId = parseInt($stateParams.chapterId)
       if (chapterId === $scope.chapterStart) {

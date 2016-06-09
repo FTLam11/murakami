@@ -11,7 +11,7 @@
       <div class="card">
         <form name="review">
           <textarea class="review-textarea" type="text" placeholder="Review Here!" ng-model="$parent.reviewText"></textarea>
-          <button type='submit' ng-click="submitReview()">Submit</button>
+          <button type='submit' on-touch="submitReview()">Submit</button>
         </form>
 
         <div class="item range">

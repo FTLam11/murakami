@@ -4,8 +4,11 @@
 
 
       <div class="card" ng-repeat="reaction in reactions">
-    <div class="item item-text-wrap" ng-click="seeComments(reaction.reaction_id)">
-        <p class="reactions">{{reaction.reaction}}</p> <br> {{reaction.username}}{{reaction.userAvatar.image_url}}
+    <div class="item item-text-wrap" on-touch="seeComments(reaction.reaction_id)">
+        <p class="reactions">{{reaction.reaction}}</p>{{reaction.userAvatar.image_url}}
+      </div>
+      <div class="item item-divider">
+        {{reaction.username}}
       </div>
     </div> 
 
@@ -13,15 +16,15 @@
       <div class="card">
         <form name="reaction">
           <textarea class="reaction-textarea" type="text" placeholder="React here!" ng-model="$parent.reactionText"></textarea>
-          <button class="icon ion-paper-airplane" ng-click="submitReaction()"></button>
+          <button class="icon ion-paper-airplane" on-touch="submitReaction()"></button>
         </form>
       </div>
 
 
       <div class='nav-container'>
-        <button ng-click="backChapter()" ng-hide="firstChapter" class="button icon-left ion-chevron-left button-clear button-dark">Back</button>
-        <button ng-click="nextChapter()" ng-hide="lastChapter" class="button icon-right ion-chevron-right button-clear button-dark">Next</button>
-        <button class="button icon-right button-clear button-dark icon ion-ios-checkmark-outline" ng-click="markComplete()" ng-hide="lastChapterButton">Complete Book</button>
+        <button on-touch="backChapter()" ng-hide="firstChapter" class="button icon-left ion-chevron-left button-clear button-dark">Back</button>
+        <button on-touch="nextChapter()" ng-hide="lastChapter" class="button icon-right ion-chevron-right button-clear button-dark">Next</button>
+        <button class="button icon-right button-clear button-dark icon ion-ios-checkmark-outline" on-touch="markComplete()" ng-hide="lastChapterButton">Complete Book</button>
       </div>
 
   </ion-content>
