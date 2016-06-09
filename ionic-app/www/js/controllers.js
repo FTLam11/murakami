@@ -39,10 +39,10 @@ angular.module('starter.controllers', [])
 })
 
 .controller('QueueCtrl', function($scope, $http, Books, $stateParams){
-  if ($stateParams.userId === null ){
+  if (typeof($stateParams.userId) === 'undefined' ){
     userId = window.localStorage['authToken']
   }else{
-    userId = $stateParams.bookId
+    userId = $stateParams.userId
   }
   $http.get("http://localhost:3000/users/" + userId + '/queue')
   .then(function(response){
@@ -57,8 +57,7 @@ angular.module('starter.controllers', [])
 })
 
 .controller('CurrentBookCtrl', function($scope, $http, Books, $location, $stateParams){
-  console.log($stateParams.userId)
-  if ($stateParams.userId === null ){
+  if (typeof($stateParams.userId) === 'undefined' ){
     userId = window.localStorage['authToken']
   }else{
     userId = $stateParams.userId
@@ -89,10 +88,10 @@ angular.module('starter.controllers', [])
 
 
 .controller('HistoryCtrl', function($scope, $http, $stateParams){
-  if ($stateParams.userId === null ){
+  if (typeof($stateParams.userId) === 'undefined' ){
     userId = window.localStorage['authToken']
   }else{
-    userId = $stateParams.bookId
+    userId = $stateParams.userId
   }
 
   $http.get('http://localhost:3000/users/' + userId + '/history').then(function(response){
@@ -105,10 +104,10 @@ angular.module('starter.controllers', [])
 
 
 .controller('UserReviewCtrl', function($scope, $http, $stateParams){
-  if ($stateParams.userId === null ){
+  if (typeof($stateParams.userId) === 'undefined' ){
     userId = window.localStorage['authToken']
   }else{
-    userId = $stateParams.bookId
+    userId = $stateParams.userId
   }
   $http.get('http://localhost:3000/users/' + userId + '/reviews')
   .then(function(response){
@@ -121,10 +120,10 @@ angular.module('starter.controllers', [])
 })
 
 .controller('FavoriteCtrl', function($scope, $http, $stateParams){
-  if ($stateParams.userId === null ){
+  if (typeof($stateParams.userId) === 'undefined' ){
     userId = window.localStorage['authToken']
   }else{
-    userId = $stateParams.bookId
+    userId = $stateParams.userId
   }
 
   $http.get('http://localhost:3000/users/' + userId + '/favorite')
