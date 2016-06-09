@@ -4,7 +4,7 @@
     <div>{{message}}</div>
     <ion-list>
     <ion-item class="col-50 book-cover" ng-repeat="book in books">
-      <a ng-click="viewDetails(book.id)">
+      <a on-touch="viewDetails(book.id)">
       <img src= "{{book.image_url}}" class="book-image">
     </a>
 
