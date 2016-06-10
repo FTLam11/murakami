@@ -3,6 +3,13 @@ button {
   webkit-appearance: none;
 }
 
+.button.button-block.button-calm.login-button{
+  text-transform: uppercase;
+  font-family: Questrial;
+  background-color: #11c1f3;
+  font-size: 18px;
+}
+
 #align {
   text-align: center;
 }
@@ -271,6 +278,15 @@ padding: 10px;
   height: 125px;
 }
 
+.button {
+  border-radius: 2px;
+}
+
+.button.button-block, .button.button-full {
+  background-color: rgba(243,5,5,0.1);
+/*  border: 1px solid gray;
+*/}
+
 .rating{
   float: right;
   background-color: #A4A1A9;
@@ -305,3 +321,9 @@ ion-tabs.tabs-color-active-positive .tab-item {
 .questrial.book-detail{
   color: white;
 }
+
+.col-50.avatar-bg.item {
+  padding: 0px;
+}
+
+
