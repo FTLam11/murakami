@@ -746,8 +746,8 @@ $scope.leftSide.src = 'templates/menu.html';
         data: jsonData
       }).then(function(response){
         $scope.reviews.push(response.data)
-        // $location.path('/tab/books/' + $stateParams.bookId + '/reviews')
         $scope.message = ""
+        $scope.reviewText = ""
       })
   }
 })
