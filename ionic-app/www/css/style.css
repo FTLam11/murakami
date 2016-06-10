@@ -21,6 +21,7 @@ button {
 
 .profile-name {
   text-align: center;
+  text-transform: uppercase;
 }
 
 .profile-picture{
@@ -283,9 +284,9 @@ padding: 10px;
 }
 
 .button.button-block, .button.button-full {
-  background-color: rgba(243,5,5,0.1);
-/*  border: 1px solid gray;
-*/}
+  background-color: rgba(48, 48, 48, 0.1);
+  text-transform: lowercase;
+}
 
 .rating{
   float: right;
