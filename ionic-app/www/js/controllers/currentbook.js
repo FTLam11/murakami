@@ -1,6 +1,4 @@
-angular.module('starter.controllers', [])
-
-.controller('CurrentBookCtrl', function($scope, $http, Books, $location, $stateParams){
+app.controller('CurrentBookCtrl', function($scope, $http, Books, $location, $stateParams){
   if (typeof($stateParams.userId) === 'undefined' ){
     userId = window.localStorage['authToken']
   }else{

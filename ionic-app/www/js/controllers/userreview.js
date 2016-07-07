@@ -1,6 +1,4 @@
-angular.module('starter.controllers', [])
-
-.controller('UserReviewCtrl', function($scope, $http, $stateParams){
+app.controller('UserReviewCtrl', function($scope, $http, $stateParams){
   if (typeof($stateParams.userId) === 'undefined' ){
     userId = window.localStorage['authToken']
   }else{

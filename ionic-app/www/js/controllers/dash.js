@@ -1,6 +1,4 @@
-angular.module('starter.controllers', [])
-
-.controller('DashCtrl', function($scope, $http, Books, $location) {
+app.controller('DashCtrl', function($scope, $http, Books, $location) {
   $scope.leftSide.src = 'templates/menu.html';
   function ContentController($scope, $ionicSideMenuDelegate) {
     $scope.toggleLeft = function() {

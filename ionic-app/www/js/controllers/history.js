@@ -1,6 +1,4 @@
-angular.module('starter.controllers', [])
-
-.controller('HistoryCtrl', function($scope, $http, $stateParams){
+app.controller('HistoryCtrl', function($scope, $http, $stateParams){
   if (typeof($stateParams.userId) === 'undefined' ){
     userId = window.localStorage['authToken']
   }else{

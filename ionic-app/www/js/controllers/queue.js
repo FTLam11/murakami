@@ -1,6 +1,4 @@
-angular.module('starter.controllers', [])
-
-.controller('QueueCtrl', function($scope, $http, Books, $stateParams){
+app.controller('QueueCtrl', function($scope, $http, Books, $stateParams){
   if (typeof($stateParams.userId) === 'undefined' ){
     userId = window.localStorage['authToken']
   }else{
