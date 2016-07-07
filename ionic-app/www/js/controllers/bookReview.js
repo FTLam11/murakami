@@ -11,8 +11,6 @@ app.controller('BookReviewCtrl', function($scope, $http, $stateParams, $location
     }
   })
 
-
-
   $scope.submitReview = function() {
     var newReview = {content: $scope.reviewText, user_id: window.localStorage['authToken'], book_id:$stateParams.bookId, rating: $scope.rating};
 
