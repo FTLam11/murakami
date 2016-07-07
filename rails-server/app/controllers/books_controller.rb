@@ -65,7 +65,9 @@ class BooksController < ApplicationController
   end
 
   def show
-    @book = Book.find(params[:book_id])
+    book_id = params["book_id"].to_i
+    @book = Book.find(book_id)
+    render json: {token: session[:user_id], book: @book}, status: :ok
   end
 
 end

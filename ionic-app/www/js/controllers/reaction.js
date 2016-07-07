@@ -7,7 +7,7 @@ app.controller ('ReactionCtrl', function($scope, $http, $stateParams){
     };
   }
 
-  $http.get("http://localhost:3000/reactions/" + $stateParams.reactionId + "/comments")
+  $http.get("https://tranquil-tundra-32569.herokuapp.com/reactions/" + $stateParams.reactionId + "/comments")
   .then(function(response){
     $scope.comments = response.data.comments
     $scope.reaction = response.data.reaction
@@ -21,7 +21,7 @@ app.controller ('ReactionCtrl', function($scope, $http, $stateParams){
 
       $http({
         method: 'POST',
-        url: 'http://localhost:3000/reactions/'+ $stateParams.reactionId +'/comments',
+        url: 'https://tranquil-tundra-32569.herokuapp.com/reactions/'+ $stateParams.reactionId +'/comments',
         dataType: "json",
         data: jsonData
       }).then(function(response){

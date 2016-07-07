@@ -1,7 +1,7 @@
 app.controller('ChapterCtrl', function(SideMenuSwitcher,$scope, $http, $stateParams,$location, Books) {
 
   $scope.leftSide.src = 'templates/chapter-menu.html';
-  $http.get("http://localhost:3000/chapters/" + $stateParams.chapterId + "/reactions")
+  $http.get("https://tranquil-tundra-32569.herokuapp.com/chapters/" + $stateParams.chapterId + "/reactions")
   .then(function(response){
     var bookId = ($stateParams.bookId);
     $scope.reactions = response.data.reactions;
@@ -16,7 +16,7 @@ app.controller('ChapterCtrl', function(SideMenuSwitcher,$scope, $http, $statePar
     }
   })
 
-  $http.get("http://localhost:3000/books/" + $stateParams.bookId + '/chapters')
+  $http.get("https://tranquil-tundra-32569.herokuapp.com/books/" + $stateParams.bookId + '/chapters')
     .then(function(response){
       $scope.bookId = response.data.first_chapter.book_id
       $scope.chapterStart = response.data.first_chapter.id
@@ -50,7 +50,7 @@ app.controller('ChapterCtrl', function(SideMenuSwitcher,$scope, $http, $statePar
 
     $http({
       method: 'POST',
-      url: 'http://localhost:3000/users/' + window.localStorage['authToken'] + '/books/' + $stateParams.bookId + '/mark_complete',
+      url: 'https://tranquil-tundra-32569.herokuapp.com/users/' + window.localStorage['authToken'] + '/books/' + $stateParams.bookId + '/mark_complete',
       dataType: "json",
       data: jsonData
     }).then(function(response){
@@ -71,7 +71,7 @@ app.controller('ChapterCtrl', function(SideMenuSwitcher,$scope, $http, $statePar
 
     $http({
       method: 'POST',
-      url: 'http://localhost:3000/chapters/'+ $stateParams.chapterId +'/reactions',
+      url: 'https://tranquil-tundra-32569.herokuapp.com/chapters/'+ $stateParams.chapterId +'/reactions',
       dataType: "json",
       data: jsonData
     }).then(function(response){

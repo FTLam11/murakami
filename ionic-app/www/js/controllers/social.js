@@ -1,5 +1,5 @@
 app.controller('SocialCtrl', function($scope, $http, $ionicPopup, $location) {
-  $http.get('http://localhost:3000/users')
+  $http.get('https://tranquil-tundra-32569.herokuapp.com/users')
   .then(function(response){
     $scope.resultsArray = response.data.users
     console.log($scope.resultsArray)
@@ -18,7 +18,7 @@ app.controller('SocialCtrl', function($scope, $http, $ionicPopup, $location) {
 
   $scope.search = function() {
   var query = $scope.data.username
-   $http.get('http://localhost:3000/users/search?user_name=' + query).then(function(response) {
+   $http.get('https://tranquil-tundra-32569.herokuapp.com/users/search?user_name=' + query).then(function(response) {
       if (response.data.user === null){
         $scope.showPopup()
       }else{

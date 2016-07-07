@@ -1,12 +1,15 @@
 <ion-view view-title="Reviews">
   <ion-content class="padding">
     <ion-list>
-    <h2>Reviews</h2>
-    <ion-item ng-repeat="review in reviews">
+    <h2 id = "align" class="questrial">Reviews</h2>
+    <div class = "card" ng-repeat="review in reviews">
+      <div class="item item-text-wrap">
+     <h4> {{review.book_title}} </h4>
       <p>
-        {{review.content}} - {{review.author}}
-      </p>
-    </ion-item>
+        {{review.content}}
+      </p
+    </div>
+    </div>
     </ion-list>
     </ion-content>
   </ion-view>

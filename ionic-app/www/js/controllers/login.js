@@ -1,4 +1,4 @@
-app.controller('LoginCtrl', function($scope, $ionicPopup, $state, $http) {
+app.controller('LoginCtrl', function($state, $ionicPopup, $scope, $http) {
     $scope.data = {};
 
     $scope.login = function() {
@@ -7,7 +7,7 @@ app.controller('LoginCtrl', function($scope, $ionicPopup, $state, $http) {
     var jsonData = JSON.stringify(userData);
     $http({
       method: 'POST',
-      url: 'http://localhost:3000/login',
+      url: 'https://tranquil-tundra-32569.herokuapp.com/login',
       dataType: "json",
       data: jsonData})
     .success(function(response) {
@@ -21,11 +21,5 @@ app.controller('LoginCtrl', function($scope, $ionicPopup, $state, $http) {
         $state.go('tab.dash');
       }
     })
-    .error(function(data) {
-      var alertPopup = $ionicPopup.alert({
-        title: 'Login failed!',
-        template: 'Please check your credentials!'
-      });
-    });
   }
 })

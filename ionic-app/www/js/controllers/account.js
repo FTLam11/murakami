@@ -1,10 +1,10 @@
-app.controller('AccountCtrl', function($scope, $http, Books, $location, $stateParams) {
+app.controller('AccountCtrl', function($scope, $http, Books, $location) {
   $scope.leftSide.src = 'templates/menu.html';
   var data = window.localStorage['authToken']
 
   $http({
     method: 'GET',
-    url: 'http://localhost:3000/users/' + data,
+    url: 'https://tranquil-tundra-32569.herokuapp.com/users/' + data,
   }).then(function(response){
     $scope.user = response
     var userId = window.localStorage['authToken']
