@@ -35,5 +35,4 @@ app.controller('UserCtrl', function($scope, $http, Books, $location, $stateParam
     $location.path("/tab/users/" + userId + "/reviews")
   }
 
-
 })
