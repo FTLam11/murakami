@@ -12,9 +12,8 @@ app.controller('BookReviewCtrl', function($scope, $http, $stateParams, $location
     }
   })
 
-
-
   $scope.submitReview = function() {
+
 
     $http.get("http://localhost:3000/books/" + $stateParams.bookId)
     .then(function(response){
@@ -35,7 +34,6 @@ app.controller('BookReviewCtrl', function($scope, $http, $stateParams, $location
     })
 
 
-    // $scope.reviews = []
 
 
 

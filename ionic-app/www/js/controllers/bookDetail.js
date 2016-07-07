@@ -5,13 +5,7 @@ app.controller('BookDetailCtrl', function($scope, $http, $stateParams, Books, $l
     $http.get('http://localhost:3000/check_books/' + $stateParams.bookId)
     .then(function(response){
     var book = response.data.book
-    $scope.book = {}
-    $scope.book.book_id = book.id
-    $scope.book.author = book.author
-    $scope.book.title = book.title
-    $scope.book.image_url = book.image_url
-    $scope.book.description = book.description
-    $scope.book.page_numbers = book.page_numbers
+    $scope.book = book
     $scope.reviewButton = false
     })
   } else {

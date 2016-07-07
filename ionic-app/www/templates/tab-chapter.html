@@ -27,8 +27,8 @@
 
 
       <div class='nav-container'>
-        <button on-touch="backChapter()" ng-hide="firstChapter" class="button icon-left ion-chevron-left button-clear button-dark">Back</button>
-        <button on-touch="nextChapter()" ng-hide="lastChapter" class="button icon-right ion-chevron-right button-clear button-dark">Next</button>
+        <button on-touch="changeChapter(-1)" ng-hide="firstChapter" class="button icon-left ion-chevron-left button-clear button-dark">Back</button>
+        <button on-touch="changeChapter(1)" ng-hide="lastChapter" class="button icon-right ion-chevron-right button-clear button-dark">Next</button>
         <button class="button icon-right button-clear button-dark icon ion-ios-checkmark-outline" on-touch="markComplete()" ng-hide="lastChapterButton">Complete Book</button>
       </div>
 

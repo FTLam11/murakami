@@ -7,7 +7,6 @@ app.controller('FavoriteCtrl', function($scope, $http, $stateParams){
 
   $http.get('http://localhost:3000/users/' + userId + '/favorite')
   .then(function(response){
-    console.log(response)
     $scope.books = response.data.favorite_books
     if ($scope.books === null){
       $scope.message = "No Books in your Favorites Yet! Add one!"

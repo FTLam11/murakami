@@ -32,4 +32,5 @@ app.controller('UserCtrl', function($scope, $http, $location, Books, $stateParam
    $scope.sendToReviews = function(){
     $location.path("/tab/users/" + userId + "/reviews")
   }
+
 })
