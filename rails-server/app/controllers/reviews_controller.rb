@@ -11,7 +11,7 @@ class ReviewsController < ApplicationController
   end
 
   def create
-    review = Review.create(content: params['content'], user_id: params['user_id'], rating: params['rating'], book_id: params['book_id'])
+    review = Review.create(content: params['content'], user_id: params['user_id'], rating: params['rating'], book_id: params['book_id'], book_title: params['book_title'])
     render json: { review: review, user: review.reviewer.user_name }
   end
 

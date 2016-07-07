@@ -1,4 +1,4 @@
-app.controller('RegisterCtrl', function($state, $ionicPopup, $scope, $location, $http){
+app.controller('RegisterCtrl', function($state, $ionicPopup, $scope, $http){
   $scope.data = {};
 
   $scope.register = function(){

@@ -1,4 +1,4 @@
-app.controller('LoginCtrl', function($scope, $ionicPopup, $state, $http) {
+app.controller('LoginCtrl', function($state, $ionicPopup, $scope, $http) {
     $scope.data = {};
 
     $scope.login = function() {
@@ -21,11 +21,5 @@ app.controller('LoginCtrl', function($scope, $ionicPopup, $state, $http) {
         $state.go('tab.dash');
       }
     })
-    .error(function(data) {
-      var alertPopup = $ionicPopup.alert({
-        title: 'Login failed!',
-        template: 'Please check your credentials!'
-      });
-    });
   }
 })

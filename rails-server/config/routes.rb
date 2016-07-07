@@ -11,7 +11,7 @@ Rails.application.routes.draw do
   resources :users, only: [:show] do
     resources :books, only: [:create, :show]
   end
-
+  get '/books/:book_id', to: 'books#show'
   get '/users/:user_id/recommended', to: 'solo_readings#recommended_books'
   get '/users/:user_id/current', to: 'solo_readings#current_books'
   get '/users/:user_id/favorite', to: 'solo_readings#favorite_books'

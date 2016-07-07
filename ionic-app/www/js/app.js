@@ -259,7 +259,7 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
     views: {
       'tab-social': {
         templateUrl: 'templates/tab-user-review2.html',
-        controller: 'BookReviewCtrl'
+        controller: 'UserReviewCtrl'
       }
     }
   })

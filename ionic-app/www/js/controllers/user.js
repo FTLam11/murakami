@@ -1,6 +1,5 @@
-app.controller('UserCtrl', function($scope, $http, Books, $location, $stateParams) {
+app.controller('UserCtrl', function($scope, $http, $location, Books, $stateParams) {
   $scope.leftSide.src = 'templates/menu.html';
-  // console.log($stateParams)
   var userId = $stateParams.userId
 
   $http({
@@ -8,7 +7,6 @@ app.controller('UserCtrl', function($scope, $http, Books, $location, $stateParam
     url: 'http://localhost:3000/users/' + userId,
   }).then(function(response){
     $scope.user = response
-    console.log(response)
   })
 
   $scope.settings = {
@@ -34,6 +32,4 @@ app.controller('UserCtrl', function($scope, $http, Books, $location, $stateParam
    $scope.sendToReviews = function(){
     $location.path("/tab/users/" + userId + "/reviews")
   }
-
-
 })

@@ -4,6 +4,7 @@ app.controller('BookReviewCtrl', function($scope, $http, $stateParams, $location
   $http.get("http://localhost:3000/books/" + bookId + "/reviews")
   .then(function(response){
     $scope.reviews = response.data.reviews;
+    console.log($scope.reviews)
     if ($scope.reviews.length === 0) {
       $scope.message = "No reviews so far. Add one!"
     } else {
@@ -14,12 +15,14 @@ app.controller('BookReviewCtrl', function($scope, $http, $stateParams, $location
 
 
   $scope.submitReview = function() {
-    // $scope.reviews = []
-    var newReview = {content: $scope.reviewText, user_id: window.localStorage['authToken'], book_id:$stateParams.bookId, rating: $scope.rating};
 
+    $http.get("http://localhost:3000/books/" + $stateParams.bookId)
+    .then(function(response){
+      var title = response.data.book.title;
+      console.log(title)
+      var newReview = {content: $scope.reviewText, user_id: window.localStorage['authToken'], book_id: $stateParams.bookId, rating: $scope.rating, book_title: title};
       var jsonData = JSON.stringify(newReview);
-
-      $http({
+        $http({
         method: 'POST',
         url: 'http://localhost:3000/books/' + $stateParams.bookId + '/reviews',
         dataType: "json",
@@ -29,5 +32,12 @@ app.controller('BookReviewCtrl', function($scope, $http, $stateParams, $location
         $scope.message = ""
         $scope.reviewText = ""
       })
+    })
+
+
+    // $scope.reviews = []
+
+
+
   }
 })

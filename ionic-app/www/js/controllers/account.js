@@ -1,4 +1,4 @@
-app.controller('AccountCtrl', function($scope, $http, Books, $location, $stateParams) {
+app.controller('AccountCtrl', function($scope, $http, Books, $location) {
   $scope.leftSide.src = 'templates/menu.html';
   var data = window.localStorage['authToken']
 
