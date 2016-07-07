@@ -7,7 +7,7 @@ app.controller('LoginCtrl', function($state, $ionicPopup, $scope, $http) {
     var jsonData = JSON.stringify(userData);
     $http({
       method: 'POST',
-      url: 'http://localhost:3000/login',
+      url: 'https://tranquil-tundra-32569.herokuapp.com/login',
       dataType: "json",
       data: jsonData})
     .success(function(response) {

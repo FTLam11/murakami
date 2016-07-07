@@ -3,14 +3,14 @@ $scope.leftSide.src = 'templates/menu.html';
   var userId = window.localStorage['authToken']
   $scope.data = {};
 
-  $http.get('http://localhost:3000/users/' + userId + '/recommended').then(function(response){
+  $http.get('https://tranquil-tundra-32569.herokuapp.com/users/' + userId + '/recommended').then(function(response){
     var author = response.data.recommendations
     $http.get('https://www.googleapis.com/books/v1/volumes?q=+ inauthor:' + author).then(function(response){
       $scope.books = response.data.items
     })
   })
 
-  $http.get('http://localhost:3000/trending')
+  $http.get('https://tranquil-tundra-32569.herokuapp.com/trending')
   .then(function(response) {
     $scope.popular_books = response.data.popular_books
     $scope.favorite_books = response.data.favorite_books

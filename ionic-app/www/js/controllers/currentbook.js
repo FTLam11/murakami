@@ -6,7 +6,7 @@ app.controller('CurrentBookCtrl', function($scope, $http, Books, $location, $sta
   }
 
 
-  $http.get("http://localhost:3000/users/" + userId + "/current")
+  $http.get("https://tranquil-tundra-32569.herokuapp.com/users/" + userId + "/current")
   .then(function(response){
     var currentBooks = response.data.current_books;
     Books.replaceCurrent(currentBooks)
