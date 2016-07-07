@@ -1,7 +1,7 @@
 app.controller('BookReviewCtrl', function($scope, $http, $stateParams, $location){
   bookId = $stateParams.bookId
   userId = window.localStorage['authToken']
-  $http.get("http://localhost:3000/books/" + bookId + "/reviews")
+  $http.get("https://tranquil-tundra-32569.herokuapp.com/books/" + bookId + "/reviews")
   .then(function(response){
     $scope.reviews = response.data.reviews;
     console.log($scope.reviews)
@@ -15,7 +15,7 @@ app.controller('BookReviewCtrl', function($scope, $http, $stateParams, $location
   $scope.submitReview = function() {
 
 
-    $http.get("http://localhost:3000/books/" + $stateParams.bookId)
+    $http.get("https://tranquil-tundra-32569.herokuapp.com/books/" + $stateParams.bookId)
     .then(function(response){
       var title = response.data.book.title;
       console.log(title)
@@ -23,7 +23,7 @@ app.controller('BookReviewCtrl', function($scope, $http, $stateParams, $location
       var jsonData = JSON.stringify(newReview);
         $http({
         method: 'POST',
-        url: 'http://localhost:3000/books/' + $stateParams.bookId + '/reviews',
+        url: 'https://tranquil-tundra-32569.herokuapp.com/books/' + $stateParams.bookId + '/reviews',
         dataType: "json",
         data: jsonData
       }).then(function(response){

@@ -7,7 +7,7 @@ app.controller('RegisterCtrl', function($state, $ionicPopup, $scope, $http){
 
     $http({
       method: 'POST',
-      url: 'http://localhost:3000/register',
+      url: 'https://tranquil-tundra-32569.herokuapp.com/register',
       dataType: "json",
       data: jsonData})
     .then(function(response){

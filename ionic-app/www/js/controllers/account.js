@@ -4,7 +4,7 @@ app.controller('AccountCtrl', function($scope, $http, Books, $location) {
 
   $http({
     method: 'GET',
-    url: 'http://localhost:3000/users/' + data,
+    url: 'https://tranquil-tundra-32569.herokuapp.com/users/' + data,
   }).then(function(response){
     $scope.user = response
     var userId = window.localStorage['authToken']
