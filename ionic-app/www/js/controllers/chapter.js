@@ -18,7 +18,6 @@ app.controller('ChapterCtrl', function(SideMenuSwitcher,$scope, $http, $statePar
 
   $http.get("http://localhost:3000/books/" + $stateParams.bookId + '/chapters')
     .then(function(response){
-      // console.log(response)
       $scope.bookId = response.data.first_chapter.book_id
       $scope.chapterStart = response.data.first_chapter.id
       $scope.chapterEnd = response.data.last_chapter.id
@@ -31,18 +30,16 @@ app.controller('ChapterCtrl', function(SideMenuSwitcher,$scope, $http, $statePar
       }
 
       chapterId = parseInt($stateParams.chapterId)
+
+      $scope.firstChapter = false
+      $scope.lastChapter = false
+      $scope.lastChapterButton = true
+
       if (chapterId === $scope.chapterStart) {
         $scope.firstChapter = true
-        $scope.lastChapter = false
-        $scope.lastChapterButton = true
       }else if(chapterId === $scope.chapterEnd) {
-        $scope.firstChapter = false
         $scope.lastChapter = true
         $scope.lastChapterButton = false
-      }else{
-        $scope.firstChapter = false
-        $scope.lastChapter = false
-        $scope.lastChapterButton = true
       }
     })
 
@@ -62,18 +59,11 @@ app.controller('ChapterCtrl', function(SideMenuSwitcher,$scope, $http, $statePar
     })
   }
 
-
-  $scope.nextChapter = function() {
-    bookId = $stateParams.bookId
-    nextChapterNum = parseInt($stateParams.chapterId) + 1
-    $location.path("/tab/books/" + bookId + "/chapters/" + nextChapterNum)
-  }
-
-  $scope.backChapter = function() {
-    bookId = $stateParams.bookId
-    nextChapterNum = parseInt($stateParams.chapterId) - 1
-    $location.path("/tab/books/" + bookId + "/chapters/" + nextChapterNum)
-  }
+  $scope.changeChapter = function(num) {
+      bookId = $stateParams.bookId
+      nextChapterNum = parseInt($stateParams.chapterId) + num
+      $location.path("/tab/books/" + bookId + "/chapters/" + nextChapterNum)
+    }
 
  $scope.submitReaction = function(){
     var userReaction = {content: $scope.reactionText, user_id: window.localStorage['authToken'], chapter_id: $stateParams.chapterId};

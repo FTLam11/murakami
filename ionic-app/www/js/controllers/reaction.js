@@ -12,7 +12,6 @@ app.controller ('ReactionCtrl', function($scope, $http, $stateParams){
     $scope.comments = response.data.comments
     $scope.reaction = response.data.reaction
     $scope.username = response.data.username
-
   })
 
   $scope.submitComment= function(){
