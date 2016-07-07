@@ -14,7 +14,6 @@ app.controller('BookReviewCtrl', function($scope, $http, $stateParams, $location
 
 
   $scope.submitReview = function() {
-    // $scope.reviews = []
     var newReview = {content: $scope.reviewText, user_id: window.localStorage['authToken'], book_id:$stateParams.bookId, rating: $scope.rating};
 
       var jsonData = JSON.stringify(newReview);

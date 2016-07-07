@@ -21,7 +21,6 @@ $scope.leftSide.src = 'templates/menu.html';
   };
 
   $scope.find = function(){
-
     var query = $scope.data.search
     $http.get('https://www.googleapis.com/books/v1/volumes?q=' + query)
     .then(function(response){
