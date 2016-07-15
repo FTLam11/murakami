@@ -10,7 +10,6 @@ app.controller('ChapterCtrl', function(SideMenuSwitcher,$scope, $http, $statePar
     var chapterStart = 0;
     var chapterEnd = 0;
 
-
     if ($scope.reactions.length === 0){
       $scope.message = "There are no reactions! React!"
     }
@@ -68,7 +67,6 @@ app.controller('ChapterCtrl', function(SideMenuSwitcher,$scope, $http, $statePar
  $scope.submitReaction = function(){
     var userReaction = {content: $scope.reactionText, user_id: window.localStorage['authToken'], chapter_id: $stateParams.chapterId};
     var jsonData = JSON.stringify(userReaction);
-
     $http({
       method: 'POST',
       url: 'https://tranquil-tundra-32569.herokuapp.com/chapters/'+ $stateParams.chapterId +'/reactions',
@@ -80,8 +78,6 @@ app.controller('ChapterCtrl', function(SideMenuSwitcher,$scope, $http, $statePar
       $scope.reactionText = "";
     })
   }
-
-
 
   $scope.seeComments = function(reaction_id){
     chapterId = $stateParams.chapterId

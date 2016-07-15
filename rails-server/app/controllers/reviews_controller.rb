@@ -22,8 +22,8 @@ class ReviewsController < ApplicationController
 
   private
 
-  # def review_params
-  #   params.require(:review).print(:user_id,:book_id,:content,:rating)
-  # end
+  def review_params
+    params.require(:review).print(:user_id,:book_id,:content,:rating)
+  end
 
 end

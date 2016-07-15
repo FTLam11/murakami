@@ -1,7 +1,6 @@
 class SessionsController < ApplicationController
 
   def login
-    p params
     user = User.find_by(user_name: params["username"].downcase)
     if user && user.authenticate(params["password"])
       session[:user_id] = user.id

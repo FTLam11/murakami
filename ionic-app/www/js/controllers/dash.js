@@ -8,7 +8,7 @@ app.controller('DashCtrl', function($scope, $http, Books, $location) {
 
 
   userId = window.localStorage['authToken']
-  $http.get("http://localhost:3000/users/" + userId + "/current")
+  $http.get("http://tranquil-tundra-32569.herokuapp.com/users/" + userId + "/current")
   .then(function(response){
     var currentBooks = response.data.current_books;
     Books.replaceCurrent(currentBooks)
@@ -26,7 +26,7 @@ app.controller('DashCtrl', function($scope, $http, Books, $location) {
 
   $scope.viewChapter = function(bookId) {
 
-    $http.get("http://localhost:3000/books/" + bookId + '/chapters')
+    $http.get("http://tranquil-tundra-32569.herokuapp.com/books/" + bookId + '/chapters')
     .then(function(response){
       var chapterStart = response.data.first_chapter.id
       var chapterEnd = response.data.last_chapter.id

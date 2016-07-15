@@ -8,12 +8,7 @@ class CommentsController < ApplicationController
   def index
     reaction = Reaction.find(params[:reaction_id].to_i)
     comments = reaction.comments
-    all_comments = []
-
-    comments.each do |comment|
-      all_comments << {comment: comment, username: comment.user.user_name}
-    end
-
+    Comment.index_comments(comments)
     render json: {comments: all_comments, reaction: reaction, username: reaction.user.user_name}
   end
 
