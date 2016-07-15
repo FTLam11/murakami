@@ -4,7 +4,7 @@ app.controller('QueueCtrl', function($scope, $http, Books, $stateParams){
   }else{
     userId = $stateParams.userId
   }
-  $http.get("http://localhost:3000/users/" + userId + '/queue')
+  $http.get("http://tranquil-tundra-32569.herokuapp.com/users/" + userId + '/queue')
   .then(function(response){
     var queueBooks = response.data.queue_books;
     Books.add(queueBooks,"queue")

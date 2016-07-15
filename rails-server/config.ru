@@ -5,7 +5,7 @@ run Rails.application
 
 use Rack::Cors do
   allow do
-    origins 'localhost:3000', '127.0.0.1:3000', 'localhost:8100'
+    origins 'tranquil-tundra-32569.herokuapp.com', '127.0.0.1:3000', 'localhost:8100'
             /\Ahttp:\/\/192\.168\.0\.\d{1,3}(:\d+)?\z/
             # regular expressions can be used here
 

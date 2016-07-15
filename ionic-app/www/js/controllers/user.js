@@ -4,7 +4,7 @@ app.controller('UserCtrl', function($scope, $http, $location, Books, $stateParam
 
   $http({
     method: 'GET',
-    url: 'http://localhost:3000/users/' + userId,
+    url: 'http://tranquil-tundra-32569.herokuapp.com/users/' + userId,
   }).then(function(response){
     $scope.user = response
   })

@@ -4,7 +4,7 @@ app.controller('UserReviewCtrl', function($scope, $http, $stateParams){
   }else{
     userId = $stateParams.userId
   }
-  $http.get('http://localhost:3000/users/' + userId + '/reviews')
+  $http.get('http://tranquil-tundra-32569.herokuapp.com/users/' + userId + '/reviews')
   .then(function(response){
     console.log(response)
     $scope.reviews = response.data.reviews

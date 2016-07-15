@@ -11,7 +11,6 @@ class UsersController < ApplicationController
 
   def create
     user = User.new(email: params["email"], user_name: params["username"], password: params["password"], image_url: "image_url")
-    p user
     if user.save
       session[:user_id] = user.id
       render json: {token: user.id, error_messages: []}, status: :ok
@@ -28,7 +27,6 @@ class UsersController < ApplicationController
   def reviews
     user = User.find(params[:user_id])
     reviews = user.reviews
-    p reviews
     render json: {reviews: reviews}
   end
 

@@ -26,6 +26,11 @@ class Book < ActiveRecord::Base
     end
   end
 
+  def self.update_status(staus, reading)
+    reading.status = true 
+    reading.save  
+  end 
+
   def self.create_chapters(book, nums)
     nums.times do |num|
       book.chapters.create(number: num)

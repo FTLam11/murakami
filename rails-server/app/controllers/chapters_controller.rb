@@ -1,7 +1,6 @@
 class ChaptersController < ApplicationController
 
   def index
-    p params
     book = Book.find(params[:book_id].to_i)
     first_chapter = book.chapters.first
     last_chapter = book.chapters.last

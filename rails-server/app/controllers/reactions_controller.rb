@@ -14,18 +14,8 @@ class ReactionsController < ApplicationController
     specific_book = Book.find(chapter.book_id)
 
     reactions = Reaction.all
-    current_reactions = []
-    current_users = []
-
-    users = User.all
-    reactions.each do |reaction|
-      if reaction.chapter_id == chapter_int
-        current_reactions << {reaction: reaction.content, reaction_id: reaction.id,  username: reaction.user.user_name, userAvatar: reaction.user.image_url}
-      end
-    end
-
-
-    # reactions = Reaction.all.select {|reaction| reaction.chapter_id == chapter_id}
+    
+    Reaction.check_reactions(reactions)
     render json: { reactions: current_reactions, specific_book: specific_book}
   end
 

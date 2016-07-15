@@ -5,7 +5,7 @@ app.controller('FavoriteCtrl', function($scope, $http, $stateParams){
     userId = $stateParams.userId
   }
 
-  $http.get('http://localhost:3000/users/' + userId + '/favorite')
+  $http.get('http://tranquil-tundra-32569.herokuapp.com/users/' + userId + '/favorite')
   .then(function(response){
     $scope.books = response.data.favorite_books
     if ($scope.books === null){
