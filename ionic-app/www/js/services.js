@@ -18,8 +18,6 @@ angular.module('starter.services', [])
       }
   }
 
-
-
   return {
     currentBooks: currentBooks,
     queueBooks: queueBooks,
@@ -77,13 +75,6 @@ angular.module('starter.services', [])
 })
 
 .factory('SideMenuSwitcher', function ($rootScope) {
-// var items = [];
-
-// items.clear = function(){
-//   items = []
-//   return items;
-// }
-
   return {
     leftSide: {src: 'templates/menu.html'},
     items: [],

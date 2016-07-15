@@ -16,7 +16,6 @@ app.controller ('ReactionCtrl', function($scope, $http, $stateParams){
 
   $scope.submitComment= function(){
       var userComment = {content: $scope.commentText, user_id: window.localStorage['authToken'], reaction_id: $stateParams.reactionId};
-
       var jsonData = JSON.stringify(userComment);
 
       $http({
@@ -28,7 +27,6 @@ app.controller ('ReactionCtrl', function($scope, $http, $stateParams){
         $scope.comments.push(response.data)
         $scope.commentText = "";
       })
-
+    
     }
-
 })

@@ -1,6 +1,7 @@
 app.controller('BookReviewCtrl', function($scope, $http, $stateParams, $location){
   bookId = $stateParams.bookId
   userId = window.localStorage['authToken']
+  
   $http.get("https://tranquil-tundra-32569.herokuapp.com/books/" + bookId + "/reviews")
   .then(function(response){
     $scope.reviews = response.data.reviews;
