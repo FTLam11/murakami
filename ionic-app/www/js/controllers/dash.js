@@ -6,7 +6,6 @@ app.controller('DashCtrl', function($scope, $http, Books, $location) {
     };
   }
 
-
   userId = window.localStorage['authToken']
   $http.get("http://tranquil-tundra-32569.herokuapp.com/users/" + userId + "/current")
   .then(function(response){
@@ -25,7 +24,6 @@ app.controller('DashCtrl', function($scope, $http, Books, $location) {
   };
 
   $scope.viewChapter = function(bookId) {
-
     $http.get("http://tranquil-tundra-32569.herokuapp.com/books/" + bookId + '/chapters')
     .then(function(response){
       var chapterStart = response.data.first_chapter.id

@@ -23,7 +23,6 @@ app.controller('BookDetailCtrl', function($scope, $http, $stateParams, Books, $l
     })
   }
 
-
  $http.get("https://tranquil-tundra-32569.herokuapp.com/users/" + userId  + '/current')
   .then(function(response){
      var items = response.data.current_books
@@ -41,8 +40,6 @@ app.controller('BookDetailCtrl', function($scope, $http, $stateParams, Books, $l
       $scope.startButton = false
     }
   })
-
-
 
   $scope.isFavorite = function() {
     $http.get("https://tranquil-tundra-32569.herokuapp.com/users/" + userId  + '/favorite')
@@ -64,7 +61,6 @@ app.controller('BookDetailCtrl', function($scope, $http, $stateParams, Books, $l
       $('#favoriteIcon').removeClass("favoriteIconActive")
       $('#favoriteIcon').addClass("favoriteIconInactive")
     }
-
 
   $scope.viewChapter = function() {
     $http.get("https://tranquil-tundra-32569.herokuapp.com/books/" + $stateParams.bookId + '/chapters')
@@ -112,8 +108,6 @@ app.controller('BookDetailCtrl', function($scope, $http, $stateParams, Books, $l
       .end();
     }, 700)
   };
-
-
 
   $scope.go = function ( path ){
     $location.path( path );
@@ -171,8 +165,6 @@ app.controller('BookDetailCtrl', function($scope, $http, $stateParams, Books, $l
     })
   }
 
-
-
   $scope.queue = function() {
     $scope.data = {};
     var bookData = $scope.book
@@ -208,10 +200,7 @@ app.controller('BookDetailCtrl', function($scope, $http, $stateParams, Books, $l
     })
   }
 
-
   $scope.review = function() {
     $location.path("/tab/books/" + $stateParams.bookId + "/reviews")
   }
-
-
 })

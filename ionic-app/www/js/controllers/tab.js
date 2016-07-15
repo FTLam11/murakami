@@ -9,6 +9,5 @@ app.controller('TabCtrl', function($window,$scope, $location,SideMenuSwitcher){
   $scope.sendChapter = function(bookId, chapterId){
     $location.path("/tab/books/" + bookId + "/chapters/" + chapterId)
   }
-
-  $scope.leftSide = SideMenuSwitcher.leftSide;
+    $scope.leftSide = SideMenuSwitcher.leftSide;
 })

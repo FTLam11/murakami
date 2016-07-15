@@ -42,7 +42,6 @@ app.controller('ChapterCtrl', function(SideMenuSwitcher,$scope, $http, $statePar
       }
     })
 
-
   $scope.markComplete = function() {
     var params = {queue: false, current: false, complete: true}
     var jsonData = JSON.stringify(params);
@@ -73,7 +72,7 @@ app.controller('ChapterCtrl', function(SideMenuSwitcher,$scope, $http, $statePar
       dataType: "json",
       data: jsonData
     }).then(function(response){
-      console.log(response)
+
       $scope.reactions.push(response.data)
       $scope.reactionText = "";
     })

@@ -1,5 +1,5 @@
 app.controller('FavoriteCtrl', function($scope, $http, $stateParams){
-  if (typeof($stateParams.userId) === 'undefined' ){
+  if(typeof($stateParams.userId) === 'undefined' ){
     userId = window.localStorage['authToken']
   }else{
     userId = $stateParams.userId
