@@ -10,6 +10,8 @@ class Book < ActiveRecord::Base
   # validates :title, :author, :genre, :image_url, :page_numbers, :date_published, presence: true
 
   def self.add_book(params, user)
+    #associate book with the user
+    #create the book if it doesnt exist
     book = Book.find_by(title: params['book']['title'])
     if book == nil
       new_book = user.books.create(title: params['book']['title'], description: params['book']['description'], author: params['book']['author'], image_url: params['book']['image_url'], page_numbers: params['book']['page_numbers'], date_published: params['book']['publishedDate']) #user.books.create(book_params)
