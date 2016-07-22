@@ -10,8 +10,12 @@ describe Book do
         let (:user) { User.create(user_name: "Fronk",  email: "Fronk@fronk.fronk", password_digest: "fronk", image_url: "test") }
 
         context "given the book does not exist in the database" do
-            it "creates a new entry in the Books table" do
-                expect { Book.add_book(params, user) }.to change{ Book.count }.by(1)
+            it "creates a new Book" do
+                expect { Book.add_book(params, user) }.to change { Book.count }.by(1)
+            end
+
+            it "creates chapters for the added book" do
+                expect { Book.add_book(params, user) }.to change { Chapter.count }.by(10)
             end
 
             it "associates the added book with the correct user" do
@@ -26,8 +30,12 @@ describe Book do
                 Book.add_book(params, user)
             end
 
-            it "does not create a new entry in the Books table" do
-                expect { Book.add_book(params, user) }.to_not change{ Book.count }
+            it "does not create a new Book" do
+                expect { Book.add_book(params, user) }.to_not change { Book.count }
+            end
+
+            it "doest not create chapters for the book" do
+                expect { Book.add_book(params, user) }.to_not change { Chapter.count }
             end
 
             it "associates the existing book with the correct user" do
