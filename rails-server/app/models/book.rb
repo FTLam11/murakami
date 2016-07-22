@@ -22,7 +22,7 @@ class Book < ActiveRecord::Base
         @reading = SoloReading.last
       end
 
-      @reading
+      @reading ##probably not necessary
     end
   end
 
