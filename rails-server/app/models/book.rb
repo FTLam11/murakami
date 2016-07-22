@@ -26,7 +26,7 @@ class Book < ActiveRecord::Base
     end
   end
 
-  def self.update_status(staus, reading)
+  def self.update_status(status, reading)
     reading.status = true 
     reading.save  
   end 
