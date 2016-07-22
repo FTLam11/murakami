@@ -12,7 +12,7 @@ class Book < ActiveRecord::Base
   def self.add_book(params, user)
     book = Book.find_by(title: params['book']['title'])
     if book == nil
-      new_book = user.books.create(title: params['book']['title'], description: params['book']['description'], author: params['book']['author'], image_url: params['book']['image_url'], page_numbers: params['book']['page_numbers'], date_published: params['book']['publishedDate'])
+      new_book = user.books.create(title: params['book']['title'], description: params['book']['description'], author: params['book']['author'], image_url: params['book']['image_url'], page_numbers: params['book']['page_numbers'], date_published: params['book']['publishedDate']) #user.books.create(book_params)
       create_chapters(new_book, params[:chapter_count])
       @reading = SoloReading.find_by(user_id:user.id, book_id:new_book.id)
     else
@@ -60,8 +60,8 @@ class Book < ActiveRecord::Base
 
   private
 
-  def self.book_params
-    params.require(:book).print(:title, :author, :genre, :image_url, :page_numbers, :date_published)
+  def book_params
+    params.require(:book).permit(:title, :author, :genre, :image_url, :page_numbers, :date_published)
   end
 
 end
