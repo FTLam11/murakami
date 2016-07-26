@@ -1,7 +1,7 @@
 class BooksController < ApplicationController
   include ApplicationHelper
 
-  def create
+  def create #returns book or dont
     user = User.find(params["user_id"])
     @reading = Book.add_book(params, user)
     if @reading.current
@@ -13,7 +13,7 @@ class BooksController < ApplicationController
     end
   end
 
-  def check_books
+  def check_books #move to model?
     book = Book.find(params["book_id"])
     render json: {book: book}, status: :ok
   end
