@@ -329,3 +329,4 @@ ORDER BY c.conname
   [1m[35mSQL (1.3ms)[0m  INSERT INTO "solo_readings" ("user_id", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["user_id", 2], ["book_id", 5], ["created_at", "2016-07-26 02:41:37.061840"], ["updated_at", "2016-07-26 02:41:37.061840"]]
   [1m[36m (1.9ms)[0m  [1mCOMMIT[0m
   [1m[36mBook Load (1.1ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."title" = $1 LIMIT 1[0m  [["title", "lolololol"]]
+  [1m[36mSoloReading Load (1.0ms)[0m  [1mSELECT  "solo_readings".* FROM "solo_readings"  ORDER BY "solo_readings"."id" ASC LIMIT 1[0m

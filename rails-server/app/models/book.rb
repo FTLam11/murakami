@@ -9,32 +9,31 @@ class Book < ActiveRecord::Base
 
   # validates :title, :author, :genre, :image_url, :page_numbers, :date_published, presence: true
 
-  def self.add_book(params, user)
+  #returns book, update the reading status
+  def self.add_book(params, user, make_chapters = true)
     # 1. Does the book exist in the DB?
     # 2. No? Make the book, make chapters for it, (return the book)
     # 3. Yes? (Then another user has already added that book) Did the user already add to their books?
     # 4. Yes? Return the book
     # 5. No? Add book to user's readings, return the book 
     # Maybe check if params[:chapters] != nil
-    if !book_in_db?(params)
+    unless book_in_db?(params)
       added_book = add_book_to_library(params, user)
-      create_chapters(added_book, params[:chapter_count])
+      create_chapters(added_book, params[:chapter_count]) if make_chapters == true
       # @reading = SoloReading.find_by(user_id:user.id, book_id:added_book.id)
       return added_book
-    else
-      book = Book.find_by(title: params['book']['title'])
+    end
+
+    book = Book.find_by(title: params['book']['title'])
       # @reading = get_reading(user, params)
-      if !get_reading(user, book)
-        SoloReading.create(user_id: user.id, book_id: book.id)
-        return book
-      else
-        return book
+    unless get_reading(user, book)
+      SoloReading.create(user_id: user.id, book_id: book.id)
         # user.books << book
         # @reading = SoloReading.last
-      end
-
-      # @reading ##probably not necessary
     end
+
+    return book
+      # @reading ##probably not necessary
   end
 
   def self.get_reading(user, book)

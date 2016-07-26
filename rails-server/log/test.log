@@ -7397,3 +7397,607 @@
   [1m[36mUser Exists (0.7ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'bob@bob.com' LIMIT 1[0m
   [1m[35m (0.2ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
   [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.6ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.7ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.7ms)[0m  [1mSELECT COUNT(*) FROM "books"[0m
+  [1m[35m (0.3ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (1.5ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'Fronk@fronk.fronk' LIMIT 1[0m
+  [1m[35mSQL (2.6ms)[0m  INSERT INTO "users" ("user_name", "email", "password_digest", "image_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["user_name", "Fronk"], ["email", "Fronk@fronk.fronk"], ["password_digest", "fronk"], ["image_url", "test"], ["created_at", "2016-07-26 20:08:32.763782"], ["updated_at", "2016-07-26 20:08:32.763782"]]
+  [1m[36m (0.3ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mBook Load (0.3ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."title" = $1 LIMIT 1  [["title", "TurtleMaster"]]
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "books" ("title", "description", "author", "image_url", "page_numbers", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["title", "TurtleMaster"], ["description", "TMNT"], ["author", "Fronk"], ["image_url", "test"], ["page_numbers", 50], ["created_at", "2016-07-26 20:08:32.820015"], ["updated_at", "2016-07-26 20:08:32.820015"]]
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "solo_readings" ("user_id", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 237], ["book_id", 204], ["created_at", "2016-07-26 20:08:32.835749"], ["updated_at", "2016-07-26 20:08:32.835749"]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "chapters" ("number", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["number", 0], ["book_id", 204], ["created_at", "2016-07-26 20:08:32.854153"], ["updated_at", "2016-07-26 20:08:32.854153"]]
+  [1m[36m (0.3ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "chapters" ("number", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["number", 1], ["book_id", 204], ["created_at", "2016-07-26 20:08:32.859803"], ["updated_at", "2016-07-26 20:08:32.859803"]]
+  [1m[35m (0.3ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "chapters" ("number", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["number", 2], ["book_id", 204], ["created_at", "2016-07-26 20:08:32.864965"], ["updated_at", "2016-07-26 20:08:32.864965"]]
+  [1m[36m (0.3ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "chapters" ("number", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["number", 3], ["book_id", 204], ["created_at", "2016-07-26 20:08:32.870108"], ["updated_at", "2016-07-26 20:08:32.870108"]]
+  [1m[35m (0.3ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "chapters" ("number", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["number", 4], ["book_id", 204], ["created_at", "2016-07-26 20:08:32.875407"], ["updated_at", "2016-07-26 20:08:32.875407"]]
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "chapters" ("number", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["number", 5], ["book_id", 204], ["created_at", "2016-07-26 20:08:32.880636"], ["updated_at", "2016-07-26 20:08:32.880636"]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "chapters" ("number", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["number", 6], ["book_id", 204], ["created_at", "2016-07-26 20:08:32.886021"], ["updated_at", "2016-07-26 20:08:32.886021"]]
+  [1m[36m (0.3ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "chapters" ("number", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["number", 7], ["book_id", 204], ["created_at", "2016-07-26 20:08:32.891654"], ["updated_at", "2016-07-26 20:08:32.891654"]]
+  [1m[35m (0.3ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "chapters" ("number", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["number", 8], ["book_id", 204], ["created_at", "2016-07-26 20:08:32.897437"], ["updated_at", "2016-07-26 20:08:32.897437"]]
+  [1m[36m (0.3ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "chapters" ("number", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["number", 9], ["book_id", 204], ["created_at", "2016-07-26 20:08:32.903634"], ["updated_at", "2016-07-26 20:08:32.903634"]]
+  [1m[35m (0.3ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.6ms)[0m  [1mSELECT COUNT(*) FROM "books"[0m
+  [1m[35m (0.4ms)[0m  ROLLBACK
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.7ms)[0m  SELECT COUNT(*) FROM "chapters"
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.6ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'Fronk@fronk.fronk' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "users" ("user_name", "email", "password_digest", "image_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["user_name", "Fronk"], ["email", "Fronk@fronk.fronk"], ["password_digest", "fronk"], ["image_url", "test"], ["created_at", "2016-07-26 20:08:32.918648"], ["updated_at", "2016-07-26 20:08:32.918648"]]
+  [1m[35m (0.7ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mBook Load (0.3ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."title" = $1 LIMIT 1[0m  [["title", "TurtleMaster"]]
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "books" ("title", "description", "author", "image_url", "page_numbers", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "TurtleMaster"], ["description", "TMNT"], ["author", "Fronk"], ["image_url", "test"], ["page_numbers", 50], ["created_at", "2016-07-26 20:08:32.929380"], ["updated_at", "2016-07-26 20:08:32.929380"]]
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "solo_readings" ("user_id", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["user_id", 238], ["book_id", 205], ["created_at", "2016-07-26 20:08:32.933973"], ["updated_at", "2016-07-26 20:08:32.933973"]]
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.8ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "chapters" ("number", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["number", 0], ["book_id", 205], ["created_at", "2016-07-26 20:08:32.941536"], ["updated_at", "2016-07-26 20:08:32.941536"]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "chapters" ("number", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["number", 1], ["book_id", 205], ["created_at", "2016-07-26 20:08:32.946787"], ["updated_at", "2016-07-26 20:08:32.946787"]]
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "chapters" ("number", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["number", 2], ["book_id", 205], ["created_at", "2016-07-26 20:08:32.950508"], ["updated_at", "2016-07-26 20:08:32.950508"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "chapters" ("number", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["number", 3], ["book_id", 205], ["created_at", "2016-07-26 20:08:32.953503"], ["updated_at", "2016-07-26 20:08:32.953503"]]
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "chapters" ("number", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["number", 4], ["book_id", 205], ["created_at", "2016-07-26 20:08:32.956669"], ["updated_at", "2016-07-26 20:08:32.956669"]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "chapters" ("number", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["number", 5], ["book_id", 205], ["created_at", "2016-07-26 20:08:32.959957"], ["updated_at", "2016-07-26 20:08:32.959957"]]
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "chapters" ("number", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["number", 6], ["book_id", 205], ["created_at", "2016-07-26 20:08:32.963341"], ["updated_at", "2016-07-26 20:08:32.963341"]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "chapters" ("number", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["number", 7], ["book_id", 205], ["created_at", "2016-07-26 20:08:32.966479"], ["updated_at", "2016-07-26 20:08:32.966479"]]
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "chapters" ("number", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["number", 8], ["book_id", 205], ["created_at", "2016-07-26 20:08:32.969772"], ["updated_at", "2016-07-26 20:08:32.969772"]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "chapters" ("number", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["number", 9], ["book_id", 205], ["created_at", "2016-07-26 20:08:32.973034"], ["updated_at", "2016-07-26 20:08:32.973034"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.6ms)[0m  SELECT COUNT(*) FROM "chapters"
+  [1m[36m (0.4ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.3ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'Fronk@fronk.fronk' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "users" ("user_name", "email", "password_digest", "image_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["user_name", "Fronk"], ["email", "Fronk@fronk.fronk"], ["password_digest", "fronk"], ["image_url", "test"], ["created_at", "2016-07-26 20:08:32.981835"], ["updated_at", "2016-07-26 20:08:32.981835"]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."title" = $1 LIMIT 1[0m  [["title", "TurtleMaster"]]
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "books" ("title", "description", "author", "image_url", "page_numbers", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "TurtleMaster"], ["description", "TMNT"], ["author", "Fronk"], ["image_url", "test"], ["page_numbers", 50], ["created_at", "2016-07-26 20:08:32.986880"], ["updated_at", "2016-07-26 20:08:32.986880"]]
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "solo_readings" ("user_id", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["user_id", 239], ["book_id", 206], ["created_at", "2016-07-26 20:08:32.990116"], ["updated_at", "2016-07-26 20:08:32.990116"]]
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "chapters" ("number", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["number", 0], ["book_id", 206], ["created_at", "2016-07-26 20:08:32.994046"], ["updated_at", "2016-07-26 20:08:32.994046"]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "chapters" ("number", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["number", 1], ["book_id", 206], ["created_at", "2016-07-26 20:08:32.997511"], ["updated_at", "2016-07-26 20:08:32.997511"]]
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "chapters" ("number", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["number", 2], ["book_id", 206], ["created_at", "2016-07-26 20:08:33.000916"], ["updated_at", "2016-07-26 20:08:33.000916"]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (1.1ms)[0m  INSERT INTO "chapters" ("number", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["number", 3], ["book_id", 206], ["created_at", "2016-07-26 20:08:33.004190"], ["updated_at", "2016-07-26 20:08:33.004190"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "chapters" ("number", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["number", 4], ["book_id", 206], ["created_at", "2016-07-26 20:08:33.008247"], ["updated_at", "2016-07-26 20:08:33.008247"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "chapters" ("number", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["number", 5], ["book_id", 206], ["created_at", "2016-07-26 20:08:33.011707"], ["updated_at", "2016-07-26 20:08:33.011707"]]
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "chapters" ("number", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["number", 6], ["book_id", 206], ["created_at", "2016-07-26 20:08:33.016087"], ["updated_at", "2016-07-26 20:08:33.016087"]]
+  [1m[35m (0.7ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "chapters" ("number", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["number", 7], ["book_id", 206], ["created_at", "2016-07-26 20:08:33.021477"], ["updated_at", "2016-07-26 20:08:33.021477"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "chapters" ("number", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["number", 8], ["book_id", 206], ["created_at", "2016-07-26 20:08:33.025102"], ["updated_at", "2016-07-26 20:08:33.025102"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "chapters" ("number", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["number", 9], ["book_id", 206], ["created_at", "2016-07-26 20:08:33.028110"], ["updated_at", "2016-07-26 20:08:33.028110"]]
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mBook Load (0.6ms)[0m  SELECT  "books".* FROM "books"  ORDER BY "books"."id" DESC LIMIT 1
+  [1m[36mSoloReading Load (0.3ms)[0m  [1mSELECT  "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."book_id" = $2 LIMIT 1[0m  [["user_id", 239], ["book_id", 206]]
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "books" ("title", "description", "author", "image_url", "page_numbers", "date_published", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["title", "TurtleMaster"], ["description", "TMNT"], ["author", "Fronk"], ["image_url", "test"], ["page_numbers", 50], ["date_published", 1945], ["created_at", "2016-07-26 20:08:33.041851"], ["updated_at", "2016-07-26 20:08:33.041851"]]
+  [1m[35m (0.3ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.3ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'Fronk@fronk.fronk' LIMIT 1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "users" ("user_name", "email", "password_digest", "image_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["user_name", "Fronk"], ["email", "Fronk@fronk.fronk"], ["password_digest", "fronk"], ["image_url", "test"], ["created_at", "2016-07-26 20:08:33.048645"], ["updated_at", "2016-07-26 20:08:33.048645"]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mBook Load (0.3ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."title" = $1 LIMIT 1[0m  [["title", "TurtleMaster"]]
+  [1m[35mBook Load (0.2ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."title" = $1 LIMIT 1  [["title", "TurtleMaster"]]
+  [1m[36mSoloReading Load (0.2ms)[0m  [1mSELECT  "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."book_id" = $2 LIMIT 1[0m  [["user_id", 240], ["book_id", 207]]
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "solo_readings" ("user_id", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 240], ["book_id", 207], ["created_at", "2016-07-26 20:08:33.053992"], ["updated_at", "2016-07-26 20:08:33.053992"]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "books"[0m
+  [1m[35mBook Load (0.3ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."title" = $1 LIMIT 1  [["title", "TurtleMaster"]]
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."title" = $1 LIMIT 1[0m  [["title", "TurtleMaster"]]
+  [1m[35mSoloReading Load (0.3ms)[0m  SELECT  "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."book_id" = $2 LIMIT 1  [["user_id", 240], ["book_id", 207]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "books"[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "books" ("title", "description", "author", "image_url", "page_numbers", "date_published", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["title", "TurtleMaster"], ["description", "TMNT"], ["author", "Fronk"], ["image_url", "test"], ["page_numbers", 50], ["date_published", 1945], ["created_at", "2016-07-26 20:08:33.062705"], ["updated_at", "2016-07-26 20:08:33.062705"]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.7ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.5ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'Fronk@fronk.fronk' LIMIT 1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "users" ("user_name", "email", "password_digest", "image_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["user_name", "Fronk"], ["email", "Fronk@fronk.fronk"], ["password_digest", "fronk"], ["image_url", "test"], ["created_at", "2016-07-26 20:08:33.072745"], ["updated_at", "2016-07-26 20:08:33.072745"]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mBook Load (0.3ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."title" = $1 LIMIT 1[0m  [["title", "TurtleMaster"]]
+  [1m[35mBook Load (0.2ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."title" = $1 LIMIT 1  [["title", "TurtleMaster"]]
+  [1m[36mSoloReading Load (0.3ms)[0m  [1mSELECT  "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."book_id" = $2 LIMIT 1[0m  [["user_id", 241], ["book_id", 208]]
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "solo_readings" ("user_id", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 241], ["book_id", 208], ["created_at", "2016-07-26 20:08:33.081149"], ["updated_at", "2016-07-26 20:08:33.081149"]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "chapters"[0m
+  [1m[35mBook Load (0.2ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."title" = $1 LIMIT 1  [["title", "TurtleMaster"]]
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."title" = $1 LIMIT 1[0m  [["title", "TurtleMaster"]]
+  [1m[35mSoloReading Load (0.2ms)[0m  SELECT  "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."book_id" = $2 LIMIT 1  [["user_id", 241], ["book_id", 208]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "chapters"[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "books" ("title", "description", "author", "image_url", "page_numbers", "date_published", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["title", "TurtleMaster"], ["description", "TMNT"], ["author", "Fronk"], ["image_url", "test"], ["page_numbers", 50], ["date_published", 1945], ["created_at", "2016-07-26 20:08:33.089987"], ["updated_at", "2016-07-26 20:08:33.089987"]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.4ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'Fronk@fronk.fronk' LIMIT 1
+  [1m[36mSQL (0.8ms)[0m  [1mINSERT INTO "users" ("user_name", "email", "password_digest", "image_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["user_name", "Fronk"], ["email", "Fronk@fronk.fronk"], ["password_digest", "fronk"], ["image_url", "test"], ["created_at", "2016-07-26 20:08:33.095171"], ["updated_at", "2016-07-26 20:08:33.095171"]]
+  [1m[35m (0.3ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mBook Load (0.3ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."title" = $1 LIMIT 1[0m  [["title", "TurtleMaster"]]
+  [1m[35mBook Load (0.4ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."title" = $1 LIMIT 1  [["title", "TurtleMaster"]]
+  [1m[36mSoloReading Load (0.3ms)[0m  [1mSELECT  "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."book_id" = $2 LIMIT 1[0m  [["user_id", 242], ["book_id", 209]]
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "solo_readings" ("user_id", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 242], ["book_id", 209], ["created_at", "2016-07-26 20:08:33.102557"], ["updated_at", "2016-07-26 20:08:33.102557"]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mBook Load (0.6ms)[0m  [1mSELECT  "books".* FROM "books"  ORDER BY "books"."id" DESC LIMIT 1[0m
+  [1m[35mSoloReading Load (0.2ms)[0m  SELECT  "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."book_id" = $2 LIMIT 1  [["user_id", 242], ["book_id", 209]]
+  [1m[36m (0.3ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.4ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'bob@bob.com' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'bob@bob.com' LIMIT 1[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.5ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.5ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.9ms)[0m  [1mSELECT COUNT(*) FROM "books"[0m
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.9ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'Fronk@fronk.fronk' LIMIT 1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "users" ("user_name", "email", "password_digest", "image_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["user_name", "Fronk"], ["email", "Fronk@fronk.fronk"], ["password_digest", "fronk"], ["image_url", "test"], ["created_at", "2016-07-26 20:11:58.217546"], ["updated_at", "2016-07-26 20:11:58.217546"]]
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mBook Load (0.3ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."title" = $1 LIMIT 1  [["title", "TurtleMaster"]]
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "books" ("title", "description", "author", "image_url", "page_numbers", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["title", "TurtleMaster"], ["description", "TMNT"], ["author", "Fronk"], ["image_url", "test"], ["page_numbers", 50], ["created_at", "2016-07-26 20:11:58.267381"], ["updated_at", "2016-07-26 20:11:58.267381"]]
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "solo_readings" ("user_id", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 243], ["book_id", 210], ["created_at", "2016-07-26 20:11:58.280986"], ["updated_at", "2016-07-26 20:11:58.280986"]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "chapters" ("number", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["number", 0], ["book_id", 210], ["created_at", "2016-07-26 20:11:58.296483"], ["updated_at", "2016-07-26 20:11:58.296483"]]
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "chapters" ("number", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["number", 1], ["book_id", 210], ["created_at", "2016-07-26 20:11:58.301046"], ["updated_at", "2016-07-26 20:11:58.301046"]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "chapters" ("number", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["number", 2], ["book_id", 210], ["created_at", "2016-07-26 20:11:58.304975"], ["updated_at", "2016-07-26 20:11:58.304975"]]
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "chapters" ("number", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["number", 3], ["book_id", 210], ["created_at", "2016-07-26 20:11:58.308736"], ["updated_at", "2016-07-26 20:11:58.308736"]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "chapters" ("number", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["number", 4], ["book_id", 210], ["created_at", "2016-07-26 20:11:58.312551"], ["updated_at", "2016-07-26 20:11:58.312551"]]
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "chapters" ("number", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["number", 5], ["book_id", 210], ["created_at", "2016-07-26 20:11:58.316560"], ["updated_at", "2016-07-26 20:11:58.316560"]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "chapters" ("number", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["number", 6], ["book_id", 210], ["created_at", "2016-07-26 20:11:58.320615"], ["updated_at", "2016-07-26 20:11:58.320615"]]
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "chapters" ("number", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["number", 7], ["book_id", 210], ["created_at", "2016-07-26 20:11:58.326348"], ["updated_at", "2016-07-26 20:11:58.326348"]]
+  [1m[35m (0.3ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.3ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "chapters" ("number", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["number", 8], ["book_id", 210], ["created_at", "2016-07-26 20:11:58.331713"], ["updated_at", "2016-07-26 20:11:58.331713"]]
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "chapters" ("number", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["number", 9], ["book_id", 210], ["created_at", "2016-07-26 20:11:58.335029"], ["updated_at", "2016-07-26 20:11:58.335029"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "books"[0m
+  [1m[35m (0.4ms)[0m  ROLLBACK
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.8ms)[0m  SELECT COUNT(*) FROM "chapters"
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.4ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'Fronk@fronk.fronk' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "users" ("user_name", "email", "password_digest", "image_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["user_name", "Fronk"], ["email", "Fronk@fronk.fronk"], ["password_digest", "fronk"], ["image_url", "test"], ["created_at", "2016-07-26 20:11:58.345200"], ["updated_at", "2016-07-26 20:11:58.345200"]]
+  [1m[35m (1.6ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."title" = $1 LIMIT 1[0m  [["title", "TurtleMaster"]]
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "books" ("title", "description", "author", "image_url", "page_numbers", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "TurtleMaster"], ["description", "TMNT"], ["author", "Fronk"], ["image_url", "test"], ["page_numbers", 50], ["created_at", "2016-07-26 20:11:58.352756"], ["updated_at", "2016-07-26 20:11:58.352756"]]
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "solo_readings" ("user_id", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["user_id", 244], ["book_id", 211], ["created_at", "2016-07-26 20:11:58.356282"], ["updated_at", "2016-07-26 20:11:58.356282"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "chapters" ("number", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["number", 0], ["book_id", 211], ["created_at", "2016-07-26 20:11:58.360244"], ["updated_at", "2016-07-26 20:11:58.360244"]]
+  [1m[35m (0.3ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "chapters" ("number", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["number", 1], ["book_id", 211], ["created_at", "2016-07-26 20:11:58.364439"], ["updated_at", "2016-07-26 20:11:58.364439"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "chapters" ("number", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["number", 2], ["book_id", 211], ["created_at", "2016-07-26 20:11:58.368028"], ["updated_at", "2016-07-26 20:11:58.368028"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "chapters" ("number", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["number", 3], ["book_id", 211], ["created_at", "2016-07-26 20:11:58.372008"], ["updated_at", "2016-07-26 20:11:58.372008"]]
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "chapters" ("number", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["number", 4], ["book_id", 211], ["created_at", "2016-07-26 20:11:58.375588"], ["updated_at", "2016-07-26 20:11:58.375588"]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.3ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "chapters" ("number", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["number", 5], ["book_id", 211], ["created_at", "2016-07-26 20:11:58.380248"], ["updated_at", "2016-07-26 20:11:58.380248"]]
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "chapters" ("number", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["number", 6], ["book_id", 211], ["created_at", "2016-07-26 20:11:58.384214"], ["updated_at", "2016-07-26 20:11:58.384214"]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "chapters" ("number", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["number", 7], ["book_id", 211], ["created_at", "2016-07-26 20:11:58.387852"], ["updated_at", "2016-07-26 20:11:58.387852"]]
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "chapters" ("number", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["number", 8], ["book_id", 211], ["created_at", "2016-07-26 20:11:58.391485"], ["updated_at", "2016-07-26 20:11:58.391485"]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "chapters" ("number", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["number", 9], ["book_id", 211], ["created_at", "2016-07-26 20:11:58.395066"], ["updated_at", "2016-07-26 20:11:58.395066"]]
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.4ms)[0m  SELECT COUNT(*) FROM "chapters"
+  [1m[36m (0.3ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (1.1ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'Fronk@fronk.fronk' LIMIT 1
+  [1m[36mSQL (0.9ms)[0m  [1mINSERT INTO "users" ("user_name", "email", "password_digest", "image_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["user_name", "Fronk"], ["email", "Fronk@fronk.fronk"], ["password_digest", "fronk"], ["image_url", "test"], ["created_at", "2016-07-26 20:11:58.403517"], ["updated_at", "2016-07-26 20:11:58.403517"]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mBook Load (0.6ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."title" = $1 LIMIT 1[0m  [["title", "TurtleMaster"]]
+  [1m[35m (0.3ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "books" ("title", "description", "author", "image_url", "page_numbers", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "TurtleMaster"], ["description", "TMNT"], ["author", "Fronk"], ["image_url", "test"], ["page_numbers", 50], ["created_at", "2016-07-26 20:11:58.413900"], ["updated_at", "2016-07-26 20:11:58.413900"]]
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "solo_readings" ("user_id", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["user_id", 245], ["book_id", 212], ["created_at", "2016-07-26 20:11:58.417249"], ["updated_at", "2016-07-26 20:11:58.417249"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "chapters" ("number", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["number", 0], ["book_id", 212], ["created_at", "2016-07-26 20:11:58.421093"], ["updated_at", "2016-07-26 20:11:58.421093"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "chapters" ("number", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["number", 1], ["book_id", 212], ["created_at", "2016-07-26 20:11:58.424457"], ["updated_at", "2016-07-26 20:11:58.424457"]]
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "chapters" ("number", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["number", 2], ["book_id", 212], ["created_at", "2016-07-26 20:11:58.428558"], ["updated_at", "2016-07-26 20:11:58.428558"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "chapters" ("number", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["number", 3], ["book_id", 212], ["created_at", "2016-07-26 20:11:58.431867"], ["updated_at", "2016-07-26 20:11:58.431867"]]
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "chapters" ("number", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["number", 4], ["book_id", 212], ["created_at", "2016-07-26 20:11:58.435010"], ["updated_at", "2016-07-26 20:11:58.435010"]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "chapters" ("number", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["number", 5], ["book_id", 212], ["created_at", "2016-07-26 20:11:58.438144"], ["updated_at", "2016-07-26 20:11:58.438144"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "chapters" ("number", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["number", 6], ["book_id", 212], ["created_at", "2016-07-26 20:11:58.441166"], ["updated_at", "2016-07-26 20:11:58.441166"]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "chapters" ("number", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["number", 7], ["book_id", 212], ["created_at", "2016-07-26 20:11:58.444262"], ["updated_at", "2016-07-26 20:11:58.444262"]]
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "chapters" ("number", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["number", 8], ["book_id", 212], ["created_at", "2016-07-26 20:11:58.447518"], ["updated_at", "2016-07-26 20:11:58.447518"]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "chapters" ("number", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["number", 9], ["book_id", 212], ["created_at", "2016-07-26 20:11:58.450936"], ["updated_at", "2016-07-26 20:11:58.450936"]]
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mBook Load (0.6ms)[0m  SELECT  "books".* FROM "books"  ORDER BY "books"."id" DESC LIMIT 1
+  [1m[36mSoloReading Load (0.4ms)[0m  [1mSELECT  "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."book_id" = $2 LIMIT 1[0m  [["user_id", 245], ["book_id", 212]]
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "books" ("title", "description", "author", "image_url", "page_numbers", "date_published", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["title", "TurtleMaster"], ["description", "TMNT"], ["author", "Fronk"], ["image_url", "test"], ["page_numbers", 50], ["date_published", 1945], ["created_at", "2016-07-26 20:11:58.459867"], ["updated_at", "2016-07-26 20:11:58.459867"]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.3ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'Fronk@fronk.fronk' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "users" ("user_name", "email", "password_digest", "image_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["user_name", "Fronk"], ["email", "Fronk@fronk.fronk"], ["password_digest", "fronk"], ["image_url", "test"], ["created_at", "2016-07-26 20:11:58.465080"], ["updated_at", "2016-07-26 20:11:58.465080"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mBook Load (0.3ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."title" = $1 LIMIT 1[0m  [["title", "TurtleMaster"]]
+  [1m[35mBook Load (0.6ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."title" = $1 LIMIT 1  [["title", "TurtleMaster"]]
+  [1m[36mSoloReading Load (0.5ms)[0m  [1mSELECT  "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."book_id" = $2 LIMIT 1[0m  [["user_id", 246], ["book_id", 213]]
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "solo_readings" ("user_id", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 246], ["book_id", 213], ["created_at", "2016-07-26 20:11:58.472168"], ["updated_at", "2016-07-26 20:11:58.472168"]]
+  [1m[35m (0.3ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.6ms)[0m  [1mSELECT COUNT(*) FROM "books"[0m
+  [1m[35mBook Load (0.4ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."title" = $1 LIMIT 1  [["title", "TurtleMaster"]]
+  [1m[36mBook Load (0.3ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."title" = $1 LIMIT 1[0m  [["title", "TurtleMaster"]]
+  [1m[35mSoloReading Load (0.4ms)[0m  SELECT  "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."book_id" = $2 LIMIT 1  [["user_id", 246], ["book_id", 213]]
+  [1m[36m (0.4ms)[0m  [1mSELECT COUNT(*) FROM "books"[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "books" ("title", "description", "author", "image_url", "page_numbers", "date_published", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["title", "TurtleMaster"], ["description", "TMNT"], ["author", "Fronk"], ["image_url", "test"], ["page_numbers", 50], ["date_published", 1945], ["created_at", "2016-07-26 20:11:58.487952"], ["updated_at", "2016-07-26 20:11:58.487952"]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.6ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'Fronk@fronk.fronk' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "users" ("user_name", "email", "password_digest", "image_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["user_name", "Fronk"], ["email", "Fronk@fronk.fronk"], ["password_digest", "fronk"], ["image_url", "test"], ["created_at", "2016-07-26 20:11:58.495769"], ["updated_at", "2016-07-26 20:11:58.495769"]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."title" = $1 LIMIT 1[0m  [["title", "TurtleMaster"]]
+  [1m[35mBook Load (0.2ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."title" = $1 LIMIT 1  [["title", "TurtleMaster"]]
+  [1m[36mSoloReading Load (0.2ms)[0m  [1mSELECT  "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."book_id" = $2 LIMIT 1[0m  [["user_id", 247], ["book_id", 214]]
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "solo_readings" ("user_id", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 247], ["book_id", 214], ["created_at", "2016-07-26 20:11:58.500887"], ["updated_at", "2016-07-26 20:11:58.500887"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "chapters"[0m
+  [1m[35mBook Load (0.2ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."title" = $1 LIMIT 1  [["title", "TurtleMaster"]]
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."title" = $1 LIMIT 1[0m  [["title", "TurtleMaster"]]
+  [1m[35mSoloReading Load (0.2ms)[0m  SELECT  "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."book_id" = $2 LIMIT 1  [["user_id", 247], ["book_id", 214]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "chapters"[0m
+  [1m[35m (0.1ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "books" ("title", "description", "author", "image_url", "page_numbers", "date_published", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["title", "TurtleMaster"], ["description", "TMNT"], ["author", "Fronk"], ["image_url", "test"], ["page_numbers", 50], ["date_published", 1945], ["created_at", "2016-07-26 20:11:58.508726"], ["updated_at", "2016-07-26 20:11:58.508726"]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.3ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'Fronk@fronk.fronk' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "users" ("user_name", "email", "password_digest", "image_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["user_name", "Fronk"], ["email", "Fronk@fronk.fronk"], ["password_digest", "fronk"], ["image_url", "test"], ["created_at", "2016-07-26 20:11:58.513453"], ["updated_at", "2016-07-26 20:11:58.513453"]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."title" = $1 LIMIT 1[0m  [["title", "TurtleMaster"]]
+  [1m[35mBook Load (0.2ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."title" = $1 LIMIT 1  [["title", "TurtleMaster"]]
+  [1m[36mSoloReading Load (0.3ms)[0m  [1mSELECT  "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."book_id" = $2 LIMIT 1[0m  [["user_id", 248], ["book_id", 215]]
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "solo_readings" ("user_id", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 248], ["book_id", 215], ["created_at", "2016-07-26 20:11:58.518774"], ["updated_at", "2016-07-26 20:11:58.518774"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mBook Load (0.4ms)[0m  [1mSELECT  "books".* FROM "books"  ORDER BY "books"."id" DESC LIMIT 1[0m
+  [1m[35mSoloReading Load (0.2ms)[0m  SELECT  "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."book_id" = $2 LIMIT 1  [["user_id", 248], ["book_id", 215]]
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.5ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.4ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'bob@bob.com' LIMIT 1
+  [1m[36m (0.1ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.8ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'bob@bob.com' LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[36mActiveRecord::SchemaMigration Load (0.4ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.5ms)[0m  [1mSELECT COUNT(*) FROM "books"[0m
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.9ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'Fronk@fronk.fronk' LIMIT 1[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "users" ("user_name", "email", "password_digest", "image_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["user_name", "Fronk"], ["email", "Fronk@fronk.fronk"], ["password_digest", "fronk"], ["image_url", "test"], ["created_at", "2016-07-26 20:32:53.118341"], ["updated_at", "2016-07-26 20:32:53.118341"]]
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mBook Load (0.3ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."title" = $1 LIMIT 1  [["title", "TurtleMaster"]]
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "books" ("title", "description", "author", "image_url", "page_numbers", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"  [["title", "TurtleMaster"], ["description", "TMNT"], ["author", "Fronk"], ["image_url", "test"], ["page_numbers", 50], ["created_at", "2016-07-26 20:32:53.170006"], ["updated_at", "2016-07-26 20:32:53.170006"]]
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "solo_readings" ("user_id", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 249], ["book_id", 216], ["created_at", "2016-07-26 20:32:53.182760"], ["updated_at", "2016-07-26 20:32:53.182760"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "chapters" ("number", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["number", 0], ["book_id", 216], ["created_at", "2016-07-26 20:32:53.196776"], ["updated_at", "2016-07-26 20:32:53.196776"]]
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "chapters" ("number", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["number", 1], ["book_id", 216], ["created_at", "2016-07-26 20:32:53.200782"], ["updated_at", "2016-07-26 20:32:53.200782"]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "chapters" ("number", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["number", 2], ["book_id", 216], ["created_at", "2016-07-26 20:32:53.204453"], ["updated_at", "2016-07-26 20:32:53.204453"]]
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "chapters" ("number", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["number", 3], ["book_id", 216], ["created_at", "2016-07-26 20:32:53.208101"], ["updated_at", "2016-07-26 20:32:53.208101"]]
+  [1m[35m (0.5ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "chapters" ("number", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["number", 4], ["book_id", 216], ["created_at", "2016-07-26 20:32:53.212039"], ["updated_at", "2016-07-26 20:32:53.212039"]]
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "chapters" ("number", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["number", 5], ["book_id", 216], ["created_at", "2016-07-26 20:32:53.215701"], ["updated_at", "2016-07-26 20:32:53.215701"]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "chapters" ("number", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["number", 6], ["book_id", 216], ["created_at", "2016-07-26 20:32:53.219600"], ["updated_at", "2016-07-26 20:32:53.219600"]]
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "chapters" ("number", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["number", 7], ["book_id", 216], ["created_at", "2016-07-26 20:32:53.223280"], ["updated_at", "2016-07-26 20:32:53.223280"]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "chapters" ("number", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["number", 8], ["book_id", 216], ["created_at", "2016-07-26 20:32:53.227295"], ["updated_at", "2016-07-26 20:32:53.227295"]]
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "chapters" ("number", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["number", 9], ["book_id", 216], ["created_at", "2016-07-26 20:32:53.231328"], ["updated_at", "2016-07-26 20:32:53.231328"]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "books"[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "chapters"
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.3ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'Fronk@fronk.fronk' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "users" ("user_name", "email", "password_digest", "image_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["user_name", "Fronk"], ["email", "Fronk@fronk.fronk"], ["password_digest", "fronk"], ["image_url", "test"], ["created_at", "2016-07-26 20:32:53.239194"], ["updated_at", "2016-07-26 20:32:53.239194"]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mBook Load (0.3ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."title" = $1 LIMIT 1[0m  [["title", "TurtleMaster"]]
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "books" ("title", "description", "author", "image_url", "page_numbers", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "TurtleMaster"], ["description", "TMNT"], ["author", "Fronk"], ["image_url", "test"], ["page_numbers", 50], ["created_at", "2016-07-26 20:32:53.244200"], ["updated_at", "2016-07-26 20:32:53.244200"]]
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "solo_readings" ("user_id", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["user_id", 250], ["book_id", 217], ["created_at", "2016-07-26 20:32:53.247325"], ["updated_at", "2016-07-26 20:32:53.247325"]]
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "chapters" ("number", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["number", 0], ["book_id", 217], ["created_at", "2016-07-26 20:32:53.251132"], ["updated_at", "2016-07-26 20:32:53.251132"]]
+  [1m[35m (0.3ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "chapters" ("number", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["number", 1], ["book_id", 217], ["created_at", "2016-07-26 20:32:53.254671"], ["updated_at", "2016-07-26 20:32:53.254671"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "chapters" ("number", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["number", 2], ["book_id", 217], ["created_at", "2016-07-26 20:32:53.260726"], ["updated_at", "2016-07-26 20:32:53.260726"]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "chapters" ("number", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["number", 3], ["book_id", 217], ["created_at", "2016-07-26 20:32:53.265629"], ["updated_at", "2016-07-26 20:32:53.265629"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "chapters" ("number", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["number", 4], ["book_id", 217], ["created_at", "2016-07-26 20:32:53.269094"], ["updated_at", "2016-07-26 20:32:53.269094"]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "chapters" ("number", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["number", 5], ["book_id", 217], ["created_at", "2016-07-26 20:32:53.272275"], ["updated_at", "2016-07-26 20:32:53.272275"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "chapters" ("number", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["number", 6], ["book_id", 217], ["created_at", "2016-07-26 20:32:53.275202"], ["updated_at", "2016-07-26 20:32:53.275202"]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "chapters" ("number", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["number", 7], ["book_id", 217], ["created_at", "2016-07-26 20:32:53.279330"], ["updated_at", "2016-07-26 20:32:53.279330"]]
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "chapters" ("number", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["number", 8], ["book_id", 217], ["created_at", "2016-07-26 20:32:53.283432"], ["updated_at", "2016-07-26 20:32:53.283432"]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "chapters" ("number", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["number", 9], ["book_id", 217], ["created_at", "2016-07-26 20:32:53.287124"], ["updated_at", "2016-07-26 20:32:53.287124"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  SELECT COUNT(*) FROM "chapters"
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.3ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'Fronk@fronk.fronk' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "users" ("user_name", "email", "password_digest", "image_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["user_name", "Fronk"], ["email", "Fronk@fronk.fronk"], ["password_digest", "fronk"], ["image_url", "test"], ["created_at", "2016-07-26 20:32:53.293698"], ["updated_at", "2016-07-26 20:32:53.293698"]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."title" = $1 LIMIT 1[0m  [["title", "TurtleMaster"]]
+  [1m[35m (0.5ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "books" ("title", "description", "author", "image_url", "page_numbers", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7) RETURNING "id"[0m  [["title", "TurtleMaster"], ["description", "TMNT"], ["author", "Fronk"], ["image_url", "test"], ["page_numbers", 50], ["created_at", "2016-07-26 20:32:53.300295"], ["updated_at", "2016-07-26 20:32:53.300295"]]
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "solo_readings" ("user_id", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["user_id", 251], ["book_id", 218], ["created_at", "2016-07-26 20:32:53.305851"], ["updated_at", "2016-07-26 20:32:53.305851"]]
+  [1m[36m (0.3ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "chapters" ("number", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["number", 0], ["book_id", 218], ["created_at", "2016-07-26 20:32:53.311282"], ["updated_at", "2016-07-26 20:32:53.311282"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "chapters" ("number", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["number", 1], ["book_id", 218], ["created_at", "2016-07-26 20:32:53.314419"], ["updated_at", "2016-07-26 20:32:53.314419"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "chapters" ("number", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["number", 2], ["book_id", 218], ["created_at", "2016-07-26 20:32:53.317378"], ["updated_at", "2016-07-26 20:32:53.317378"]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "chapters" ("number", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["number", 3], ["book_id", 218], ["created_at", "2016-07-26 20:32:53.320607"], ["updated_at", "2016-07-26 20:32:53.320607"]]
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "chapters" ("number", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["number", 4], ["book_id", 218], ["created_at", "2016-07-26 20:32:53.323815"], ["updated_at", "2016-07-26 20:32:53.323815"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "chapters" ("number", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["number", 5], ["book_id", 218], ["created_at", "2016-07-26 20:32:53.326847"], ["updated_at", "2016-07-26 20:32:53.326847"]]
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "chapters" ("number", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["number", 6], ["book_id", 218], ["created_at", "2016-07-26 20:32:53.329919"], ["updated_at", "2016-07-26 20:32:53.329919"]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "chapters" ("number", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["number", 7], ["book_id", 218], ["created_at", "2016-07-26 20:32:53.333113"], ["updated_at", "2016-07-26 20:32:53.333113"]]
+  [1m[36m (0.1ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "chapters" ("number", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["number", 8], ["book_id", 218], ["created_at", "2016-07-26 20:32:53.336094"], ["updated_at", "2016-07-26 20:32:53.336094"]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "chapters" ("number", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"  [["number", 9], ["book_id", 218], ["created_at", "2016-07-26 20:32:53.339171"], ["updated_at", "2016-07-26 20:32:53.339171"]]
+  [1m[36m (0.2ms)[0m  [1mRELEASE SAVEPOINT active_record_1[0m
+  [1m[35mBook Load (0.6ms)[0m  SELECT  "books".* FROM "books"  ORDER BY "books"."id" DESC LIMIT 1
+  [1m[36mSoloReading Load (0.4ms)[0m  [1mSELECT  "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."book_id" = $2 LIMIT 1[0m  [["user_id", 251], ["book_id", 218]]
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.2ms)[0m  [1mINSERT INTO "books" ("title", "description", "author", "image_url", "page_numbers", "date_published", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["title", "TurtleMaster"], ["description", "TMNT"], ["author", "Fronk"], ["image_url", "test"], ["page_numbers", 50], ["date_published", 1945], ["created_at", "2016-07-26 20:32:53.348427"], ["updated_at", "2016-07-26 20:32:53.348427"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.3ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'Fronk@fronk.fronk' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "users" ("user_name", "email", "password_digest", "image_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["user_name", "Fronk"], ["email", "Fronk@fronk.fronk"], ["password_digest", "fronk"], ["image_url", "test"], ["created_at", "2016-07-26 20:32:53.353059"], ["updated_at", "2016-07-26 20:32:53.353059"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mBook Load (0.3ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."title" = $1 LIMIT 1[0m  [["title", "TurtleMaster"]]
+  [1m[35mBook Load (0.7ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."title" = $1 LIMIT 1  [["title", "TurtleMaster"]]
+  [1m[36mSoloReading Load (0.3ms)[0m  [1mSELECT  "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."book_id" = $2 LIMIT 1[0m  [["user_id", 252], ["book_id", 219]]
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "solo_readings" ("user_id", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 252], ["book_id", 219], ["created_at", "2016-07-26 20:32:53.359898"], ["updated_at", "2016-07-26 20:32:53.359898"]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (1.5ms)[0m  [1mSELECT COUNT(*) FROM "books"[0m
+  [1m[35mBook Load (0.6ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."title" = $1 LIMIT 1  [["title", "TurtleMaster"]]
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."title" = $1 LIMIT 1[0m  [["title", "TurtleMaster"]]
+  [1m[35mSoloReading Load (0.3ms)[0m  SELECT  "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."book_id" = $2 LIMIT 1  [["user_id", 252], ["book_id", 219]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "books"[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "books" ("title", "description", "author", "image_url", "page_numbers", "date_published", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["title", "TurtleMaster"], ["description", "TMNT"], ["author", "Fronk"], ["image_url", "test"], ["page_numbers", 50], ["date_published", 1945], ["created_at", "2016-07-26 20:32:53.370857"], ["updated_at", "2016-07-26 20:32:53.370857"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.3ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'Fronk@fronk.fronk' LIMIT 1
+  [1m[36mSQL (0.9ms)[0m  [1mINSERT INTO "users" ("user_name", "email", "password_digest", "image_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["user_name", "Fronk"], ["email", "Fronk@fronk.fronk"], ["password_digest", "fronk"], ["image_url", "test"], ["created_at", "2016-07-26 20:32:53.375266"], ["updated_at", "2016-07-26 20:32:53.375266"]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."title" = $1 LIMIT 1[0m  [["title", "TurtleMaster"]]
+  [1m[35mBook Load (0.2ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."title" = $1 LIMIT 1  [["title", "TurtleMaster"]]
+  [1m[36mSoloReading Load (0.5ms)[0m  [1mSELECT  "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."book_id" = $2 LIMIT 1[0m  [["user_id", 253], ["book_id", 220]]
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "solo_readings" ("user_id", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 253], ["book_id", 220], ["created_at", "2016-07-26 20:32:53.383310"], ["updated_at", "2016-07-26 20:32:53.383310"]]
+  [1m[35m (0.3ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "chapters"[0m
+  [1m[35mBook Load (0.2ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."title" = $1 LIMIT 1  [["title", "TurtleMaster"]]
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."title" = $1 LIMIT 1[0m  [["title", "TurtleMaster"]]
+  [1m[35mSoloReading Load (0.3ms)[0m  SELECT  "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."book_id" = $2 LIMIT 1  [["user_id", 253], ["book_id", 220]]
+  [1m[36m (0.3ms)[0m  [1mSELECT COUNT(*) FROM "chapters"[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.2ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "books" ("title", "description", "author", "image_url", "page_numbers", "date_published", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["title", "TurtleMaster"], ["description", "TMNT"], ["author", "Fronk"], ["image_url", "test"], ["page_numbers", 50], ["date_published", 1945], ["created_at", "2016-07-26 20:32:53.393492"], ["updated_at", "2016-07-26 20:32:53.393492"]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36m (0.1ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.3ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'Fronk@fronk.fronk' LIMIT 1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "users" ("user_name", "email", "password_digest", "image_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["user_name", "Fronk"], ["email", "Fronk@fronk.fronk"], ["password_digest", "fronk"], ["image_url", "test"], ["created_at", "2016-07-26 20:32:53.398028"], ["updated_at", "2016-07-26 20:32:53.398028"]]
+  [1m[35m (0.2ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mBook Load (0.2ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."title" = $1 LIMIT 1[0m  [["title", "TurtleMaster"]]
+  [1m[35mBook Load (0.2ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."title" = $1 LIMIT 1  [["title", "TurtleMaster"]]
+  [1m[36mSoloReading Load (0.2ms)[0m  [1mSELECT  "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."book_id" = $2 LIMIT 1[0m  [["user_id", 254], ["book_id", 221]]
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "solo_readings" ("user_id", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4) RETURNING "id"[0m  [["user_id", 254], ["book_id", 221], ["created_at", "2016-07-26 20:32:53.402926"], ["updated_at", "2016-07-26 20:32:53.402926"]]
+  [1m[35m (0.1ms)[0m  RELEASE SAVEPOINT active_record_1
+  [1m[36mBook Load (0.4ms)[0m  [1mSELECT  "books".* FROM "books"  ORDER BY "books"."id" DESC LIMIT 1[0m
+  [1m[35mSoloReading Load (0.2ms)[0m  SELECT  "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."user_id" = $1 AND "solo_readings"."book_id" = $2 LIMIT 1  [["user_id", 254], ["book_id", 221]]
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
+  [1m[35m (0.1ms)[0m  BEGIN
+  [1m[36m (0.2ms)[0m  [1mSAVEPOINT active_record_1[0m
+  [1m[35mUser Exists (0.4ms)[0m  SELECT  1 AS one FROM "users" WHERE "users"."email" = 'bob@bob.com' LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mROLLBACK TO SAVEPOINT active_record_1[0m
+  [1m[35m (0.3ms)[0m  ROLLBACK
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35m (0.1ms)[0m  SAVEPOINT active_record_1
+  [1m[36mUser Exists (0.4ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'bob@bob.com' LIMIT 1[0m
+  [1m[35m (0.2ms)[0m  ROLLBACK TO SAVEPOINT active_record_1
+  [1m[36m (0.2ms)[0m  [1mROLLBACK[0m
