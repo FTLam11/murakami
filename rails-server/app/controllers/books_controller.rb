@@ -7,8 +7,7 @@ class BooksController < ApplicationController
     if @reading.current
       render json: {token: user.id, book: "dont"}, status: :ok
     else
-      Book.update_status(current, @reading)
-      @reading.queue = false
+      @reading.update_status("current")
       render json: {token: user.id, book: @reading.book}, status: :ok
     end
   end
@@ -21,28 +20,21 @@ class BooksController < ApplicationController
   def add_to_current
     user = User.find(params["user_id"])
     @reading = Book.add_book_by_id(params, user)
-    Book.update_status(current, @reading)
-    @reading.queue = false
-    @reading.complete = false
+    @reading.update_status("current") 
     render json: {token: user.id}, status: :ok
   end
 
   def add_to_favorites
     user = User.find(params["user_id"])
     @reading = Book.add_book_by_id(params, user)
-    if @reading.favorite == true
-      @reading.favorite = false
-    else
-      @reading.favorite = true
-    end
-    @reading.save
+    @reading.update_status("favorite")
     render json: {token: user.id, book: @reading.book}, status: :ok
   end
 
   def add_to_queue
     user = User.find(params["user_id"])
     @reading = Book.add_book_by_id(params, user)
-    Book.update_status(queue,@reading)
+    @reading.update_status("queue")
     render json: {token: user.id, book: @reading.book}, status: :ok
   end
 
@@ -51,8 +43,7 @@ class BooksController < ApplicationController
     user = User.find(user_id)
     book_id = params["book_id"].to_i
     @reading = SoloReading.find_by(user_id: user_id, book_id: book_id)
-    @reading.current = false
-    Book.update_status(complete, @reading)
+    @reading.update_status("complete") 
     render json: {token: user.id, book: @reading.book}, status: :ok
   end
 

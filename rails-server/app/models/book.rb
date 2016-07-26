@@ -16,25 +16,16 @@ class Book < ActiveRecord::Base
     # 4. Yes? Return the book
     # 5. No? Add book to user's readings, return the book 
     # Maybe check if params[:chapters] != nil
-    if !book_in_db?(params)
+
+    add_book_by_id(params, user)
+
+    unless book_in_db?(params)
       added_book = add_book_to_library(params, user)
       create_chapters(added_book, params[:chapter_count])
       # @reading = SoloReading.find_by(user_id:user.id, book_id:added_book.id)
-      return added_book
-    else
-      book = Book.find_by(title: params['book']['title'])
-      # @reading = get_reading(user, params)
-      if !get_reading(user, book)
-        SoloReading.create(user_id: user.id, book_id: book.id)
-        return book
-      else
-        return book
-        # user.books << book
-        # @reading = SoloReading.last
-      end
-
-      # @reading ##probably not necessary
     end
+
+    # @reading ##probably not necessary
   end
 
   def self.get_reading(user, book)
@@ -53,10 +44,6 @@ class Book < ActiveRecord::Base
   #   return true if SoloReading.find_by(user_id:user.id, book_id: Book.find_by(title: params['book']['title']))
   # end
 
-  def self.update_status(status, reading)
-    reading.status = true 
-    reading.save  
-  end 
 
   def self.create_chapters(book, nums)
     nums.times do |num|
