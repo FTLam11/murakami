@@ -18,8 +18,6 @@ describe Book do
                 Book.add_book(params, user)
                 expect(SoloReading.find_by(user_id: user.id, book_id: Book.last.id)).to_not be nil
             end
-
-            it "returns the added book"
         end
 
         context "given the book exists in the database" do

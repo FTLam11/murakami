@@ -7,6 +7,10 @@ module ApplicationHelper
     return true if session[:user_id] != nil
   end
 
+  def get_user
+    user = User.find(params["user_id"])
+  end
+
   def require_login
     unless logged_in?
       flash[:error] = "You must be logged in to access this section"

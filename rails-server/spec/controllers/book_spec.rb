@@ -5,6 +5,7 @@ describe "BookController" do
   let (:user) {User.create()}
   describe "finding books" do
     it "finds a specific book" do
+      pending
       book_id = 1
       check_books
       json = JSON.parse(response)
@@ -14,7 +15,7 @@ describe "BookController" do
 
   describe "adding books to favorite" do
     it "adds a book to favrorites" do
-
+      pending
     end
   end
 
