@@ -43,6 +43,24 @@ class SoloReading < ActiveRecord::Base
     popular_books
   end
 
+  def update_status(status)
+    
+    if status == "current"
+      self.current = true 
+    elsif status == "queue"
+      self.queue = true 
+      self.current = false
+    elsif status == "completed"
+      self.queue = false
+      self.current = false
+      self.completed = true 
+    elsif status == "favorite"
+      self.favorite = true 
+    end
+
+    self.save  
+  end 
+
   def self.readings_hash(type)
     SoloReading.where(type.to_sym => true).group_by { |reading| reading.book_id }.select { |book, readings| readings.length > 1 }
   end

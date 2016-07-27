@@ -34,6 +34,7 @@ class Book < ActiveRecord::Base
 
     return book
       # @reading ##probably not necessary
+    end
   end
 
   def self.get_reading(user, book)
@@ -52,10 +53,6 @@ class Book < ActiveRecord::Base
   #   return true if SoloReading.find_by(user_id:user.id, book_id: Book.find_by(title: params['book']['title']))
   # end
 
-  def self.update_status(status, reading)
-    reading.status = true 
-    reading.save  
-  end 
 
   def self.create_chapters(book, nums)
     nums.times do |num|
