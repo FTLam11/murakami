@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 describe Book do
-    describe "#add_book" do
+    describe "Book::add_book" do
         let (:params) { {"book" => {"title" => "TurtleMaster",  "description" => "TMNT", "author" => "Fronk", "image_url" => "test", "page_numbers" => 50, "date_published" => 1945}, chapter_count: 10} }
         let (:user) { User.create(user_name: "Fronk",  email: "Fronk@fronk.fronk", password_digest: "fronk", image_url: "test") }
 

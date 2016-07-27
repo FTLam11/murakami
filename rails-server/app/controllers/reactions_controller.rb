@@ -1,7 +1,7 @@
 class ReactionsController < ApplicationController
 
   def create
-    reaction = Reaction.create(content: params["content"], chapter_id: params["chapter_id"], user_id: params["user_id"])
+    reaction = Reaction.create(reaction_params)
     render json: { reaction: reaction.content, reaction_id: reaction.id, username: reaction.user.user_name }
   end
 
@@ -28,7 +28,7 @@ class ReactionsController < ApplicationController
   private
 
   def reaction_params
-    params.require(:reaction).print(:chapter_id, :content, :user_id)
+    params.require(:reaction).permit(:chapter_id, :content, :user_id)
   end
 
 end

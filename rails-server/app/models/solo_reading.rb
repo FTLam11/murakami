@@ -44,18 +44,18 @@ class SoloReading < ActiveRecord::Base
   end
 
   def update_status(status)
-    
-    if status == "current"
-      self.current = true 
-    elsif status == "queue"
-      self.queue = true 
-      self.current = false
-    elsif status == "completed"
-      self.queue = false
-      self.current = false
-      self.completed = true 
-    elsif status == "favorite"
-      self.favorite = true 
+    case status
+        when "current"
+          self.current = true
+          self.queue = false 
+        when "queue"
+          self.queue = true 
+          self.current = false
+        when "complete"
+          self.complete = true 
+          self.current = false
+        when "favorite"
+          self.favorite = true 
     end
 
     self.save  

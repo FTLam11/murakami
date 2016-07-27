@@ -4,9 +4,10 @@ class Comment < ActiveRecord::Base
 
   validates :reaction_id, :content, :user_id, presence: true
 
-  def self.index_comments(comments)
-  	all_comments = []
-		comments.each do |comment|
+  def self.get_comment_author(comments)
+    all_comments = []
+		
+    comments.each do |comment|
       all_comments << {comment: comment, username: comment.user.user_name}
     end
   end 

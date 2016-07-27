@@ -4,7 +4,7 @@ class Chapter < ActiveRecord::Base
 
   validates :book_id, :number, presence: true
 
-  def self.create_chapters(book, nums)
-    nums.times { |num| book.chapters.create(number: num) }
+  def self.create_chapters(book, chapter_count)
+    chapter_count.times { |num| book.chapters.create(number: num) }
   end
 end
