@@ -330,3 +330,6 @@ ORDER BY c.conname
   [1m[36m (1.9ms)[0m  [1mCOMMIT[0m
   [1m[36mBook Load (1.1ms)[0m  [1mSELECT  "books".* FROM "books" WHERE "books"."title" = $1 LIMIT 1[0m  [["title", "lolololol"]]
   [1m[36mSoloReading Load (1.0ms)[0m  [1mSELECT  "solo_readings".* FROM "solo_readings"  ORDER BY "solo_readings"."id" ASC LIMIT 1[0m
+  [1m[36mBook Load (3.5ms)[0m  [1mSELECT "books".* FROM "books"[0m
+  [1m[35mBook Load (2.7ms)[0m  SELECT  "books".* FROM "books"  ORDER BY "books"."id" DESC LIMIT 2
+  [1m[36mChapter Load (2.6ms)[0m  [1mSELECT "chapters".* FROM "chapters"[0m
