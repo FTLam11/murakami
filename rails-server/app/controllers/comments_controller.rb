@@ -7,7 +7,7 @@ class CommentsController < ApplicationController
   end
 
   def index
-    reaction = Reaction.find(params[:reaction_id].to_i)#.includes(:)
+    reaction = Reaction.find(params[:reaction_id].to_i)
 
     render json: { comments: Comment.get_comment_author(reaction.comments), reaction: reaction, username: reaction.user.user_name }
   end

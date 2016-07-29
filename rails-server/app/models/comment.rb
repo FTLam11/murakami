@@ -5,10 +5,15 @@ class Comment < ActiveRecord::Base
   validates :reaction_id, :content, :user_id, presence: true
 
   def self.get_comment_author(comments)
-    all_comments = []
-		
-    comments.each do |comment|
-      all_comments << {comment: comment, username: comment.user.user_name}
+    # p comments
+    [*comments].map do |comment|
+      comment = {comment: comment, username: comment.user.user_name}
+    end
+  end
+
+  def test(comments)
+    [*comments].map do |comment|
+      comment = {comment: comment, username: comment.user.user_name}
     end
   end 
 
