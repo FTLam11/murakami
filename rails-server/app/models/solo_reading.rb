@@ -13,34 +13,7 @@ class SoloReading < ActiveRecord::Base
       rec_criteria[:author] << book.author
     end
 
-    return rec_criteria.each {|criterion,array| array.uniq!}
-  end
-
-  def self.retrieve_rec_books(criteria, user_id)
-    rec_books = []
-    user_books = User.find(user_id).books
-
-
-    Book.all.each do |book|
-      criteria[:author].each do |author|
-        rec_books << book if book.author == author
-      end
-      # criteria[:genre].each do |genre|
-      #   rec_books << book if book.genre == genre && !rec_books.include?(book)
-      # end
-    end
-
-    return rec_books - user_books
-  end
-
-  def self.trending_now(type)
-    popular_books = []
-
-    tally_readings(readings_hash(type)).sort_by { |book, readings| readings }.each do |reading|
-      popular_books << Book.find(reading[0])
-    end
-
-    popular_books
+    rec_criteria.each {|criterion,array| array.uniq!}
   end
 
   def update_status(status)
@@ -60,6 +33,16 @@ class SoloReading < ActiveRecord::Base
 
     self.save  
   end 
+
+  def self.trending_now(type)
+    popular_books = []
+
+    tally_readings(readings_hash(type)).sort_by { |book, readings| readings }.each do |reading|
+      popular_books << Book.find(reading[0])
+    end
+
+    popular_books
+  end
 
   def self.readings_hash(type)
     SoloReading.where(type.to_sym => true).group_by { |reading| reading.book_id }.select { |book, readings| readings.length > 1 }

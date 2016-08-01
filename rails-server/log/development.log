@@ -565,3 +565,161 @@ WHERE c.contype = 'f'
   AND t3.nspname = ANY (current_schemas(false))
 ORDER BY c.conname
 
+  [1m[36mUser Load (2.1ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mUser Load (0.7ms)[0m  SELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1  [["id", 2]]
+  [1m[36mUser Load (0.6ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 160]]
+  [1m[35mUser Load (32.6ms)[0m  SELECT  "users".* FROM "users"  ORDER BY "users"."id" DESC LIMIT 1
+  [1m[36mActiveRecord::SchemaMigration Load (1.3ms)[0m  [1mSELECT "schema_migrations".* FROM "schema_migrations"[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mUser Exists (1.5ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'lisa@ruecker.co' LIMIT 1[0m
+  [1m[35mSQL (1.0ms)[0m  INSERT INTO "users" ("user_name", "email", "password_digest", "image_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["user_name", "bob"], ["email", "lisa@ruecker.co"], ["password_digest", "$2a$10$PygAXqGblj.qU3qXtAgYIOkuRa5DdH/.m6w.TZCwtNj6VjC71PZz."], ["image_url", "http://beier.com/gregory.reichert"], ["created_at", "2016-07-31 21:36:21.442312"], ["updated_at", "2016-07-31 21:36:21.442312"]]
+  [1m[36m (2.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mUser Exists (1.1ms)[0m  [1mSELECT  1 AS one FROM "users" WHERE "users"."email" = 'declan@schustertreutel.org' LIMIT 1[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "users" ("user_name", "email", "password_digest", "image_url", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["user_name", "bob2"], ["email", "declan@schustertreutel.org"], ["password_digest", "$2a$10$5KTckhwTyqgglW3GAqfIwudFzuptKC3mNii.YfwMNCKr5OI0KU2ly"], ["image_url", "http://wisokytowne.name/katrina"], ["created_at", "2016-07-31 21:36:21.567417"], ["updated_at", "2016-07-31 21:36:21.567417"]]
+  [1m[36m (1.3ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (1.1ms)[0m  [1mINSERT INTO "books" ("title", "author", "genre", "image_url", "page_numbers", "date_published", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["title", "The Needle's Eye"], ["author", "Amanda Walsh"], ["genre", "Realistic fiction"], ["image_url", "http://kubtromp.co/anya"], ["page_numbers", 889], ["date_published", 1945], ["created_at", "2016-07-31 21:36:21.589160"], ["updated_at", "2016-07-31 21:36:21.589160"]]
+  [1m[35m (1.4ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "books" ("title", "author", "genre", "image_url", "page_numbers", "date_published", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"  [["title", "The Moon by Night"], ["author", "Francis Emmerich"], ["genre", "Textbook"], ["image_url", "http://roob.net/merle"], ["page_numbers", 397], ["date_published", 1945], ["created_at", "2016-07-31 21:36:21.595695"], ["updated_at", "2016-07-31 21:36:21.595695"]]
+  [1m[36m (2.7ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "books" ("title", "author", "genre", "image_url", "page_numbers", "date_published", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["title", "This Lime Tree Bower"], ["author", "Jerald Nitzsche"], ["genre", "Legend"], ["image_url", "http://gaylord.net/janick"], ["page_numbers", 858], ["date_published", 1945], ["created_at", "2016-07-31 21:36:21.602363"], ["updated_at", "2016-07-31 21:36:21.602363"]]
+  [1m[35m (1.4ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "books" ("title", "author", "genre", "image_url", "page_numbers", "date_published", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"  [["title", "Dying of the Light"], ["author", "Braden Harvey"], ["genre", "Western"], ["image_url", "http://connelly.info/cali"], ["page_numbers", 133], ["date_published", 1945], ["created_at", "2016-07-31 21:36:21.607545"], ["updated_at", "2016-07-31 21:36:21.607545"]]
+  [1m[36m (1.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "books" ("title", "author", "genre", "image_url", "page_numbers", "date_published", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6, $7, $8) RETURNING "id"[0m  [["title", "bob"], ["author", "bob"], ["genre", "bob"], ["image_url", "bob"], ["page_numbers", 1], ["date_published", 1945], ["created_at", "2016-07-31 21:36:21.613171"], ["updated_at", "2016-07-31 21:36:21.613171"]]
+  [1m[35m (2.8ms)[0m  COMMIT
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (1.5ms)[0m  INSERT INTO "solo_readings" ("user_id", "book_id", "favorite", "queue", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["user_id", 1], ["book_id", 1], ["favorite", "t"], ["queue", "t"], ["created_at", "2016-07-31 21:36:21.645168"], ["updated_at", "2016-07-31 21:36:21.645168"]]
+  [1m[36m (2.9ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "solo_readings" ("user_id", "book_id", "favorite", "queue", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["user_id", 1], ["book_id", 5], ["favorite", "t"], ["queue", "t"], ["created_at", "2016-07-31 21:36:21.654399"], ["updated_at", "2016-07-31 21:36:21.654399"]]
+  [1m[35m (2.4ms)[0m  COMMIT
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "solo_readings" ("user_id", "book_id", "favorite", "queue", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["user_id", 2], ["book_id", 5], ["favorite", "t"], ["queue", "t"], ["created_at", "2016-07-31 21:36:21.661697"], ["updated_at", "2016-07-31 21:36:21.661697"]]
+  [1m[36m (1.5ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "solo_readings" ("user_id", "book_id", "favorite", "current", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["user_id", 2], ["book_id", 4], ["favorite", "t"], ["current", "t"], ["created_at", "2016-07-31 21:36:21.668053"], ["updated_at", "2016-07-31 21:36:21.668053"]]
+  [1m[35m (2.9ms)[0m  COMMIT
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "solo_readings" ("user_id", "book_id", "favorite", "complete", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["user_id", 2], ["book_id", 3], ["favorite", "t"], ["complete", "t"], ["created_at", "2016-07-31 21:36:21.676471"], ["updated_at", "2016-07-31 21:36:21.676471"]]
+  [1m[36m (2.8ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mSQL (1.5ms)[0m  [1mINSERT INTO "reviews" ("user_id", "book_id", "content", "rating", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"[0m  [["user_id", 1], ["book_id", 1], ["content", "What an exquisite read"], ["rating", 10], ["created_at", "2016-07-31 21:36:21.701718"], ["updated_at", "2016-07-31 21:36:21.701718"]]
+  [1m[35m (1.5ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "reviews" ("user_id", "book_id", "content", "rating", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5, $6) RETURNING "id"  [["user_id", 2], ["book_id", 1], ["content", "Never again"], ["rating", 4], ["created_at", "2016-07-31 21:36:21.709635"], ["updated_at", "2016-07-31 21:36:21.709635"]]
+  [1m[36m (1.4ms)[0m  [1mCOMMIT[0m
+  [1m[35mBook Load (0.9ms)[0m  SELECT  "books".* FROM "books"  ORDER BY "books"."id" DESC LIMIT 1
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (1.6ms)[0m  INSERT INTO "chapters" ("number", "title", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["number", 1], ["title", "Bob's Beginning Chapter 1"], ["book_id", 5], ["created_at", "2016-07-31 21:36:21.758696"], ["updated_at", "2016-07-31 21:36:21.758696"]]
+  [1m[36m (2.6ms)[0m  [1mCOMMIT[0m
+  [1m[35mBook Load (0.4ms)[0m  SELECT  "books".* FROM "books"  ORDER BY "books"."id" DESC LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "chapters" ("number", "title", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["number", 2], ["title", "Bob's Beginning Chapter 2"], ["book_id", 5], ["created_at", "2016-07-31 21:36:21.768919"], ["updated_at", "2016-07-31 21:36:21.768919"]]
+  [1m[36m (2.5ms)[0m  [1mCOMMIT[0m
+  [1m[35mBook Load (0.4ms)[0m  SELECT  "books".* FROM "books"  ORDER BY "books"."id" DESC LIMIT 1
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "chapters" ("number", "title", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["number", 3], ["title", "Bob's Beginning Chapter 3"], ["book_id", 5], ["created_at", "2016-07-31 21:36:21.777088"], ["updated_at", "2016-07-31 21:36:21.777088"]]
+  [1m[36m (1.6ms)[0m  [1mCOMMIT[0m
+  [1m[35mBook Load (0.7ms)[0m  SELECT  "books".* FROM "books"  ORDER BY "books"."id" DESC LIMIT 1
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "chapters" ("number", "title", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["number", 4], ["title", "Bob's Beginning Chapter 4"], ["book_id", 5], ["created_at", "2016-07-31 21:36:21.786595"], ["updated_at", "2016-07-31 21:36:21.786595"]]
+  [1m[36m (1.5ms)[0m  [1mCOMMIT[0m
+  [1m[35mBook Load (1.6ms)[0m  SELECT  "books".* FROM "books"  ORDER BY "books"."id" DESC LIMIT 1
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "chapters" ("number", "title", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["number", 5], ["title", "Bob's Beginning Chapter 5"], ["book_id", 5], ["created_at", "2016-07-31 21:36:21.796987"], ["updated_at", "2016-07-31 21:36:21.796987"]]
+  [1m[36m (2.8ms)[0m  [1mCOMMIT[0m
+  [1m[35mBook Load (0.7ms)[0m  SELECT  "books".* FROM "books"  ORDER BY "books"."id" DESC LIMIT 1
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "chapters" ("number", "title", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["number", 6], ["title", "Bob's Beginning Chapter 6"], ["book_id", 5], ["created_at", "2016-07-31 21:36:21.807639"], ["updated_at", "2016-07-31 21:36:21.807639"]]
+  [1m[36m (2.9ms)[0m  [1mCOMMIT[0m
+  [1m[35mBook Load (0.3ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 3]]
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "chapters" ("number", "title", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["number", 1], ["title", "Book 3 Chapter 1"], ["book_id", 3], ["created_at", "2016-07-31 21:36:21.826794"], ["updated_at", "2016-07-31 21:36:21.826794"]]
+  [1m[36m (1.3ms)[0m  [1mCOMMIT[0m
+  [1m[35mBook Load (0.3ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 3]]
+  [1m[36m (0.1ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.2ms)[0m  INSERT INTO "chapters" ("number", "title", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["number", 2], ["title", "Book 3 Chapter 2"], ["book_id", 3], ["created_at", "2016-07-31 21:36:21.831741"], ["updated_at", "2016-07-31 21:36:21.831741"]]
+  [1m[36m (1.4ms)[0m  [1mCOMMIT[0m
+  [1m[35mBook Load (0.4ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 3]]
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "chapters" ("number", "title", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["number", 3], ["title", "Book 3 Chapter 3"], ["book_id", 3], ["created_at", "2016-07-31 21:36:21.837647"], ["updated_at", "2016-07-31 21:36:21.837647"]]
+  [1m[36m (2.6ms)[0m  [1mCOMMIT[0m
+  [1m[35mBook Load (0.4ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 3]]
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "chapters" ("number", "title", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["number", 4], ["title", "Book 3 Chapter 4"], ["book_id", 3], ["created_at", "2016-07-31 21:36:21.845493"], ["updated_at", "2016-07-31 21:36:21.845493"]]
+  [1m[36m (2.8ms)[0m  [1mCOMMIT[0m
+  [1m[35mBook Load (0.6ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 3]]
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "chapters" ("number", "title", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["number", 5], ["title", "Book 3 Chapter 5"], ["book_id", 3], ["created_at", "2016-07-31 21:36:21.854968"], ["updated_at", "2016-07-31 21:36:21.854968"]]
+  [1m[36m (1.5ms)[0m  [1mCOMMIT[0m
+  [1m[35mBook Load (0.6ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 3]]
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "chapters" ("number", "title", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["number", 6], ["title", "Book 3 Chapter 6"], ["book_id", 3], ["created_at", "2016-07-31 21:36:21.863878"], ["updated_at", "2016-07-31 21:36:21.863878"]]
+  [1m[36m (1.5ms)[0m  [1mCOMMIT[0m
+  [1m[35mBook Load (0.4ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 3]]
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "chapters" ("number", "title", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["number", 7], ["title", "Book 3 Chapter 7"], ["book_id", 3], ["created_at", "2016-07-31 21:36:21.872188"], ["updated_at", "2016-07-31 21:36:21.872188"]]
+  [1m[36m (3.4ms)[0m  [1mCOMMIT[0m
+  [1m[35mBook Load (0.3ms)[0m  SELECT  "books".* FROM "books" WHERE "books"."id" = $1 LIMIT 1  [["id", 3]]
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "chapters" ("number", "title", "book_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["number", 8], ["title", "Book 3 Chapter 8"], ["book_id", 3], ["created_at", "2016-07-31 21:36:21.895232"], ["updated_at", "2016-07-31 21:36:21.895232"]]
+  [1m[36m (2.7ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mSQL (2.0ms)[0m  [1mINSERT INTO "reactions" ("chapter_id", "content", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["chapter_id", 1], ["content", " reaction 1"], ["user_id", 1], ["created_at", "2016-07-31 21:36:21.925242"], ["updated_at", "2016-07-31 21:36:21.925242"]]
+  [1m[35m (1.4ms)[0m  COMMIT
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.6ms)[0m  INSERT INTO "reactions" ("chapter_id", "content", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["chapter_id", 1], ["content", " reaction 2"], ["user_id", 2], ["created_at", "2016-07-31 21:36:21.934759"], ["updated_at", "2016-07-31 21:36:21.934759"]]
+  [1m[36m (1.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "reactions" ("chapter_id", "content", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["chapter_id", 2], ["content", " reaction 3"], ["user_id", 1], ["created_at", "2016-07-31 21:36:21.941905"], ["updated_at", "2016-07-31 21:36:21.941905"]]
+  [1m[35m (2.7ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "reactions" ("chapter_id", "content", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["chapter_id", 2], ["content", " reaction 4"], ["user_id", 2], ["created_at", "2016-07-31 21:36:21.948668"], ["updated_at", "2016-07-31 21:36:21.948668"]]
+  [1m[36m (2.6ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.6ms)[0m  [1mINSERT INTO "reactions" ("chapter_id", "content", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["chapter_id", 3], ["content", " reaction 5"], ["user_id", 1], ["created_at", "2016-07-31 21:36:21.955603"], ["updated_at", "2016-07-31 21:36:21.955603"]]
+  [1m[35m (1.5ms)[0m  COMMIT
+  [1m[36m (0.3ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "reactions" ("chapter_id", "content", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["chapter_id", 3], ["content", " reaction 6"], ["user_id", 2], ["created_at", "2016-07-31 21:36:21.962634"], ["updated_at", "2016-07-31 21:36:21.962634"]]
+  [1m[36m (1.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.3ms)[0m  [1mINSERT INTO "reactions" ("chapter_id", "content", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["chapter_id", 4], ["content", " reaction 7"], ["user_id", 1], ["created_at", "2016-07-31 21:36:21.967806"], ["updated_at", "2016-07-31 21:36:21.967806"]]
+  [1m[35m (2.6ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.3ms)[0m  INSERT INTO "reactions" ("chapter_id", "content", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["chapter_id", 4], ["content", " reaction 8"], ["user_id", 2], ["created_at", "2016-07-31 21:36:21.973935"], ["updated_at", "2016-07-31 21:36:21.973935"]]
+  [1m[36m (2.9ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mSQL (0.5ms)[0m  [1mINSERT INTO "reactions" ("chapter_id", "content", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["chapter_id", 5], ["content", " reaction 9"], ["user_id", 1], ["created_at", "2016-07-31 21:36:21.981262"], ["updated_at", "2016-07-31 21:36:21.981262"]]
+  [1m[35m (1.6ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.4ms)[0m  INSERT INTO "reactions" ("chapter_id", "content", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["chapter_id", 5], ["content", " reaction 10"], ["user_id", 2], ["created_at", "2016-07-31 21:36:21.988501"], ["updated_at", "2016-07-31 21:36:21.988501"]]
+  [1m[36m (1.4ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.2ms)[0m  BEGIN
+  [1m[36mSQL (0.4ms)[0m  [1mINSERT INTO "reactions" ("chapter_id", "content", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["chapter_id", 6], ["content", " reaction 11"], ["user_id", 1], ["created_at", "2016-07-31 21:36:21.994809"], ["updated_at", "2016-07-31 21:36:21.994809"]]
+  [1m[35m (2.6ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "reactions" ("chapter_id", "content", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["chapter_id", 6], ["content", " reaction 12"], ["user_id", 2], ["created_at", "2016-07-31 21:36:22.002012"], ["updated_at", "2016-07-31 21:36:22.002012"]]
+  [1m[36m (2.8ms)[0m  [1mCOMMIT[0m
+  [1m[35m (0.3ms)[0m  BEGIN
+  [1m[36mSQL (1.7ms)[0m  [1mINSERT INTO "comments" ("reaction_id", "content", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"[0m  [["reaction_id", 1], ["content", "Seriously? You're Bob too?"], ["user_id", 2], ["created_at", "2016-07-31 21:36:22.031282"], ["updated_at", "2016-07-31 21:36:22.031282"]]
+  [1m[35m (1.5ms)[0m  COMMIT
+  [1m[36m (0.2ms)[0m  [1mBEGIN[0m
+  [1m[35mSQL (0.5ms)[0m  INSERT INTO "comments" ("reaction_id", "content", "user_id", "created_at", "updated_at") VALUES ($1, $2, $3, $4, $5) RETURNING "id"  [["reaction_id", 2], ["content", "Hey, Bob is a perfectly nice name."], ["user_id", 1], ["created_at", "2016-07-31 21:36:22.039667"], ["updated_at", "2016-07-31 21:36:22.039667"]]
+  [1m[36m (1.6ms)[0m  [1mCOMMIT[0m
+  [1m[36mUser Load (0.5ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mBook Load (0.7ms)[0m  SELECT "books".* FROM "books" INNER JOIN "solo_readings" ON "books"."id" = "solo_readings"."book_id" WHERE "solo_readings"."user_id" = $1  [["user_id", 1]]
+  [1m[36mUser Load (0.8ms)[0m  [1mSELECT  "users".* FROM "users" WHERE "users"."id" = $1 LIMIT 1[0m  [["id", 1]]
+  [1m[35mBook Load (0.8ms)[0m  SELECT "books".* FROM "books" INNER JOIN "solo_readings" ON "books"."id" = "solo_readings"."book_id" WHERE "solo_readings"."user_id" = $1  [["user_id", 1]]
+  [1m[36mSoloReading Load (0.6ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."current" = $1[0m  [["current", "t"]]
+  [1m[35mSoloReading Load (0.7ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."current" = $1  [["current", "t"]]
+  [1m[36mSoloReading Load (0.6ms)[0m  [1mSELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."book_id" = $1[0m  [["book_id", 1]]
+  [1m[35mSoloReading Load (0.8ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."book_id" = $1  [["book_id", 1]]
+  [1m[36mSoloReading Load (0.9ms)[0m  [1mSELECT  "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."book_id" = $1  ORDER BY "solo_readings"."id" ASC LIMIT 1[0m  [["book_id", 1]]
+  [1m[35mSoloReading Load (0.6ms)[0m  SELECT  "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."book_id" = $1 LIMIT 10  [["book_id", 1]]
+  [1m[36mSoloReading Load (0.7ms)[0m  [1mSELECT  "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."book_id" = $1  ORDER BY "solo_readings"."id" DESC LIMIT 1[0m  [["book_id", 1]]
