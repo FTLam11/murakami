@@ -76,4 +76,8 @@ describe SoloReading do
       expect(SoloReading.readings_hash("current")).to eq(SoloReading.where(book_id: 1))
     end
   end
+
+  describe "SoloReading::tally_readings" do
+    ""
+  end
 end

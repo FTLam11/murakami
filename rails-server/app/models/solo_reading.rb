@@ -44,10 +44,6 @@ class SoloReading < ActiveRecord::Base
     popular_books
   end
 
-  def self.readings_hash(type)
-    SoloReading.where(type.to_sym => true).group_by { |reading| reading.book_id }.select { |book, readings| readings.length > 1 }
-  end
-
   def self.tally_readings(readings_hash)
     reading_tally = {}
 
@@ -56,6 +52,10 @@ class SoloReading < ActiveRecord::Base
     end
 
     reading_tally
+  end
+
+  def self.readings_hash(type)
+    SoloReading.where(type.to_sym => true).group_by { |reading| reading.book_id }.select { |book, readings| readings.length > 1 }
   end
 
   def self.book_lists(user_id, type)
