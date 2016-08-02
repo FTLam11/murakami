@@ -35,23 +35,9 @@ class SoloReading < ActiveRecord::Base
   end 
 
   def self.trending(type)
-    popular_books = []
+    popular_books = plural_readings(type).sort_by { |book, readings| readings.length }.map { |book, reading| book = Book.find(book) }
 
-    tally_readings(plural_readings(type)).sort_by { |book, readings| readings }.each do |reading|
-      popular_books << Book.find(reading[0])
-    end
-
-    popular_books
-  end
-
-  def self.tally_readings(readings_hash)
-    reading_tally = {}
-
-    readings_hash.each do |book, readings|
-      reading_tally[book] = readings.length
-    end
-
-    reading_tally
+    popular_books[0..8]
   end
 
   def self.plural_readings(type)
@@ -59,19 +45,7 @@ class SoloReading < ActiveRecord::Base
   end
 
   def self.book_lists(user_id, type)
-    @books = []
-
-    if type == "history"
-      readings = SoloReading.where(user_id: user_id, complete: true)
-    else
-      readings = SoloReading.where(user_id: user_id, "#{type}" => true)
-    end
-
-    if readings.length > 0
-      readings.each { |reading| @books << reading.book }
-    end
-
-    return @books
+    SoloReading.where(user_id: user_id, "#{type}" => true).map { |reading| reading = reading.book}
   end
  end
 

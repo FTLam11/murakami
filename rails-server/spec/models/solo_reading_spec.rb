@@ -84,7 +84,7 @@ describe SoloReading do
     context "when type is 'current'" do
       it "groups current readings by book" do
         expect(SoloReading.plural_readings("current").keys).to include(1)
-        expect(SoloReading.plural_readings("current").values).to include(SoloReading.where(book_id: 1).last(3).flatten)
+        expect(SoloReading.plural_readings("current").values).to include(SoloReading.where(book_id: 1).last(3))
       end
 
       it "ignores current books that are only associated with one user" do
@@ -93,7 +93,34 @@ describe SoloReading do
     end
   end
 
-  describe "SoloReading::tally_readings" do
-    ""
+  describe "SoloReading::book_lists" do
+    before(:each) do
+        fronk = User.create(user_name: "Fronk",  email: "Fronk@fronk.fronk", password_digest: "fronk", image_url: "test")
+        Book.create!("title" => "PKMN",  "description" => "I wanna be the best!", "author" => "Red", "image_url" => "test", "page_numbers" => 70, "date_published" => 2010)
+        SoloReading.create!(user_id: User.last.id, book_id: Book.last.id, current: true)
+        Book.create!("title" => "TurtleMaster",  "description" => "TMNT", "author" => "Fronk", "image_url" => "test", "page_numbers" => 50, "date_published" => 1945)
+        SoloReading.create!(user_id: User.last.id, book_id: Book.last.id, current: true)
+    end 
+
+    context "when type is current" do
+      it "returns all current books of a user" do
+        expect(SoloReading.book_lists(User.last.id, "current")).to eq(Book.last(2).flatten)
+      end
+    end
+
+    context "when type is favorite" do
+      it "returns all favorite books of a user" do
+        Book.create!("title" => "Telemaster",  "description" => "Exciting!", "author" => "Fronk", "image_url" => "test", "page_numbers" => 500, "date_published" => 2001)
+          SoloReading.create!(user_id: User.last.id, book_id: Book.last.id, favorite: true)
+          expect(SoloReading.book_lists(User.last.id, "favorite")[0]).to eq(Book.last)
+      end
+    end
+
+    context "when a user has no current books" do
+      it "returns an empty array" do
+        test = User.create(user_name: "test",  email: "test@fronk.fronk", password_digest: "fronk", image_url: "test")
+        expect(SoloReading.book_lists(User.last.id, "current")).to eq []
+      end
+    end
   end
 end
