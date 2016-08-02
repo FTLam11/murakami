@@ -34,10 +34,10 @@ class SoloReading < ActiveRecord::Base
     self.save  
   end 
 
-  def self.trending_now(type)
+  def self.trending(type)
     popular_books = []
 
-    tally_readings(readings_hash(type)).sort_by { |book, readings| readings }.each do |reading|
+    tally_readings(plural_readings(type)).sort_by { |book, readings| readings }.each do |reading|
       popular_books << Book.find(reading[0])
     end
 
@@ -54,7 +54,7 @@ class SoloReading < ActiveRecord::Base
     reading_tally
   end
 
-  def self.readings_hash(type)
+  def self.plural_readings(type)
     SoloReading.where(type.to_sym => true).group_by { |reading| reading.book_id }.select { |book, readings| readings.length > 1 }
   end
 

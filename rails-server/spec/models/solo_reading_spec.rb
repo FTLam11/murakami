@@ -55,16 +55,24 @@ describe SoloReading do
     end
   end
 
-  describe "SoloReading::trending_now" do
-    
+  describe "SoloReading::trending" do
+    before(:each) do
+      Book.create!("title" => "PKMN",  "description" => "I wanna be the best!", "author" => "Red", "image_url" => "test", "page_numbers" => 70, "date_published" => 2010)
+      SoloReading.create(user_id: 1, book_id: Book.last.id, current: true)
+      SoloReading.create(user_id: 2, book_id: Book.last.id, current: true)
+      Book.create!("title" => "TurtleMaster",  "description" => "TMNT", "author" => "Fronk", "image_url" => "test", "page_numbers" => 50, "date_published" => 1945)
+      SoloReading.create(user_id: 1, book_id: Book.last.id, current: true)
+      SoloReading.create(user_id: 2, book_id: Book.last.id, current: true)
+    end
+
     context "when type is 'current'" do
-      it "returns the most popular books currently being read" do
-        expect(SoloReading.trending_now("current")).to_not eq []
+      it "returns the most popular current books" do
+        expect(SoloReading.trending("current")).to eq Book.last(2)
       end
     end
   end
 
-  describe "SoloReading::readings_hash" do
+  describe "SoloReading::plural_readings" do
     before(:each) do
       SoloReading.create(user_id: 1, book_id: 1, current: true)
       SoloReading.create(user_id: 2, book_id: 1, current: true)
@@ -72,8 +80,16 @@ describe SoloReading do
       SoloReading.create(user_id: 1, book_id: 2, current: true)
       SoloReading.create(user_id: 1, book_id: 3, current: true)
     end
-    it "returns readings of the requested type for any book associated with more than one user" do
-      expect(SoloReading.readings_hash("current")).to eq(SoloReading.where(book_id: 1))
+
+    context "when type is 'current'" do
+      it "groups current readings by book" do
+        expect(SoloReading.plural_readings("current").keys).to include(1)
+        expect(SoloReading.plural_readings("current").values).to include(SoloReading.where(book_id: 1).last(3).flatten)
+      end
+
+      it "ignores current books that are only associated with one user" do
+        expect(SoloReading.plural_readings("current")).to_not include(SoloReading.last(2))
+      end
     end
   end
 
