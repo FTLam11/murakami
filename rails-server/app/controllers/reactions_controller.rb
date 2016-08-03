@@ -6,17 +6,10 @@ class ReactionsController < ApplicationController
   end
 
   def index
-    chapter_id = params[:chapter_id]
-    books = Book.all
-    chapter_int = chapter_id.to_i
-
-    chapter = Chapter.find(chapter_int)
+    chapter = Chapter.find(params[:chapter_id])
     specific_book = Book.find(chapter.book_id)
-
-    reactions = Reaction.all
-    
-    Reaction.check_reactions(reactions)
-    render json: { reactions: current_reactions, specific_book: specific_book}
+    reactions = Reaction.get_reaction_details(chapter.id)
+    render json: { reactions: reactions, specific_book: specific_book}
   end
 
   def show

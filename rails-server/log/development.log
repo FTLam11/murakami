@@ -759,3 +759,5 @@ ORDER BY c.conname
   [1m[35mSoloReading Load (0.5ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."complete" = $1  [["complete", "t"]]
   [1m[36mSoloReading Load (0.4ms)[0m  [1mSELECT  "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."id" = $1 LIMIT 1[0m  [["id", -1]]
   [1m[35mSoloReading Load (0.5ms)[0m  SELECT "solo_readings".* FROM "solo_readings" WHERE "solo_readings"."queue" = $1  [["queue", "t"]]
+  [1m[36mReaction Load (5.5ms)[0m  [1mSELECT  "reactions".* FROM "reactions"  ORDER BY "reactions"."id" ASC LIMIT 1[0m
+  [1m[36mUser Load (33.4ms)[0m  [1mSELECT  "users".* FROM "users"  ORDER BY "users"."id" ASC LIMIT 1[0m
