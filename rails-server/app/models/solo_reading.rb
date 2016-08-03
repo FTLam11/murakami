@@ -7,13 +7,7 @@ class SoloReading < ActiveRecord::Base
   validates :user_id, :book_id, presence: true
 
   def self.recommendations(user_id)
-    rec_criteria = {author: []}
-
-    User.find(user_id).books.each do |book|
-      rec_criteria[:author] << book.author
-    end
-
-    rec_criteria.each {|criterion,array| array.uniq!}
+    User.find(user_id).books.map { |book| book = book.author }.uniq
   end
 
   def update_status(status)

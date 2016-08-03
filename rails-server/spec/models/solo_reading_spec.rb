@@ -16,13 +16,13 @@ describe SoloReading do
     let (:recommendations) { SoloReading.recommendations(user.id) }
     
     it "returns a collection of all authors from a user's books" do
-      expect(recommendations[:author]).to include("Fronk")
-      expect(recommendations[:author]).to include("Red")
+      expect(recommendations).to include("Fronk")
+      expect(recommendations).to include("Red")
     end
 
     context "when a user has different books by the same author" do
       it "returns a collection of unique authors from a user's books" do
-        expect(recommendations).to eq({author: ["Red", "Fronk"]})
+        expect(recommendations).to eq( ["Red", "Fronk"])
       end
     end
   end
