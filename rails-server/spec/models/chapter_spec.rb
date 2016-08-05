@@ -9,17 +9,17 @@ describe Chapter do
     end
 
     context "when creating 10 chapters for a given book" do
+      let(:new_chapters) { Chapter.last(10) }
+
       before(:each) do
         Chapter.create_chapters(book, 10)
       end
-      
-      let(:new_chapters) { Chapter.last(10) }
 
-      it "creates chapter one" do
+      it "creates the first chapter" do
         expect(new_chapters.first.number).to eq(1)               
       end
 
-      it "creates chapter ten" do
+      it "creates the last chapter" do
         expect(new_chapters.last.number).to eq(10)
       end
     end
