@@ -1,6 +1,6 @@
 module Helpers
-  def create_user_helper
-    User.create(user_name: "Fronk",  email: "Fronk@fronk.fronk", password_digest: "fronk", image_url: "test")
+  def create_user_helper(name = "Fronk")
+    User.create(user_name: name,  email: "#{name}@fronk.fronk", password_digest: "fronk", image_url: "test")
   end
 
   def create_readings_helper

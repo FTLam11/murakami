@@ -1,10 +1,13 @@
 require 'rails_helper'
+require 'rspec_helpers'
 
 describe Comment do
+  include Helpers
+
   describe "Comment::get_comment_author" do
     before(:each) do
-      user = User.create!(user_name: "Fronk",  email: "Test@test.fronk", password_digest: "fronk", image_url: "test")
-      user2 = User.create!(user_name: "Lom",  email: "Test2@test.fronk", password_digest: "fronk", image_url: "test")
+      user = create_user_helper
+      user2 = create_user_helper("Lom")
       reaction = user.reactions.create!(chapter_id: 1, content: "WOW")
       reaction.comments.create!(content: "hello", user_id: user.id)
       reaction.comments.create!(content: "world", user_id: user2.id)

@@ -1,10 +1,12 @@
 require 'rails_helper'
+require 'rspec_helpers'
 
 describe Book do
+    include Helpers
     describe "Book::add_book" do
         let (:book_params) { {"book" => {"title" => "TurtleMaster",  "description" => "TMNT", "author" => "Fronk", "image_url" => "test", "page_numbers" => 50, "date_published" => 1945}, chapter_count: 10} }
-        let (:user) { User.create(user_name: "Fronk",  email: "Fronk@fronk.fronk", password_digest: "fronk", image_url: "test") }
-        let (:user2) { User.create(user_name: "Test",  email: "test@fronk.fronk", password_digest: "fronk", image_url: "test") }
+        let (:user) { create_user_helper }
+        let (:user2) { create_user_helper("joules") }
 
         context "when a user adds a book to current" do
             it "creates a new Book" do
