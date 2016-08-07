@@ -10,8 +10,7 @@ class Book < ActiveRecord::Base
   # validates :title, :author, :genre, :image_url, :page_numbers, :date_published, presence: true
 
   def self.add_book(params, user, make_chapters = true)
-    add_to_library(params, user, make_chapters) unless book_in_library?(params)
-    add_to_user(params, user)
+    book_in_library?(params)? add_to_user(params, user) :  add_to_library(params, user, make_chapters)
   end
 
   def self.book_in_library?(params)
