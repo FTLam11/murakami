@@ -20,7 +20,7 @@ class Book < ActiveRecord::Base
   def self.add_to_library(params, user, make_chapters)
     added_book = create_book(params, user)
     Chapter.create_chapters(added_book, params[:chapter_count]) if make_chapters == true
-    return added_book
+    added_book
   end 
 
   def self.create_book(params, user)
@@ -29,8 +29,7 @@ class Book < ActiveRecord::Base
 
   def self.add_to_user(params, user)
     book = Book.find_by(title: params['book']['title'])
-    SoloReading.create(user_id: user.id, book_id: book.id) unless user_has_book?(user, book)
-    book
+    user_has_book?(user, book)? book : SoloReading.create(user_id: user.id, book_id: book.id)
   end
 
   def self.user_has_book?(user, book)
