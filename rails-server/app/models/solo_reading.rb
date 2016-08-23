@@ -29,7 +29,7 @@ class SoloReading < ActiveRecord::Base
   def self.trending(type)
     popular_books = plural_readings(type).sort_by { |book, readings| readings.length }.map { |book, reading| book = Book.find(book) }
 
-    popular_books[0..8]
+    popular_books.take(9)
   end
 
   def self.plural_readings(type)

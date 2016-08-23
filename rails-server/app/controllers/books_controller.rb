@@ -2,7 +2,7 @@ class BooksController < ApplicationController
   include ApplicationHelper
 
   def create #returns book or dont
-    user = User.find(params["user_id"])
+    get_user
     @reading = Book.add_book(params, user)
     if @reading.current
       render json: {token: user.id, book: "dont"}, status: :ok
@@ -18,21 +18,21 @@ class BooksController < ApplicationController
   end
 
   def add_to_current
-    user = User.find(params["user_id"])
+    get_user
     @reading = Book.add_book_by_id(params, user)
     @reading.update_status("current") 
     render json: {token: user.id}, status: :ok
   end
 
   def add_to_favorites
-    user = User.find(params["user_id"])
+    get_user
     @reading = Book.add_book_by_id(params, user)
     @reading.update_status("favorite")
     render json: {token: user.id, book: @reading.book}, status: :ok
   end
 
   def add_to_queue
-    user = User.find(params["user_id"])
+    get_user
     @reading = Book.add_book_by_id(params, user)
     @reading.update_status("queue")
     render json: {token: user.id, book: @reading.book}, status: :ok
