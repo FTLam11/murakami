@@ -4,3 +4,6 @@ Murakami was created by Team Green Salmon: Alex Wen, Elizabeth Alexander, Jack T
 
 ### Purpose
 Murakami is a virtual book club mobile app that allows readers to share reactions and discuss books they are reading. We felt that many readers are missing an outlet to discuss their thoughts and feelings, and Murakami can serve as a platform to encourage open exchange as well as find more books to read.
+
+### Presentation
+The story behind Murakami can be seen [here](http://prezi.com/imgjnuuo8jgv/?utm_campaign=share&utm_medium=copy)
