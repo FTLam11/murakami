@@ -9,59 +9,30 @@ class Book < ActiveRecord::Base
 
   # validates :title, :author, :genre, :image_url, :page_numbers, :date_published, presence: true
 
-  def self.add_book(params, user)
-    book = Book.find_by(title: params['book']['title'])
-    if book == nil
-      new_book = user.books.create(title: params['book']['title'], description: params['book']['description'], author: params['book']['author'], image_url: params['book']['image_url'], page_numbers: params['book']['page_numbers'], date_published: params['book']['publishedDate'])
-      create_chapters(new_book, params[:chapter_count])
-      @reading = SoloReading.find_by(user_id:user.id, book_id:new_book.id)
-    else
-      @reading = SoloReading.find_by(user_id:user.id, book_id:book.id)
-      if @reading == nil
-        user.books << book
-        @reading = SoloReading.last
-      end
-
-      @reading
-    end
+  def self.add_book(params, user, make_chapters = true)
+    book_in_library?(params)? add_to_user(params, user) :  add_to_library(params, user, make_chapters)
   end
 
-  def self.update_status(staus, reading)
-    reading.status = true 
-    reading.save  
+  def self.book_in_library?(params)
+    Book.find_by(title: params['book']['title'])
+  end
+
+  def self.add_to_library(params, user, make_chapters)
+    added_book = create_book(params, user)
+    Chapter.create_chapters(added_book, params[:chapter_count]) if make_chapters == true
+    added_book
   end 
 
-  def self.create_chapters(book, nums)
-    nums.times do |num|
-      book.chapters.create(number: num)
-    end
+  def self.create_book(params, user)
+    user.books.create(title: params['book']['title'], description: params['book']['description'], author: params['book']['author'], image_url: params['book']['image_url'], page_numbers: params['book']['page_numbers'], date_published: params['book']['publishedDate'])
   end
 
-  def self.add_book_by_id(params, user)
+  def self.add_to_user(params, user)
     book = Book.find_by(title: params['book']['title'])
-
-    if book == nil
-      new_book = user.books.create(title: params['book']['title'], description: params['book']['description'], author: params['book']['author'], image_url: params['book']['image_url'], page_numbers: params['book']['page_numbers'], date_published: params['book']['publishedDate'])
-      @reading = SoloReading.find_by(user_id:user.id, book_id:new_book.id)
-    else
-      @reading = SoloReading.find_by(user_id:user.id, book_id:book.id)
-      if @reading == nil
-        user.books << book
-        @reading = SoloReading.last
-      end
-
-      @reading
-    end
+    user_has_book?(user, book)? book : SoloReading.create(user_id: user.id, book_id: book.id)
   end
 
-  def self.find_reading
-    @reading = SoloReading.find_by(user_id:current_user.id, book_id:book.id)
+  def self.user_has_book?(user, book)
+    SoloReading.find_by(user_id:user.id, book_id:book.id)
   end
-
-  private
-
-  def self.book_params
-    params.require(:book).print(:title, :author, :genre, :image_url, :page_numbers, :date_published)
-  end
-
 end

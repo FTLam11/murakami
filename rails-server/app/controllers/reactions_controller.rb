@@ -1,22 +1,15 @@
 class ReactionsController < ApplicationController
 
   def create
-    reaction = Reaction.create(content: params["content"], chapter_id: params["chapter_id"], user_id: params["user_id"])
+    reaction = Reaction.create(reaction_params)
     render json: { reaction: reaction.content, reaction_id: reaction.id, username: reaction.user.user_name }
   end
 
   def index
-    chapter_id = params[:chapter_id]
-    books = Book.all
-    chapter_int = chapter_id.to_i
-
-    chapter = Chapter.find(chapter_int)
+    chapter = Chapter.find(params[:chapter_id])
     specific_book = Book.find(chapter.book_id)
-
-    reactions = Reaction.all
-    
-    Reaction.check_reactions(reactions)
-    render json: { reactions: current_reactions, specific_book: specific_book}
+    reactions = Reaction.get_reaction_details(chapter.id)
+    render json: { reactions: reactions, specific_book: specific_book}
   end
 
   def show
@@ -28,7 +21,7 @@ class ReactionsController < ApplicationController
   private
 
   def reaction_params
-    params.require(:reaction).print(:chapter_id, :content, :user_id)
+    params.require(:reaction).permit(:chapter_id, :content, :user_id)
   end
 
 end

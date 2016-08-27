@@ -22,14 +22,13 @@ class SoloReadingsController < ApplicationController
   end
 
   def history_books
-    history_books = SoloReading.book_lists(params[:user_id], "history")
+    history_books = SoloReading.book_lists(params[:user_id], "complete")
     render json: { history_books: history_books }
   end
 
   def trending_books
-    popular_books = SoloReading.trending_now("current")[0..8]
-    favorite_books = SoloReading.trending_now("favorite")[0..8]
+    popular_books = SoloReading.trending("current")
+    favorite_books = SoloReading.trending("favorite")
     render json: { popular_books: popular_books, favorite_books: favorite_books }
   end
-
 end

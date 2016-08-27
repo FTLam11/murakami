@@ -5,14 +5,7 @@ class Reaction < ActiveRecord::Base
 
   validates :chapter_id, :content, :user_id, presence: true
 
-
-  def self.check_reactions(reactions)
-  	current_reactions = []
-  	reactions.each do |reaction|
-      if reaction.chapter_id == chapter_int
-        current_reactions << {reaction: reaction.content, reaction_id: reaction.id,  username: reaction.user.user_name, userAvatar: reaction.user.image_url}
-      end
-    end  
+  def self.get_reaction_details(chapter_id)
+    Reaction.where(chapter_id: chapter_id).map { |reaction| reaction = {reaction: reaction.content, reaction_id: reaction.id,  username: reaction.user.user_name, userAvatar: reaction.user.image_url} }
   end 
-
 end
